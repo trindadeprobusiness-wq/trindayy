@@ -1,0 +1,203 @@
+1
+00:00:00,000 --> 00:00:01,520
+A Cloudflare acabou de
+
+2
+00:00:01,520 --> 00:00:02,160
+liberar,
+
+3
+00:00:02,160 --> 00:00:02,960
+de graça,
+
+4
+00:00:02,960 --> 00:00:04,160
+uma skill do Claude
+
+5
+00:00:04,160 --> 00:00:05,360
+que encontra brechas de
+
+6
+00:00:05,360 --> 00:00:07,040
+segurança no seu código.
+
+7
+00:00:07,040 --> 00:00:08,000
+Eles criaram essa
+
+8
+00:00:08,000 --> 00:00:08,960
+ferramenta para uso
+
+9
+00:00:08,960 --> 00:00:10,320
+próprio e ela encontrou
+
+10
+00:00:10,320 --> 00:00:11,680
+milhares de falhas no
+
+11
+00:00:11,680 --> 00:00:12,480
+código da própria
+
+12
+00:00:12,480 --> 00:00:13,520
+Cloudflare.
+
+13
+00:00:13,520 --> 00:00:14,320
+E o projeto já
+
+14
+00:00:14,320 --> 00:00:15,920
+passou de 28 mil
+
+15
+00:00:15,920 --> 00:00:17,520
+estrelas do GitHub.
+
+16
+00:00:17,520 --> 00:00:18,640
+Você instala a skill
+
+17
+00:00:18,640 --> 00:00:19,600
+no Claude Code e
+
+18
+00:00:19,600 --> 00:00:20,480
+ela mapeia seu
+
+19
+00:00:20,480 --> 00:00:21,650
+aplicativo interno.
+
+20
+00:00:21,927 --> 00:00:23,367
+Depois coloca um time
+
+21
+00:00:23,367 --> 00:00:24,008
+de agentes de
+
+22
+00:00:24,008 --> 00:00:25,207
+inteligência artificial
+
+23
+00:00:25,207 --> 00:00:26,407
+para procurar falhas no
+
+24
+00:00:26,407 --> 00:00:26,967
+login,
+
+25
+00:00:26,967 --> 00:00:27,927
+banco de dados,
+
+26
+00:00:27,927 --> 00:00:29,527
+APIs e até ataques
+
+27
+00:00:29,527 --> 00:00:30,887
+de Prompt Injection.
+
+28
+00:00:30,887 --> 00:00:31,767
+E aqui vem a
+
+29
+00:00:31,767 --> 00:00:33,367
+parte mais interessante.
+
+30
+00:00:33,367 --> 00:00:34,727
+Cada falha encontrada
+
+31
+00:00:34,727 --> 00:00:36,087
+passa por outro agente
+
+32
+00:00:36,087 --> 00:00:37,447
+cujo trabalho é tentar
+
+33
+00:00:37,447 --> 00:00:38,567
+provar que aquele
+
+34
+00:00:38,567 --> 00:00:40,007
+problema não existe.
+
+35
+00:00:40,007 --> 00:00:40,647
+Assim,
+
+36
+00:00:40,647 --> 00:00:41,927
+somente os problemas
+
+37
+00:00:41,927 --> 00:00:43,128
+realmente verificados
+
+38
+00:00:43,128 --> 00:00:44,167
+chegam ao relatório
+
+39
+00:00:44,167 --> 00:00:44,650
+final.
+
+40
+00:00:44,650 --> 00:00:45,370
+No final,
+
+41
+00:00:45,370 --> 00:00:46,490
+você recebe um relatório
+
+42
+00:00:46,490 --> 00:00:47,210
+com as falhas
+
+43
+00:00:47,210 --> 00:00:48,330
+identificadas e
+
+44
+00:00:48,330 --> 00:00:49,370
+exatamente como
+
+45
+00:00:49,370 --> 00:00:50,330
+corrigi-las.
+
+46
+00:00:50,330 --> 00:00:51,210
+Quer o link?
+
+47
+00:00:51,210 --> 00:00:52,810
+Comenta a AUDITORIA aqui
+
+48
+00:00:52,810 --> 00:00:53,850
+embaixo e me segue
+
+49
+00:00:53,850 --> 00:00:54,730
+para conhecer mais
+
+50
+00:00:54,730 --> 00:00:55,450
+ferramentas de
+
+51
+00:00:55,450 --> 00:00:56,764
+inteligência artificial.
