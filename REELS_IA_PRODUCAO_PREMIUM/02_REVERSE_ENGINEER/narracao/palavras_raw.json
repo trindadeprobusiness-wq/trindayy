@@ -1,0 +1,797 @@
+[
+{
+"text": "O",
+"start": 0.0,
+"end": 0.16
+},
+{
+"text": "repositório",
+"start": 0.16,
+"end": 0.88
+},
+{
+"text": "número",
+"start": 0.88,
+"end": 1.2
+},
+{
+"text": "1",
+"start": 1.2,
+"end": 1.52
+},
+{
+"text": "em",
+"start": 1.52,
+"end": 1.68
+},
+{
+"text": "alta",
+"start": 1.68,
+"end": 2.0
+},
+{
+"text": "no",
+"start": 2.0,
+"end": 2.16
+},
+{
+"text": "GitHub",
+"start": 2.16,
+"end": 2.8
+},
+{
+"text": "essa",
+"start": 2.8,
+"end": 2.96
+},
+{
+"text": "semana",
+"start": 2.96,
+"end": 3.36
+},
+{
+"text": "se",
+"start": 3.36,
+"end": 3.52
+},
+{
+"text": "chama",
+"start": 3.52,
+"end": 3.84
+},
+{
+"text": "Reverse",
+"start": 3.84,
+"end": 4.32
+},
+{
+"text": "Engineer",
+"start": 4.32,
+"end": 4.96
+},
+{
+"text": "Anything.",
+"start": 4.96,
+"end": 5.92
+},
+{
+"text": "Você",
+"start": 5.92,
+"end": 6.16
+},
+{
+"text": "aponta",
+"start": 6.16,
+"end": 6.64
+},
+{
+"text": "um",
+"start": 6.64,
+"end": 6.8
+},
+{
+"text": "aplicativo",
+"start": 6.8,
+"end": 7.36
+},
+{
+"text": "para",
+"start": 7.36,
+"end": 7.52
+},
+{
+"text": "um",
+"start": 7.52,
+"end": 7.68
+},
+{
+"text": "agente",
+"start": 7.68,
+"end": 8.08
+},
+{
+"text": "de",
+"start": 8.08,
+"end": 8.16
+},
+{
+"text": "inteligência",
+"start": 8.16,
+"end": 8.8
+},
+{
+"text": "artificial",
+"start": 8.8,
+"end": 9.52
+},
+{
+"text": "e",
+"start": 9.52,
+"end": 9.68
+},
+{
+"text": "ele",
+"start": 9.68,
+"end": 9.92
+},
+{
+"text": "te",
+"start": 9.92,
+"end": 10.08
+},
+{
+"text": "mostra",
+"start": 10.08,
+"end": 10.48
+},
+{
+"text": "como",
+"start": 10.48,
+"end": 10.72
+},
+{
+"text": "esse",
+"start": 10.72,
+"end": 10.96
+},
+{
+"text": "aplicativo",
+"start": 10.96,
+"end": 11.6
+},
+{
+"text": "funciona",
+"start": 11.6,
+"end": 12.08
+},
+{
+"text": "por",
+"start": 12.08,
+"end": 12.32
+},
+{
+"text": "dentro.",
+"start": 12.32,
+"end": 12.96
+},
+{
+"text": "E",
+"start": 12.96,
+"end": 13.2
+},
+{
+"text": "não,",
+"start": 13.2,
+"end": 13.76
+},
+{
+"text": "você",
+"start": 13.76,
+"end": 14.08
+},
+{
+"text": "não",
+"start": 14.08,
+"end": 14.32
+},
+{
+"text": "está",
+"start": 14.32,
+"end": 14.56
+},
+{
+"text": "roubando",
+"start": 14.56,
+"end": 14.96
+},
+{
+"text": "o",
+"start": 14.96,
+"end": 15.04
+},
+{
+"text": "código",
+"start": 15.04,
+"end": 15.44
+},
+{
+"text": "fonte.",
+"start": 15.44,
+"end": 16.16
+},
+{
+"text": "Mas",
+"start": 16.16,
+"end": 16.48
+},
+{
+"text": "digamos",
+"start": 16.48,
+"end": 16.96
+},
+{
+"text": "que",
+"start": 16.96,
+"end": 17.12
+},
+{
+"text": "você",
+"start": 17.12,
+"end": 17.36
+},
+{
+"text": "ama",
+"start": 17.36,
+"end": 17.84
+},
+{
+"text": "um",
+"start": 17.84,
+"end": 18.0
+},
+{
+"text": "recurso",
+"start": 18.0,
+"end": 18.48
+},
+{
+"text": "de",
+"start": 18.48,
+"end": 18.64
+},
+{
+"text": "determinado",
+"start": 18.64,
+"end": 19.2
+},
+{
+"text": "aplicativo.",
+"start": 19.2,
+"end": 20.16
+},
+{
+"text": "Agora",
+"start": 20.16,
+"end": 20.56
+},
+{
+"text": "você",
+"start": 20.56,
+"end": 20.8
+},
+{
+"text": "pode",
+"start": 20.8,
+"end": 21.04
+},
+{
+"text": "investigar",
+"start": 21.04,
+"end": 21.68
+},
+{
+"text": "como",
+"start": 21.68,
+"end": 22.0
+},
+{
+"text": "ele",
+"start": 22.0,
+"end": 22.16
+},
+{
+"text": "foi",
+"start": 22.16,
+"end": 22.4
+},
+{
+"text": "feito",
+"start": 22.4,
+"end": 22.72
+},
+{
+"text": "e",
+"start": 22.72,
+"end": 22.96
+},
+{
+"text": "usar",
+"start": 22.96,
+"end": 23.28
+},
+{
+"text": "esse",
+"start": 23.28,
+"end": 23.44
+},
+{
+"text": "conhecimento.",
+"start": 23.44,
+"end": 24.29
+},
+{
+"text": "Construir",
+"start": 24.417,
+"end": 24.898
+},
+{
+"text": "o",
+"start": 24.898,
+"end": 25.057
+},
+{
+"text": "seu",
+"start": 25.057,
+"end": 25.217
+},
+{
+"text": "próprio.",
+"start": 25.217,
+"end": 25.857
+},
+{
+"text": "E",
+"start": 25.857,
+"end": 26.017
+},
+{
+"text": "dá",
+"start": 26.017,
+"end": 26.257
+},
+{
+"text": "até",
+"start": 26.257,
+"end": 26.497
+},
+{
+"text": "para",
+"start": 26.497,
+"end": 26.737
+},
+{
+"text": "trazer",
+"start": 26.737,
+"end": 27.058
+},
+{
+"text": "hardware",
+"start": 27.058,
+"end": 27.537
+},
+{
+"text": "antigo",
+"start": 27.537,
+"end": 28.017
+},
+{
+"text": "de",
+"start": 28.017,
+"end": 28.177
+},
+{
+"text": "volta",
+"start": 28.177,
+"end": 28.497
+},
+{
+"text": "à",
+"start": 28.497,
+"end": 28.657
+},
+{
+"text": "vida.",
+"start": 28.657,
+"end": 29.218
+},
+{
+"text": "Uma",
+"start": 29.218,
+"end": 29.457
+},
+{
+"text": "pessoa",
+"start": 29.457,
+"end": 29.778
+},
+{
+"text": "conseguiu",
+"start": 29.778,
+"end": 30.177
+},
+{
+"text": "fazer",
+"start": 30.177,
+"end": 30.417
+},
+{
+"text": "um",
+"start": 30.417,
+"end": 30.497
+},
+{
+"text": "teclitec",
+"start": 30.497,
+"end": 31.778
+},
+{
+"text": "MX",
+"start": 31.778,
+"end": 32.337
+},
+{
+"text": "KeyPad",
+"start": 32.337,
+"end": 33.058
+},
+{
+"text": "funcionar",
+"start": 33.058,
+"end": 33.457
+},
+{
+"text": "no",
+"start": 33.457,
+"end": 33.617
+},
+{
+"text": "Linux",
+"start": 33.617,
+"end": 34.098
+},
+{
+"text": "em",
+"start": 34.098,
+"end": 34.258
+},
+{
+"text": "apenas",
+"start": 34.258,
+"end": 34.657
+},
+{
+"text": "15",
+"start": 34.657,
+"end": 35.138
+},
+{
+"text": "minutos.",
+"start": 35.138,
+"end": 36.017
+},
+{
+"text": "Outras",
+"start": 36.017,
+"end": 36.417
+},
+{
+"text": "pessoas",
+"start": 36.417,
+"end": 36.737
+},
+{
+"text": "já",
+"start": 36.737,
+"end": 37.057
+},
+{
+"text": "estão",
+"start": 37.057,
+"end": 37.298
+},
+{
+"text": "testando",
+"start": 37.298,
+"end": 37.697
+},
+{
+"text": "a",
+"start": 37.697,
+"end": 37.777
+},
+{
+"text": "ferramenta",
+"start": 37.777,
+"end": 38.258
+},
+{
+"text": "com",
+"start": 38.258,
+"end": 38.497
+},
+{
+"text": "scanners",
+"start": 38.497,
+"end": 39.057
+},
+{
+"text": "e",
+"start": 39.057,
+"end": 39.218
+},
+{
+"text": "placas",
+"start": 39.218,
+"end": 39.617
+},
+{
+"text": "de",
+"start": 39.617,
+"end": 39.777
+},
+{
+"text": "som",
+"start": 39.777,
+"end": 40.017
+},
+{
+"text": "antigas",
+"start": 40.017,
+"end": 40.417
+},
+{
+"text": "que",
+"start": 40.417,
+"end": 40.577
+},
+{
+"text": "perderam",
+"start": 40.577,
+"end": 41.057
+},
+{
+"text": "o",
+"start": 41.057,
+"end": 41.137
+},
+{
+"text": "suporte",
+"start": 41.137,
+"end": 41.537
+},
+{
+"text": "de",
+"start": 41.537,
+"end": 41.697
+},
+{
+"text": "driver.",
+"start": 41.697,
+"end": 42.417
+},
+{
+"text": "O",
+"start": 42.417,
+"end": 42.577
+},
+{
+"text": "projeto",
+"start": 42.577,
+"end": 42.977
+},
+{
+"text": "já",
+"start": 42.977,
+"end": 43.137
+},
+{
+"text": "ultrapassou",
+"start": 43.137,
+"end": 43.858
+},
+{
+"text": "88.900",
+"start": 43.858,
+"end": 45.617
+},
+{
+"text": "estrelas",
+"start": 45.617,
+"end": 46.098
+},
+{
+"text": "no",
+"start": 46.098,
+"end": 46.178
+},
+{
+"text": "GitHub.",
+"start": 46.178,
+"end": 47.05
+},
+{
+"text": "É",
+"start": 47.05,
+"end": 47.29
+},
+{
+"text": "código",
+"start": 47.29,
+"end": 47.61
+},
+{
+"text": "aberto,",
+"start": 47.61,
+"end": 48.17
+},
+{
+"text": "roda",
+"start": 48.17,
+"end": 48.57
+},
+{
+"text": "na",
+"start": 48.57,
+"end": 48.73
+},
+{
+"text": "sua",
+"start": 48.73,
+"end": 48.97
+},
+{
+"text": "própria",
+"start": 48.97,
+"end": 49.29
+},
+{
+"text": "máquina",
+"start": 49.29,
+"end": 49.69
+},
+{
+"text": "e",
+"start": 49.69,
+"end": 49.93
+},
+{
+"text": "pode",
+"start": 49.93,
+"end": 50.17
+},
+{
+"text": "ser",
+"start": 50.17,
+"end": 50.33
+},
+{
+"text": "utilizado",
+"start": 50.33,
+"end": 50.81
+},
+{
+"text": "com",
+"start": 50.81,
+"end": 50.97
+},
+{
+"text": "Clod",
+"start": 50.97,
+"end": 51.53
+},
+{
+"text": "Code",
+"start": 51.53,
+"end": 51.85
+},
+{
+"text": "e",
+"start": 51.85,
+"end": 52.01
+},
+{
+"text": "Codex.",
+"start": 52.01,
+"end": 52.73
+},
+{
+"text": "Quer",
+"start": 52.73,
+"end": 53.05
+},
+{
+"text": "ver",
+"start": 53.05,
+"end": 53.29
+},
+{
+"text": "isso",
+"start": 53.29,
+"end": 53.45
+},
+{
+"text": "funcionando?",
+"start": 53.45,
+"end": 54.09
+},
+{
+"text": "Comenta",
+"start": 54.09,
+"end": 54.57
+},
+{
+"text": "The",
+"start": 54.57,
+"end": 54.89
+},
+{
+"text": "Code",
+"start": 54.89,
+"end": 55.29
+},
+{
+"text": "aqui",
+"start": 55.29,
+"end": 55.45
+},
+{
+"text": "embaixo",
+"start": 55.45,
+"end": 55.85
+},
+{
+"text": "e",
+"start": 55.85,
+"end": 56.01
+},
+{
+"text": "me",
+"start": 56.01,
+"end": 56.17
+},
+{
+"text": "segue",
+"start": 56.17,
+"end": 56.57
+},
+{
+"text": "para",
+"start": 56.57,
+"end": 56.73
+},
+{
+"text": "não",
+"start": 56.73,
+"end": 56.89
+},
+{
+"text": "perder",
+"start": 56.89,
+"end": 57.37
+},
+{
+"text": "a",
+"start": 57.37,
+"end": 57.45
+},
+{
+"text": "próxima",
+"start": 57.45,
+"end": 57.77
+},
+{
+"text": "ferramenta.",
+"start": 57.77,
+"end": 58.514
+}
+]

@@ -1,0 +1,6 @@
+**/.hyperframes/
+**/renders/
+**/capa/shot/contact-sheet.jpg
+**/capa/assets/
+node_modules/
+*.pre.wav

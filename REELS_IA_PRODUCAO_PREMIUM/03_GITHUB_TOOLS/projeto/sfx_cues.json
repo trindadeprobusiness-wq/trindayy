@@ -1,0 +1,342 @@
+[
+ {
+  "type": "pop",
+  "t": 2.19,
+  "gain": 0.55
+ },
+ {
+  "type": "click",
+  "t": 2.64,
+  "gain": 0.6
+ },
+ {
+  "type": "lock",
+  "t": 4.06,
+  "gain": 0.6
+ },
+ {
+  "type": "power",
+  "t": 6.01,
+  "gain": 0.7
+ },
+ {
+  "type": "pop_multi",
+  "t": 6.11,
+  "gain": 0.6
+ },
+ {
+  "type": "pop",
+  "t": 7.68,
+  "gain": 0.6
+ },
+ {
+  "type": "impact",
+  "t": 8.67,
+  "gain": 0.7
+ },
+ {
+  "type": "pop_multi",
+  "t": 9.14,
+  "gain": 0.55
+ },
+ {
+  "type": "whoosh",
+  "t": 10.75,
+  "gain": 0.6
+ },
+ {
+  "type": "shimmer",
+  "t": 11.44,
+  "gain": 0.5
+ },
+ {
+  "type": "pop",
+  "t": 14.57,
+  "gain": 0.6
+ },
+ {
+  "type": "pop",
+  "t": 15.87,
+  "gain": 0.6
+ },
+ {
+  "type": "whoosh_s",
+  "t": 17.13,
+  "gain": 0.45
+ },
+ {
+  "type": "typing",
+  "t": 19.47,
+  "gain": 0.35
+ },
+ {
+  "type": "whoosh_s",
+  "t": 19.52,
+  "gain": 0.5
+ },
+ {
+  "type": "pop",
+  "t": 21.04,
+  "gain": 0.65
+ },
+ {
+  "type": "impact",
+  "t": 21.98,
+  "gain": 0.45
+ },
+ {
+  "type": "counter",
+  "t": 22.72,
+  "gain": 0.5
+ },
+ {
+  "type": "confirm",
+  "t": 23.75,
+  "gain": 0.6
+ },
+ {
+  "type": "whoosh",
+  "t": 24.197,
+  "gain": 0.6
+ },
+ {
+  "type": "pop",
+  "t": 27.507,
+  "gain": 0.6
+ },
+ {
+  "type": "pop",
+  "t": 28.418,
+  "gain": 0.55
+ },
+ {
+  "type": "whoosh_s",
+  "t": 29.777,
+  "gain": 0.45
+ },
+ {
+  "type": "pop_multi",
+  "t": 30.247,
+  "gain": 0.6
+ },
+ {
+  "type": "whoosh_s",
+  "t": 31.487,
+  "gain": 0.45
+ },
+ {
+  "type": "tick_roll",
+  "t": 33.347,
+  "gain": 0.35
+ },
+ {
+  "type": "confirm",
+  "t": 35.908,
+  "gain": 0.55
+ },
+ {
+  "type": "ding",
+  "t": 36.567,
+  "gain": 0.45
+ },
+ {
+  "type": "whoosh",
+  "t": 37.477,
+  "gain": 0.6
+ },
+ {
+  "type": "pop_multi",
+  "t": 39.527,
+  "gain": 0.6
+ },
+ {
+  "type": "whoosh_s",
+  "t": 41.328,
+  "gain": 0.45
+ },
+ {
+  "type": "typing",
+  "t": 43.267,
+  "gain": 0.3
+ },
+ {
+  "type": "counter",
+  "t": 43.828,
+  "gain": 0.55
+ },
+ {
+  "type": "tick_roll",
+  "t": 44.867,
+  "gain": 0.35
+ },
+ {
+  "type": "alert",
+  "t": 47.448,
+  "gain": 0.5
+ },
+ {
+  "type": "whoosh",
+  "t": 48.64,
+  "gain": 0.6
+ },
+ {
+  "type": "counter",
+  "t": 52.7,
+  "gain": 0.5
+ },
+ {
+  "type": "pop_multi",
+  "t": 53.25,
+  "gain": 0.5
+ },
+ {
+  "type": "whoosh_s",
+  "t": 54.46,
+  "gain": 0.45
+ },
+ {
+  "type": "pop",
+  "t": 55.88,
+  "gain": 0.6
+ },
+ {
+  "type": "glitch",
+  "t": 57.71,
+  "gain": 0.5
+ },
+ {
+  "type": "confirm",
+  "t": 60.05,
+  "gain": 0.5
+ },
+ {
+  "type": "confirm",
+  "t": 61.81,
+  "gain": 0.5
+ },
+ {
+  "type": "confirm",
+  "t": 63.01,
+  "gain": 0.5
+ },
+ {
+  "type": "confirm",
+  "t": 64.69,
+  "gain": 0.5
+ },
+ {
+  "type": "whoosh",
+  "t": 66.32,
+  "gain": 0.6
+ },
+ {
+  "type": "pop",
+  "t": 66.99,
+  "gain": 0.6
+ },
+ {
+  "type": "impact",
+  "t": 69.82,
+  "gain": 0.7
+ },
+ {
+  "type": "pop",
+  "t": 72.842,
+  "gain": 0.6
+ },
+ {
+  "type": "glitch",
+  "t": 74.282,
+  "gain": 0.7
+ },
+ {
+  "type": "alert",
+  "t": 75.402,
+  "gain": 0.6
+ },
+ {
+  "type": "typing",
+  "t": 77.862,
+  "gain": 0.4
+ },
+ {
+  "type": "whoosh_s",
+  "t": 78.062,
+  "gain": 0.5
+ },
+ {
+  "type": "click",
+  "t": 79.722,
+  "gain": 0.9
+ },
+ {
+  "type": "typing",
+  "t": 80.362,
+  "gain": 0.45
+ },
+ {
+  "type": "click",
+  "t": 81.602,
+  "gain": 0.9
+ },
+ {
+  "type": "confirm",
+  "t": 81.802,
+  "gain": 0.7
+ },
+ {
+  "type": "stamp",
+  "t": 82.442,
+  "gain": 0.35
+ },
+ {
+  "type": "whoosh",
+  "t": 83.302,
+  "gain": 0.55
+ },
+ {
+  "type": "lock",
+  "t": 89.122,
+  "gain": 0.55
+ },
+ {
+  "type": "power",
+  "t": 91.122,
+  "gain": 0.7
+ },
+ {
+  "type": "pop_multi",
+  "t": 91.222,
+  "gain": 0.55
+ },
+ {
+  "type": "ding",
+  "t": 94.045,
+  "gain": 0.5
+ },
+ {
+  "type": "pop",
+  "t": 94.685,
+  "gain": 0.6
+ },
+ {
+  "type": "typing",
+  "t": 95.165,
+  "gain": 0.5
+ },
+ {
+  "type": "impact",
+  "t": 95.165,
+  "gain": 0.6
+ },
+ {
+  "type": "shimmer",
+  "t": 95.315,
+  "gain": 0.6
+ },
+ {
+  "type": "pop_multi",
+  "t": 96.325,
+  "gain": 0.5
+ }
+]

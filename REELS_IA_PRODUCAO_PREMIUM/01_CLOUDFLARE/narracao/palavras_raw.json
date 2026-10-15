@@ -1,0 +1,757 @@
+[
+{
+"text": "A",
+"start": 0.0,
+"end": 0.16
+},
+{
+"text": "Cloudflare",
+"start": 0.16,
+"end": 0.96
+},
+{
+"text": "acabou",
+"start": 0.96,
+"end": 1.36
+},
+{
+"text": "de",
+"start": 1.36,
+"end": 1.52
+},
+{
+"text": "liberar,",
+"start": 1.52,
+"end": 2.16
+},
+{
+"text": "de",
+"start": 2.16,
+"end": 2.4
+},
+{
+"text": "graça,",
+"start": 2.4,
+"end": 2.96
+},
+{
+"text": "uma",
+"start": 2.96,
+"end": 3.28
+},
+{
+"text": "skill",
+"start": 3.28,
+"end": 3.6
+},
+{
+"text": "do",
+"start": 3.6,
+"end": 3.68
+},
+{
+"text": "Cloud",
+"start": 3.68,
+"end": 4.16
+},
+{
+"text": "que",
+"start": 4.16,
+"end": 4.32
+},
+{
+"text": "encontra",
+"start": 4.32,
+"end": 4.72
+},
+{
+"text": "brechas",
+"start": 4.72,
+"end": 5.28
+},
+{
+"text": "de",
+"start": 5.28,
+"end": 5.36
+},
+{
+"text": "segurança",
+"start": 5.36,
+"end": 5.84
+},
+{
+"text": "no",
+"start": 5.84,
+"end": 6.0
+},
+{
+"text": "seu",
+"start": 6.0,
+"end": 6.24
+},
+{
+"text": "código.",
+"start": 6.24,
+"end": 7.04
+},
+{
+"text": "Eles",
+"start": 7.04,
+"end": 7.36
+},
+{
+"text": "criaram",
+"start": 7.36,
+"end": 7.84
+},
+{
+"text": "essa",
+"start": 7.84,
+"end": 8.0
+},
+{
+"text": "ferramenta",
+"start": 8.0,
+"end": 8.48
+},
+{
+"text": "para",
+"start": 8.48,
+"end": 8.64
+},
+{
+"text": "uso",
+"start": 8.64,
+"end": 8.96
+},
+{
+"text": "próprio",
+"start": 8.96,
+"end": 9.44
+},
+{
+"text": "e",
+"start": 9.44,
+"end": 9.6
+},
+{
+"text": "ela",
+"start": 9.6,
+"end": 9.84
+},
+{
+"text": "encontrou",
+"start": 9.84,
+"end": 10.32
+},
+{
+"text": "milhares",
+"start": 10.32,
+"end": 10.88
+},
+{
+"text": "de",
+"start": 10.88,
+"end": 11.04
+},
+{
+"text": "falhas",
+"start": 11.04,
+"end": 11.52
+},
+{
+"text": "no",
+"start": 11.52,
+"end": 11.68
+},
+{
+"text": "código",
+"start": 11.68,
+"end": 12.0
+},
+{
+"text": "da",
+"start": 12.0,
+"end": 12.16
+},
+{
+"text": "própria",
+"start": 12.16,
+"end": 12.48
+},
+{
+"text": "Cloudflare.",
+"start": 12.48,
+"end": 13.52
+},
+{
+"text": "E",
+"start": 13.52,
+"end": 13.68
+},
+{
+"text": "o",
+"start": 13.68,
+"end": 13.76
+},
+{
+"text": "projeto",
+"start": 13.76,
+"end": 14.16
+},
+{
+"text": "já",
+"start": 14.16,
+"end": 14.32
+},
+{
+"text": "passou",
+"start": 14.32,
+"end": 14.72
+},
+{
+"text": "de",
+"start": 14.72,
+"end": 14.96
+},
+{
+"text": "28",
+"start": 14.96,
+"end": 15.52
+},
+{
+"text": "mil",
+"start": 15.52,
+"end": 15.92
+},
+{
+"text": "estrelas",
+"start": 15.92,
+"end": 16.4
+},
+{
+"text": "do",
+"start": 16.4,
+"end": 16.56
+},
+{
+"text": "GitHub.",
+"start": 16.56,
+"end": 17.52
+},
+{
+"text": "Você",
+"start": 17.52,
+"end": 17.84
+},
+{
+"text": "instala",
+"start": 17.84,
+"end": 18.16
+},
+{
+"text": "a",
+"start": 18.16,
+"end": 18.32
+},
+{
+"text": "skill",
+"start": 18.32,
+"end": 18.64
+},
+{
+"text": "no",
+"start": 18.64,
+"end": 18.72
+},
+{
+"text": "Cloud",
+"start": 18.72,
+"end": 19.12
+},
+{
+"text": "Code",
+"start": 19.12,
+"end": 19.52
+},
+{
+"text": "e",
+"start": 19.52,
+"end": 19.6
+},
+{
+"text": "ela",
+"start": 19.6,
+"end": 19.76
+},
+{
+"text": "mapeia",
+"start": 19.76,
+"end": 20.32
+},
+{
+"text": "seu",
+"start": 20.32,
+"end": 20.48
+},
+{
+"text": "aplicativo",
+"start": 20.48,
+"end": 20.88
+},
+{
+"text": "interno.",
+"start": 20.88,
+"end": 21.65
+},
+{
+"text": "Depois",
+"start": 21.927,
+"end": 22.487
+},
+{
+"text": "coloca",
+"start": 22.487,
+"end": 22.967
+},
+{
+"text": "um",
+"start": 22.967,
+"end": 23.047
+},
+{
+"text": "time",
+"start": 23.047,
+"end": 23.367
+},
+{
+"text": "de",
+"start": 23.367,
+"end": 23.528
+},
+{
+"text": "agentes",
+"start": 23.528,
+"end": 23.927
+},
+{
+"text": "de",
+"start": 23.927,
+"end": 24.008
+},
+{
+"text": "inteligência",
+"start": 24.008,
+"end": 24.647
+},
+{
+"text": "artificial",
+"start": 24.647,
+"end": 25.207
+},
+{
+"text": "para",
+"start": 25.207,
+"end": 25.447
+},
+{
+"text": "procurar",
+"start": 25.447,
+"end": 25.768
+},
+{
+"text": "falhas",
+"start": 25.768,
+"end": 26.248
+},
+{
+"text": "no",
+"start": 26.248,
+"end": 26.407
+},
+{
+"text": "login,",
+"start": 26.407,
+"end": 26.967
+},
+{
+"text": "banco",
+"start": 26.967,
+"end": 27.367
+},
+{
+"text": "de",
+"start": 27.367,
+"end": 27.447
+},
+{
+"text": "dados,",
+"start": 27.447,
+"end": 27.927
+},
+{
+"text": "APIs",
+"start": 27.927,
+"end": 28.647
+},
+{
+"text": "e",
+"start": 28.647,
+"end": 28.807
+},
+{
+"text": "até",
+"start": 28.807,
+"end": 29.047
+},
+{
+"text": "ataques",
+"start": 29.047,
+"end": 29.527
+},
+{
+"text": "de",
+"start": 29.527,
+"end": 29.607
+},
+{
+"text": "Prompt",
+"start": 29.607,
+"end": 30.088
+},
+{
+"text": "Injection.",
+"start": 30.088,
+"end": 30.887
+},
+{
+"text": "E",
+"start": 30.887,
+"end": 31.048
+},
+{
+"text": "aqui",
+"start": 31.048,
+"end": 31.367
+},
+{
+"text": "vem",
+"start": 31.367,
+"end": 31.687
+},
+{
+"text": "a",
+"start": 31.687,
+"end": 31.767
+},
+{
+"text": "parte",
+"start": 31.767,
+"end": 32.088
+},
+{
+"text": "mais",
+"start": 32.088,
+"end": 32.407
+},
+{
+"text": "interessante.",
+"start": 32.407,
+"end": 33.367
+},
+{
+"text": "Cada",
+"start": 33.367,
+"end": 33.687
+},
+{
+"text": "falha",
+"start": 33.687,
+"end": 34.168
+},
+{
+"text": "encontrada",
+"start": 34.168,
+"end": 34.727
+},
+{
+"text": "passa",
+"start": 34.727,
+"end": 35.128
+},
+{
+"text": "por",
+"start": 35.128,
+"end": 35.288
+},
+{
+"text": "outro",
+"start": 35.288,
+"end": 35.607
+},
+{
+"text": "agente",
+"start": 35.607,
+"end": 36.087
+},
+{
+"text": "cujo",
+"start": 36.087,
+"end": 36.567
+},
+{
+"text": "trabalho",
+"start": 36.567,
+"end": 36.887
+},
+{
+"text": "é",
+"start": 36.887,
+"end": 37.047
+},
+{
+"text": "tentar",
+"start": 37.047,
+"end": 37.447
+},
+{
+"text": "provar",
+"start": 37.447,
+"end": 37.847
+},
+{
+"text": "que",
+"start": 37.847,
+"end": 38.087
+},
+{
+"text": "aquele",
+"start": 38.087,
+"end": 38.567
+},
+{
+"text": "problema",
+"start": 38.567,
+"end": 38.968
+},
+{
+"text": "não",
+"start": 38.968,
+"end": 39.208
+},
+{
+"text": "existe.",
+"start": 39.208,
+"end": 40.007
+},
+{
+"text": "Assim,",
+"start": 40.007,
+"end": 40.647
+},
+{
+"text": "somente",
+"start": 40.647,
+"end": 41.208
+},
+{
+"text": "os",
+"start": 41.208,
+"end": 41.367
+},
+{
+"text": "problemas",
+"start": 41.367,
+"end": 41.927
+},
+{
+"text": "realmente",
+"start": 41.927,
+"end": 42.377
+},
+{
+"text": "verificados",
+"start": 42.407,
+"end": 43.128
+},
+{
+"text": "chegam",
+"start": 43.128,
+"end": 43.527
+},
+{
+"text": "ao",
+"start": 43.527,
+"end": 43.687
+},
+{
+"text": "relatório",
+"start": 43.687,
+"end": 44.167
+},
+{
+"text": "final.",
+"start": 44.167,
+"end": 44.65
+},
+{
+"text": "No",
+"start": 44.65,
+"end": 44.89
+},
+{
+"text": "final,",
+"start": 44.89,
+"end": 45.37
+},
+{
+"text": "você",
+"start": 45.37,
+"end": 45.61
+},
+{
+"text": "recebe",
+"start": 45.61,
+"end": 46.01
+},
+{
+"text": "um",
+"start": 46.01,
+"end": 46.09
+},
+{
+"text": "relatório",
+"start": 46.09,
+"end": 46.49
+},
+{
+"text": "com",
+"start": 46.49,
+"end": 46.65
+},
+{
+"text": "as",
+"start": 46.65,
+"end": 46.73
+},
+{
+"text": "falhas",
+"start": 46.73,
+"end": 47.21
+},
+{
+"text": "identificadas",
+"start": 47.21,
+"end": 48.01
+},
+{
+"text": "e",
+"start": 48.01,
+"end": 48.33
+},
+{
+"text": "exatamente",
+"start": 48.33,
+"end": 49.13
+},
+{
+"text": "como",
+"start": 49.13,
+"end": 49.37
+},
+{
+"text": "corrigi-las.",
+"start": 49.37,
+"end": 50.33
+},
+{
+"text": "Quero",
+"start": 50.33,
+"end": 50.65
+},
+{
+"text": "o",
+"start": 50.65,
+"end": 50.73
+},
+{
+"text": "link?",
+"start": 50.73,
+"end": 51.21
+},
+{
+"text": "Comenta",
+"start": 51.21,
+"end": 51.69
+},
+{
+"text": "a",
+"start": 51.69,
+"end": 51.85
+},
+{
+"text": "auditoria",
+"start": 51.85,
+"end": 52.57
+},
+{
+"text": "aqui",
+"start": 52.57,
+"end": 52.81
+},
+{
+"text": "embaixo",
+"start": 52.81,
+"end": 53.13
+},
+{
+"text": "e",
+"start": 53.13,
+"end": 53.29
+},
+{
+"text": "me",
+"start": 53.29,
+"end": 53.45
+},
+{
+"text": "segue",
+"start": 53.45,
+"end": 53.85
+},
+{
+"text": "para",
+"start": 53.85,
+"end": 54.01
+},
+{
+"text": "conhecer",
+"start": 54.01,
+"end": 54.49
+},
+{
+"text": "mais",
+"start": 54.49,
+"end": 54.73
+},
+{
+"text": "ferramentas",
+"start": 54.73,
+"end": 55.29
+},
+{
+"text": "de",
+"start": 55.29,
+"end": 55.45
+},
+{
+"text": "inteligência",
+"start": 55.45,
+"end": 56.01
+},
+{
+"text": "artificial.",
+"start": 56.01,
+"end": 56.764
+}
+]
