@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/check_video_metadata.sh",
+            "timeout": 120,
+            "statusMessage": "Verificando se os vídeos estão sem metadados…"
+          }
+        ]
+      }
+    ]
+  }
+}
