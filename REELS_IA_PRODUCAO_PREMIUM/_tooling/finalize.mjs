@@ -1,6 +1,7 @@
 // Organise deliverables + write per-video TIMELINE.md from the built compositions
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 
 const BASE = "/home/user/trindayy/REELS_IA_PRODUCAO_PREMIUM";
 const V = {
@@ -40,8 +41,9 @@ for (const [dir, cfg] of Object.entries(V)) {
   const L = path.join(BASE, dir, "legendas"); fs.mkdirSync(L, { recursive: true });
   fs.copyFileSync(path.join(P, "legendas.srt"), path.join(L, "legendas.srt"));
   const r = path.join(P, "renders", cfg.render);
-  if (fs.existsSync(r)) fs.copyFileSync(r, path.join(BASE, dir, cfg.out));
+  // final MP4 always ships WITHOUT metadata (video stream copied untouched; see strip_metadata.sh)
+  if (fs.existsSync(r)) execFileSync(path.join(BASE, "_tooling", "strip_metadata.sh"), [r, path.join(BASE, dir, cfg.out), path.join(P, "assets", "mix.wav")], { stdio: "inherit" });
   const cov = path.join(P, "capa", "shot", "frame-00-at-0.5s.png");
-  if (fs.existsSync(cov)) fs.copyFileSync(cov, path.join(BASE, dir, "capa_instagram.png"));
+  if (fs.existsSync(cov)) execFileSync("python3", ["-I", "-c", "import sys;from PIL import Image;im=Image.open(sys.argv[1]).convert('RGB');Image.frombytes('RGB',im.size,im.tobytes()).save(sys.argv[2],optimize=True)", cov, path.join(BASE, dir, "capa_instagram.png")]);
   console.log(dir, secs.length, "scenes", fs.existsSync(r) ? "→ " + cfg.out : "(render pending)");
 }

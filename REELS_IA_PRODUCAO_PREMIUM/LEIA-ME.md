@@ -10,6 +10,8 @@ Três Reels verticais produzidos a partir das suas narrações definitivas do El
 
 **Formato:** MP4 · H.264 · 1080×1920 (9:16) · 30 fps · áudio AAC 48 kHz estéreo · −14 LUFS (padrão de loudness do Instagram).
 
+**Sem metadados:** os MP4s finais e as capas são entregues sem metadados (sem encoder, versão do HyperFrames, data de criação, assinatura do x264 ou do encoder de áudio). O stream de vídeo é copiado sem recompressão (`_tooling/strip_metadata.sh`, aplicado automaticamente por `_tooling/finalize.mjs`).
+
 ## Estrutura de cada pasta
 
 ```
