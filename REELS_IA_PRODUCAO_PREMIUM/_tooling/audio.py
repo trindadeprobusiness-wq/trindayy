@@ -2,7 +2,7 @@
 
 Everything here is synthesized from scratch (no third-party samples), so the
 result is free to publish. Usage:
-    python3 audio.py <narration.mp3> <sfx_cues.json> <out_mix.wav> [--key A|D|E|C] [--bpm N] [--tail SECONDS]
+    python3 audio.py <narration.mp3> <sfx_cues.json> <out_mix.wav> [--key A|D|E|C] [--bpm N] [--tail SECONDS] [--no-music]
 """
 import json, subprocess, sys
 import numpy as np
@@ -272,6 +272,7 @@ def main():
     key = sys.argv[sys.argv.index("--key") + 1] if "--key" in sys.argv else "A"
     bpm = float(sys.argv[sys.argv.index("--bpm") + 1]) if "--bpm" in sys.argv else 100
     tail = float(sys.argv[sys.argv.index("--tail") + 1]) if "--tail" in sys.argv else 0.0
+    no_music = "--no-music" in sys.argv
     voice = load_audio(narr_p)
     # optional silent tail after the narration (CTA hold); the narration itself is untouched
     voice = np.concatenate([voice, np.zeros(int(round(tail * SR)))])
@@ -286,6 +287,8 @@ def main():
     duck = 1 - 0.5 * np.clip(env, 0, 1)
     duck = signal.sosfilt(signal.butter(1, 3, fs=SR, output="sos"), duck)
     m = m * duck
+    if no_music:  # versão sem trilha: só voz + efeitos
+        m = np.zeros(n)
     # sfx
     cues = json.load(open(cues_p))
     fx = np.zeros(n)
@@ -310,6 +313,8 @@ def main():
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", tmp, "-af", ln, "-ar", str(SR), out_p], check=True)
     import os; os.remove(tmp)
     # stems for the editable project
+    if no_music:  # não sobrescreve os stems do mix completo
+        print(f"mix ok (sem música): {dur:.2f}s, {len(cues)} sfx -> {out_p}"); return
     stem_dir = os.path.join(os.path.dirname(out_p), "stems"); os.makedirs(stem_dir, exist_ok=True)
     sf.write(os.path.join(stem_dir, "musica.wav"), (m / (np.max(np.abs(m)) + 1e-9) * 0.8).astype(np.float32), SR)
     sf.write(os.path.join(stem_dir, "efeitos.wav"), (fx / (np.max(np.abs(fx)) + 1e-9) * 0.8).astype(np.float32), SR)

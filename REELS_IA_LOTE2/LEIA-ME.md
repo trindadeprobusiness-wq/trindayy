@@ -5,6 +5,7 @@ Cada pasta tem:
 | Arquivo | O que é |
 |---|---|
 | `FINAL_NN_*.mp4` | Vídeo final 1080×1920, 30 fps, H.264 + AAC 48 kHz, −14 LUFS — **sem metadados** |
+| `FINAL_NN_*_sem_musica.mp4` | Mesmo vídeo **sem a música de fundo** (só narração + efeitos), −14 LUFS, também sem metadados |
 | `capa_instagram.png` | Capa 1080×1920 (conteúdo centralizado para o recorte do grid), sem metadados |
 | `TIMELINE.md` | Cena a cena com tempos e lista de efeitos sonoros |
 | `legendas/legendas.srt` | Legendas PT-BR sincronizadas palavra a palavra |
@@ -45,5 +46,8 @@ python3 -I ../../../REELS_IA_PRODUCAO_PREMIUM/_tooling/audio.py ../narracao/narr
 npx hyperframes render -o renders/render.mp4 -q delivery --fps 30
 cd ../../../REELS_IA_PRODUCAO_PREMIUM/_tooling/lote2 && node finalize2.mjs 03_RUFLO   # gera o FINAL sem metadados
 ```
+
+Versão sem música: `audio.py ... assets/mix_sem_musica.wav --no-music [--tail N]` e depois
+`strip_metadata.sh projeto/renders/render.mp4 FINAL_..._sem_musica.mp4 projeto/assets/mix_sem_musica.wav`.
 
 Descrições prontas para postar: `DESCRICOES_INSTAGRAM.md`.
