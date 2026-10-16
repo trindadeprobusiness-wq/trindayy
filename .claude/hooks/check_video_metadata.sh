@@ -14,7 +14,7 @@ while IFS= read -r -d '' f; do
   tags="$(ffprobe -v error -show_entries format_tags=encoder,creation_time,hyperframes_version,hyperframes_renderer,comment,title,artist:stream_tags=encoder,creation_time -of default=nw=1 "$f" 2>/dev/null)"
   sig="$(strings -n 8 "$f" 2>/dev/null | grep -cE 'x264 - core|Lavf[0-9]|Lavc[0-9]|hyperframes')"
   if [ -n "$tags" ] || [ "${sig:-0}" -gt 0 ]; then bad+=("$f"); fi
-done < <(find . \( -path ./node_modules -o -path '*/node_modules' -o -path '*/renders' -o -path '*/.hyperframes' -o -path '*/referencia' -o -path ./.git \) -prune -o \( -iname '*.mp4' -o -iname '*.mov' \) -type f -print0)
+done < <(find . \( -path ./node_modules -o -path '*/node_modules' -o -path '*/renders' -o -path '*/.hyperframes' -o -path '*/referencia' -o -path '*/referencias' -o -path ./.git \) -prune -o \( -iname '*.mp4' -o -iname '*.mov' \) -type f -print0)
 
 [ ${#bad[@]} -eq 0 ] && exit 0
 

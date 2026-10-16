@@ -11,5 +11,5 @@
 - Capas/imagens entregues também saem sem metadados (PNG regravado sem chunks de texto/EXIF).
 - Isso é **verificado automaticamente**: o hook `.claude/hooks/check_video_metadata.sh` (configurado em
   `.claude/settings.json`, evento Stop) varre todos os .mp4/.mov do repositório — exceto `renders/`,
-  `.hyperframes/` e `referencia/` — e impede finalizar enquanto algum ainda tiver metadados.
+  `.hyperframes/`, `referencia/` e `referencias/` (material de entrada enviado pelo usuário, que nunca é alterado) — e impede finalizar enquanto algum ainda tiver metadados.
 - Formato padrão dos Reels: 1080×1920, 30 fps, H.264 + AAC 48 kHz, −14 LUFS.
