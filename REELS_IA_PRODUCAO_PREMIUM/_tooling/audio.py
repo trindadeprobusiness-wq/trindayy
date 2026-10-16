@@ -2,7 +2,7 @@
 
 Everything here is synthesized from scratch (no third-party samples), so the
 result is free to publish. Usage:
-    python3 audio.py <narration.mp3> <sfx_cues.json> <out_mix.wav> [--seed N] [--key A|D|E]
+    python3 audio.py <narration.mp3> <sfx_cues.json> <out_mix.wav> [--key A|D|E|C] [--bpm N] [--tail SECONDS]
 """
 import json, subprocess, sys
 import numpy as np
@@ -271,7 +271,10 @@ def main():
     narr_p, cues_p, out_p = sys.argv[1:4]
     key = sys.argv[sys.argv.index("--key") + 1] if "--key" in sys.argv else "A"
     bpm = float(sys.argv[sys.argv.index("--bpm") + 1]) if "--bpm" in sys.argv else 100
+    tail = float(sys.argv[sys.argv.index("--tail") + 1]) if "--tail" in sys.argv else 0.0
     voice = load_audio(narr_p)
+    # optional silent tail after the narration (CTA hold); the narration itself is untouched
+    voice = np.concatenate([voice, np.zeros(int(round(tail * SR)))])
     n = len(voice); dur = n / SR
     # voice: gentle presence lift, no timing/pitch change
     v = voice / (np.max(np.abs(voice)) + 1e-9) * db(-3)

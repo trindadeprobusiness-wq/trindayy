@@ -1,0 +1,707 @@
+[
+{
+"text": "Agora",
+"start": 0.0,
+"end": 0.32
+},
+{
+"text": "dá",
+"start": 0.32,
+"end": 0.48
+},
+{
+"text": "pra",
+"start": 0.48,
+"end": 0.64
+},
+{
+"text": "rodar",
+"start": 0.64,
+"end": 0.8
+},
+{
+"text": "o",
+"start": 0.8,
+"end": 0.96
+},
+{
+"text": "Call",
+"start": 0.96,
+"end": 1.12
+},
+{
+"text": "of",
+"start": 1.12,
+"end": 1.2
+},
+{
+"text": "Code",
+"start": 1.2,
+"end": 1.44
+},
+{
+"text": "de",
+"start": 1.44,
+"end": 1.52
+},
+{
+"text": "graça",
+"start": 1.52,
+"end": 1.76
+},
+{
+"text": "com",
+"start": 1.76,
+"end": 1.84
+},
+{
+"text": "os",
+"start": 1.84,
+"end": 2.08
+},
+{
+"text": "quase",
+"start": 2.08,
+"end": 2.4
+},
+{
+"text": "limitados.",
+"start": 2.4,
+"end": 2.8
+},
+{
+"text": "Alguém",
+"start": 2.8,
+"end": 3.04
+},
+{
+"text": "no",
+"start": 3.04,
+"end": 3.2
+},
+{
+"text": "GitHub",
+"start": 3.2,
+"end": 3.68
+},
+{
+"text": "acabou",
+"start": 3.68,
+"end": 3.92
+},
+{
+"text": "de",
+"start": 3.92,
+"end": 4.08
+},
+{
+"text": "criar",
+"start": 4.08,
+"end": 4.24
+},
+{
+"text": "uma",
+"start": 4.24,
+"end": 4.32
+},
+{
+"text": "ferramenta",
+"start": 4.32,
+"end": 4.56
+},
+{
+"text": "que",
+"start": 4.56,
+"end": 4.64
+},
+{
+"text": "te",
+"start": 4.64,
+"end": 4.72
+},
+{
+"text": "dá",
+"start": 4.72,
+"end": 4.88
+},
+{
+"text": "mais",
+"start": 4.88,
+"end": 5.04
+},
+{
+"text": "de",
+"start": 5.04,
+"end": 5.12
+},
+{
+"text": "7",
+"start": 5.12,
+"end": 5.36
+},
+{
+"text": "bilhões",
+"start": 5.36,
+"end": 5.68
+},
+{
+"text": "de",
+"start": 5.68,
+"end": 5.76
+},
+{
+"text": "token",
+"start": 5.76,
+"end": 6.08
+},
+{
+"text": "de",
+"start": 6.08,
+"end": 6.24
+},
+{
+"text": "A",
+"start": 6.24,
+"end": 6.4
+},
+{
+"text": "de",
+"start": 6.4,
+"end": 6.56
+},
+{
+"text": "graça",
+"start": 6.56,
+"end": 6.8
+},
+{
+"text": "todo",
+"start": 6.8,
+"end": 7.04
+},
+{
+"text": "santo",
+"start": 7.04,
+"end": 7.36
+},
+{
+"text": "mês.",
+"start": 7.36,
+"end": 7.76
+},
+{
+"text": "Isso",
+"start": 7.76,
+"end": 7.92
+},
+{
+"text": "inclui",
+"start": 7.92,
+"end": 8.32
+},
+{
+"text": "modelos",
+"start": 8.32,
+"end": 8.56
+},
+{
+"text": "como",
+"start": 8.56,
+"end": 8.72
+},
+{
+"text": "ChatBT,",
+"start": 8.72,
+"end": 9.44
+},
+{
+"text": "Gemini,",
+"start": 9.44,
+"end": 10.16
+},
+{
+"text": "GLM,",
+"start": 10.16,
+"end": 10.72
+},
+{
+"text": "Kimi,",
+"start": 10.72,
+"end": 11.2
+},
+{
+"text": "Groc,",
+"start": 11.2,
+"end": 11.68
+},
+{
+"text": "Mistral,",
+"start": 11.68,
+"end": 12.24
+},
+{
+"text": "Cloud",
+"start": 12.24,
+"end": 12.56
+},
+{
+"text": "Code",
+"start": 12.56,
+"end": 12.8
+},
+{
+"text": "e",
+"start": 12.8,
+"end": 12.88
+},
+{
+"text": "muito",
+"start": 12.88,
+"end": 13.04
+},
+{
+"text": "mais.",
+"start": 13.04,
+"end": 13.36
+},
+{
+"text": "Ele",
+"start": 13.36,
+"end": 13.52
+},
+{
+"text": "se",
+"start": 13.52,
+"end": 13.6
+},
+{
+"text": "chama",
+"start": 13.6,
+"end": 13.84
+},
+{
+"text": "FLLM",
+"start": 13.84,
+"end": 14.72
+},
+{
+"text": "API",
+"start": 14.72,
+"end": 15.04
+},
+{
+"text": "e",
+"start": 15.04,
+"end": 15.2
+},
+{
+"text": "conecta",
+"start": 15.2,
+"end": 15.52
+},
+{
+"text": "com",
+"start": 15.52,
+"end": 15.6
+},
+{
+"text": "o",
+"start": 15.6,
+"end": 15.68
+},
+{
+"text": "seu",
+"start": 15.68,
+"end": 15.76
+},
+{
+"text": "cloud",
+"start": 15.76,
+"end": 16.0
+},
+{
+"text": "code",
+"start": 16.0,
+"end": 16.32
+},
+{
+"text": "a",
+"start": 16.32,
+"end": 16.4
+},
+{
+"text": "mais",
+"start": 16.4,
+"end": 16.56
+},
+{
+"text": "600",
+"start": 16.56,
+"end": 16.96
+},
+{
+"text": "modelos",
+"start": 16.96,
+"end": 17.28
+},
+{
+"text": "de",
+"start": 17.28,
+"end": 17.44
+},
+{
+"text": "A",
+"start": 17.44,
+"end": 17.6
+},
+{
+"text": "gratuito,",
+"start": 17.6,
+"end": 18.08
+},
+{
+"text": "tudo",
+"start": 18.08,
+"end": 18.24
+},
+{
+"text": "numa",
+"start": 18.24,
+"end": 18.48
+},
+{
+"text": "configuração",
+"start": 18.48,
+"end": 18.96
+},
+{
+"text": "bem",
+"start": 18.96,
+"end": 19.12
+},
+{
+"text": "simples.",
+"start": 19.12,
+"end": 19.36
+},
+{
+"text": "E",
+"start": 19.36,
+"end": 19.52
+},
+{
+"text": "aí,",
+"start": 19.52,
+"end": 19.68
+},
+{
+"text": "no",
+"start": 19.68,
+"end": 19.76
+},
+{
+"text": "momento",
+"start": 19.76,
+"end": 19.92
+},
+{
+"text": "que",
+"start": 19.92,
+"end": 20.08
+},
+{
+"text": "seu",
+"start": 20.08,
+"end": 20.24
+},
+{
+"text": "limite",
+"start": 20.24,
+"end": 20.48
+},
+{
+"text": "do",
+"start": 20.48,
+"end": 20.56
+},
+{
+"text": "Call",
+"start": 20.56,
+"end": 20.72
+},
+{
+"text": "of",
+"start": 20.72,
+"end": 20.8
+},
+{
+"text": "Code",
+"start": 20.8,
+"end": 21.04
+},
+{
+"text": "acaba,",
+"start": 21.04,
+"end": 21.36
+},
+{
+"text": "ele",
+"start": 21.36,
+"end": 21.52
+},
+{
+"text": "te",
+"start": 21.52,
+"end": 21.68
+},
+{
+"text": "troca",
+"start": 21.68,
+"end": 21.92
+},
+{
+"text": "automaticamente.",
+"start": 21.92,
+"end": 22.387
+},
+{
+"text": "Basicamente",
+"start": 22.387,
+"end": 22.707
+},
+{
+"text": "para",
+"start": 22.707,
+"end": 22.867
+},
+{
+"text": "o",
+"start": 22.867,
+"end": 22.948
+},
+{
+"text": "próximo",
+"start": 22.948,
+"end": 23.107
+},
+{
+"text": "modelo,",
+"start": 23.107,
+"end": 23.347
+},
+{
+"text": "a",
+"start": 23.347,
+"end": 23.427
+},
+{
+"text": "próxima",
+"start": 23.427,
+"end": 23.748
+},
+{
+"text": "sessão",
+"start": 23.748,
+"end": 24.227
+},
+{
+"text": "sempre",
+"start": 24.227,
+"end": 24.467
+},
+{
+"text": "continuar",
+"start": 24.467,
+"end": 24.787
+},
+{
+"text": "rodando",
+"start": 24.787,
+"end": 25.187
+},
+{
+"text": "e",
+"start": 25.187,
+"end": 25.348
+},
+{
+"text": "ainda",
+"start": 25.348,
+"end": 25.587
+},
+{
+"text": "te",
+"start": 25.587,
+"end": 25.667
+},
+{
+"text": "deixa",
+"start": 25.667,
+"end": 25.987
+},
+{
+"text": "uma",
+"start": 25.987,
+"end": 26.147
+},
+{
+"text": "nota",
+"start": 26.147,
+"end": 26.387
+},
+{
+"text": "pra",
+"start": 26.387,
+"end": 26.547
+},
+{
+"text": "trás",
+"start": 26.547,
+"end": 26.707
+},
+{
+"text": "durante",
+"start": 26.707,
+"end": 27.027
+},
+{
+"text": "a",
+"start": 27.027,
+"end": 27.107
+},
+{
+"text": "troca.",
+"start": 27.107,
+"end": 27.427
+},
+{
+"text": "Pro",
+"start": 27.427,
+"end": 27.587
+},
+{
+"text": "novo",
+"start": 27.587,
+"end": 27.747
+},
+{
+"text": "modelo",
+"start": 27.747,
+"end": 28.067
+},
+{
+"text": "que",
+"start": 28.067,
+"end": 28.227
+},
+{
+"text": "chegar",
+"start": 28.227,
+"end": 28.547
+},
+{
+"text": "já",
+"start": 28.547,
+"end": 28.707
+},
+{
+"text": "saber",
+"start": 28.707,
+"end": 28.947
+},
+{
+"text": "o",
+"start": 28.947,
+"end": 29.027
+},
+{
+"text": "contexto",
+"start": 29.027,
+"end": 29.427
+},
+{
+"text": "que",
+"start": 29.427,
+"end": 29.587
+},
+{
+"text": "foi",
+"start": 29.587,
+"end": 29.667
+},
+{
+"text": "feito",
+"start": 29.667,
+"end": 29.907
+},
+{
+"text": "ali.",
+"start": 29.907,
+"end": 30.147
+},
+{
+"text": "Quer",
+"start": 30.147,
+"end": 30.387
+},
+{
+"text": "testar?",
+"start": 30.387,
+"end": 30.707
+},
+{
+"text": "Então",
+"start": 30.707,
+"end": 30.947
+},
+{
+"text": "comenta",
+"start": 30.947,
+"end": 31.268
+},
+{
+"text": "ilimitado",
+"start": 31.268,
+"end": 31.747
+},
+{
+"text": "aqui",
+"start": 31.747,
+"end": 31.907
+},
+{
+"text": "embaixo",
+"start": 31.907,
+"end": 32.228
+},
+{
+"text": "que",
+"start": 32.228,
+"end": 32.308
+},
+{
+"text": "eu",
+"start": 32.308,
+"end": 32.388
+},
+{
+"text": "te",
+"start": 32.388,
+"end": 32.547
+},
+{
+"text": "mando",
+"start": 32.547,
+"end": 32.707
+},
+{
+"text": "na",
+"start": 32.707,
+"end": 32.867
+},
+{
+"text": "DM.",
+"start": 32.867,
+"end": 33.136
+}
+]

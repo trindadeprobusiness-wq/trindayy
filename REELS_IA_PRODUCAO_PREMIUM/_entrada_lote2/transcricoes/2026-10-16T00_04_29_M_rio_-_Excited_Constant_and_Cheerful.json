@@ -1,0 +1,732 @@
+[
+{
+"text": "Seu",
+"start": 0.0,
+"end": 0.4
+},
+{
+"text": "site",
+"start": 0.4,
+"end": 0.88
+},
+{
+"text": "pode",
+"start": 0.88,
+"end": 1.2
+},
+{
+"text": "até",
+"start": 1.2,
+"end": 1.52
+},
+{
+"text": "funcionar.",
+"start": 1.52,
+"end": 2.85
+},
+{
+"text": "Mas",
+"start": 2.88,
+"end": 3.33
+},
+{
+"text": "será",
+"start": 3.44,
+"end": 3.84
+},
+{
+"text": "que",
+"start": 3.84,
+"end": 4.0
+},
+{
+"text": "ele",
+"start": 4.0,
+"end": 4.32
+},
+{
+"text": "realmente",
+"start": 4.32,
+"end": 4.64
+},
+{
+"text": "parece",
+"start": 4.64,
+"end": 5.2
+},
+{
+"text": "profissional?",
+"start": 5.2,
+"end": 6.53
+},
+{
+"text": "Esse",
+"start": 6.72,
+"end": 7.2
+},
+{
+"text": "é",
+"start": 7.2,
+"end": 7.44
+},
+{
+"text": "um",
+"start": 7.44,
+"end": 7.6
+},
+{
+"text": "dos",
+"start": 7.6,
+"end": 7.76
+},
+{
+"text": "maiores",
+"start": 7.76,
+"end": 8.24
+},
+{
+"text": "desafios",
+"start": 8.24,
+"end": 8.8
+},
+{
+"text": "de",
+"start": 8.8,
+"end": 8.96
+},
+{
+"text": "quem",
+"start": 8.96,
+"end": 9.28
+},
+{
+"text": "utiliza",
+"start": 9.28,
+"end": 9.68
+},
+{
+"text": "inteligência",
+"start": 9.68,
+"end": 10.24
+},
+{
+"text": "artificial",
+"start": 10.24,
+"end": 10.88
+},
+{
+"text": "para",
+"start": 10.88,
+"end": 11.04
+},
+{
+"text": "desenvolver",
+"start": 11.04,
+"end": 11.68
+},
+{
+"text": "interfaces.",
+"start": 11.68,
+"end": 13.25
+},
+{
+"text": "Porque",
+"start": 13.28,
+"end": 13.76
+},
+{
+"text": "gerar",
+"start": 13.76,
+"end": 14.16
+},
+{
+"text": "código",
+"start": 14.16,
+"end": 14.72
+},
+{
+"text": "é",
+"start": 14.72,
+"end": 14.96
+},
+{
+"text": "uma",
+"start": 14.96,
+"end": 15.12
+},
+{
+"text": "coisa.",
+"start": 15.12,
+"end": 15.76
+},
+{
+"text": "Criar",
+"start": 15.76,
+"end": 16.16
+},
+{
+"text": "uma",
+"start": 16.16,
+"end": 16.4
+},
+{
+"text": "experiência",
+"start": 16.4,
+"end": 16.88
+},
+{
+"text": "visual",
+"start": 16.88,
+"end": 17.36
+},
+{
+"text": "bem",
+"start": 17.36,
+"end": 17.6
+},
+{
+"text": "construída",
+"start": 17.6,
+"end": 18.32
+},
+{
+"text": "é",
+"start": 18.32,
+"end": 18.56
+},
+{
+"text": "outra",
+"start": 18.56,
+"end": 19.12
+},
+{
+"text": "completamente",
+"start": 19.12,
+"end": 20.0
+},
+{
+"text": "diferente.",
+"start": 20.0,
+"end": 20.72
+},
+{
+"text": "E",
+"start": 20.72,
+"end": 20.96
+},
+{
+"text": "existem",
+"start": 20.96,
+"end": 21.44
+},
+{
+"text": "formas",
+"start": 21.44,
+"end": 21.76
+},
+{
+"text": "de",
+"start": 21.76,
+"end": 21.92
+},
+{
+"text": "utilizar",
+"start": 21.92,
+"end": 22.32
+},
+{
+"text": "referências",
+"start": 22.32,
+"end": 22.96
+},
+{
+"text": "de",
+"start": 22.96,
+"end": 23.04
+},
+{
+"text": "design.",
+"start": 23.04,
+"end": 23.613
+},
+{
+"text": "Para",
+"start": 23.613,
+"end": 23.932
+},
+{
+"text": "melhorar",
+"start": 23.932,
+"end": 24.412
+},
+{
+"text": "esse",
+"start": 24.412,
+"end": 24.652
+},
+{
+"text": "processo.",
+"start": 24.652,
+"end": 25.452
+},
+{
+"text": "Você",
+"start": 25.452,
+"end": 25.692
+},
+{
+"text": "pode",
+"start": 25.692,
+"end": 26.012
+},
+{
+"text": "partir",
+"start": 26.012,
+"end": 26.333
+},
+{
+"text": "de",
+"start": 26.333,
+"end": 26.492
+},
+{
+"text": "exemplos",
+"start": 26.492,
+"end": 26.972
+},
+{
+"text": "reais",
+"start": 26.972,
+"end": 27.372
+},
+{
+"text": "de",
+"start": 27.372,
+"end": 27.532
+},
+{
+"text": "páginas,",
+"start": 27.532,
+"end": 28.252
+},
+{
+"text": "analisar",
+"start": 28.252,
+"end": 28.812
+},
+{
+"text": "a",
+"start": 28.812,
+"end": 28.972
+},
+{
+"text": "organização",
+"start": 28.972,
+"end": 29.533
+},
+{
+"text": "dos",
+"start": 29.533,
+"end": 29.692
+},
+{
+"text": "elementos,",
+"start": 29.692,
+"end": 30.412
+},
+{
+"text": "a",
+"start": 30.412,
+"end": 30.492
+},
+{
+"text": "tipografia,",
+"start": 30.492,
+"end": 31.532
+},
+{
+"text": "os",
+"start": 31.532,
+"end": 31.772
+},
+{
+"text": "espaçamentos",
+"start": 31.772,
+"end": 32.573
+},
+{
+"text": "e",
+"start": 32.573,
+"end": 32.732
+},
+{
+"text": "a",
+"start": 32.732,
+"end": 32.892
+},
+{
+"text": "identidade",
+"start": 32.892,
+"end": 33.533
+},
+{
+"text": "visual.",
+"start": 33.533,
+"end": 34.332
+},
+{
+"text": "Depois,",
+"start": 34.332,
+"end": 34.972
+},
+{
+"text": "utilizar",
+"start": 34.972,
+"end": 35.612
+},
+{
+"text": "essas",
+"start": 35.612,
+"end": 35.852
+},
+{
+"text": "referências",
+"start": 35.852,
+"end": 36.493
+},
+{
+"text": "para",
+"start": 36.493,
+"end": 36.732
+},
+{
+"text": "orientar",
+"start": 36.732,
+"end": 37.292
+},
+{
+"text": "a",
+"start": 37.292,
+"end": 37.372
+},
+{
+"text": "criação",
+"start": 37.372,
+"end": 37.772
+},
+{
+"text": "de",
+"start": 37.772,
+"end": 37.932
+},
+{
+"text": "uma",
+"start": 37.932,
+"end": 38.092
+},
+{
+"text": "interface",
+"start": 38.092,
+"end": 38.652
+},
+{
+"text": "própria.",
+"start": 38.652,
+"end": 39.292
+},
+{
+"text": "E",
+"start": 39.292,
+"end": 39.452
+},
+{
+"text": "não",
+"start": 39.452,
+"end": 39.692
+},
+{
+"text": "estou",
+"start": 39.692,
+"end": 39.932
+},
+{
+"text": "falando",
+"start": 39.932,
+"end": 40.252
+},
+{
+"text": "apenas",
+"start": 40.252,
+"end": 40.572
+},
+{
+"text": "de",
+"start": 40.572,
+"end": 40.732
+},
+{
+"text": "deixar",
+"start": 40.732,
+"end": 41.133
+},
+{
+"text": "o",
+"start": 41.133,
+"end": 41.213
+},
+{
+"text": "site",
+"start": 41.213,
+"end": 41.533
+},
+{
+"text": "mais",
+"start": 41.533,
+"end": 41.772
+},
+{
+"text": "bonito.",
+"start": 41.772,
+"end": 42.732
+},
+{
+"text": "Uma",
+"start": 42.732,
+"end": 43.052
+},
+{
+"text": "boa",
+"start": 43.052,
+"end": 43.373
+},
+{
+"text": "apresentação",
+"start": 43.373,
+"end": 44.012
+},
+{
+"text": "visual",
+"start": 44.012,
+"end": 44.572
+},
+{
+"text": "também",
+"start": 44.572,
+"end": 44.892
+},
+{
+"text": "ajuda",
+"start": 44.892,
+"end": 45.373
+},
+{
+"text": "as",
+"start": 45.373,
+"end": 45.453
+},
+{
+"text": "pessoas",
+"start": 45.453,
+"end": 45.692
+},
+{
+"text": "a",
+"start": 45.692,
+"end": 46.142
+},
+{
+"text": "Atender",
+"start": 46.36,
+"end": 46.76
+},
+{
+"text": "o",
+"start": 46.76,
+"end": 46.92
+},
+{
+"text": "produto",
+"start": 46.92,
+"end": 47.24
+},
+{
+"text": "e",
+"start": 47.24,
+"end": 47.4
+},
+{
+"text": "navegar",
+"start": 47.4,
+"end": 47.96
+},
+{
+"text": "com",
+"start": 47.96,
+"end": 48.12
+},
+{
+"text": "mais",
+"start": 48.12,
+"end": 48.36
+},
+{
+"text": "facilidade.",
+"start": 48.36,
+"end": 49.32
+},
+{
+"text": "O",
+"start": 49.32,
+"end": 49.48
+},
+{
+"text": "segredo",
+"start": 49.48,
+"end": 50.04
+},
+{
+"text": "é",
+"start": 50.04,
+"end": 50.2
+},
+{
+"text": "combinar",
+"start": 50.2,
+"end": 50.76
+},
+{
+"text": "desenvolvimento,",
+"start": 50.76,
+"end": 51.8
+},
+{
+"text": "referências",
+"start": 51.8,
+"end": 52.44
+},
+{
+"text": "de",
+"start": 52.44,
+"end": 52.6
+},
+{
+"text": "qualidade",
+"start": 52.6,
+"end": 53.16
+},
+{
+"text": "e",
+"start": 53.16,
+"end": 53.4
+},
+{
+"text": "refinamento",
+"start": 53.4,
+"end": 54.2
+},
+{
+"text": "visual.",
+"start": 54.2,
+"end": 54.84
+},
+{
+"text": "Quer",
+"start": 54.84,
+"end": 55.16
+},
+{
+"text": "conhecer",
+"start": 55.16,
+"end": 55.56
+},
+{
+"text": "esse",
+"start": 55.56,
+"end": 55.8
+},
+{
+"text": "processo?",
+"start": 55.8,
+"end": 56.36
+},
+{
+"text": "Comenta",
+"start": 56.36,
+"end": 56.92
+},
+{
+"text": "design",
+"start": 56.92,
+"end": 57.48
+},
+{
+"text": "aqui",
+"start": 57.48,
+"end": 57.72
+},
+{
+"text": "embaixo",
+"start": 57.72,
+"end": 58.12
+},
+{
+"text": "e",
+"start": 58.12,
+"end": 58.36
+},
+{
+"text": "me",
+"start": 58.36,
+"end": 58.52
+},
+{
+"text": "segue",
+"start": 58.52,
+"end": 59.0
+},
+{
+"text": "para",
+"start": 59.0,
+"end": 59.16
+},
+{
+"text": "mais",
+"start": 59.16,
+"end": 59.4
+},
+{
+"text": "conteúdo",
+"start": 59.4,
+"end": 59.96
+},
+{
+"text": "sobre",
+"start": 59.96,
+"end": 60.28
+},
+{
+"text": "criação",
+"start": 60.28,
+"end": 60.68
+},
+{
+"text": "de",
+"start": 60.68,
+"end": 60.76
+},
+{
+"text": "produtos",
+"start": 60.76,
+"end": 61.16
+},
+{
+"text": "com",
+"start": 61.16,
+"end": 61.4
+},
+{
+"text": "IA.",
+"start": 61.4,
+"end": 61.962
+}
+]

@@ -1,0 +1,1267 @@
+[
+{
+"text": "E",
+"start": 0.0,
+"end": 0.32
+},
+{
+"text": "se,",
+"start": 0.32,
+"end": 0.72
+},
+{
+"text": "em",
+"start": 0.72,
+"end": 0.88
+},
+{
+"text": "vez",
+"start": 0.88,
+"end": 1.12
+},
+{
+"text": "de",
+"start": 1.12,
+"end": 1.36
+},
+{
+"text": "ter",
+"start": 1.36,
+"end": 1.52
+},
+{
+"text": "apenas",
+"start": 1.52,
+"end": 1.97
+},
+{
+"text": "um",
+"start": 2.0,
+"end": 2.32
+},
+{
+"text": "agente",
+"start": 2.32,
+"end": 2.72
+},
+{
+"text": "de",
+"start": 2.72,
+"end": 2.88
+},
+{
+"text": "inteligência",
+"start": 2.88,
+"end": 3.52
+},
+{
+"text": "artificial,",
+"start": 3.52,
+"end": 4.32
+},
+{
+"text": "você",
+"start": 4.32,
+"end": 4.56
+},
+{
+"text": "pudesse",
+"start": 4.56,
+"end": 5.04
+},
+{
+"text": "trabalhar",
+"start": 5.04,
+"end": 5.44
+},
+{
+"text": "com",
+"start": 5.44,
+"end": 5.68
+},
+{
+"text": "uma",
+"start": 5.68,
+"end": 5.84
+},
+{
+"text": "equipe",
+"start": 5.84,
+"end": 6.32
+},
+{
+"text": "inteira",
+"start": 6.32,
+"end": 6.88
+},
+{
+"text": "deles?",
+"start": 6.88,
+"end": 7.84
+},
+{
+"text": "É",
+"start": 7.84,
+"end": 8.16
+},
+{
+"text": "justamente",
+"start": 8.16,
+"end": 8.8
+},
+{
+"text": "essa",
+"start": 8.8,
+"end": 9.2
+},
+{
+"text": "a",
+"start": 9.2,
+"end": 9.28
+},
+{
+"text": "proposta",
+"start": 9.28,
+"end": 9.6
+},
+{
+"text": "do",
+"start": 9.6,
+"end": 9.76
+},
+{
+"text": "Ruflo.",
+"start": 9.76,
+"end": 10.56
+},
+{
+"text": "A",
+"start": 10.56,
+"end": 10.72
+},
+{
+"text": "ideia",
+"start": 10.72,
+"end": 11.12
+},
+{
+"text": "é",
+"start": 11.12,
+"end": 11.44
+},
+{
+"text": "organizar",
+"start": 11.44,
+"end": 12.0
+},
+{
+"text": "múltiplos",
+"start": 12.0,
+"end": 12.56
+},
+{
+"text": "agentes",
+"start": 12.56,
+"end": 13.12
+},
+{
+"text": "especializados",
+"start": 13.12,
+"end": 14.0
+},
+{
+"text": "para",
+"start": 14.0,
+"end": 14.24
+},
+{
+"text": "colaborar",
+"start": 14.24,
+"end": 14.8
+},
+{
+"text": "na",
+"start": 14.8,
+"end": 15.04
+},
+{
+"text": "execução",
+"start": 15.04,
+"end": 15.44
+},
+{
+"text": "de",
+"start": 15.44,
+"end": 15.6
+},
+{
+"text": "tarefas",
+"start": 15.6,
+"end": 16.16
+},
+{
+"text": "complexas.",
+"start": 16.16,
+"end": 17.04
+},
+{
+"text": "Pensa",
+"start": 17.04,
+"end": 17.52
+},
+{
+"text": "comigo.",
+"start": 17.52,
+"end": 18.16
+},
+{
+"text": "Em",
+"start": 18.16,
+"end": 18.32
+},
+{
+"text": "um",
+"start": 18.32,
+"end": 18.48
+},
+{
+"text": "projeto",
+"start": 18.48,
+"end": 18.88
+},
+{
+"text": "de",
+"start": 18.88,
+"end": 19.04
+},
+{
+"text": "software",
+"start": 19.04,
+"end": 19.6
+},
+{
+"text": "você",
+"start": 19.6,
+"end": 19.84
+},
+{
+"text": "não",
+"start": 19.84,
+"end": 20.0
+},
+{
+"text": "precisa",
+"start": 20.0,
+"end": 20.4
+},
+{
+"text": "depender",
+"start": 20.4,
+"end": 20.88
+},
+{
+"text": "de",
+"start": 20.88,
+"end": 21.04
+},
+{
+"text": "um",
+"start": 21.04,
+"end": 21.2
+},
+{
+"text": "único",
+"start": 21.2,
+"end": 21.52
+},
+{
+"text": "agente",
+"start": 21.52,
+"end": 22.0
+},
+{
+"text": "tentando",
+"start": 22.0,
+"end": 22.4
+},
+{
+"text": "fazer",
+"start": 22.4,
+"end": 22.64
+},
+{
+"text": "tudo.",
+"start": 22.64,
+"end": 23.247
+},
+{
+"text": "Pode",
+"start": 23.247,
+"end": 23.567
+},
+{
+"text": "estruturar",
+"start": 23.567,
+"end": 24.208
+},
+{
+"text": "responsabilidades",
+"start": 24.208,
+"end": 25.087
+},
+{
+"text": "diferentes,",
+"start": 25.087,
+"end": 25.808
+},
+{
+"text": "com",
+"start": 25.808,
+"end": 26.048
+},
+{
+"text": "agentes",
+"start": 26.048,
+"end": 26.447
+},
+{
+"text": "dedicados",
+"start": 26.447,
+"end": 27.007
+},
+{
+"text": "ao",
+"start": 27.007,
+"end": 27.247
+},
+{
+"text": "planejamento,",
+"start": 27.247,
+"end": 28.127
+},
+{
+"text": "desenvolvimento,",
+"start": 28.127,
+"end": 29.327
+},
+{
+"text": "análise",
+"start": 29.327,
+"end": 30.048
+},
+{
+"text": "e",
+"start": 30.048,
+"end": 30.207
+},
+{
+"text": "verificação",
+"start": 30.207,
+"end": 30.927
+},
+{
+"text": "dos",
+"start": 30.927,
+"end": 31.167
+},
+{
+"text": "resultados.",
+"start": 31.167,
+"end": 32.048
+},
+{
+"text": "E",
+"start": 32.048,
+"end": 32.207
+},
+{
+"text": "a",
+"start": 32.207,
+"end": 32.447
+},
+{
+"text": "parte",
+"start": 32.447,
+"end": 32.767
+},
+{
+"text": "mais",
+"start": 32.767,
+"end": 33.087
+},
+{
+"text": "interessante",
+"start": 33.087,
+"end": 33.727
+},
+{
+"text": "é",
+"start": 33.727,
+"end": 33.968
+},
+{
+"text": "a",
+"start": 33.968,
+"end": 34.127
+},
+{
+"text": "colaboração",
+"start": 34.127,
+"end": 35.087
+},
+{
+"text": "entre",
+"start": 35.087,
+"end": 35.407
+},
+{
+"text": "eles.",
+"start": 35.407,
+"end": 35.968
+},
+{
+"text": "Enquanto",
+"start": 35.968,
+"end": 36.447
+},
+{
+"text": "um",
+"start": 36.447,
+"end": 36.687
+},
+{
+"text": "agente",
+"start": 36.687,
+"end": 37.087
+},
+{
+"text": "executa",
+"start": 37.087,
+"end": 37.727
+},
+{
+"text": "determinada",
+"start": 37.727,
+"end": 38.287
+},
+{
+"text": "tarefa,",
+"start": 38.287,
+"end": 39.008
+},
+{
+"text": "outro",
+"start": 39.008,
+"end": 39.407
+},
+{
+"text": "pode",
+"start": 39.407,
+"end": 39.647
+},
+{
+"text": "analisar",
+"start": 39.647,
+"end": 40.207
+},
+{
+"text": "o",
+"start": 40.207,
+"end": 40.287
+},
+{
+"text": "trabalho,",
+"start": 40.287,
+"end": 40.928
+},
+{
+"text": "identificar",
+"start": 40.928,
+"end": 41.647
+},
+{
+"text": "problemas",
+"start": 41.647,
+"end": 42.207
+},
+{
+"text": "e",
+"start": 42.207,
+"end": 42.447
+},
+{
+"text": "contribuir",
+"start": 42.447,
+"end": 43.087
+},
+{
+"text": "para",
+"start": 43.087,
+"end": 43.247
+},
+{
+"text": "a",
+"start": 43.247,
+"end": 43.327
+},
+{
+"text": "próxima",
+"start": 43.327,
+"end": 43.727
+},
+{
+"text": "etapa.",
+"start": 43.727,
+"end": 44.4
+},
+{
+"text": "Isso",
+"start": 44.4,
+"end": 44.72
+},
+{
+"text": "permite",
+"start": 44.72,
+"end": 45.2
+},
+{
+"text": "desenvolver",
+"start": 45.2,
+"end": 45.76
+},
+{
+"text": "fluxos",
+"start": 45.76,
+"end": 46.4
+},
+{
+"text": "mais",
+"start": 46.4,
+"end": 46.64
+},
+{
+"text": "organizados",
+"start": 46.64,
+"end": 47.36
+},
+{
+"text": "e",
+"start": 47.36,
+"end": 47.6
+},
+{
+"text": "reduzir",
+"start": 47.6,
+"end": 48.08
+},
+{
+"text": "a",
+"start": 48.08,
+"end": 48.24
+},
+{
+"text": "necessidade",
+"start": 48.24,
+"end": 48.88
+},
+{
+"text": "de",
+"start": 48.88,
+"end": 49.04
+},
+{
+"text": "conduzir",
+"start": 49.04,
+"end": 49.6
+},
+{
+"text": "manualmente",
+"start": 49.6,
+"end": 50.4
+},
+{
+"text": "cada",
+"start": 50.4,
+"end": 50.8
+},
+{
+"text": "pequena",
+"start": 50.8,
+"end": 51.2
+},
+{
+"text": "decisão.",
+"start": 51.2,
+"end": 52.08
+},
+{
+"text": "Agora",
+"start": 52.08,
+"end": 52.4
+},
+{
+"text": "imagina",
+"start": 52.4,
+"end": 52.96
+},
+{
+"text": "aplicar",
+"start": 52.96,
+"end": 53.44
+},
+{
+"text": "essa",
+"start": 53.44,
+"end": 53.6
+},
+{
+"text": "estrutura",
+"start": 53.6,
+"end": 54.08
+},
+{
+"text": "a",
+"start": 54.08,
+"end": 54.24
+},
+{
+"text": "um",
+"start": 54.24,
+"end": 54.4
+},
+{
+"text": "negócio.",
+"start": 54.4,
+"end": 55.2
+},
+{
+"text": "Você",
+"start": 55.2,
+"end": 55.44
+},
+{
+"text": "precisa",
+"start": 55.44,
+"end": 55.84
+},
+{
+"text": "pesquisar",
+"start": 55.84,
+"end": 56.4
+},
+{
+"text": "um",
+"start": 56.4,
+"end": 56.48
+},
+{
+"text": "mercado,",
+"start": 56.48,
+"end": 57.12
+},
+{
+"text": "desenvolver",
+"start": 57.12,
+"end": 57.76
+},
+{
+"text": "uma",
+"start": 57.76,
+"end": 57.92
+},
+{
+"text": "solução,",
+"start": 57.92,
+"end": 58.72
+},
+{
+"text": "organizar",
+"start": 58.72,
+"end": 59.36
+},
+{
+"text": "processos",
+"start": 59.36,
+"end": 60.0
+},
+{
+"text": "e",
+"start": 60.0,
+"end": 60.16
+},
+{
+"text": "transformar",
+"start": 60.16,
+"end": 60.88
+},
+{
+"text": "tudo",
+"start": 60.88,
+"end": 61.12
+},
+{
+"text": "isso",
+"start": 61.12,
+"end": 61.36
+},
+{
+"text": "em",
+"start": 61.36,
+"end": 61.6
+},
+{
+"text": "entregas",
+"start": 61.6,
+"end": 62.08
+},
+{
+"text": "reais.",
+"start": 62.08,
+"end": 62.8
+},
+{
+"text": "Em",
+"start": 62.8,
+"end": 62.96
+},
+{
+"text": "vez",
+"start": 62.96,
+"end": 63.2
+},
+{
+"text": "de",
+"start": 63.2,
+"end": 63.36
+},
+{
+"text": "executar",
+"start": 63.36,
+"end": 64.0
+},
+{
+"text": "todas",
+"start": 64.0,
+"end": 64.24
+},
+{
+"text": "essas",
+"start": 64.24,
+"end": 64.56
+},
+{
+"text": "etapas",
+"start": 64.56,
+"end": 65.04
+},
+{
+"text": "sozinho,",
+"start": 65.04,
+"end": 65.967
+},
+{
+"text": "Pode",
+"start": 65.967,
+"end": 66.207
+},
+{
+"text": "utilizar",
+"start": 66.207,
+"end": 66.607
+},
+{
+"text": "agentes",
+"start": 66.607,
+"end": 67.167
+},
+{
+"text": "especializados",
+"start": 67.167,
+"end": 68.047
+},
+{
+"text": "como",
+"start": 68.047,
+"end": 68.287
+},
+{
+"text": "apoio.",
+"start": 68.287,
+"end": 69.377
+},
+{
+"text": "E",
+"start": 69.487,
+"end": 69.727
+},
+{
+"text": "é",
+"start": 69.727,
+"end": 70.047
+},
+{
+"text": "aqui",
+"start": 70.047,
+"end": 70.288
+},
+{
+"text": "que",
+"start": 70.288,
+"end": 70.607
+},
+{
+"text": "muita",
+"start": 70.607,
+"end": 71.007
+},
+{
+"text": "gente",
+"start": 71.007,
+"end": 71.407
+},
+{
+"text": "ainda",
+"start": 71.407,
+"end": 71.727
+},
+{
+"text": "não",
+"start": 71.727,
+"end": 71.888
+},
+{
+"text": "percebeu",
+"start": 71.888,
+"end": 72.527
+},
+{
+"text": "o",
+"start": 72.527,
+"end": 72.607
+},
+{
+"text": "potencial",
+"start": 72.607,
+"end": 73.087
+},
+{
+"text": "dessa",
+"start": 73.087,
+"end": 73.407
+},
+{
+"text": "tecnologia.",
+"start": 73.407,
+"end": 74.287
+},
+{
+"text": "O",
+"start": 74.287,
+"end": 74.527
+},
+{
+"text": "diferencial",
+"start": 74.527,
+"end": 75.247
+},
+{
+"text": "não",
+"start": 75.247,
+"end": 75.407
+},
+{
+"text": "é",
+"start": 75.407,
+"end": 75.648
+},
+{
+"text": "simplesmente",
+"start": 75.648,
+"end": 76.287
+},
+{
+"text": "conversar",
+"start": 76.287,
+"end": 76.768
+},
+{
+"text": "com",
+"start": 76.768,
+"end": 77.007
+},
+{
+"text": "uma",
+"start": 77.007,
+"end": 77.247
+},
+{
+"text": "inteligência",
+"start": 77.247,
+"end": 77.808
+},
+{
+"text": "artificial",
+"start": 77.808,
+"end": 78.367
+},
+{
+"text": "mais",
+"start": 78.367,
+"end": 78.607
+},
+{
+"text": "poderosa,",
+"start": 78.607,
+"end": 79.407
+},
+{
+"text": "é",
+"start": 79.407,
+"end": 79.647
+},
+{
+"text": "aprender",
+"start": 79.647,
+"end": 80.127
+},
+{
+"text": "a",
+"start": 80.127,
+"end": 80.287
+},
+{
+"text": "coordenar",
+"start": 80.287,
+"end": 81.087
+},
+{
+"text": "diferentes",
+"start": 81.087,
+"end": 81.647
+},
+{
+"text": "capacidades",
+"start": 81.647,
+"end": 82.417
+},
+{
+"text": "para",
+"start": 82.447,
+"end": 82.687
+},
+{
+"text": "resolver",
+"start": 82.687,
+"end": 83.167
+},
+{
+"text": "um",
+"start": 83.167,
+"end": 83.328
+},
+{
+"text": "problema",
+"start": 83.328,
+"end": 83.728
+},
+{
+"text": "de",
+"start": 83.728,
+"end": 83.967
+},
+{
+"text": "ponta",
+"start": 83.967,
+"end": 84.447
+},
+{
+"text": "a",
+"start": 84.447,
+"end": 84.607
+},
+{
+"text": "ponta.",
+"start": 84.607,
+"end": 85.247
+},
+{
+"text": "Claro,",
+"start": 85.247,
+"end": 85.728
+},
+{
+"text": "o",
+"start": 85.728,
+"end": 85.888
+},
+{
+"text": "resultado",
+"start": 85.888,
+"end": 86.287
+},
+{
+"text": "ainda",
+"start": 86.287,
+"end": 86.527
+},
+{
+"text": "depende.",
+"start": 86.527,
+"end": 87.08
+},
+{
+"text": "Depende",
+"start": 87.08,
+"end": 87.48
+},
+{
+"text": "de",
+"start": 87.48,
+"end": 87.56
+},
+{
+"text": "boas",
+"start": 87.56,
+"end": 87.88
+},
+{
+"text": "instruções,",
+"start": 87.88,
+"end": 88.6
+},
+{
+"text": "ferramentas",
+"start": 88.6,
+"end": 89.16
+},
+{
+"text": "adequadas",
+"start": 89.16,
+"end": 89.8
+},
+{
+"text": "e",
+"start": 89.8,
+"end": 90.04
+},
+{
+"text": "verificação",
+"start": 90.04,
+"end": 90.68
+},
+{
+"text": "humana.",
+"start": 90.68,
+"end": 91.4
+},
+{
+"text": "Mas",
+"start": 91.4,
+"end": 91.64
+},
+{
+"text": "a",
+"start": 91.64,
+"end": 91.8
+},
+{
+"text": "possibilidade",
+"start": 91.8,
+"end": 92.44
+},
+{
+"text": "de",
+"start": 92.44,
+"end": 92.6
+},
+{
+"text": "criar",
+"start": 92.6,
+"end": 93.0
+},
+{
+"text": "equipes",
+"start": 93.0,
+"end": 93.48
+},
+{
+"text": "digitais",
+"start": 93.48,
+"end": 94.2
+},
+{
+"text": "muda",
+"start": 94.2,
+"end": 94.6
+},
+{
+"text": "bastante",
+"start": 94.6,
+"end": 95.08
+},
+{
+"text": "a",
+"start": 95.08,
+"end": 95.24
+},
+{
+"text": "maneira",
+"start": 95.24,
+"end": 95.64
+},
+{
+"text": "como",
+"start": 95.64,
+"end": 95.96
+},
+{
+"text": "podemos",
+"start": 95.96,
+"end": 96.36
+},
+{
+"text": "trabalhar.",
+"start": 96.36,
+"end": 97.0
+},
+{
+"text": "Quer",
+"start": 97.0,
+"end": 97.32
+},
+{
+"text": "conhecer",
+"start": 97.32,
+"end": 97.72
+},
+{
+"text": "o",
+"start": 97.72,
+"end": 97.8
+},
+{
+"text": "Ruflo",
+"start": 97.8,
+"end": 98.36
+},
+{
+"text": "e",
+"start": 98.36,
+"end": 98.52
+},
+{
+"text": "entender",
+"start": 98.52,
+"end": 99.0
+},
+{
+"text": "como",
+"start": 99.0,
+"end": 99.24
+},
+{
+"text": "começar",
+"start": 99.24,
+"end": 99.64
+},
+{
+"text": "a",
+"start": 99.64,
+"end": 99.8
+},
+{
+"text": "montar",
+"start": 99.8,
+"end": 100.12
+},
+{
+"text": "sua",
+"start": 100.12,
+"end": 100.36
+},
+{
+"text": "própria",
+"start": 100.36,
+"end": 100.68
+},
+{
+"text": "equipe",
+"start": 100.68,
+"end": 101.0
+},
+{
+"text": "de",
+"start": 101.0,
+"end": 101.08
+},
+{
+"text": "agentes?",
+"start": 101.08,
+"end": 101.8
+},
+{
+"text": "Comenta",
+"start": 101.8,
+"end": 102.36
+},
+{
+"text": "Ruflo",
+"start": 102.36,
+"end": 102.84
+},
+{
+"text": "aqui",
+"start": 102.84,
+"end": 103.0
+},
+{
+"text": "embaixo",
+"start": 103.0,
+"end": 103.4
+},
+{
+"text": "e",
+"start": 103.4,
+"end": 103.56
+},
+{
+"text": "me",
+"start": 103.56,
+"end": 103.72
+},
+{
+"text": "segue",
+"start": 103.72,
+"end": 104.12
+},
+{
+"text": "para",
+"start": 104.12,
+"end": 104.28
+},
+{
+"text": "conhecer",
+"start": 104.28,
+"end": 104.76
+},
+{
+"text": "mais",
+"start": 104.76,
+"end": 105.0
+},
+{
+"text": "ferramentas",
+"start": 105.0,
+"end": 105.48
+},
+{
+"text": "como",
+"start": 105.48,
+"end": 105.72
+},
+{
+"text": "essa.",
+"start": 105.72,
+"end": 106.188
+}
+]

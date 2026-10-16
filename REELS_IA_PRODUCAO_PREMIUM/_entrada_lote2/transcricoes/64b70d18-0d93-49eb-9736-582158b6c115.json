@@ -1,0 +1,942 @@
+[
+{
+"text": "O",
+"start": 0.0,
+"end": 0.16
+},
+{
+"text": "Cloud",
+"start": 0.16,
+"end": 0.56
+},
+{
+"text": "acabou",
+"start": 0.56,
+"end": 0.88
+},
+{
+"text": "de",
+"start": 0.88,
+"end": 0.96
+},
+{
+"text": "lançar",
+"start": 0.96,
+"end": 1.36
+},
+{
+"text": "um",
+"start": 1.36,
+"end": 1.44
+},
+{
+"text": "puta",
+"start": 1.44,
+"end": 1.84
+},
+{
+"text": "recurso",
+"start": 1.84,
+"end": 2.24
+},
+{
+"text": "chamado",
+"start": 2.24,
+"end": 2.64
+},
+{
+"text": "Mods,",
+"start": 2.64,
+"end": 3.12
+},
+{
+"text": "mas",
+"start": 3.12,
+"end": 3.36
+},
+{
+"text": "quase",
+"start": 3.36,
+"end": 3.6
+},
+{
+"text": "ninguém",
+"start": 3.6,
+"end": 3.92
+},
+{
+"text": "sabe",
+"start": 3.92,
+"end": 4.24
+},
+{
+"text": "usar.",
+"start": 4.24,
+"end": 4.56
+},
+{
+"text": "Então",
+"start": 4.56,
+"end": 4.8
+},
+{
+"text": "aqui",
+"start": 4.8,
+"end": 5.04
+},
+{
+"text": "vão",
+"start": 5.04,
+"end": 5.28
+},
+{
+"text": "três",
+"start": 5.28,
+"end": 5.52
+},
+{
+"text": "jeitos",
+"start": 5.52,
+"end": 5.84
+},
+{
+"text": "de",
+"start": 5.84,
+"end": 5.92
+},
+{
+"text": "você",
+"start": 5.92,
+"end": 6.16
+},
+{
+"text": "usar",
+"start": 6.16,
+"end": 6.48
+},
+{
+"text": "que",
+"start": 6.48,
+"end": 6.64
+},
+{
+"text": "ninguém",
+"start": 6.64,
+"end": 6.88
+},
+{
+"text": "tá",
+"start": 6.88,
+"end": 7.04
+},
+{
+"text": "falando.",
+"start": 7.04,
+"end": 7.52
+},
+{
+"text": "Número",
+"start": 7.52,
+"end": 7.92
+},
+{
+"text": "1,",
+"start": 7.92,
+"end": 8.24
+},
+{
+"text": "você",
+"start": 8.24,
+"end": 8.4
+},
+{
+"text": "pode",
+"start": 8.4,
+"end": 8.56
+},
+{
+"text": "fazer",
+"start": 8.56,
+"end": 8.8
+},
+{
+"text": "suas",
+"start": 8.8,
+"end": 9.04
+},
+{
+"text": "sessões",
+"start": 9.04,
+"end": 9.52
+},
+{
+"text": "conversarem",
+"start": 9.52,
+"end": 10.08
+},
+{
+"text": "entre",
+"start": 10.08,
+"end": 10.32
+},
+{
+"text": "si.",
+"start": 10.32,
+"end": 10.72
+},
+{
+"text": "Uma",
+"start": 10.72,
+"end": 10.96
+},
+{
+"text": "sessão",
+"start": 10.96,
+"end": 11.28
+},
+{
+"text": "do",
+"start": 11.28,
+"end": 11.36
+},
+{
+"text": "Cloud",
+"start": 11.36,
+"end": 11.76
+},
+{
+"text": "Code",
+"start": 11.76,
+"end": 12.16
+},
+{
+"text": "agora",
+"start": 12.16,
+"end": 12.32
+},
+{
+"text": "consegue",
+"start": 12.32,
+"end": 12.72
+},
+{
+"text": "mandar",
+"start": 12.72,
+"end": 12.96
+},
+{
+"text": "mensagem",
+"start": 12.96,
+"end": 13.44
+},
+{
+"text": "pra",
+"start": 13.44,
+"end": 13.6
+},
+{
+"text": "outra.",
+"start": 13.6,
+"end": 14.08
+},
+{
+"text": "Então",
+"start": 14.08,
+"end": 14.4
+},
+{
+"text": "uma",
+"start": 14.4,
+"end": 14.64
+},
+{
+"text": "planeja",
+"start": 14.64,
+"end": 15.2
+},
+{
+"text": "enquanto",
+"start": 15.2,
+"end": 15.52
+},
+{
+"text": "a",
+"start": 15.52,
+"end": 15.6
+},
+{
+"text": "outra",
+"start": 15.6,
+"end": 15.84
+},
+{
+"text": "constrói.",
+"start": 15.84,
+"end": 16.48
+},
+{
+"text": "Elas",
+"start": 16.48,
+"end": 16.72
+},
+{
+"text": "passam",
+"start": 16.72,
+"end": 16.96
+},
+{
+"text": "o",
+"start": 16.96,
+"end": 17.04
+},
+{
+"text": "trabalho",
+"start": 17.04,
+"end": 17.36
+},
+{
+"text": "de",
+"start": 17.36,
+"end": 17.52
+},
+{
+"text": "uma",
+"start": 17.52,
+"end": 17.76
+},
+{
+"text": "pra",
+"start": 17.76,
+"end": 17.92
+},
+{
+"text": "outra.",
+"start": 17.92,
+"end": 18.32
+},
+{
+"text": "Número",
+"start": 18.32,
+"end": 18.64
+},
+{
+"text": "2,",
+"start": 18.64,
+"end": 19.04
+},
+{
+"text": "você",
+"start": 19.04,
+"end": 19.2
+},
+{
+"text": "pode",
+"start": 19.2,
+"end": 19.36
+},
+{
+"text": "pedir",
+"start": 19.36,
+"end": 19.6
+},
+{
+"text": "pro",
+"start": 19.6,
+"end": 19.84
+},
+{
+"text": "Cloud",
+"start": 19.84,
+"end": 20.24
+},
+{
+"text": "mudar",
+"start": 20.24,
+"end": 20.56
+},
+{
+"text": "qualquer",
+"start": 20.56,
+"end": 20.88
+},
+{
+"text": "parte",
+"start": 20.88,
+"end": 21.12
+},
+{
+"text": "da",
+"start": 21.12,
+"end": 21.28
+},
+{
+"text": "interface",
+"start": 21.28,
+"end": 21.84
+},
+{
+"text": "dele.",
+"start": 21.84,
+"end": 22.24
+},
+{
+"text": "Então",
+"start": 22.24,
+"end": 22.48
+},
+{
+"text": "você",
+"start": 22.48,
+"end": 22.64
+},
+{
+"text": "pode",
+"start": 22.64,
+"end": 22.88
+},
+{
+"text": "ter",
+"start": 22.88,
+"end": 23.04
+},
+{
+"text": "uma",
+"start": 23.04,
+"end": 23.2
+},
+{
+"text": "dashboard",
+"start": 23.2,
+"end": 23.76
+},
+{
+"text": "dentro",
+"start": 23.76,
+"end": 23.92
+},
+{
+"text": "do",
+"start": 23.92,
+"end": 24.0
+},
+{
+"text": "Cloud",
+"start": 24.0,
+"end": 24.32
+},
+{
+"text": "Code.",
+"start": 24.32,
+"end": 24.738
+},
+{
+"text": "Ele",
+"start": 24.738,
+"end": 25.057
+},
+{
+"text": "pode",
+"start": 25.057,
+"end": 25.298
+},
+{
+"text": "te",
+"start": 25.298,
+"end": 25.457
+},
+{
+"text": "mostrar",
+"start": 25.457,
+"end": 25.697
+},
+{
+"text": "qualquer",
+"start": 25.697,
+"end": 25.937
+},
+{
+"text": "coisa,",
+"start": 25.937,
+"end": 26.257
+},
+{
+"text": "desde",
+"start": 26.257,
+"end": 26.497
+},
+{
+"text": "o",
+"start": 26.497,
+"end": 26.577
+},
+{
+"text": "que",
+"start": 26.577,
+"end": 26.657
+},
+{
+"text": "os",
+"start": 26.657,
+"end": 26.738
+},
+{
+"text": "seus",
+"start": 26.738,
+"end": 26.978
+},
+{
+"text": "agentes",
+"start": 26.978,
+"end": 27.297
+},
+{
+"text": "estão",
+"start": 27.297,
+"end": 27.458
+},
+{
+"text": "fazendo",
+"start": 27.458,
+"end": 27.857
+},
+{
+"text": "até",
+"start": 27.857,
+"end": 28.097
+},
+{
+"text": "uma",
+"start": 28.097,
+"end": 28.177
+},
+{
+"text": "visão",
+"start": 28.177,
+"end": 28.417
+},
+{
+"text": "geral",
+"start": 28.417,
+"end": 28.657
+},
+{
+"text": "do",
+"start": 28.657,
+"end": 28.817
+},
+{
+"text": "seu",
+"start": 28.817,
+"end": 28.977
+},
+{
+"text": "segundo",
+"start": 28.977,
+"end": 29.218
+},
+{
+"text": "série.",
+"start": 29.218,
+"end": 29.698
+},
+{
+"text": "E",
+"start": 29.698,
+"end": 29.937
+},
+{
+"text": "número",
+"start": 29.937,
+"end": 30.257
+},
+{
+"text": "3,",
+"start": 30.257,
+"end": 30.577
+},
+{
+"text": "você",
+"start": 30.577,
+"end": 30.738
+},
+{
+"text": "pode",
+"start": 30.738,
+"end": 30.897
+},
+{
+"text": "mandar",
+"start": 30.897,
+"end": 31.218
+},
+{
+"text": "as",
+"start": 31.218,
+"end": 31.297
+},
+{
+"text": "coisas",
+"start": 31.297,
+"end": 31.537
+},
+{
+"text": "fáceis",
+"start": 31.537,
+"end": 31.937
+},
+{
+"text": "pro",
+"start": 31.937,
+"end": 32.178
+},
+{
+"text": "modelo",
+"start": 32.178,
+"end": 32.497
+},
+{
+"text": "mais",
+"start": 32.497,
+"end": 32.657
+},
+{
+"text": "barato.",
+"start": 32.657,
+"end": 33.137
+},
+{
+"text": "Um",
+"start": 33.137,
+"end": 33.297
+},
+{
+"text": "mod",
+"start": 33.297,
+"end": 33.698
+},
+{
+"text": "entra",
+"start": 33.698,
+"end": 33.937
+},
+{
+"text": "no",
+"start": 33.937,
+"end": 34.017
+},
+{
+"text": "meio",
+"start": 34.017,
+"end": 34.257
+},
+{
+"text": "e",
+"start": 34.257,
+"end": 34.337
+},
+{
+"text": "manda",
+"start": 34.337,
+"end": 34.658
+},
+{
+"text": "certos",
+"start": 34.658,
+"end": 34.977
+},
+{
+"text": "pedidos",
+"start": 34.977,
+"end": 35.297
+},
+{
+"text": "pra",
+"start": 35.297,
+"end": 35.457
+},
+{
+"text": "outro",
+"start": 35.457,
+"end": 35.698
+},
+{
+"text": "modelo.",
+"start": 35.698,
+"end": 36.017
+},
+{
+"text": "Aí",
+"start": 36.017,
+"end": 36.177
+},
+{
+"text": "a",
+"start": 36.177,
+"end": 36.337
+},
+{
+"text": "tarefa",
+"start": 36.337,
+"end": 36.658
+},
+{
+"text": "simples",
+"start": 36.658,
+"end": 37.057
+},
+{
+"text": "para",
+"start": 37.057,
+"end": 37.297
+},
+{
+"text": "de",
+"start": 37.297,
+"end": 37.457
+},
+{
+"text": "comer",
+"start": 37.457,
+"end": 37.777
+},
+{
+"text": "o",
+"start": 37.777,
+"end": 37.857
+},
+{
+"text": "seu",
+"start": 37.857,
+"end": 38.017
+},
+{
+"text": "limite.",
+"start": 38.017,
+"end": 38.497
+},
+{
+"text": "E",
+"start": 38.497,
+"end": 38.658
+},
+{
+"text": "a",
+"start": 38.658,
+"end": 38.737
+},
+{
+"text": "parte",
+"start": 38.737,
+"end": 38.977
+},
+{
+"text": "mais",
+"start": 38.977,
+"end": 39.217
+},
+{
+"text": "doida,",
+"start": 39.217,
+"end": 39.698
+},
+{
+"text": "você",
+"start": 39.698,
+"end": 39.937
+},
+{
+"text": "só",
+"start": 39.937,
+"end": 40.097
+},
+{
+"text": "descreve",
+"start": 40.097,
+"end": 40.737
+},
+{
+"text": "o",
+"start": 40.737,
+"end": 40.817
+},
+{
+"text": "mod",
+"start": 40.817,
+"end": 41.267
+},
+{
+"text": "que",
+"start": 41.297,
+"end": 41.377
+},
+{
+"text": "você",
+"start": 41.377,
+"end": 41.537
+},
+{
+"text": "quer",
+"start": 41.537,
+"end": 41.777
+},
+{
+"text": "pro",
+"start": 41.777,
+"end": 41.937
+},
+{
+"text": "Cloud",
+"start": 41.937,
+"end": 42.338
+},
+{
+"text": "e",
+"start": 42.338,
+"end": 42.498
+},
+{
+"text": "ele",
+"start": 42.498,
+"end": 42.658
+},
+{
+"text": "vai",
+"start": 42.658,
+"end": 42.817
+},
+{
+"text": "lá",
+"start": 42.817,
+"end": 43.057
+},
+{
+"text": "e",
+"start": 43.057,
+"end": 43.137
+},
+{
+"text": "constrói.",
+"start": 43.137,
+"end": 43.857
+},
+{
+"text": "Você",
+"start": 43.857,
+"end": 44.097
+},
+{
+"text": "não",
+"start": 44.097,
+"end": 44.258
+},
+{
+"text": "precisa",
+"start": 44.258,
+"end": 44.737
+},
+{
+"text": "saber",
+"start": 44.737,
+"end": 45.057
+},
+{
+"text": "nada",
+"start": 45.057,
+"end": 45.377
+},
+{
+"text": "técnico,",
+"start": 45.377,
+"end": 46.017
+},
+{
+"text": "então",
+"start": 46.017,
+"end": 46.338
+},
+{
+"text": "se",
+"start": 46.338,
+"end": 46.498
+},
+{
+"text": "você",
+"start": 46.498,
+"end": 46.658
+},
+{
+"text": "quer",
+"start": 46.658,
+"end": 46.897
+},
+{
+"text": "mais",
+"start": 46.897,
+"end": 47.057
+},
+{
+"text": "dicas",
+"start": 47.057,
+"end": 47.377
+},
+{
+"text": "assim,",
+"start": 47.377,
+"end": 47.777
+},
+{
+"text": "me",
+"start": 47.777,
+"end": 47.937
+},
+{
+"text": "segue",
+"start": 47.937,
+"end": 48.257
+},
+{
+"text": "e",
+"start": 48.257,
+"end": 48.338
+},
+{
+"text": "comenta",
+"start": 48.338,
+"end": 48.578
+},
+{
+"text": "a",
+"start": 48.578,
+"end": 48.658
+},
+{
+"text": "mod.",
+"start": 48.658,
+"end": 49.235
+},
+{
+"text": "Eu",
+"start": 49.235,
+"end": 49.315
+},
+{
+"text": "te",
+"start": 49.315,
+"end": 49.395
+},
+{
+"text": "mando",
+"start": 49.395,
+"end": 49.635
+},
+{
+"text": "os",
+"start": 49.635,
+"end": 49.715
+},
+{
+"text": "três.",
+"start": 49.715,
+"end": 50.156
+}
+]

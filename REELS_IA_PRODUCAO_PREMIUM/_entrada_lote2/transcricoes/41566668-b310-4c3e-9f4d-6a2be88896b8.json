@@ -1,0 +1,737 @@
+[
+{
+"text": "Claud",
+"start": 0.08,
+"end": 0.4
+},
+{
+"text": "plus",
+"start": 0.4,
+"end": 0.56
+},
+{
+"text": "Obsidian",
+"start": 0.56,
+"end": 1.12
+},
+{
+"text": "is",
+"start": 1.12,
+"end": 1.28
+},
+{
+"text": "honestly",
+"start": 1.28,
+"end": 1.6
+},
+{
+"text": "insane.",
+"start": 1.6,
+"end": 2.08
+},
+{
+"text": "You",
+"start": 2.08,
+"end": 2.16
+},
+{
+"text": "can",
+"start": 2.16,
+"end": 2.24
+},
+{
+"text": "now",
+"start": 2.24,
+"end": 2.32
+},
+{
+"text": "give",
+"start": 2.32,
+"end": 2.48
+},
+{
+"text": "Claud",
+"start": 2.48,
+"end": 2.8
+},
+{
+"text": "Code",
+"start": 2.8,
+"end": 3.04
+},
+{
+"text": "a",
+"start": 3.04,
+"end": 3.12
+},
+{
+"text": "second",
+"start": 3.12,
+"end": 3.36
+},
+{
+"text": "brain",
+"start": 3.36,
+"end": 3.6
+},
+{
+"text": "that",
+"start": 3.6,
+"end": 3.68
+},
+{
+"text": "gets",
+"start": 3.68,
+"end": 3.84
+},
+{
+"text": "smarter",
+"start": 3.84,
+"end": 4.16
+},
+{
+"text": "over",
+"start": 4.16,
+"end": 4.32
+},
+{
+"text": "time.",
+"start": 4.32,
+"end": 4.56
+},
+{
+"text": "So",
+"start": 4.56,
+"end": 4.72
+},
+{
+"text": "here's",
+"start": 4.72,
+"end": 4.96
+},
+{
+"text": "how",
+"start": 4.96,
+"end": 5.04
+},
+{
+"text": "it",
+"start": 5.04,
+"end": 5.12
+},
+{
+"text": "works.",
+"start": 5.12,
+"end": 5.44
+},
+{
+"text": "Obsidian",
+"start": 5.44,
+"end": 6.0
+},
+{
+"text": "is",
+"start": 6.0,
+"end": 6.08
+},
+{
+"text": "a",
+"start": 6.08,
+"end": 6.16
+},
+{
+"text": "completely",
+"start": 6.16,
+"end": 6.4
+},
+{
+"text": "free",
+"start": 6.4,
+"end": 6.64
+},
+{
+"text": "tool",
+"start": 6.64,
+"end": 6.88
+},
+{
+"text": "that",
+"start": 6.88,
+"end": 7.04
+},
+{
+"text": "stores",
+"start": 7.04,
+"end": 7.28
+},
+{
+"text": "all",
+"start": 7.28,
+"end": 7.44
+},
+{
+"text": "of",
+"start": 7.44,
+"end": 7.52
+},
+{
+"text": "your",
+"start": 7.52,
+"end": 7.68
+},
+{
+"text": "knowledge",
+"start": 7.68,
+"end": 8.0
+},
+{
+"text": "inside",
+"start": 8.0,
+"end": 8.24
+},
+{
+"text": "one",
+"start": 8.24,
+"end": 8.48
+},
+{
+"text": "folder",
+"start": 8.48,
+"end": 8.8
+},
+{
+"text": "called",
+"start": 8.8,
+"end": 8.96
+},
+{
+"text": "a",
+"start": 8.96,
+"end": 9.12
+},
+{
+"text": "vault.",
+"start": 9.12,
+"end": 9.52
+},
+{
+"text": "When",
+"start": 9.52,
+"end": 9.68
+},
+{
+"text": "we",
+"start": 9.68,
+"end": 9.76
+},
+{
+"text": "open",
+"start": 9.76,
+"end": 9.92
+},
+{
+"text": "Claud",
+"start": 9.92,
+"end": 10.32
+},
+{
+"text": "Code",
+"start": 10.32,
+"end": 10.48
+},
+{
+"text": "inside",
+"start": 10.48,
+"end": 10.72
+},
+{
+"text": "that",
+"start": 10.72,
+"end": 10.8
+},
+{
+"text": "vault,",
+"start": 10.8,
+"end": 11.12
+},
+{
+"text": "it",
+"start": 11.12,
+"end": 11.28
+},
+{
+"text": "can",
+"start": 11.28,
+"end": 11.44
+},
+{
+"text": "understand",
+"start": 11.44,
+"end": 11.68
+},
+{
+"text": "and",
+"start": 11.68,
+"end": 11.84
+},
+{
+"text": "navigate",
+"start": 11.84,
+"end": 12.32
+},
+{
+"text": "everything",
+"start": 12.32,
+"end": 12.64
+},
+{
+"text": "inside",
+"start": 12.64,
+"end": 12.88
+},
+{
+"text": "of",
+"start": 12.88,
+"end": 13.04
+},
+{
+"text": "it.",
+"start": 13.04,
+"end": 13.28
+},
+{
+"text": "The",
+"start": 13.28,
+"end": 13.36
+},
+{
+"text": "trick",
+"start": 13.36,
+"end": 13.6
+},
+{
+"text": "is",
+"start": 13.6,
+"end": 13.76
+},
+{
+"text": "how",
+"start": 13.76,
+"end": 13.84
+},
+{
+"text": "you",
+"start": 13.84,
+"end": 14.0
+},
+{
+"text": "structure",
+"start": 14.0,
+"end": 14.24
+},
+{
+"text": "it.",
+"start": 14.24,
+"end": 14.56
+},
+{
+"text": "Most",
+"start": 14.56,
+"end": 14.72
+},
+{
+"text": "people",
+"start": 14.72,
+"end": 14.88
+},
+{
+"text": "use",
+"start": 14.88,
+"end": 15.04
+},
+{
+"text": "three",
+"start": 15.04,
+"end": 15.28
+},
+{
+"text": "folders,",
+"start": 15.28,
+"end": 15.76
+},
+{
+"text": "Raw,",
+"start": 15.76,
+"end": 16.16
+},
+{
+"text": "Wiki,",
+"start": 16.16,
+"end": 16.48
+},
+{
+"text": "and",
+"start": 16.48,
+"end": 16.64
+},
+{
+"text": "Output.",
+"start": 16.64,
+"end": 16.96
+},
+{
+"text": "Raw",
+"start": 16.96,
+"end": 17.28
+},
+{
+"text": "is",
+"start": 17.28,
+"end": 17.36
+},
+{
+"text": "where",
+"start": 17.36,
+"end": 17.44
+},
+{
+"text": "you",
+"start": 17.44,
+"end": 17.52
+},
+{
+"text": "drop",
+"start": 17.52,
+"end": 17.76
+},
+{
+"text": "all",
+"start": 17.76,
+"end": 17.92
+},
+{
+"text": "your",
+"start": 17.92,
+"end": 18.0
+},
+{
+"text": "notes,",
+"start": 18.0,
+"end": 18.32
+},
+{
+"text": "your",
+"start": 18.32,
+"end": 18.48
+},
+{
+"text": "files,",
+"start": 18.48,
+"end": 18.8
+},
+{
+"text": "and",
+"start": 18.8,
+"end": 18.96
+},
+{
+"text": "your",
+"start": 18.96,
+"end": 19.04
+},
+{
+"text": "ideas.",
+"start": 19.04,
+"end": 19.6
+},
+{
+"text": "Wiki",
+"start": 19.6,
+"end": 20.0
+},
+{
+"text": "is",
+"start": 20.0,
+"end": 20.08
+},
+{
+"text": "where",
+"start": 20.08,
+"end": 20.24
+},
+{
+"text": "Claud",
+"start": 20.24,
+"end": 20.64
+},
+{
+"text": "turns",
+"start": 20.64,
+"end": 20.96
+},
+{
+"text": "that",
+"start": 20.96,
+"end": 21.04
+},
+{
+"text": "information",
+"start": 21.04,
+"end": 21.44
+},
+{
+"text": "into",
+"start": 21.44,
+"end": 21.68
+},
+{
+"text": "structured",
+"start": 21.68,
+"end": 22.24
+},
+{
+"text": "Wikipedia",
+"start": 22.24,
+"end": 22.88
+},
+{
+"text": "style",
+"start": 22.88,
+"end": 23.2
+},
+{
+"text": "knowledge",
+"start": 23.2,
+"end": 23.52
+},
+{
+"text": "that",
+"start": 23.52,
+"end": 23.6
+},
+{
+"text": "it",
+"start": 23.6,
+"end": 23.76
+},
+{
+"text": "can",
+"start": 23.76,
+"end": 23.84
+},
+{
+"text": "easily",
+"start": 23.84,
+"end": 24.08
+},
+{
+"text": "recognize.",
+"start": 24.08,
+"end": 24.77
+},
+{
+"text": "Later.",
+"start": 24.782,
+"end": 25.023
+},
+{
+"text": "And",
+"start": 25.023,
+"end": 25.182
+},
+{
+"text": "output",
+"start": 25.182,
+"end": 25.422
+},
+{
+"text": "is",
+"start": 25.422,
+"end": 25.502
+},
+{
+"text": "where",
+"start": 25.502,
+"end": 25.742
+},
+{
+"text": "Claude",
+"start": 25.742,
+"end": 26.062
+},
+{
+"text": "saves",
+"start": 26.062,
+"end": 26.302
+},
+{
+"text": "the",
+"start": 26.302,
+"end": 26.382
+},
+{
+"text": "things",
+"start": 26.382,
+"end": 26.542
+},
+{
+"text": "it",
+"start": 26.542,
+"end": 26.622
+},
+{
+"text": "creates.",
+"start": 26.622,
+"end": 27.022
+},
+{
+"text": "The",
+"start": 27.022,
+"end": 27.102
+},
+{
+"text": "result",
+"start": 27.102,
+"end": 27.423
+},
+{
+"text": "is",
+"start": 27.423,
+"end": 27.502
+},
+{
+"text": "an",
+"start": 27.502,
+"end": 27.582
+},
+{
+"text": "AI",
+"start": 27.582,
+"end": 27.982
+},
+{
+"text": "second",
+"start": 27.982,
+"end": 28.222
+},
+{
+"text": "brain",
+"start": 28.222,
+"end": 28.462
+},
+{
+"text": "that",
+"start": 28.462,
+"end": 28.542
+},
+{
+"text": "actually",
+"start": 28.542,
+"end": 28.863
+},
+{
+"text": "remembers",
+"start": 28.863,
+"end": 29.182
+},
+{
+"text": "your",
+"start": 29.182,
+"end": 29.343
+},
+{
+"text": "projects",
+"start": 29.343,
+"end": 29.742
+},
+{
+"text": "and",
+"start": 29.742,
+"end": 29.903
+},
+{
+"text": "gets",
+"start": 29.903,
+"end": 30.062
+},
+{
+"text": "better",
+"start": 30.062,
+"end": 30.302
+},
+{
+"text": "the",
+"start": 30.302,
+"end": 30.462
+},
+{
+"text": "more",
+"start": 30.462,
+"end": 30.622
+},
+{
+"text": "you",
+"start": 30.622,
+"end": 30.702
+},
+{
+"text": "use",
+"start": 30.702,
+"end": 30.782
+},
+{
+"text": "it.",
+"start": 30.782,
+"end": 31.022
+},
+{
+"text": "So",
+"start": 31.022,
+"end": 31.182
+},
+{
+"text": "just",
+"start": 31.182,
+"end": 31.342
+},
+{
+"text": "common",
+"start": 31.342,
+"end": 31.582
+},
+{
+"text": "obsidian,",
+"start": 31.582,
+"end": 31.982
+},
+{
+"text": "I'll",
+"start": 31.982,
+"end": 32.142
+},
+{
+"text": "send",
+"start": 32.142,
+"end": 32.302
+},
+{
+"text": "you",
+"start": 32.302,
+"end": 32.382
+},
+{
+"text": "the",
+"start": 32.382,
+"end": 32.462
+},
+{
+"text": "full",
+"start": 32.462,
+"end": 32.622
+},
+{
+"text": "setup.",
+"start": 32.622,
+"end": 32.876
+}
+]

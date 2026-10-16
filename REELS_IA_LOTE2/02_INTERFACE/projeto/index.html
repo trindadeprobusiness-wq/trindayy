@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Interface com Referência</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+/* ===== Shared design system — REELS IA PRODUÇÃO PREMIUM ===== */
+@font-face { font-family: "Inter"; font-weight: 400; src: url("assets/fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; src: url("assets/fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url("assets/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; src: url("assets/fonts/inter-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 800; src: url("assets/fonts/inter-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 900; src: url("assets/fonts/inter-latin-900-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 500; src: url("assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 700; src: url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; src: url("assets/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 600; src: url("assets/fonts/jetbrains-mono-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 700; src: url("assets/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  --bg: #060a13; --bg2: #0b1222; --panel: #0f1729; --panel2: #141e35; --line: rgba(148, 178, 255, 0.16);
+  --text: #f5f7fb; --muted: #9aa6bd; --dim: #5d6880;
+  --blue: #2f7bff; --cyan: #22d3ee; --green: #34d399; --red: #ff4d5e; --amber: #fbbf24;
+  --accent: var(--cyan);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+body { color: var(--text); font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+#root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+
+/* ---------- Background ---------- */
+.bg { position: absolute; inset: 0; overflow: hidden; }
+.bg-grid { position: absolute; inset: -200px; background-image:
+  linear-gradient(rgba(120, 160, 255, 0.055) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(120, 160, 255, 0.055) 1px, transparent 1px);
+  background-size: 72px 72px; }
+.bg-glow { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; opacity: 0.55; }
+.bg-glow.a { left: -380px; top: -260px; background: radial-gradient(circle, rgba(47, 123, 255, 0.42), transparent 62%); }
+.bg-glow.b { right: -420px; top: 760px; background: radial-gradient(circle, rgba(34, 211, 238, 0.30), transparent 62%); }
+.bg-glow.c { left: 120px; top: 1250px; width: 900px; height: 900px; background: radial-gradient(circle, var(--tint, rgba(47, 123, 255, 0.0)), transparent 65%); opacity: 1; }
+.vignette { position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(130% 85% at 50% 42%, transparent 55%, rgba(0, 0, 0, 0.72) 100%); }
+.grain { position: absolute; inset: 0; opacity: 0.06; mix-blend-mode: overlay; background-size: 220px 220px; }
+
+/* ---------- Scenes ---------- */
+.scene { position: absolute; inset: 0; }
+.scene > .inner { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.center-x { left: 0; right: 0; margin-left: auto; margin-right: auto; }
+.row { display: flex; align-items: center; }
+.col { display: flex; flex-direction: column; }
+.gap8 { gap: 8px; } .gap12 { gap: 12px; } .gap16 { gap: 16px; } .gap20 { gap: 20px; } .gap24 { gap: 24px; } .gap32 { gap: 32px; }
+
+/* ---------- Type ---------- */
+.kicker { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 26px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+.display { font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -0.035em; line-height: 0.95; }
+.h1 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 96px; letter-spacing: -0.035em; line-height: 1; }
+.h2 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 68px; letter-spacing: -0.03em; line-height: 1.04; }
+.h3 { font-family: "Inter", sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.02em; line-height: 1.1; }
+.body { font-size: 32px; font-weight: 500; color: var(--muted); line-height: 1.35; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.hl { color: var(--accent); }
+.hl-red { color: var(--red); } .hl-green { color: var(--green); } .hl-amber { color: var(--amber); }
+.tc { text-align: center; }
+
+/* ---------- Surfaces ---------- */
+.card { background: linear-gradient(165deg, rgba(24, 35, 62, 0.94), rgba(11, 17, 32, 0.96));
+  border: 1.5px solid var(--line); border-radius: 30px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+.card.light { background: linear-gradient(170deg, #ffffff, #eef2f8); color: #0b1222; border-color: rgba(255, 255, 255, 0.6); }
+.glass { background: rgba(18, 28, 52, 0.62); border: 1.5px solid rgba(160, 190, 255, 0.18); border-radius: 28px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08); }
+.tile { width: 200px; height: 200px; border-radius: 48px; display: grid; place-items: center;
+  background: linear-gradient(160deg, #1b2747, #0d1426); border: 2px solid rgba(160, 190, 255, 0.2);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+.tile.white { background: linear-gradient(160deg, #ffffff, #e9eef7); border-color: rgba(255, 255, 255, 0.7); }
+.tile img { width: 62%; height: 62%; object-fit: contain; }
+.chip { display: inline-flex; align-items: center; gap: 14px; padding: 16px 28px; border-radius: 999px;
+  font-weight: 700; font-size: 32px; background: rgba(30, 44, 78, 0.9); border: 1.5px solid rgba(160, 190, 255, 0.22); color: var(--text); white-space: nowrap; }
+.chip svg { width: 34px; height: 34px; }
+.chip.blue { background: rgba(47, 123, 255, 0.18); border-color: rgba(47, 123, 255, 0.6); color: #cfe0ff; }
+.chip.cyan { background: rgba(34, 211, 238, 0.14); border-color: rgba(34, 211, 238, 0.6); color: #c9f6ff; }
+.chip.green { background: rgba(52, 211, 153, 0.14); border-color: rgba(52, 211, 153, 0.6); color: #c8f7e5; }
+.chip.red { background: rgba(255, 77, 94, 0.16); border-color: rgba(255, 77, 94, 0.65); color: #ffd0d5; }
+.chip.amber { background: rgba(251, 191, 36, 0.14); border-color: rgba(251, 191, 36, 0.6); color: #ffeab0; }
+.chip.solid { background: var(--text); color: #0b1222; border-color: transparent; }
+.badge { display: inline-flex; align-items: center; gap: 16px; padding: 14px 34px; border-radius: 22px;
+  font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 92px; letter-spacing: -0.03em; line-height: 1; }
+.icon svg { width: 100%; height: 100%; }
+.ic { display: inline-block; width: 1em; height: 1em; }
+.ic svg { width: 100%; height: 100%; display: block; }
+
+/* ---------- Window / terminal ---------- */
+.win { border-radius: 26px; overflow: hidden; background: #0c1220; border: 1.5px solid rgba(160, 190, 255, 0.2);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6); }
+.win-bar { height: 62px; display: flex; align-items: center; gap: 12px; padding: 0 24px; background: #141c2e; border-bottom: 1px solid rgba(160, 190, 255, 0.12); }
+.win-bar i { width: 18px; height: 18px; border-radius: 50%; display: block; }
+.win-bar i:nth-child(1) { background: #ff5f57; } .win-bar i:nth-child(2) { background: #febc2e; } .win-bar i:nth-child(3) { background: #28c840; }
+.win-bar .t { margin-left: 18px; font-family: "JetBrains Mono", monospace; font-size: 22px; color: var(--muted); }
+.term { font-family: "JetBrains Mono", monospace; font-size: 27px; line-height: 1.55; color: #dbe5ff; padding: 26px 30px; white-space: pre; }
+.term .p { color: var(--green); } .term .c { color: var(--dim); } .term .k { color: var(--cyan); } .term .r { color: var(--red); } .term .y { color: var(--amber); }
+
+/* ---------- GitHub repo replica (dark) ---------- */
+.gh { width: 940px; border-radius: 26px; background: #0d1117; border: 1.5px solid #30363d; overflow: hidden;
+  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.65); font-family: "Inter", sans-serif; color: #e6edf3; }
+.gh-top { display: flex; align-items: center; gap: 18px; padding: 22px 30px; background: #010409; border-bottom: 1px solid #30363d; }
+.gh-top img { width: 46px; height: 46px; }
+.gh-top .path { font-size: 28px; color: #e6edf3; } .gh-top .path b { font-weight: 700; }
+.gh-tabs { display: flex; gap: 26px; padding: 0 30px; background: #010409; border-bottom: 1px solid #30363d; font-size: 22px; color: #9198a1; }
+.gh-tabs span { padding: 16px 0; } .gh-tabs span.on { color: #e6edf3; border-bottom: 3px solid #f78166; font-weight: 600; }
+.gh-head { display: flex; align-items: center; gap: 16px; padding: 26px 30px 10px; }
+.gh-head .av { width: 56px; height: 56px; border-radius: 12px; background: #fff; display: grid; place-items: center; overflow: hidden; }
+.gh-head .av img { width: 80%; height: 80%; object-fit: contain; }
+.gh-head .name { font-size: 40px; font-weight: 700; }
+.gh-pub { font-size: 20px; color: #9198a1; border: 1.5px solid #3d444d; border-radius: 999px; padding: 3px 14px; }
+.gh-desc { padding: 10px 30px 18px; font-size: 27px; line-height: 1.38; color: #c9d1d9; }
+.gh-topics { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 30px 22px; }
+.gh-topics span { font-size: 21px; font-weight: 600; color: #4493f8; background: rgba(56, 139, 253, 0.12); padding: 6px 16px; border-radius: 999px; }
+.gh-stats { display: flex; gap: 14px; padding: 0 30px 28px; }
+.gh-btn { display: inline-flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 600; color: #e6edf3;
+  background: #21262d; border: 1.5px solid #3d444d; border-radius: 12px; padding: 10px 18px; }
+.gh-btn .n { background: #3d444d; border-radius: 999px; padding: 2px 12px; font-size: 21px; }
+.gh-btn svg { width: 26px; height: 26px; }
+.gh-btn.star { border-color: #e3b341; box-shadow: 0 0 0 4px rgba(227, 179, 65, 0.15); }
+
+/* ---------- Node graph ---------- */
+.node { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.node .dot { width: 150px; height: 150px; border-radius: 40px; display: grid; place-items: center;
+  background: linear-gradient(160deg, #1b2747, #0d1426); border: 2px solid rgba(160, 190, 255, 0.24); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55); }
+.node .dot svg, .node .dot img { width: 58%; height: 58%; object-fit: contain; }
+.node .lb { font-weight: 700; font-size: 28px; color: var(--text); white-space: nowrap; }
+svg.wires { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+
+/* ---------- Captions ---------- */
+.caps { position: absolute; left: 0; right: 0; top: 0; height: 1920px; pointer-events: none; }
+.cap { position: absolute; left: 70px; right: 70px; top: 1268px; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start;
+  gap: 0 18px; text-align: center; }
+.cap .w { position: relative; display: inline-block; font-family: "Inter", sans-serif; font-weight: 800; font-size: 60px; line-height: 1.18;
+  letter-spacing: -0.015em; color: #ffffff; opacity: 0.38;
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 26px rgba(0, 0, 0, 0.75), 0 2px 10px rgba(0, 0, 0, 0.9); }
+.cap .w.k { color: var(--capk, #22d3ee); }
+
+/* ---------- Header strip (persistent) ---------- */
+.handle { position: absolute; left: 0; right: 0; top: 74px; text-align: center; }
+
+/* ===== ENERGIA v2 — lote 2 (appended after base.css) ===== */
+:root { --ink: #0f1115; --paper: #f4efe6; --a1: #ff6a3d; --a2: #2f7bff; --a3: #ffd23f; --capbg: #ff6a3d; --capfg: #0f1115; }
+.theme-light #root, .theme-light body { background: var(--paper); }
+.theme-light .bg { background: radial-gradient(120% 80% at 50% 0%, #fbf8f2 0%, var(--paper) 60%, #e9e1d3 100%); }
+.theme-light .bg-grid { background-image: radial-gradient(rgba(15, 17, 21, .10) 2px, transparent 2.5px); background-size: 46px 46px; }
+.theme-light .bg-glow.a { background: radial-gradient(circle, rgba(255, 106, 61, .30), transparent 62%); }
+.theme-light .bg-glow.b { background: radial-gradient(circle, rgba(47, 123, 255, .22), transparent 62%); }
+.theme-light .vignette { background: radial-gradient(130% 85% at 50% 42%, transparent 62%, rgba(80, 60, 30, .18) 100%); }
+.theme-light { color: var(--ink); }
+.theme-light .display, .theme-light .h1, .theme-light .h2, .theme-light .h3 { color: var(--ink); }
+.theme-light .kicker { color: #6b6457; }
+.theme-light .card { background: #fffdf9; border: 2px solid rgba(15, 17, 21, .08); box-shadow: 0 24px 60px rgba(60, 40, 10, .16), 0 2px 0 rgba(255, 255, 255, .9) inset; color: var(--ink); }
+.theme-light .chip { background: #fff; border: 2px solid rgba(15, 17, 21, .10); color: var(--ink); box-shadow: 0 10px 24px rgba(60, 40, 10, .12); }
+.theme-light .tile { background: #fff; border: 2px solid rgba(15, 17, 21, .08); box-shadow: 0 22px 50px rgba(60, 40, 10, .18); }
+.theme-dark .bg-grid { background-image: radial-gradient(rgba(160, 190, 255, .16) 2px, transparent 2.5px); background-size: 46px 46px; }
+
+/* big kinetic words */
+.kw { display: inline-block; font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -.045em; line-height: .92; }
+.hlbox { display: inline-block; padding: 0 .14em; border-radius: .14em; background: var(--a1); color: #fff; }
+.sticker { display: inline-flex; align-items: center; gap: 14px; padding: 16px 30px; border-radius: 22px; font: 900 40px Inter; letter-spacing: -.01em;
+  background: var(--a3); color: #111; box-shadow: 0 14px 0 rgba(0, 0, 0, .18), 0 26px 50px rgba(0, 0, 0, .22); transform-origin: center; }
+.sticker svg { width: 44px; height: 44px; }
+.sticker.dark { background: #111; color: #fff; }
+.sticker.orange { background: var(--a1); color: #fff; }
+.sticker.blue { background: var(--a2); color: #fff; }
+.sticker.green { background: #22c55e; color: #fff; }
+.sticker.red { background: #ef4444; color: #fff; }
+.num-big { font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -.05em; line-height: .85; }
+.shot { border-radius: 26px; overflow: hidden; box-shadow: 0 40px 100px rgba(0, 0, 0, .35); border: 2px solid rgba(255, 255, 255, .5); background: #111; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ring { position: absolute; border-radius: 50%; border: 3px dashed rgba(255, 106, 61, .45); }
+.agentcard { width: 300px; border-radius: 30px; padding: 26px 22px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.agentcard .ai { width: 112px; height: 112px; border-radius: 30px; display: grid; place-items: center; }
+.agentcard .ai svg { width: 56%; height: 56%; }
+.agentcard .an { font: 800 32px Inter; text-align: center; letter-spacing: -.02em; }
+.agentcard .as { font: 600 20px "JetBrains Mono"; opacity: .6; text-align: center; }
+
+/* transitions + progress */
+.swipe { position: absolute; left: -10%; top: -10%; width: 120%; height: 120%; z-index: 40; pointer-events: none; }
+.progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; z-index: 45; transform-origin: left center; background: linear-gradient(90deg, var(--a1), var(--a3)); }
+.burst i { position: absolute; width: 22px; height: 22px; border-radius: 6px; }
+
+/* captions v2: pill highlight */
+.cap { top: 1235px; gap: 6px 14px; }
+.cap .w { font-family: "Inter", sans-serif; font-weight: 900; font-size: 74px; letter-spacing: -.02em; line-height: 1.16; padding: 0 14px; border-radius: 16px;
+  color: #fff; opacity: 1; text-transform: uppercase;
+  text-shadow: 0 5px 0 rgba(0, 0, 0, .55), 0 0 24px rgba(0, 0, 0, .55); -webkit-text-stroke: 2px rgba(0, 0, 0, .55); }
+.theme-light .cap .w { color: var(--ink); text-shadow: 0 4px 0 rgba(255, 255, 255, .9), 0 0 20px rgba(255, 255, 255, .9); -webkit-text-stroke: 0; }
+.cap .w.k { color: var(--capk); }
+
+
+.igbox{width:900px;height:132px;border-radius:66px;background:#fff;display:flex;align-items:center;gap:24px;padding:0 26px;box-shadow:0 30px 90px rgba(0,0,0,.35);border:2px solid rgba(0,0,0,.06)}
+.igbox .av{width:84px;height:84px;border-radius:50%;background:conic-gradient(from 210deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75);padding:5px}
+.igbox .av div{width:100%;height:100%;border-radius:50%;background:#1b2747}
+.igbox .tx{font:900 64px "Space Grotesk";color:#0b1222;letter-spacing:-.01em}
+.igbox .send{margin-left:auto;font:800 30px Inter;color:#0095f6}
+.follow{display:inline-flex;align-items:center;gap:16px;padding:24px 46px;border-radius:24px;background:#0095f6;color:#fff;font:800 40px Inter;box-shadow:0 24px 60px rgba(0,149,246,.35)}
+.follow svg{width:44px;height:44px}
+.meter{width:760px;height:64px;border-radius:32px;background:rgba(127,127,127,.18);border:3px solid rgba(127,127,127,.35);overflow:hidden;position:relative}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;width:100%;transform-origin:left center;border-radius:32px}
+.blk{height:118px;border-radius:26px;display:flex;align-items:center;gap:22px;padding:0 30px;font:900 44px Inter;letter-spacing:-.02em;box-shadow:0 14px 0 rgba(0,0,0,.18),0 26px 50px rgba(0,0,0,.2)}
+.blk img,.blk .bi{width:70px;height:70px;object-fit:contain}
+.blk .bi svg{width:100%;height:100%}
+.step3{display:flex;flex-direction:column;align-items:center;gap:14px;width:290px}
+.step3 .sn{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;font:700 80px "Space Grotesk";box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.step3 .sl{font:900 38px Inter;letter-spacing:-.02em;text-align:center}
+.prov{width:150px;height:150px;border-radius:40px;background:#fff;display:grid;place-items:center;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.prov img{width:62%;height:62%;object-fit:contain}
+
+.pbox{border-radius:28px;background:#fff;border:2px solid rgba(15,17,21,.1);box-shadow:0 24px 60px rgba(60,40,10,.16);padding:26px 30px}
+.pbox .pt{font:600 34px Inter;line-height:1.35;color:#0f1115;min-height:46px}
+.wf{border-radius:22px;background:#fff;border:2px solid rgba(15,17,21,.1);box-shadow:0 24px 60px rgba(60,40,10,.16);overflow:hidden;position:relative}
+.wf i{position:absolute;display:block;border-radius:10px;background:#e7e2d8}
+.bbox{position:absolute;border:4px solid #2f7bff;border-radius:10px;background:rgba(47,123,255,.08)}
+.bbox b{position:absolute;left:-4px;top:-38px;font:800 20px "JetBrains Mono";background:#2f7bff;color:#fff;padding:4px 10px;border-radius:8px;white-space:nowrap}
+.code{border-radius:24px;background:#0f1115;padding:22px 28px;font:500 26px "JetBrains Mono";line-height:1.6;color:#e6edf3;box-shadow:0 30px 70px rgba(0,0,0,.3);white-space:pre}
+.code .t{color:#7ee787}.code .a{color:#79c0ff}.code .s{color:#ffa657}
+.slider{height:16px;border-radius:8px;background:#e7e2d8;position:relative}
+.slider .k{position:absolute;top:-14px;width:44px;height:44px;border-radius:50%;background:#2f7bff;box-shadow:0 6px 14px rgba(0,0,0,.25)}
+.venn{position:absolute;width:420px;height:420px;border-radius:50%;display:grid;place-items:center;font:900 38px Inter;color:#fff;mix-blend-mode:multiply}
+.phone{width:300px;height:600px;border-radius:46px;border:12px solid #0f1115;background:#fff;overflow:hidden;position:relative;box-shadow:0 30px 70px rgba(0,0,0,.3)}
+
+:root { --accent: #2f7bff; --capk: #2f7bff; --a1: #2f7bff; --a2: #ff6a3d; --a3: #ffd23f; --capbg: #2f7bff; --capfg: #fff; }
+</style>
+</head>
+<body class="theme-light">
+<div id="root" data-composition-id="main" data-start="0" data-duration="48.900" data-width="1080" data-height="1920">
+  <div class="bg"><div class="bg-grid"></div><div class="bg-glow a"></div><div class="bg-glow b"></div><div class="bg-glow c"></div></div>
+<section id="s1" class="scene clip " data-start="0.000" data-duration="5.850" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs pbox" id="s1-p" style="left:70px;top:160px;width:940px">
+      <div class="row gap12" style="margin-bottom:10px"><div class="ic" style="width:36px;height:36px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#2f7bff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+  <path d="M7 11h10" />
+  <path d="M7 15h6" />
+  <path d="M7 7h8" />
+</svg>
+</div><div class="mono" style="font-size:22px;color:#6b6457">você → IA</div></div>
+      <div class="pt" id="s1-tx" data-text="“faz um site bonito, moderno, clean, com um hero legal…”"></div>
+    </div>
+    <div class="abs wf" id="s1-wf" style="left:170px;top:470px;width:740px;height:560px">
+      <i style="left:30px;top:30px;width:200px;height:34px"></i><i style="left:520px;top:30px;width:190px;height:34px"></i>
+      <i style="left:30px;top:110px;width:680px;height:200px;background:linear-gradient(135deg,#c4b5fd,#93c5fd)"></i>
+      <i style="left:30px;top:340px;width:210px;height:180px"></i><i style="left:265px;top:340px;width:210px;height:180px"></i><i style="left:500px;top:340px;width:210px;height:180px"></i>
+    </div>
+    <div class="abs" id="s1-q" style="left:760px;top:420px"><div class="sticker red" style="font-size:120px;padding:10px 40px;transform:rotate(10deg)">?</div></div>
+    <div class="abs" id="s1-g" style="left:120px;top:980px"><div class="sticker dark" style="font-size:34px;transform:rotate(-4deg)">resultado genérico</div></div>
+  </div></div></section>
+<section id="s2" class="scene clip " data-start="5.850" data-duration="5.550" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s2-h" style="top:190px;width:1040px"><div class="kw" style="font-size:110px">um jeito <span class="hlbox">muito mais</span><br/>prático</div></div>
+    <div class="abs" id="s2-z" style="left:760px;top:330px"><div class="sticker" style="font-size:46px;transform:rotate(8deg)">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#0f1115"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z" />
+</svg>
+</div></div>
+    <div class="abs pbox" id="s2-long" style="left:110px;top:600px;width:860px;padding:30px">
+      <div style="font:600 27px Inter;line-height:1.5;color:#6b6457">“o header tem 80px, logo à esquerda, menu com 5 itens, botão azul arredondado, hero com título de 64px, subtítulo cinza, imagem à direita, três cards abaixo com sombra suave…”</div>
+      <div id="s2-x" style="position:absolute;left:20px;right:20px;top:50%;height:12px;margin-top:-6px;background:#ef4444;border-radius:6px"></div>
+    </div>
+  </div></div></section>
+<section id="s3" class="scene clip " data-start="11.350" data-duration="4.350" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs" id="s3-st" style="left:70px;top:160px"><div class="sticker blue" style="font-size:56px;transform:rotate(-3deg)">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+  <circle cx="9" cy="9" r="2" />
+  <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+</svg>
+REFERÊNCIA VISUAL</div></div>
+    <div class="abs chip" id="s3-link" style="left:70px;top:310px;font-size:28px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#2f7bff"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+cola o link ou o print da página</div>
+    <div class="abs shot" id="s3-ref" style="opacity:0;left:90px;top:410px;width:900px;height:522px;border-color:#fff"><img src="assets/photos2/taste-coffee-storefront.jpg"/></div>
+    <div class="abs" id="s3-ok" style="left:700px;top:880px"><div class="sticker green" style="font-size:36px;transform:rotate(4deg)">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="3"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg>
+a IA vê o que você quer</div></div>
+  </div></div></section>
+<section id="s4" class="scene clip " data-start="15.650" data-duration="7.350" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs shot" id="s4-ref" style="left:90px;top:170px;width:900px;height:460px;border-color:#fff"><img src="assets/photos2/taste-coffee-storefront.jpg" style="object-position:top"/>
+      <div class="abs" id="s4-scan" style="left:0;right:0;top:0;height:90px;background:linear-gradient(180deg,rgba(47,123,255,0),rgba(47,123,255,.35));border-bottom:4px solid #2f7bff"></div>
+      <div class="bbox" id="s4-b0" style="left:10px;top:8px;width:880px;height:70px"><b>header</b></div><div class="bbox" id="s4-b1" style="left:10px;top:90px;width:600px;height:300px"><b>hero</b></div><div class="bbox" id="s4-b2" style="left:620px;top:90px;width:270px;height:300px"><b>imagem</b></div><div class="bbox" id="s4-b3" style="left:40px;top:330px;width:220px;height:54px"><b>botão</b></div>
+    </div>
+    <div class="abs" id="s4-ar" style="left:500px;top:650px;width:80px;height:80px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#2f7bff"
+  stroke-width="3"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 5v14" />
+  <path d="m19 12-7 7-7-7" />
+</svg>
+</div>
+    <div class="abs code" id="s4-code" style="opacity:0;left:90px;top:750px;width:900px"><span class="t">&lt;header&gt;</span> logo · menu <span class="t">&lt;/header&gt;</span>
+<span class="t">&lt;section</span> <span class="a">class</span>=<span class="s">"hero"</span><span class="t">&gt;</span>
+  <span class="t">&lt;h1&gt;</span>Twenty seats…<span class="t">&lt;/h1&gt;</span>
+  <span class="t">&lt;button&gt;</span>Get directions<span class="t">&lt;/button&gt;</span>
+<span class="t">&lt;/section&gt;</span></div>
+  </div></div></section>
+<section id="s5" class="scene clip " data-start="22.950" data-duration="5.750" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s5-h" style="top:170px;width:1040px"><div class="kw" style="font-size:96px">refina <span class="hlbox">até ficar certo</span></div></div>
+    <div class="abs center-x" id="s5-btn" style="top:430px;width:460px;height:130px;border-radius:14px;background:#c9c2b4;display:grid;place-items:center;font:800 40px Inter;color:#fff">Comprar agora</div>
+    <div class="abs card col gap24" id="s5-pan" style="left:150px;top:660px;width:780px;padding:36px 40px">
+      <div class="row gap20" id="s5-r0"><div class="ic" style="width:44px;height:44px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#2f7bff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="7" height="7" x="3" y="3" rx="1" />
+  <rect width="7" height="7" x="14" y="3" rx="1" />
+  <rect width="7" height="7" x="14" y="14" rx="1" />
+  <rect width="7" height="7" x="3" y="14" rx="1" />
+</svg>
+</div><div style="font:800 32px Inter;width:250px">componentes</div><div class="slider" style="flex:1"><div class="k" id="s5-k0" style="left:0"></div></div></div><div class="row gap20" id="s5-r1"><div class="ic" style="width:44px;height:44px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#2f7bff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" />
+  <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+  <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+  <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+  <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+</svg>
+</div><div style="font:800 32px Inter;width:250px">aparência</div><div class="slider" style="flex:1"><div class="k" id="s5-k1" style="left:0"></div></div></div><div class="row gap20" id="s5-r2"><div class="ic" style="width:44px;height:44px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#2f7bff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 4.1 12 6" />
+  <path d="m5.1 8-2.9-.8" />
+  <path d="m6 12-1.9 2" />
+  <path d="M7.2 2.2 8 5.1" />
+  <path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+</svg>
+</div><div style="font:800 32px Inter;width:250px">comportamento</div><div class="slider" style="flex:1"><div class="k" id="s5-k2" style="left:0"></div></div></div>
+    </div>
+  </div></div></section>
+<section id="s6" class="scene clip " data-start="28.650" data-duration="4.450" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s6-w" style="top:150px;width:1000px"><div class="sticker orange" style="font-size:44px;transform:rotate(-3deg)">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg>
+DETALHE IMPORTANTE</div></div>
+    <div class="abs center-x tc" id="s6-h1" style="top:290px;width:1040px"><div class="kw" style="font-size:150px">BONITA</div></div>
+    <div class="abs center-x tc" id="s6-h2" style="top:440px;width:1040px"><div class="kw" style="font-size:150px;color:#ef4444">≠ PRONTA</div></div>
+    <div class="abs shot" id="s6-pg" style="left:150px;top:660px;width:780px;height:455px;border-color:#fff"><img src="assets/photos2/taste-night-dates.jpg"/></div>
+    <div class="abs" id="s6-bug" style="left:640px;top:1040px"><div class="sticker red" style="font-size:38px;transform:rotate(6deg)">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 20v-9" />
+  <path d="M14 7a4 4 0 0 1 4 4v3a6 6 0 0 1-12 0v-3a4 4 0 0 1 4-4z" />
+  <path d="M14.12 3.88 16 2" />
+  <path d="M21 21a4 4 0 0 0-3.81-4" />
+  <path d="M21 5a4 4 0 0 1-3.55 3.97" />
+  <path d="M22 13h-4" />
+  <path d="M3 21a4 4 0 0 1 3.81-4" />
+  <path d="M3 5a4 4 0 0 0 3.55 3.97" />
+  <path d="M6 13H2" />
+  <path d="m8 2 1.88 1.88" />
+  <path d="M9 7.13V6a3 3 0 1 1 6 0v1.13" />
+</svg>
+não funciona</div></div>
+  </div></div></section>
+<section id="s7" class="scene clip " data-start="33.050" data-duration="5.850" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs" id="s7-ph" style="opacity:0;left:650px;top:240px"><div class="phone" style="width:340px;height:690px"><img src="assets/photos2/taste-night-dates.jpg" style="width:100%;height:100%;object-fit:cover;object-position:0 0"/></div></div>
+    <div class="abs col gap24" style="left:60px;top:400px;width:560px">
+      <div class="card row gap20" id="s7-i0" style="padding:26px 28px"><div class="ic" style="width:60px;height:60px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#16a34a"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+  <path d="m9 11 3 3L22 4" />
+</svg>
+</div><div style="font:900 36px Inter;letter-spacing:-.02em">funciona</div></div><div class="card row gap20" id="s7-i1" style="padding:26px 28px"><div class="ic" style="width:60px;height:60px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#16a34a"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+  <path d="M12 18h.01" />
+</svg>
+</div><div style="font:900 36px Inter;letter-spacing:-.02em">adapta ao celular</div></div><div class="card row gap20" id="s7-i2" style="padding:26px 28px"><div class="ic" style="width:60px;height:60px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#16a34a"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+</svg>
+</div><div style="font:900 36px Inter;letter-spacing:-.02em">boa experiência</div></div>
+    </div>
+  </div></div></section>
+<section id="s8" class="scene clip " data-start="38.850" data-duration="4.550" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s8-h" style="top:170px;width:1040px"><div class="kw" style="font-size:84px">a combinação que <span class="hlbox">faz diferença</span></div></div>
+    <div class="abs" style="left:0;top:380px;width:1080px;height:760px">
+      <div class="venn" id="s8-a" style="opacity:0;left:120px;top:20px;background:#2f7bff">referência</div>
+      <div class="venn" id="s8-b" style="opacity:0;left:540px;top:20px;background:#ff6a3d">implementação</div>
+      <div class="venn" id="s8-c" style="opacity:0;left:330px;top:330px;background:#ffd23f;color:#111">testes</div>
+    </div>
+    <div class="abs burst" id="s8-burst" style="left:540px;top:700px"></div>
+  </div></div></section>
+<section id="s9" class="scene clip " data-start="43.350" data-duration="5.550" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s9-pre" style="top:200px;width:1000px"><div class="kw" style="font-size:96px">quer esse <span class="hlbox">fluxo?</span></div></div>
+    <div class="abs center-x tc" id="s9-k" style="top:400px;width:940px"><div class="sticker dark" style="font-size:34px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+</svg>
+COMENTA A PALAVRA</div></div>
+    <div class="abs burst" id="s9-burst" style="left:540px;top:640px;width:0;height:0"></div>
+    <div class="abs center-x tc" id="s9-word" style="top:520px;width:1060px"><div class="kw" style="font-size:200px;color:#2f7bff;text-shadow:0 12px 0 rgba(0,0,0,.18)">INTERFACE</div></div>
+    <div class="abs igbox" id="s9-box" style="left:90px;top:780px"><div class="av"><div></div></div><div class="tx" id="s9-tx" data-text="INTERFACE"></div><div class="send">Publicar</div></div>
+    <div class="abs" id="s9-dn" style="left:470px;top:960px;width:140px;height:140px;color:#2f7bff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m7 6 5 5 5-5" />
+  <path d="m7 13 5 5 5-5" />
+</svg>
+</div>
+    </div></div></section>
+  
+  <div class="vignette"></div>
+  <div class="swipe" id="sw0" style="background:#2f7bff"></div><div class="swipe" id="sw1" style="background:#ffd23f"></div><div class="swipe" id="sw2" style="background:#ff6a3d"></div><div class="swipe" id="sw3" style="background:#2f7bff"></div><div class="swipe" id="sw4" style="background:#ffd23f"></div><div class="swipe" id="sw5" style="background:#ff6a3d"></div><div class="swipe" id="sw6" style="background:#2f7bff"></div><div class="swipe" id="sw7" style="background:#ffd23f"></div>
+  <div class="progress"></div>
+  <div class="caps">
+<div class="cap clip" data-start="-0.040" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="0.000">Você</span><span class="w" data-s="0.400">ainda</span><span class="w" data-s="0.640">está</span></div></div>
+<div class="cap clip" data-start="0.760" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="0.800">criando</span><span class="w k" data-s="1.120">interfaces</span></div></div>
+<div class="cap clip" data-start="1.640" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="1.680">com</span><span class="w" data-s="1.840">inteligência</span></div></div>
+<div class="cap clip" data-start="2.360" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="2.400">artificial</span><span class="w" data-s="3.120">sem</span></div></div>
+<div class="cap clip" data-start="3.320" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="3.360">mostrar</span><span class="w" data-s="3.760">exatamente</span></div></div>
+<div class="cap clip" data-start="4.200" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="4.240">o</span><span class="w" data-s="4.400">resultado</span><span class="w" data-s="4.880">que</span></div></div>
+<div class="cap clip" data-start="5.000" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="5.040">deseja?</span></div></div>
+<div class="cap clip" data-start="5.880" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="5.920">Existe</span><span class="w" data-s="6.400">uma</span><span class="w" data-s="6.560">maneira</span></div></div>
+<div class="cap clip" data-start="7.000" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="7.040">muito</span><span class="w" data-s="7.280">mais</span><span class="w" data-s="7.440">prática</span></div></div>
+<div class="cap clip" data-start="7.880" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="7.920">de</span><span class="w" data-s="8.080">trabalhar.</span></div></div>
+<div class="cap clip" data-start="8.920" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="8.960">Em</span><span class="w" data-s="9.120">vez</span><span class="w" data-s="9.360">de</span></div></div>
+<div class="cap clip" data-start="9.480" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="9.520">explicar</span><span class="w" data-s="10.000">cada</span></div></div>
+<div class="cap clip" data-start="10.200" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="10.240">detalhe</span><span class="w" data-s="10.640">de</span><span class="w" data-s="10.800">uma</span></div></div>
+<div class="cap clip" data-start="10.920" data-duration="0.480" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="10.960">página</span></div></div>
+<div class="cap clip" data-start="11.400" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="11.440">você</span><span class="w" data-s="11.680">pode</span><span class="w" data-s="11.920">usar</span></div></div>
+<div class="cap clip" data-start="12.120" data-duration="0.480" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="12.160">referências</span></div></div>
+<div class="cap clip" data-start="12.600" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="12.640">visuais</span><span class="w" data-s="13.120">para</span></div></div>
+<div class="cap clip" data-start="13.320" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="13.360">orientar</span><span class="w" data-s="13.840">a</span></div></div>
+<div class="cap clip" data-start="13.880" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="13.920">construção</span><span class="w" data-s="14.400">do</span></div></div>
+<div class="cap clip" data-start="14.520" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="14.560">projeto.</span></div></div>
+<div class="cap clip" data-start="15.640" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="15.680">A</span><span class="w" data-s="15.920">inteligência</span></div></div>
+<div class="cap clip" data-start="16.520" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="16.560">artificial</span><span class="w" data-s="17.120">analisa</span></div></div>
+<div class="cap clip" data-start="17.560" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="17.600">a</span><span class="w" data-s="17.680">estrutura</span></div></div>
+<div class="cap clip" data-start="18.280" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="18.320">identifica</span><span class="w" data-s="18.880">os</span></div></div>
+<div class="cap clip" data-start="19.000" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="19.040">elementos</span><span class="w" data-s="19.440">da</span></div></div>
+<div class="cap clip" data-start="19.560" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="19.600">interface</span><span class="w" data-s="20.160">e</span><span class="w" data-s="20.320">ajuda</span></div></div>
+<div class="cap clip" data-start="20.680" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="20.720">a</span><span class="w" data-s="20.800">transformar</span></div></div>
+<div class="cap clip" data-start="21.240" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="21.280">essas</span><span class="w" data-s="21.520">informações</span></div></div>
+<div class="cap clip" data-start="22.040" data-duration="0.882" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="22.080">em</span><span class="w k" data-s="22.240">código.</span></div></div>
+<div class="cap clip" data-start="22.922" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="22.962">Depois</span></div></div>
+<div class="cap clip" data-start="23.562" data-duration="0.481" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="23.602">você</span><span class="w" data-s="23.842">pode</span></div></div>
+<div class="cap clip" data-start="24.043" data-duration="0.319" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="24.083">continuar</span></div></div>
+<div class="cap clip" data-start="24.362" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="24.402">refinando</span><span class="w" data-s="25.042">o</span></div></div>
+<div class="cap clip" data-start="25.082" data-duration="0.561" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="25.122">resultado</span></div></div>
+<div class="cap clip" data-start="25.643" data-duration="0.559" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="25.683">ajustando</span></div></div>
+<div class="cap clip" data-start="26.202" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="26.242">componentes</span></div></div>
+<div class="cap clip" data-start="27.002" data-duration="0.801" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="27.042">aparência</span><span class="w" data-s="27.682">e</span></div></div>
+<div class="cap clip" data-start="27.803" data-duration="0.959" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="27.843">comportamento.</span></div></div>
+<div class="cap clip" data-start="28.762" data-duration="0.641" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="28.802">Mas</span><span class="w" data-s="28.962">aqui</span><span class="w" data-s="29.282">está</span></div></div>
+<div class="cap clip" data-start="29.403" data-duration="0.559" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="29.443">o</span><span class="w" data-s="29.602">detalhe</span></div></div>
+<div class="cap clip" data-start="29.962" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="30.002">importante.</span></div></div>
+<div class="cap clip" data-start="30.602" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="30.642">Não</span><span class="w" data-s="30.802">basta</span><span class="w" data-s="31.202">gerar</span></div></div>
+<div class="cap clip" data-start="31.562" data-duration="0.480" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="31.602">uma</span><span class="w" data-s="31.763">página</span></div></div>
+<div class="cap clip" data-start="32.042" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="32.082">visualmente</span></div></div>
+<div class="cap clip" data-start="32.602" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="32.642">bonita.</span></div></div>
+<div class="cap clip" data-start="33.162" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="33.202">Ela</span><span class="w" data-s="33.442">também</span><span class="w" data-s="33.763">precisa</span></div></div>
+<div class="cap clip" data-start="34.122" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="34.162">funcionar</span></div></div>
+<div class="cap clip" data-start="34.682" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="34.722">se</span><span class="w" data-s="34.883">adaptar</span><span class="w" data-s="35.362">ao</span></div></div>
+<div class="cap clip" data-start="35.482" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="35.522">celular</span><span class="w" data-s="35.923">e</span><span class="w" data-s="36.082">oferecer</span></div></div>
+<div class="cap clip" data-start="36.602" data-duration="0.400" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="36.642">uma</span><span class="w" data-s="36.803">boa</span></div></div>
+<div class="cap clip" data-start="37.002" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="37.042">experiência</span><span class="w" data-s="37.522">para</span></div></div>
+<div class="cap clip" data-start="37.642" data-duration="0.480" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="37.682">quem</span><span class="w" data-s="37.923">vai</span></div></div>
+<div class="cap clip" data-start="38.122" data-duration="0.721" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="38.162">utilizá-la.</span></div></div>
+<div class="cap clip" data-start="38.843" data-duration="0.879" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="38.883">É</span><span class="w" data-s="39.042">essa</span><span class="w" data-s="39.282">combinação</span></div></div>
+<div class="cap clip" data-start="39.722" data-duration="1.041" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="39.762">de</span><span class="w" data-s="40.002">referência</span></div></div>
+<div class="cap clip" data-start="40.763" data-duration="0.959" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="40.803">implementação</span><span class="w" data-s="41.522">e</span></div></div>
+<div class="cap clip" data-start="41.722" data-duration="0.961" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="41.762">testes</span><span class="w" data-s="42.242">que</span><span class="w" data-s="42.402">faz</span></div></div>
+<div class="cap clip" data-start="42.683" data-duration="0.639" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="42.723">diferença.</span></div></div>
+<div class="cap clip" data-start="43.322" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="43.362">Quer</span><span class="w" data-s="43.682">conhecer</span><span class="w" data-s="44.082">esse</span></div></div>
+<div class="cap clip" data-start="44.202" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="44.242">fluxo</span><span class="w" data-s="44.643">de</span><span class="w" data-s="44.723">criação?</span></div></div>
+<div class="cap clip" data-start="45.242" data-duration="1.281" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="45.282">Comenta</span><span class="w" data-s="45.842">interface</span></div></div>
+<div class="cap clip" data-start="46.523" data-duration="1.385" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="46.563">aqui</span><span class="w" data-s="46.723">embaixo.</span></div></div>
+  </div>
+  <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="48.900" data-track-index="10" data-volume="1"></audio>
+</div>
+<script>
+/* Runtime motion helpers — deterministic, seek-safe (all tweens live on one paused timeline). */
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  window.tl = tl;
+  const $ = (s) => (typeof s === "string" ? document.querySelectorAll(s) : s);
+  const E = { o: "power3.out", o4: "power4.out", io: "power2.inOut", back: "back.out(1.7)", soft: "sine.inOut", expo: "expo.out" };
+  window.E = E;
+  const FROM = {
+    up: { y: 70, opacity: 0 }, down: { y: -70, opacity: 0 }, left: { x: -110, opacity: 0 }, right: { x: 110, opacity: 0 },
+    pop: { scale: 0.55, opacity: 0 }, zoom: { scale: 1.25, opacity: 0 }, fade: { opacity: 0 }, rise: { y: 140, opacity: 0, scale: 0.94 },
+    slam: { scale: 1.9, opacity: 0, rotation: -6 }, flip: { rotationX: -80, opacity: 0, y: 40, transformPerspective: 900 },
+    wipe: { clipPath: "inset(0 100% 0 0)" }, drop: { y: -160, opacity: 0, rotation: -8 },
+  };
+  const TO = { y: 0, x: 0, opacity: 1, scale: 1, rotation: 0, rotationX: 0, clipPath: "inset(0 0% 0 0)" };
+  // entrance
+  window.inn = (sel, t, k = "up", d, extra) => {
+    const f = FROM[k] || FROM.up;
+    const to = {};
+    for (const key in f) to[key] = TO[key];
+    if (f.transformPerspective) delete to.transformPerspective;
+    const ease = k === "pop" || k === "drop" ? E.back : k === "slam" ? "back.out(1.4)" : k === "wipe" ? E.io : E.o;
+    tl.fromTo(sel, { ...f }, { ...to, duration: d || (k === "slam" ? 0.45 : k === "wipe" ? 0.7 : 0.6), ease, stagger: extra && extra.stagger, immediateRender: true }, t);
+  };
+  // exit
+  window.out = (sel, t, k = "fade", d = 0.35) => {
+    const to = k === "down" ? { y: 60, opacity: 0 } : k === "up" ? { y: -60, opacity: 0 } : k === "shrink" ? { scale: 0.8, opacity: 0 } : k === "left" ? { x: -120, opacity: 0 } : { opacity: 0 };
+    tl.to(sel, { ...to, duration: d, ease: "power2.in" }, t);
+  };
+  window.set = (sel, vars, t) => tl.set(sel, vars, t);
+  window.to = (sel, vars, t) => tl.to(sel, vars, t);
+  window.fromTo = (sel, a, b, t) => tl.fromTo(sel, a, { immediateRender: false, ...b }, t);
+  // typewriter (text stored in data-text)
+  window.type = (sel, t, d) => {
+    $(sel).forEach((el) => {
+      const full = el.getAttribute("data-text") || el.textContent;
+      el.textContent = "";
+      const p = { n: 0 };
+      tl.to(p, { n: full.length, duration: d || Math.max(0.3, full.length * 0.035), ease: "none",
+        onUpdate: () => { el.textContent = full.slice(0, Math.round(p.n)); } }, t);
+    });
+  };
+  // number counter; fmt: (v)=>string
+  const FMT = {
+    int: (v) => Math.round(v).toLocaleString("pt-BR"),
+    mil: (v) => Math.round(v) + " mil",
+    time: (v) => { const s = Math.round(v); return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); },
+    pct: (v) => Math.round(v) + "%",
+    plus: (v) => "+" + Math.round(v),
+  };
+  window.count = (sel, t, d, from, toV, fmt = "int") => {
+    $(sel).forEach((el) => {
+      const p = { v: from }; const f = FMT[fmt] || FMT.int;
+      el.textContent = f(from);
+      tl.to(p, { v: toV, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = f(p.v); } }, t);
+    });
+  };
+  // svg stroke draw
+  window.draw = (sel, t, d = 0.8, ease = "power2.inOut") => {
+    $(sel).forEach((p) => {
+      const L = p.getTotalLength ? p.getTotalLength() : 1000;
+      tl.fromTo(p, { strokeDasharray: `${L} ${L}`, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease, immediateRender: true }, t);
+    });
+  };
+  window.pulse = (sel, t, s = 1.1, d = 0.5) => {
+    tl.fromTo(sel, { scale: 1 }, { scale: s, duration: d / 2, yoyo: true, repeat: 1, ease: E.soft, immediateRender: false }, t);
+  };
+  window.shake = (sel, t) => {
+    tl.fromTo(sel, { x: 0 }, { keyframes: { x: [0, -14, 12, -9, 6, -3, 0] }, duration: 0.42, ease: "none", immediateRender: false }, t);
+  };
+  window.strike = (sel, t, d = 0.35) => tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: d, ease: E.io, transformOrigin: "left center", immediateRender: true }, t);
+  window.glow = (sel, t, color, d = 0.4) => tl.to(sel, { boxShadow: `0 0 0 4px ${color}, 0 0 70px ${color}`, duration: d, ease: E.o }, t);
+  window.unglow = (sel, t, d = 0.4) => tl.to(sel, { boxShadow: "0 0 0 0px rgba(0,0,0,0), 0 20px 50px rgba(0,0,0,0.55)", duration: d }, t);
+  window.color = (sel, t, c, d = 0.25) => tl.to(sel, { color: c, duration: d }, t);
+  window.bgc = (sel, t, c, d = 0.3) => tl.to(sel, { backgroundColor: c, duration: d }, t);
+  // scene wrapper choreography
+  window.scene = (id, t0, t1, opt = {}) => {
+    const inner = `#${id} > .inner`, cam = `#${id} .cam`;
+    const kin = opt.in || "rise";
+    if (kin !== "none") {
+      const f = kin === "zoom" ? { scale: 1.12, opacity: 0 } : kin === "left" ? { x: 160, opacity: 0 } : kin === "cut" ? { opacity: 0 } : { y: 120, scale: 0.97, opacity: 0 };
+      tl.fromTo(inner, f, { x: 0, y: 0, scale: 1, opacity: 1, duration: kin === "cut" ? 0.08 : 0.55, ease: E.o4, immediateRender: true }, t0);
+    }
+    if (!opt.last) tl.to(inner, { opacity: 0, scale: 0.965, y: -50, duration: 0.32, ease: "power2.in" }, t1 - 0.32);
+    const push = opt.push === undefined ? 0.035 : opt.push;
+    tl.fromTo(cam, { scale: 1 }, { scale: 1 + push, duration: Math.max(0.5, t1 - t0), ease: "none", immediateRender: true }, t0);
+  };
+  // captions: data-ws JSON on each .cap: [[start,end,isKey],...]
+  window.captions = () => {
+    document.querySelectorAll(".cap").forEach((cap) => {
+      const t0 = parseFloat(cap.getAttribute("data-start"));
+      const t1 = t0 + parseFloat(cap.getAttribute("data-duration"));
+      const ci = cap.querySelector(".capin");
+      tl.fromTo(ci, { y: 26, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.16, ease: E.o, immediateRender: true }, t0);
+      tl.to(ci, { opacity: 0, duration: 0.08 }, t1 - 0.08);
+      cap.querySelectorAll(".w").forEach((w) => {
+        const s = parseFloat(w.getAttribute("data-s"));
+        tl.to(w, { opacity: 1, duration: 0.08, ease: "none" }, s);
+        if (w.classList.contains("k")) tl.fromTo(w, { scale: 1 }, { scale: 1.12, duration: 0.12, yoyo: true, repeat: 1, ease: E.soft, immediateRender: false }, s);
+      });
+    });
+  };
+  // background drift
+  window.bgDrift = (dur) => {
+    tl.fromTo(".bg-grid", { x: 0, y: 0 }, { x: -72, y: -144, duration: dur, ease: "none", immediateRender: true }, 0);
+    tl.fromTo(".bg-glow.a", { x: 0, y: 0 }, { x: 160, y: 220, duration: dur, ease: "sine.inOut", immediateRender: true }, 0);
+    tl.fromTo(".bg-glow.b", { x: 0, y: 0 }, { x: -200, y: -260, duration: dur, ease: "sine.inOut", immediateRender: true }, 0);
+  };
+  window.tint = (t, c, d = 0.6) => tl.to(".bg-glow.c", { "--tint": c, duration: d }, t);
+})();
+
+/* ENERGIA v2 runtime additions (seek-safe; uses the same global tl) */
+(function () {
+  const css = getComputedStyle(document.documentElement);
+  const capbg = (css.getPropertyValue("--capbg") || "#ff6a3d").trim();
+  const capfg = (css.getPropertyValue("--capfg") || "#0f1115").trim();
+  // captions with a moving highlight pill on the word being spoken
+  window.captions = () => {
+    document.querySelectorAll(".cap").forEach((cap) => {
+      const t0 = parseFloat(cap.getAttribute("data-start"));
+      const t1 = t0 + parseFloat(cap.getAttribute("data-duration"));
+      const ci = cap.querySelector(".capin");
+      tl.fromTo(ci, { scale: 0.7, y: 30, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.22, ease: "back.out(2.2)", immediateRender: true }, t0);
+      tl.to(ci, { opacity: 0, duration: 0.06 }, t1 - 0.06);
+      const ws = [...cap.querySelectorAll(".w")];
+      ws.forEach((w, i) => {
+        const s = parseFloat(w.getAttribute("data-s"));
+        const e = i + 1 < ws.length ? parseFloat(ws[i + 1].getAttribute("data-s")) : t1;
+        const base = getComputedStyle(w).color;
+        tl.fromTo(w, { backgroundColor: "rgba(0,0,0,0)" }, { backgroundColor: capbg, color: capfg, duration: 0.05, immediateRender: false }, s);
+        tl.fromTo(w, { scale: 1 }, { scale: 1.12, duration: 0.09, yoyo: true, repeat: 1, ease: "sine.out", immediateRender: false }, s);
+        if (e - s > 0.05) tl.to(w, { backgroundColor: "rgba(0,0,0,0)", color: base, duration: 0.05 }, e - 0.02);
+      });
+    });
+  };
+  // full-frame diagonal swipe transition
+  window.swipe = (id, t, d = 0.5) => {
+    tl.fromTo(`#${id}`, { xPercent: -130, skewX: -12 }, { xPercent: 130, skewX: -12, duration: d, ease: "power2.inOut", immediateRender: true }, t - d / 2);
+  };
+  // camera punch-in on a keyword (on scene .cam is already used; punch a wrapper)
+  window.punch = (sel, t, amt = 0.06) => {
+    tl.fromTo(sel, { scale: 1 }, { scale: 1 + amt, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, t);
+  };
+  // deterministic particle burst from the centre of a container
+  window.burst = (sel, t, n = 26, colors = ["#ff6a3d", "#ffd23f", "#2f7bff", "#22c55e", "#ffffff"]) => {
+    const host = document.querySelector(sel); if (!host) return;
+    let seed = 11; const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < n; i++) {
+      const p = document.createElement("i");
+      p.style.left = "50%"; p.style.top = "50%"; p.style.background = colors[i % colors.length]; p.style.opacity = 0;
+      host.appendChild(p);
+      const a = r() * Math.PI * 2, dist = 220 + r() * 380;
+      tl.fromTo(p, { x: 0, y: 0, opacity: 1, rotation: 0, scale: 0.6 + r() },
+        { x: Math.cos(a) * dist, y: Math.sin(a) * dist + 120, rotation: r() * 540, opacity: 0, duration: 1.1 + r() * 0.5, ease: "power3.out", immediateRender: false }, t);
+    }
+  };
+  window.progress = (dur) => tl.fromTo(".progress", { scaleX: 0 }, { scaleX: 1, duration: dur, ease: "none", immediateRender: true }, 0);
+  // floating drift for decorative items
+  window.floaty = (sel, t, d, amp = 18) => tl.fromTo(sel, { y: -amp }, { y: amp, duration: d, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, t);
+})();
+
+// s1
+scene("s1", 0.000, 5.850, {"in":"none","push":0.04,"last":false});
+
+fromTo("#s1-p",{y:-40,scale:1.05},{y:0,scale:1,duration:.5,ease:E.o},0);
+type("#s1-tx",0.05,2.92);
+inn("#s1-wf",1.12,"rise",.55);
+inn("#s1-q",3.36,"slam");
+shake("#s1-wf",3.76);
+inn("#s1-g",4.4,"pop",.4);
+
+// s2
+scene("s2", 5.850, 11.400, {"in":"zoom","push":0.04,"last":false});
+
+inn("#s2-h",5.92,"up",.45);
+inn("#s2-z",7.340000000000001,"pop",.4);
+inn("#s2-long",8.96,"rise",.5);
+strike("#s2-x",10.24,.45);
+to("#s2-long",{opacity:.45,scale:.95,duration:.4},10.96);
+
+// s3
+scene("s3", 11.350, 15.700, {"in":"left","push":0.04,"last":false});
+
+inn("#s3-st",12.06,"slam");
+inn("#s3-link",12.64,"left",.4);
+fromTo("#s3-ref",{opacity:0,y:200,rotation:-6,scale:.9},{opacity:1,y:0,rotation:-2,scale:1,duration:.65,ease:E.back},13.16);
+inn("#s3-ok",13.92,"pop",.4);
+
+// s4
+scene("s4", 15.650, 23.000, {"in":"rise","push":0.03,"last":false});
+
+inn("#s4-ref",15.68,"rise",.5);
+fromTo("#s4-scan",{y:-90},{y:460,duration:1.0,ease:"power1.inOut"},17.02);
+inn("#s4-b0",18.32,"pop",.35);inn("#s4-b1",18.50,"pop",.35);inn("#s4-b2",18.68,"pop",.35);inn("#s4-b3",18.86,"pop",.35);
+inn("#s4-ar",20.650000000000002,"down",.35);
+fromTo("#s4-code",{opacity:0,clipPath:"inset(0 0 100% 0)"},{opacity:1,clipPath:"inset(0 0 0% 0)",duration:.9,ease:"power2.out"},20.8);
+pulse("#s4-code",22.24,1.04,.4);
+
+// s5
+scene("s5", 22.950, 28.700, {"in":"left","push":0.03,"last":false});
+
+inn("#s5-h",22.962,"up",.45);
+inn("#s5-btn",24.202,"pop",.4);
+inn("#s5-pan",24.402,"rise",.5);
+fromTo("#s5-k0",{x:0},{x:360,duration:.5,ease:E.o},26.242);to("#s5-btn",{borderRadius:"65px",width:520,duration:.5,ease:E.back},26.242);
+fromTo("#s5-k1",{x:0},{x:300,duration:.5,ease:E.o},27.042);to("#s5-btn",{backgroundColor:"#2f7bff",boxShadow:"0 20px 40px rgba(47,123,255,.4)",duration:.5},27.042);
+fromTo("#s5-k2",{x:0},{x:400,duration:.5,ease:E.o},27.843);fromTo("#s5-btn",{scale:1},{scale:1.08,duration:.18,yoyo:true,repeat:3,ease:E.soft,immediateRender:false},27.943);
+
+// s6
+scene("s6", 28.650, 33.100, {"in":"zoom","push":0.05,"last":false});
+
+inn("#s6-pg",28.802,"rise",.5);
+inn("#s6-w",29.393,"pop",.4);
+to("#s6-w",{opacity:0,y:-30,duration:.3},30.442);
+inn("#s6-h1",30.592,"slam");
+inn("#s6-h2",32.542,"slam");
+inn("#s6-bug",32.742000000000004,"pop",.4);
+shake("#s6-pg",32.792);
+
+// s7
+scene("s7", 33.050, 38.900, {"in":"left","push":0.03,"last":false});
+
+fromTo("#s7-ph",{opacity:0,scale:2.2,y:200},{opacity:1,scale:1,y:0,duration:.7,ease:E.o4},34.783);
+inn("#s7-i0",34.06,"left",.4);
+inn("#s7-i1",35.42,"left",.4);
+inn("#s7-i2",36.94,"left",.4);
+
+// s8
+scene("s8", 38.850, 43.400, {"in":"zoom","push":0.04,"last":false});
+
+inn("#s8-h",38.883,"up",.45);
+fromTo("#s8-a",{x:-300,opacity:0},{x:0,opacity:1,duration:.5,ease:E.back},39.902);
+fromTo("#s8-b",{x:300,opacity:0},{x:0,opacity:1,duration:.5,ease:E.back},40.702999999999996);
+fromTo("#s8-c",{y:300,opacity:0},{y:0,opacity:1,duration:.5,ease:E.back},41.662);
+burst("#s8-burst",42.723,24);
+
+// s9
+scene("s9", 43.350, 48.900, {"in":"zoom","push":0.03,"last":true});
+
+inn("#s9-pre",43.312000000000005,"slam");
+inn("#s9-k",45.181999999999995,"pop",.35);
+inn("#s9-word",45.821999999999996,"slam");
+burst("#s9-burst",45.891999999999996,34);
+fromTo("#s9-word",{rotation:0},{keyframes:{rotation:[0,-3,3,-2,0]},duration:.5,ease:"none"},46.242);
+inn("#s9-box",45.942,"up",.4);type("#s9-tx",46.092,.4);
+inn("#s9-dn",46.673,"drop",.4);
+fromTo("#s9-dn",{y:0},{y:26,duration:.32,yoyo:true,repeat:9,ease:"sine.inOut",immediateRender:false},47.123);
+
+swipe("sw0", 5.870, 0.5);
+swipe("sw1", 11.390, 0.5);
+swipe("sw2", 15.630, 0.5);
+swipe("sw3", 22.912, 0.5);
+swipe("sw4", 28.752, 0.5);
+swipe("sw5", 33.152, 0.5);
+swipe("sw6", 38.833, 0.5);
+swipe("sw7", 43.312, 0.5);
+progress(48.900);
+
+captions();
+bgDrift(48.900);
+tl.set({}, {}, 48.900);
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,472 @@
+[
+{
+"text": "Você",
+"start": 0.0,
+"end": 0.45
+},
+{
+"text": "ainda",
+"start": 0.48,
+"end": 0.8
+},
+{
+"text": "está",
+"start": 0.8,
+"end": 0.96
+},
+{
+"text": "fazendo",
+"start": 0.96,
+"end": 1.44
+},
+{
+"text": "manualmente",
+"start": 1.44,
+"end": 2.08
+},
+{
+"text": "tarefas",
+"start": 2.08,
+"end": 2.64
+},
+{
+"text": "que",
+"start": 2.64,
+"end": 2.8
+},
+{
+"text": "poderia",
+"start": 2.8,
+"end": 3.28
+},
+{
+"text": "executar",
+"start": 3.28,
+"end": 3.84
+},
+{
+"text": "com",
+"start": 3.84,
+"end": 4.0
+},
+{
+"text": "um",
+"start": 4.0,
+"end": 4.16
+},
+{
+"text": "agente",
+"start": 4.16,
+"end": 4.56
+},
+{
+"text": "de",
+"start": 4.56,
+"end": 4.64
+},
+{
+"text": "inteligência",
+"start": 4.64,
+"end": 5.28
+},
+{
+"text": "artificial?",
+"start": 5.28,
+"end": 6.4
+},
+{
+"text": "Algumas",
+"start": 6.4,
+"end": 6.88
+},
+{
+"text": "ferramentas",
+"start": 6.88,
+"end": 7.52
+},
+{
+"text": "de",
+"start": 7.52,
+"end": 7.6
+},
+{
+"text": "desenvolvimento",
+"start": 7.6,
+"end": 8.48
+},
+{
+"text": "já",
+"start": 8.48,
+"end": 8.72
+},
+{
+"text": "permitem",
+"start": 8.72,
+"end": 9.2
+},
+{
+"text": "iniciar",
+"start": 9.2,
+"end": 9.68
+},
+{
+"text": "processos",
+"start": 9.68,
+"end": 10.24
+},
+{
+"text": "diretamente",
+"start": 10.24,
+"end": 10.88
+},
+{
+"text": "pelo",
+"start": 10.88,
+"end": 11.2
+},
+{
+"text": "terminal.",
+"start": 11.2,
+"end": 12.0
+},
+{
+"text": "Você",
+"start": 12.0,
+"end": 12.32
+},
+{
+"text": "instala",
+"start": 12.32,
+"end": 12.72
+},
+{
+"text": "a",
+"start": 12.72,
+"end": 12.8
+},
+{
+"text": "ferramenta,",
+"start": 12.8,
+"end": 13.44
+},
+{
+"text": "fornece",
+"start": 13.44,
+"end": 14.0
+},
+{
+"text": "as",
+"start": 14.0,
+"end": 14.16
+},
+{
+"text": "instruções",
+"start": 14.16,
+"end": 14.72
+},
+{
+"text": "e",
+"start": 14.72,
+"end": 14.96
+},
+{
+"text": "acompanha",
+"start": 14.96,
+"end": 15.52
+},
+{
+"text": "a",
+"start": 15.52,
+"end": 15.68
+},
+{
+"text": "execução",
+"start": 15.68,
+"end": 16.16
+},
+{
+"text": "das",
+"start": 16.16,
+"end": 16.32
+},
+{
+"text": "tarefas.",
+"start": 16.32,
+"end": 17.12
+},
+{
+"text": "A",
+"start": 17.12,
+"end": 17.36
+},
+{
+"text": "grande",
+"start": 17.36,
+"end": 17.68
+},
+{
+"text": "vantagem",
+"start": 17.68,
+"end": 18.24
+},
+{
+"text": "é",
+"start": 18.24,
+"end": 18.48
+},
+{
+"text": "combinar",
+"start": 18.48,
+"end": 18.96
+},
+{
+"text": "comandos,",
+"start": 18.96,
+"end": 19.6
+},
+{
+"text": "arquivos",
+"start": 19.6,
+"end": 20.16
+},
+{
+"text": "e",
+"start": 20.16,
+"end": 20.32
+},
+{
+"text": "verificações",
+"start": 20.32,
+"end": 21.12
+},
+{
+"text": "em",
+"start": 21.12,
+"end": 21.36
+},
+{
+"text": "um",
+"start": 21.36,
+"end": 21.52
+},
+{
+"text": "mesmo",
+"start": 21.52,
+"end": 21.76
+},
+{
+"text": "fluxo",
+"start": 21.76,
+"end": 22.24
+},
+{
+"text": "de",
+"start": 22.24,
+"end": 22.4
+},
+{
+"text": "trabalho.",
+"start": 22.4,
+"end": 23.17
+},
+{
+"text": "Mas",
+"start": 23.177,
+"end": 23.498
+},
+{
+"text": "existe",
+"start": 23.498,
+"end": 24.058
+},
+{
+"text": "uma",
+"start": 24.058,
+"end": 24.217
+},
+{
+"text": "diferença",
+"start": 24.217,
+"end": 24.938
+},
+{
+"text": "importante.",
+"start": 24.938,
+"end": 25.737
+},
+{
+"text": "Gerar",
+"start": 25.737,
+"end": 26.217
+},
+{
+"text": "código",
+"start": 26.217,
+"end": 26.777
+},
+{
+"text": "não",
+"start": 26.777,
+"end": 27.097
+},
+{
+"text": "significa",
+"start": 27.097,
+"end": 27.577
+},
+{
+"text": "que",
+"start": 27.577,
+"end": 27.818
+},
+{
+"text": "tudo",
+"start": 27.818,
+"end": 28.137
+},
+{
+"text": "está",
+"start": 28.137,
+"end": 28.378
+},
+{
+"text": "funcionando.",
+"start": 28.378,
+"end": 29.257
+},
+{
+"text": "Por",
+"start": 29.257,
+"end": 29.497
+},
+{
+"text": "isso,",
+"start": 29.497,
+"end": 29.737
+},
+{
+"text": "o",
+"start": 29.737,
+"end": 29.898
+},
+{
+"text": "ideal",
+"start": 29.898,
+"end": 30.297
+},
+{
+"text": "é",
+"start": 30.297,
+"end": 30.537
+},
+{
+"text": "utilizar",
+"start": 30.537,
+"end": 30.938
+},
+{
+"text": "ferramentas",
+"start": 30.938,
+"end": 31.497
+},
+{
+"text": "que",
+"start": 31.497,
+"end": 31.658
+},
+{
+"text": "permitam",
+"start": 31.658,
+"end": 32.137
+},
+{
+"text": "executar,",
+"start": 32.137,
+"end": 32.938
+},
+{
+"text": "testar",
+"start": 32.938,
+"end": 33.497
+},
+{
+"text": "e",
+"start": 33.497,
+"end": 33.738
+},
+{
+"text": "corrigir",
+"start": 33.738,
+"end": 34.377
+},
+{
+"text": "o",
+"start": 34.377,
+"end": 34.457
+},
+{
+"text": "resultado.",
+"start": 34.457,
+"end": 35.337
+},
+{
+"text": "Quer",
+"start": 35.337,
+"end": 35.657
+},
+{
+"text": "conhecer",
+"start": 35.657,
+"end": 36.137
+},
+{
+"text": "mais",
+"start": 36.137,
+"end": 36.377
+},
+{
+"text": "ferramentas",
+"start": 36.377,
+"end": 36.858
+},
+{
+"text": "para",
+"start": 36.858,
+"end": 37.017
+},
+{
+"text": "acelerar",
+"start": 37.017,
+"end": 37.577
+},
+{
+"text": "seu",
+"start": 37.577,
+"end": 37.818
+},
+{
+"text": "desenvolvimento?",
+"start": 37.818,
+"end": 38.777
+},
+{
+"text": "Comenta",
+"start": 38.777,
+"end": 39.337
+},
+{
+"text": "código",
+"start": 39.337,
+"end": 39.817
+},
+{
+"text": "aqui",
+"start": 39.817,
+"end": 40.057
+},
+{
+"text": "embaixo.",
+"start": 40.057,
+"end": 40.594
+}
+]

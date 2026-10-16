@@ -10,7 +10,8 @@ const LUCIDE = "/root/assets/node_modules/lucide-static/icons";
 const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "");
 
 export class Video {
-  constructor({ id, title, wordsPath, fixes = {}, keywords = [], audioDur, accent = "#22d3ee", capKey = "#22d3ee" }) {
+  constructor({ id, title, wordsPath, fixes = {}, keywords = [], audioDur, accent = "#22d3ee", capKey = "#22d3ee", kit2 = false, theme = "dark", capMaxWords = 4, capMaxChars = 24, vars = {} }) {
+    this.kit2 = kit2; this.theme = theme; this.capMaxWords = capMaxWords; this.capMaxChars = capMaxChars; this.vars = vars; this.swipes = [];
     this.id = id; this.title = title; this.accent = accent; this.capKey = capKey;
     const raw = JSON.parse(fs.readFileSync(wordsPath, "utf8"));
     // fixes: { "rawText@index" | "rawText": "fixed" }  (display only; timing untouched)
@@ -34,10 +35,20 @@ export class Video {
   at(phrase, nth = 1) { return +this.words[this.find(phrase, nth)].start.toFixed(3); }
   end(phrase, nth = 1) { const i = this.find(phrase, nth) + phrase.split(/\s+/).filter(Boolean).length - 1; return +this.words[i].end.toFixed(3); }
   // --- sfx cue registry ---
+  swipe(t, color = "var(--a1)", d = 0.5) { this.swipes.push({ t, color, d }); this.sfx("whoosh", t - d / 2, 0.55); this.cues[this.cues.length - 1].sw = true; return ""; }
   sfx(type, t, gain = 1) { this.cues.push({ type, t: +(+t).toFixed(3), gain }); return ""; }
   // --- scenes ---
   scene({ id, t0, t1, html, js = "", in: kin = "rise", push, last = false, cls = "" }) {
     this.scenes.push({ id, t0, t1, html, js, kin, push, last, cls });
+    // sanity check: every cue/tween time written for this scene should fall inside it
+    // (catches anchors like at("detalhe") that resolve to an earlier occurrence of the word)
+    const lo = Math.max(0, t0) - 0.4, hi = (last ? this.dur : t1) + 0.4, bad = [];
+    for (const c of this.cues.slice(this._cueMark || 0)) if (!c.sw && (c.t < lo || c.t > hi)) bad.push(`sfx ${c.type}@${c.t}`);
+    for (const m of js.matchAll(/\("#[^"]+",\s*(-?\d+(?:\.\d+)?)|\},\s*(-?\d+(?:\.\d+)?)\)/g)) {
+      const v = +(m[1] ?? m[2]); if (v < lo || v > hi) bad.push(`tween@${v}`);
+    }
+    if (bad.length) console.warn(`[${this.id}] scene ${id} (${t0}-${last ? this.dur : t1}) has out-of-range times: ${bad.join(", ")}`);
+    this._cueMark = this.cues.length;
   }
   // --- captions ---
   captionGroups() {
@@ -47,7 +58,7 @@ export class Video {
       const w = this.words[i];
       const chars = cur.reduce((a, x) => a + x.disp.length + 1, 0) + w.disp.length;
       const gap = cur.length ? w.start - cur[cur.length - 1].end : 0;
-      if (cur.length && (chars > 24 || cur.length >= 4 || gap > 0.32)) flush();
+      if (cur.length && (chars > this.capMaxChars || cur.length >= this.capMaxWords || gap > 0.32)) flush();
       cur.push(w);
       if (/[.?!,;:]$/.test(w.text) && cur.length >= 1) {
         const nxt = this.words[i + 1];
@@ -79,13 +90,31 @@ export class Video {
   }
   // --- emit ---
   write(projectDir, { audioSrc = "assets/mix.wav" } = {}) {
-    const css = fs.readFileSync(path.join(HERE, "base.css"), "utf8") + "\n" + this.extraCss;
+    const css = fs.readFileSync(path.join(HERE, "base.css"), "utf8") + "\n" + (this.kit2 ? fs.readFileSync(path.join(HERE, "base2.css"), "utf8") : "") + "\n" + this.extraCss;
+    const fx2 = this.kit2 ? fs.readFileSync(path.join(HERE, "fx2.js"), "utf8") : "";
+    const varsCss = Object.entries(this.vars).map(([k, v]) => `--${k}: ${v};`).join(" ");
+    const swipeHtml = this.swipes.map((w, i) => `<div class="swipe" id="sw${i}" style="background:${w.color}"></div>`).join("");
+    const swipeJs = this.swipes.map((w, i) => `swipe("sw${i}", ${w.t.toFixed(3)}, ${w.d || 0.5});`).join("\n");
     const fx = fs.readFileSync(path.join(HERE, "fx.js"), "utf8");
     const D = this.dur;
-    const scenesHtml = this.scenes.map((s, i) => {
+    let scenesHtml = this.scenes.map((s, i) => {
       const t0 = Math.max(0, s.t0), t1 = s.last ? D : s.t1;
       return `<section id="${s.id}" class="scene clip ${s.cls}" data-start="${t0.toFixed(3)}" data-duration="${(t1 - t0).toFixed(3)}" data-track-index="${1 + (i % 2)}"><div class="inner"><div class="cam" style="position:absolute;inset:0">${s.html}</div></div></section>`;
     }).join("\n");
+    if (this.kit2) {
+      // fromTo() entrances don't render before their start time (immediateRender:false), so an
+      // element that enters from opacity:0 must start hidden inline or it flashes at scene start.
+      const allJs = this.scenes.map((s) => s.js).join("\n");
+      const ids = new Set();
+      for (const m of allJs.matchAll(/fromTo\("#([\w-]+)",\s*\{([^}]*)\}/g)) if (/opacity:\s*0(?![.\d])/.test(m[2])) ids.add(m[1]);
+      for (const id of ids) {
+        scenesHtml = scenesHtml.replace(new RegExp(`(<[a-z]+\\b[^>]*?\\sid="${id}")([^>]*)>`), (all, head, rest) => {
+          const tag = head + rest;
+          if (/style="/.test(tag)) return tag.replace(/style="/, 'style="opacity:0;') + ">";
+          return tag + ' style="opacity:0">';
+        });
+      }
+    }
     const scenesJs = this.scenes.map((s) => {
       const t0 = Math.max(0, s.t0), t1 = s.last ? D : s.t1;
       return `// ${s.id}\nscene(${JSON.stringify(s.id)}, ${t0.toFixed(3)}, ${t1.toFixed(3)}, ${JSON.stringify({ in: s.kin, push: s.push, last: s.last })});\n${s.js}`;
@@ -99,15 +128,17 @@ export class Video {
 <script src="assets/gsap.min.js"></script>
 <style>
 ${css}
-:root { --accent: ${this.accent}; --capk: ${this.capKey}; }
+:root { --accent: ${this.accent}; --capk: ${this.capKey}; ${varsCss} }
 </style>
 </head>
-<body>
+<body class="theme-${this.theme}">
 <div id="root" data-composition-id="main" data-start="0" data-duration="${D.toFixed(3)}" data-width="1080" data-height="1920">
   <div class="bg"><div class="bg-grid"></div><div class="bg-glow a"></div><div class="bg-glow b"></div><div class="bg-glow c"></div></div>
 ${scenesHtml}
   ${this.overlayHtml}
   <div class="vignette"></div>
+  ${swipeHtml}
+  ${this.kit2 ? '<div class="progress"></div>' : ""}
   <div class="caps">
 ${this.captionsHtml()}
   </div>
@@ -115,7 +146,10 @@ ${this.captionsHtml()}
 </div>
 <script>
 ${fx}
+${fx2}
 ${scenesJs}
+${swipeJs}
+${this.kit2 ? `progress(${D.toFixed(3)});` : ""}
 ${this.extraJs.join("\n")}
 captions();
 bgDrift(${D.toFixed(3)});
@@ -131,7 +165,7 @@ window.__timelines["main"] = tl;
     fs.writeFileSync(path.join(projectDir, "legendas.srt"), this.transcriptSrt());
     // stage shared assets
     const A = path.join(projectDir, "assets");
-    for (const sub of ["fonts", "logos", "photos", "video"]) cpDir(path.join(TOOL, "shared", sub), path.join(A, sub));
+    for (const sub of ["fonts", "logos", "photos", "photos2", "video"]) cpDir(path.join(TOOL, "shared", sub), path.join(A, sub));
     fs.copyFileSync(path.join(TOOL, "shared", "gsap.min.js"), path.join(A, "gsap.min.js"));
     console.log(`[${this.id}] wrote ${this.scenes.length} scenes, ${this.captionGroups().length} caption groups, ${this.cues.length} sfx cues`);
   }

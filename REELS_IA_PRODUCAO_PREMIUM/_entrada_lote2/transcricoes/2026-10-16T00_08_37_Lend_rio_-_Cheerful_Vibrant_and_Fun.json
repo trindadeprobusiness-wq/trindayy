@@ -1,0 +1,792 @@
+[
+{
+"text": "Você",
+"start": 0.0,
+"end": 0.45
+},
+{
+"text": "ainda",
+"start": 0.48,
+"end": 0.72
+},
+{
+"text": "acha",
+"start": 0.72,
+"end": 1.04
+},
+{
+"text": "que",
+"start": 1.04,
+"end": 1.2
+},
+{
+"text": "precisa",
+"start": 1.2,
+"end": 1.6
+},
+{
+"text": "pagar",
+"start": 1.6,
+"end": 2.0
+},
+{
+"text": "caro",
+"start": 2.0,
+"end": 2.32
+},
+{
+"text": "em",
+"start": 2.32,
+"end": 2.48
+},
+{
+"text": "qualquer",
+"start": 2.48,
+"end": 2.96
+},
+{
+"text": "ferramenta",
+"start": 2.96,
+"end": 3.44
+},
+{
+"text": "de",
+"start": 3.44,
+"end": 3.6
+},
+{
+"text": "design?",
+"start": 3.6,
+"end": 4.56
+},
+{
+"text": "Existe",
+"start": 4.56,
+"end": 5.12
+},
+{
+"text": "um",
+"start": 5.12,
+"end": 5.36
+},
+{
+"text": "universo",
+"start": 5.36,
+"end": 5.84
+},
+{
+"text": "de",
+"start": 5.84,
+"end": 6.0
+},
+{
+"text": "projetos",
+"start": 6.0,
+"end": 6.56
+},
+{
+"text": "gratuitos",
+"start": 6.56,
+"end": 7.2
+},
+{
+"text": "e",
+"start": 7.2,
+"end": 7.28
+},
+{
+"text": "de",
+"start": 7.28,
+"end": 7.44
+},
+{
+"text": "código",
+"start": 7.44,
+"end": 7.92
+},
+{
+"text": "aberto",
+"start": 7.92,
+"end": 8.4
+},
+{
+"text": "que",
+"start": 8.4,
+"end": 8.64
+},
+{
+"text": "muita",
+"start": 8.64,
+"end": 8.96
+},
+{
+"text": "gente",
+"start": 8.96,
+"end": 9.28
+},
+{
+"text": "ainda",
+"start": 9.28,
+"end": 9.6
+},
+{
+"text": "não",
+"start": 9.6,
+"end": 9.76
+},
+{
+"text": "conhece.",
+"start": 9.76,
+"end": 10.48
+},
+{
+"text": "E",
+"start": 10.48,
+"end": 10.72
+},
+{
+"text": "alguns",
+"start": 10.72,
+"end": 11.04
+},
+{
+"text": "deles",
+"start": 11.04,
+"end": 11.44
+},
+{
+"text": "estão",
+"start": 11.44,
+"end": 11.68
+},
+{
+"text": "ganhando",
+"start": 11.68,
+"end": 12.08
+},
+{
+"text": "destaque",
+"start": 12.08,
+"end": 12.64
+},
+{
+"text": "no",
+"start": 12.64,
+"end": 12.8
+},
+{
+"text": "GitHub.",
+"start": 12.8,
+"end": 13.68
+},
+{
+"text": "A",
+"start": 13.68,
+"end": 13.84
+},
+{
+"text": "proposta",
+"start": 13.84,
+"end": 14.32
+},
+{
+"text": "é",
+"start": 14.32,
+"end": 14.48
+},
+{
+"text": "oferecer",
+"start": 14.48,
+"end": 15.04
+},
+{
+"text": "alternativas",
+"start": 15.04,
+"end": 15.76
+},
+{
+"text": "para",
+"start": 15.76,
+"end": 16.0
+},
+{
+"text": "determinadas",
+"start": 16.0,
+"end": 16.64
+},
+{
+"text": "tarefas",
+"start": 16.64,
+"end": 17.12
+},
+{
+"text": "criativas",
+"start": 17.12,
+"end": 17.92
+},
+{
+"text": "sem",
+"start": 17.92,
+"end": 18.16
+},
+{
+"text": "depender",
+"start": 18.16,
+"end": 18.72
+},
+{
+"text": "exclusivamente",
+"start": 18.72,
+"end": 19.52
+},
+{
+"text": "de",
+"start": 19.52,
+"end": 19.68
+},
+{
+"text": "softwares",
+"start": 19.68,
+"end": 20.24
+},
+{
+"text": "comerciais.",
+"start": 20.24,
+"end": 21.087
+},
+{
+"text": "E",
+"start": 21.087,
+"end": 21.327
+},
+{
+"text": "o",
+"start": 21.327,
+"end": 21.487
+},
+{
+"text": "mais",
+"start": 21.487,
+"end": 21.727
+},
+{
+"text": "interessante",
+"start": 21.727,
+"end": 22.208
+},
+{
+"text": "é",
+"start": 22.208,
+"end": 22.367
+},
+{
+"text": "que",
+"start": 22.367,
+"end": 22.527
+},
+{
+"text": "você",
+"start": 22.527,
+"end": 22.767
+},
+{
+"text": "pode",
+"start": 22.767,
+"end": 23.007
+},
+{
+"text": "encontrar",
+"start": 23.007,
+"end": 23.487
+},
+{
+"text": "projetos",
+"start": 23.487,
+"end": 24.048
+},
+{
+"text": "que",
+"start": 24.048,
+"end": 24.287
+},
+{
+"text": "já",
+"start": 24.287,
+"end": 24.527
+},
+{
+"text": "estão",
+"start": 24.527,
+"end": 24.767
+},
+{
+"text": "preparados",
+"start": 24.767,
+"end": 25.407
+},
+{
+"text": "para",
+"start": 25.407,
+"end": 25.568
+},
+{
+"text": "a",
+"start": 25.568,
+"end": 25.647
+},
+{
+"text": "instalação",
+"start": 25.647,
+"end": 26.287
+},
+{
+"text": "e",
+"start": 26.287,
+"end": 26.528
+},
+{
+"text": "utilização.",
+"start": 26.528,
+"end": 27.487
+},
+{
+"text": "Mas",
+"start": 27.487,
+"end": 27.807
+},
+{
+"text": "tem",
+"start": 27.807,
+"end": 28.048
+},
+{
+"text": "um",
+"start": 28.048,
+"end": 28.207
+},
+{
+"text": "detalhe",
+"start": 28.207,
+"end": 28.687
+},
+{
+"text": "que",
+"start": 28.687,
+"end": 28.847
+},
+{
+"text": "vale",
+"start": 28.847,
+"end": 29.247
+},
+{
+"text": "observar.",
+"start": 29.247,
+"end": 30.048
+},
+{
+"text": "Ser",
+"start": 30.048,
+"end": 30.367
+},
+{
+"text": "gratuito",
+"start": 30.367,
+"end": 31.087
+},
+{
+"text": "não",
+"start": 31.087,
+"end": 31.327
+},
+{
+"text": "significa",
+"start": 31.327,
+"end": 31.888
+},
+{
+"text": "automaticamente",
+"start": 31.888,
+"end": 32.767
+},
+{
+"text": "oferecer",
+"start": 32.767,
+"end": 33.407
+},
+{
+"text": "todos",
+"start": 33.407,
+"end": 33.727
+},
+{
+"text": "os",
+"start": 33.727,
+"end": 33.887
+},
+{
+"text": "recursos",
+"start": 33.887,
+"end": 34.367
+},
+{
+"text": "de",
+"start": 34.367,
+"end": 34.527
+},
+{
+"text": "uma",
+"start": 34.527,
+"end": 34.687
+},
+{
+"text": "ferramenta",
+"start": 34.687,
+"end": 35.247
+},
+{
+"text": "profissional.",
+"start": 35.247,
+"end": 36.527
+},
+{
+"text": "Por",
+"start": 36.527,
+"end": 36.847
+},
+{
+"text": "isso,",
+"start": 36.847,
+"end": 37.247
+},
+{
+"text": "antes",
+"start": 37.247,
+"end": 37.567
+},
+{
+"text": "de",
+"start": 37.567,
+"end": 37.727
+},
+{
+"text": "escolher,",
+"start": 37.727,
+"end": 38.367
+},
+{
+"text": "é",
+"start": 38.367,
+"end": 38.608
+},
+{
+"text": "importante",
+"start": 38.608,
+"end": 38.928
+},
+{
+"text": "conferir",
+"start": 38.928,
+"end": 39.487
+},
+{
+"text": "as",
+"start": 39.487,
+"end": 39.647
+},
+{
+"text": "funcionalidades",
+"start": 39.647,
+"end": 40.527
+},
+{
+"text": "disponíveis,",
+"start": 40.527,
+"end": 41.407
+},
+{
+"text": "a",
+"start": 41.407,
+"end": 41.567
+},
+{
+"text": "compatibilidade",
+"start": 41.567,
+"end": 42.527
+},
+{
+"text": "e",
+"start": 42.527,
+"end": 42.688
+},
+{
+"text": "as",
+"start": 42.688,
+"end": 42.848
+},
+{
+"text": "limitações.",
+"start": 42.848,
+"end": 43.925
+},
+{
+"text": "Dependendo",
+"start": 43.925,
+"end": 44.565
+},
+{
+"text": "do",
+"start": 44.565,
+"end": 44.725
+},
+{
+"text": "seu",
+"start": 44.725,
+"end": 44.965
+},
+{
+"text": "tipo",
+"start": 44.965,
+"end": 45.205
+},
+{
+"text": "de",
+"start": 45.205,
+"end": 45.365
+},
+{
+"text": "trabalho,",
+"start": 45.365,
+"end": 45.925
+},
+{
+"text": "uma",
+"start": 45.925,
+"end": 46.165
+},
+{
+"text": "alternativa",
+"start": 46.165,
+"end": 46.725
+},
+{
+"text": "de",
+"start": 46.725,
+"end": 46.885
+},
+{
+"text": "código",
+"start": 46.885,
+"end": 47.285
+},
+{
+"text": "aberto",
+"start": 47.285,
+"end": 47.765
+},
+{
+"text": "pode",
+"start": 47.765,
+"end": 48.005
+},
+{
+"text": "atender",
+"start": 48.005,
+"end": 48.565
+},
+{
+"text": "boa",
+"start": 48.565,
+"end": 48.885
+},
+{
+"text": "parte",
+"start": 48.885,
+"end": 49.125
+},
+{
+"text": "das",
+"start": 49.125,
+"end": 49.365
+},
+{
+"text": "suas",
+"start": 49.365,
+"end": 49.605
+},
+{
+"text": "necessidades.",
+"start": 49.605,
+"end": 50.565
+},
+{
+"text": "E",
+"start": 50.565,
+"end": 50.725
+},
+{
+"text": "isso",
+"start": 50.725,
+"end": 51.045
+},
+{
+"text": "pode",
+"start": 51.045,
+"end": 51.365
+},
+{
+"text": "fazer",
+"start": 51.365,
+"end": 51.605
+},
+{
+"text": "diferença",
+"start": 51.605,
+"end": 52.165
+},
+{
+"text": "para",
+"start": 52.165,
+"end": 52.405
+},
+{
+"text": "quem",
+"start": 52.405,
+"end": 52.725
+},
+{
+"text": "está",
+"start": 52.725,
+"end": 52.885
+},
+{
+"text": "começando,",
+"start": 52.885,
+"end": 53.685
+},
+{
+"text": "produz",
+"start": 53.685,
+"end": 54.165
+},
+{
+"text": "conteúdo",
+"start": 54.165,
+"end": 54.645
+},
+{
+"text": "ou",
+"start": 54.645,
+"end": 54.885
+},
+{
+"text": "desenvolve",
+"start": 54.885,
+"end": 55.605
+},
+{
+"text": "projetos.",
+"start": 55.605,
+"end": 56.325
+},
+{
+"text": "Quer",
+"start": 56.325,
+"end": 56.565
+},
+{
+"text": "conhecer",
+"start": 56.565,
+"end": 57.045
+},
+{
+"text": "alternativas",
+"start": 57.045,
+"end": 57.685
+},
+{
+"text": "gratuitas",
+"start": 57.685,
+"end": 58.245
+},
+{
+"text": "de",
+"start": 58.245,
+"end": 58.405
+},
+{
+"text": "design",
+"start": 58.405,
+"end": 58.885
+},
+{
+"text": "e",
+"start": 58.885,
+"end": 58.965
+},
+{
+"text": "criação?",
+"start": 58.965,
+"end": 59.605
+},
+{
+"text": "Comenta",
+"start": 59.605,
+"end": 60.165
+},
+{
+"text": "Design",
+"start": 60.165,
+"end": 60.805
+},
+{
+"text": "grátis",
+"start": 60.805,
+"end": 61.205
+},
+{
+"text": "aqui",
+"start": 61.205,
+"end": 61.445
+},
+{
+"text": "embaixo",
+"start": 61.445,
+"end": 61.925
+},
+{
+"text": "e",
+"start": 61.925,
+"end": 62.085
+},
+{
+"text": "me",
+"start": 62.085,
+"end": 62.245
+},
+{
+"text": "segue",
+"start": 62.245,
+"end": 62.645
+},
+{
+"text": "para",
+"start": 62.645,
+"end": 62.805
+},
+{
+"text": "descobrir",
+"start": 62.805,
+"end": 63.365
+},
+{
+"text": "mais",
+"start": 63.365,
+"end": 63.605
+},
+{
+"text": "ferramentas.",
+"start": 63.605,
+"end": 64.366
+}
+]

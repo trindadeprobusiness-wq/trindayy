@@ -1,0 +1,462 @@
+[
+{
+"text": "This",
+"start": 0.16,
+"end": 0.32
+},
+{
+"text": "is",
+"start": 0.32,
+"end": 0.48
+},
+{
+"text": "what",
+"start": 0.48,
+"end": 0.72
+},
+{
+"text": "it",
+"start": 0.72,
+"end": 0.88
+},
+{
+"text": "looks",
+"start": 0.88,
+"end": 1.28
+},
+{
+"text": "like",
+"start": 1.28,
+"end": 1.73
+},
+{
+"text": "when",
+"start": 1.76,
+"end": 2.08
+},
+{
+"text": "280",
+"start": 2.08,
+"end": 3.68
+},
+{
+"text": "AI",
+"start": 3.68,
+"end": 4.24
+},
+{
+"text": "employees",
+"start": 4.24,
+"end": 5.28
+},
+{
+"text": "run",
+"start": 5.28,
+"end": 5.73
+},
+{
+"text": "your",
+"start": 5.84,
+"end": 6.08
+},
+{
+"text": "business,",
+"start": 6.08,
+"end": 6.64
+},
+{
+"text": "and",
+"start": 6.64,
+"end": 6.88
+},
+{
+"text": "the",
+"start": 6.88,
+"end": 6.96
+},
+{
+"text": "whole",
+"start": 6.96,
+"end": 7.36
+},
+{
+"text": "thing",
+"start": 7.36,
+"end": 7.76
+},
+{
+"text": "is",
+"start": 7.76,
+"end": 8.0
+},
+{
+"text": "free.",
+"start": 8.0,
+"end": 8.56
+},
+{
+"text": "It's",
+"start": 8.56,
+"end": 8.8
+},
+{
+"text": "called",
+"start": 8.8,
+"end": 9.36
+},
+{
+"text": "agency",
+"start": 9.36,
+"end": 10.24
+},
+{
+"text": "agents,",
+"start": 10.24,
+"end": 10.96
+},
+{
+"text": "and",
+"start": 10.96,
+"end": 11.12
+},
+{
+"text": "you've",
+"start": 11.12,
+"end": 11.44
+},
+{
+"text": "got",
+"start": 11.44,
+"end": 11.68
+},
+{
+"text": "engineers,",
+"start": 11.68,
+"end": 12.56
+},
+{
+"text": "designers,",
+"start": 12.56,
+"end": 13.52
+},
+{
+"text": "marketers,",
+"start": 13.52,
+"end": 14.56
+},
+{
+"text": "salespeople,",
+"start": 14.56,
+"end": 15.84
+},
+{
+"text": "even",
+"start": 15.84,
+"end": 16.24
+},
+{
+"text": "lawyers",
+"start": 16.24,
+"end": 17.04
+},
+{
+"text": "in",
+"start": 17.04,
+"end": 17.28
+},
+{
+"text": "there.",
+"start": 17.28,
+"end": 17.68
+},
+{
+"text": "And",
+"start": 17.68,
+"end": 17.92
+},
+{
+"text": "each",
+"start": 17.92,
+"end": 18.32
+},
+{
+"text": "one",
+"start": 18.32,
+"end": 18.56
+},
+{
+"text": "is",
+"start": 18.56,
+"end": 18.8
+},
+{
+"text": "a",
+"start": 18.8,
+"end": 19.12
+},
+{
+"text": "proper",
+"start": 19.12,
+"end": 19.76
+},
+{
+"text": "specialist",
+"start": 19.76,
+"end": 20.8
+},
+{
+"text": "with",
+"start": 20.8,
+"end": 21.12
+},
+{
+"text": "its",
+"start": 21.12,
+"end": 21.44
+},
+{
+"text": "own",
+"start": 21.44,
+"end": 22.0
+},
+{
+"text": "way",
+"start": 22.0,
+"end": 22.45
+},
+{
+"text": "of",
+"start": 22.48,
+"end": 22.72
+},
+{
+"text": "working.",
+"start": 22.72,
+"end": 23.28
+},
+{
+"text": "So",
+"start": 23.28,
+"end": 23.44
+},
+{
+"text": "it's",
+"start": 23.44,
+"end": 23.68
+},
+{
+"text": "not",
+"start": 23.68,
+"end": 23.76
+},
+{
+"text": "just",
+"start": 23.76,
+"end": 24.21
+},
+{
+"text": "One",
+"start": 24.397,
+"end": 24.717
+},
+{
+"text": "assistant",
+"start": 24.717,
+"end": 25.437
+},
+{
+"text": "wearing",
+"start": 25.437,
+"end": 26.157
+},
+{
+"text": "multiple",
+"start": 26.157,
+"end": 26.797
+},
+{
+"text": "different",
+"start": 26.797,
+"end": 27.357
+},
+{
+"text": "hats.",
+"start": 27.357,
+"end": 27.917
+},
+{
+"text": "One",
+"start": 27.917,
+"end": 28.238
+},
+{
+"text": "install",
+"start": 28.238,
+"end": 28.847
+},
+{
+"text": "drops",
+"start": 28.877,
+"end": 29.357
+},
+{
+"text": "all",
+"start": 29.357,
+"end": 29.807
+},
+{
+"text": "280",
+"start": 29.837,
+"end": 31.407
+},
+{
+"text": "into",
+"start": 31.517,
+"end": 31.837
+},
+{
+"text": "your",
+"start": 31.837,
+"end": 32.077
+},
+{
+"text": "laptop.",
+"start": 32.077,
+"end": 32.797
+},
+{
+"text": "So",
+"start": 32.797,
+"end": 33.038
+},
+{
+"text": "you",
+"start": 33.038,
+"end": 33.357
+},
+{
+"text": "stop",
+"start": 33.357,
+"end": 33.807
+},
+{
+"text": "asking",
+"start": 33.837,
+"end": 34.397
+},
+{
+"text": "one",
+"start": 34.397,
+"end": 34.637
+},
+{
+"text": "AI",
+"start": 34.637,
+"end": 35.198
+},
+{
+"text": "to",
+"start": 35.198,
+"end": 35.437
+},
+{
+"text": "be",
+"start": 35.437,
+"end": 35.757
+},
+{
+"text": "everything.",
+"start": 35.757,
+"end": 36.477
+},
+{
+"text": "And",
+"start": 36.477,
+"end": 36.717
+},
+{
+"text": "each",
+"start": 36.717,
+"end": 37.037
+},
+{
+"text": "AI",
+"start": 37.037,
+"end": 37.727
+},
+{
+"text": "has",
+"start": 37.757,
+"end": 38.078
+},
+{
+"text": "its",
+"start": 38.078,
+"end": 38.317
+},
+{
+"text": "own",
+"start": 38.317,
+"end": 38.717
+},
+{
+"text": "tools",
+"start": 38.717,
+"end": 39.517
+},
+{
+"text": "and",
+"start": 39.517,
+"end": 39.967
+},
+{
+"text": "capabilities.",
+"start": 39.997,
+"end": 41.117
+},
+{
+"text": "Comment",
+"start": 41.117,
+"end": 41.597
+},
+{
+"text": "agency",
+"start": 41.597,
+"end": 42.397
+},
+{
+"text": "and",
+"start": 42.397,
+"end": 42.637
+},
+{
+"text": "I",
+"start": 42.637,
+"end": 42.797
+},
+{
+"text": "will",
+"start": 42.797,
+"end": 42.957
+},
+{
+"text": "send",
+"start": 42.957,
+"end": 43.197
+},
+{
+"text": "you",
+"start": 43.197,
+"end": 43.357
+},
+{
+"text": "the",
+"start": 43.357,
+"end": 43.437
+},
+{
+"text": "link.",
+"start": 43.437,
+"end": 43.799
+}
+]

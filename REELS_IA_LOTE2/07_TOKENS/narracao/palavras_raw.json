@@ -1,0 +1,867 @@
+[
+{
+"text": "Você",
+"start": 0.0,
+"end": 0.4
+},
+{
+"text": "pode",
+"start": 0.4,
+"end": 0.64
+},
+{
+"text": "estar",
+"start": 0.64,
+"end": 0.88
+},
+{
+"text": "desperdiçando",
+"start": 0.88,
+"end": 1.76
+},
+{
+"text": "seus",
+"start": 1.76,
+"end": 2.0
+},
+{
+"text": "tokens",
+"start": 2.0,
+"end": 2.4
+},
+{
+"text": "no",
+"start": 2.4,
+"end": 2.48
+},
+{
+"text": "Cloud",
+"start": 2.48,
+"end": 2.96
+},
+{
+"text": "Code",
+"start": 2.96,
+"end": 3.44
+},
+{
+"text": "sem",
+"start": 3.44,
+"end": 3.68
+},
+{
+"text": "nem",
+"start": 3.68,
+"end": 3.92
+},
+{
+"text": "perceber.",
+"start": 3.92,
+"end": 4.96
+},
+{
+"text": "E",
+"start": 4.96,
+"end": 5.12
+},
+{
+"text": "o",
+"start": 5.12,
+"end": 5.28
+},
+{
+"text": "motivo",
+"start": 5.28,
+"end": 5.76
+},
+{
+"text": "é",
+"start": 5.76,
+"end": 5.92
+},
+{
+"text": "mais",
+"start": 5.92,
+"end": 6.16
+},
+{
+"text": "simples",
+"start": 6.16,
+"end": 6.56
+},
+{
+"text": "do",
+"start": 6.56,
+"end": 6.72
+},
+{
+"text": "que",
+"start": 6.72,
+"end": 6.88
+},
+{
+"text": "parece.",
+"start": 6.88,
+"end": 7.68
+},
+{
+"text": "Nem",
+"start": 7.68,
+"end": 7.92
+},
+{
+"text": "toda",
+"start": 7.92,
+"end": 8.24
+},
+{
+"text": "tarefa",
+"start": 8.24,
+"end": 8.72
+},
+{
+"text": "precisa",
+"start": 8.72,
+"end": 9.12
+},
+{
+"text": "utilizar",
+"start": 9.12,
+"end": 9.52
+},
+{
+"text": "o",
+"start": 9.52,
+"end": 9.6
+},
+{
+"text": "modelo",
+"start": 9.6,
+"end": 9.92
+},
+{
+"text": "de",
+"start": 9.92,
+"end": 10.08
+},
+{
+"text": "inteligência",
+"start": 10.08,
+"end": 10.64
+},
+{
+"text": "artificial",
+"start": 10.64,
+"end": 11.36
+},
+{
+"text": "mais",
+"start": 11.36,
+"end": 11.6
+},
+{
+"text": "poderoso",
+"start": 11.6,
+"end": 12.24
+},
+{
+"text": "disponível.",
+"start": 12.24,
+"end": 13.41
+},
+{
+"text": "Pensa",
+"start": 13.44,
+"end": 13.92
+},
+{
+"text": "comigo,",
+"start": 13.92,
+"end": 14.72
+},
+{
+"text": "você",
+"start": 14.72,
+"end": 15.04
+},
+{
+"text": "realmente",
+"start": 15.04,
+"end": 15.49
+},
+{
+"text": "precisa",
+"start": 15.52,
+"end": 15.92
+},
+{
+"text": "de",
+"start": 15.92,
+"end": 16.08
+},
+{
+"text": "um",
+"start": 16.08,
+"end": 16.16
+},
+{
+"text": "modelo",
+"start": 16.16,
+"end": 16.48
+},
+{
+"text": "avançado",
+"start": 16.48,
+"end": 17.04
+},
+{
+"text": "para",
+"start": 17.04,
+"end": 17.2
+},
+{
+"text": "executar",
+"start": 17.2,
+"end": 17.76
+},
+{
+"text": "uma",
+"start": 17.76,
+"end": 17.92
+},
+{
+"text": "alteração",
+"start": 17.92,
+"end": 18.48
+},
+{
+"text": "pequena",
+"start": 18.48,
+"end": 19.12
+},
+{
+"text": "ou",
+"start": 19.12,
+"end": 19.44
+},
+{
+"text": "organizar",
+"start": 19.44,
+"end": 20.0
+},
+{
+"text": "um",
+"start": 20.0,
+"end": 20.16
+},
+{
+"text": "arquivo?",
+"start": 20.16,
+"end": 20.88
+},
+{
+"text": "Em",
+"start": 20.88,
+"end": 21.12
+},
+{
+"text": "muitos",
+"start": 21.12,
+"end": 21.44
+},
+{
+"text": "casos,",
+"start": 21.44,
+"end": 21.92
+},
+{
+"text": "um",
+"start": 21.92,
+"end": 22.08
+},
+{
+"text": "modelo",
+"start": 22.08,
+"end": 22.48
+},
+{
+"text": "mais",
+"start": 22.48,
+"end": 22.64
+},
+{
+"text": "leve,",
+"start": 22.64,
+"end": 23.04
+},
+{
+"text": "como",
+"start": 23.04,
+"end": 23.2
+},
+{
+"text": "o",
+"start": 23.2,
+"end": 23.36
+},
+{
+"text": "Haiku,",
+"start": 23.36,
+"end": 24.242
+},
+{
+"text": "Pode",
+"start": 24.242,
+"end": 24.562
+},
+{
+"text": "ser",
+"start": 24.562,
+"end": 24.723
+},
+{
+"text": "suficiente.",
+"start": 24.723,
+"end": 25.523
+},
+{
+"text": "E",
+"start": 25.523,
+"end": 25.762
+},
+{
+"text": "reservar",
+"start": 25.762,
+"end": 26.322
+},
+{
+"text": "modelos",
+"start": 26.322,
+"end": 26.802
+},
+{
+"text": "mais",
+"start": 26.802,
+"end": 26.962
+},
+{
+"text": "capazes",
+"start": 26.962,
+"end": 27.522
+},
+{
+"text": "para",
+"start": 27.522,
+"end": 27.762
+},
+{
+"text": "tarefas",
+"start": 27.762,
+"end": 28.322
+},
+{
+"text": "complexas",
+"start": 28.322,
+"end": 28.962
+},
+{
+"text": "é",
+"start": 28.962,
+"end": 29.123
+},
+{
+"text": "uma",
+"start": 29.123,
+"end": 29.282
+},
+{
+"text": "maneira",
+"start": 29.282,
+"end": 29.682
+},
+{
+"text": "inteligente",
+"start": 29.682,
+"end": 30.402
+},
+{
+"text": "de",
+"start": 30.402,
+"end": 30.562
+},
+{
+"text": "administrar",
+"start": 30.562,
+"end": 31.202
+},
+{
+"text": "recursos.",
+"start": 31.202,
+"end": 32.002
+},
+{
+"text": "Mas",
+"start": 32.002,
+"end": 32.242
+},
+{
+"text": "a",
+"start": 32.242,
+"end": 32.402
+},
+{
+"text": "escolha",
+"start": 32.402,
+"end": 32.802
+},
+{
+"text": "do",
+"start": 32.802,
+"end": 32.963
+},
+{
+"text": "modelo",
+"start": 32.963,
+"end": 33.362
+},
+{
+"text": "é",
+"start": 33.362,
+"end": 33.522
+},
+{
+"text": "apenas",
+"start": 33.522,
+"end": 33.923
+},
+{
+"text": "uma",
+"start": 33.923,
+"end": 34.242
+},
+{
+"text": "parte",
+"start": 34.242,
+"end": 34.482
+},
+{
+"text": "da",
+"start": 34.482,
+"end": 34.642
+},
+{
+"text": "estratégia.",
+"start": 34.642,
+"end": 35.442
+},
+{
+"text": "Também",
+"start": 35.442,
+"end": 35.842
+},
+{
+"text": "vale",
+"start": 35.842,
+"end": 36.242
+},
+{
+"text": "prestar",
+"start": 36.242,
+"end": 36.562
+},
+{
+"text": "atenção",
+"start": 36.562,
+"end": 37.043
+},
+{
+"text": "na",
+"start": 37.043,
+"end": 37.282
+},
+{
+"text": "quantidade",
+"start": 37.282,
+"end": 37.922
+},
+{
+"text": "de",
+"start": 37.922,
+"end": 38.083
+},
+{
+"text": "contexto",
+"start": 38.083,
+"end": 38.562
+},
+{
+"text": "enviada",
+"start": 38.562,
+"end": 39.123
+},
+{
+"text": "em",
+"start": 39.123,
+"end": 39.282
+},
+{
+"text": "cada",
+"start": 39.282,
+"end": 39.602
+},
+{
+"text": "interação.",
+"start": 39.602,
+"end": 40.772
+},
+{
+"text": "Informações",
+"start": 41.122,
+"end": 41.843
+},
+{
+"text": "desnecessárias,",
+"start": 41.843,
+"end": 43.042
+},
+{
+"text": "instruções",
+"start": 43.042,
+"end": 43.683
+},
+{
+"text": "repetidas",
+"start": 43.683,
+"end": 44.322
+},
+{
+"text": "e",
+"start": 44.322,
+"end": 44.562
+},
+{
+"text": "históricos",
+"start": 44.562,
+"end": 45.282
+},
+{
+"text": "muito",
+"start": 45.282,
+"end": 45.522
+},
+{
+"text": "extensos",
+"start": 45.522,
+"end": 46.322
+},
+{
+"text": "podem",
+"start": 46.322,
+"end": 46.802
+},
+{
+"text": "aumentar",
+"start": 46.802,
+"end": 47.362
+},
+{
+"text": "o",
+"start": 47.362,
+"end": 47.442
+},
+{
+"text": "consumo.",
+"start": 47.442,
+"end": 48.21
+},
+{
+"text": "O",
+"start": 48.21,
+"end": 48.37
+},
+{
+"text": "ideal",
+"start": 48.37,
+"end": 48.77
+},
+{
+"text": "é",
+"start": 48.77,
+"end": 49.01
+},
+{
+"text": "escolher",
+"start": 49.01,
+"end": 49.41
+},
+{
+"text": "o",
+"start": 49.41,
+"end": 49.57
+},
+{
+"text": "modelo",
+"start": 49.57,
+"end": 49.89
+},
+{
+"text": "apropriado,",
+"start": 49.89,
+"end": 50.77
+},
+{
+"text": "organizar",
+"start": 50.77,
+"end": 51.33
+},
+{
+"text": "o",
+"start": 51.33,
+"end": 51.49
+},
+{
+"text": "contexto",
+"start": 51.49,
+"end": 52.05
+},
+{
+"text": "e",
+"start": 52.05,
+"end": 52.29
+},
+{
+"text": "verificar",
+"start": 52.29,
+"end": 52.85
+},
+{
+"text": "a",
+"start": 52.85,
+"end": 53.01
+},
+{
+"text": "qualidade",
+"start": 53.01,
+"end": 53.57
+},
+{
+"text": "dos",
+"start": 53.57,
+"end": 53.81
+},
+{
+"text": "resultados.",
+"start": 53.81,
+"end": 54.69
+},
+{
+"text": "Porque",
+"start": 54.69,
+"end": 55.01
+},
+{
+"text": "trabalhar",
+"start": 55.01,
+"end": 55.49
+},
+{
+"text": "melhor",
+"start": 55.49,
+"end": 55.81
+},
+{
+"text": "com",
+"start": 55.81,
+"end": 56.05
+},
+{
+"text": "inteligência",
+"start": 56.05,
+"end": 56.61
+},
+{
+"text": "artificial",
+"start": 56.61,
+"end": 57.41
+},
+{
+"text": "não",
+"start": 57.41,
+"end": 57.73
+},
+{
+"text": "significa",
+"start": 57.73,
+"end": 58.29
+},
+{
+"text": "necessariamente",
+"start": 58.29,
+"end": 59.09
+},
+{
+"text": "gastar",
+"start": 59.09,
+"end": 59.49
+},
+{
+"text": "mais",
+"start": 59.49,
+"end": 59.73
+},
+{
+"text": "tokens.",
+"start": 59.73,
+"end": 60.53
+},
+{
+"text": "Significa",
+"start": 60.53,
+"end": 61.17
+},
+{
+"text": "utilizar",
+"start": 61.17,
+"end": 61.73
+},
+{
+"text": "cada",
+"start": 61.73,
+"end": 62.05
+},
+{
+"text": "recurso",
+"start": 62.05,
+"end": 62.61
+},
+{
+"text": "onde",
+"start": 62.61,
+"end": 62.93
+},
+{
+"text": "ele",
+"start": 62.93,
+"end": 63.25
+},
+{
+"text": "realmente",
+"start": 63.25,
+"end": 63.7
+},
+{
+"text": "faz",
+"start": 63.73,
+"end": 64.13
+},
+{
+"text": "diferença.",
+"start": 64.13,
+"end": 64.93
+},
+{
+"text": "Quer",
+"start": 64.93,
+"end": 65.17
+},
+{
+"text": "conhecer",
+"start": 65.17,
+"end": 65.65
+},
+{
+"text": "maneiras",
+"start": 65.65,
+"end": 65.97
+},
+{
+"text": "de",
+"start": 65.97,
+"end": 66.13
+},
+{
+"text": "otimizar",
+"start": 66.13,
+"end": 66.61
+},
+{
+"text": "seu",
+"start": 66.61,
+"end": 66.77
+},
+{
+"text": "Cloud",
+"start": 66.77,
+"end": 67.17
+},
+{
+"text": "Code?",
+"start": 67.17,
+"end": 67.73
+},
+{
+"text": "Comenta",
+"start": 67.73,
+"end": 68.21
+},
+{
+"text": "tokens",
+"start": 68.21,
+"end": 68.77
+},
+{
+"text": "aqui",
+"start": 68.77,
+"end": 69.01
+},
+{
+"text": "embaixo",
+"start": 69.01,
+"end": 69.41
+},
+{
+"text": "e",
+"start": 69.41,
+"end": 69.57
+},
+{
+"text": "me",
+"start": 69.57,
+"end": 69.73
+},
+{
+"text": "segue",
+"start": 69.73,
+"end": 70.13
+},
+{
+"text": "para",
+"start": 70.13,
+"end": 70.37
+},
+{
+"text": "mais",
+"start": 70.37,
+"end": 70.53
+},
+{
+"text": "dicas",
+"start": 70.53,
+"end": 70.93
+},
+{
+"text": "de",
+"start": 70.93,
+"end": 71.09
+},
+{
+"text": "inteligência",
+"start": 71.09,
+"end": 71.65
+},
+{
+"text": "artificial.",
+"start": 71.65,
+"end": 72.438
+}
+]

@@ -1,0 +1,4 @@
+# render intermediates (final deliverables are the stripped FINAL_*.mp4 files)
+**/renders/
+**/.hyperframes/
+*.pre.wav

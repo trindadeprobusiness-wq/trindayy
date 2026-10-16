@@ -58,7 +58,7 @@
   window.draw = (sel, t, d = 0.8, ease = "power2.inOut") => {
     $(sel).forEach((p) => {
       const L = p.getTotalLength ? p.getTotalLength() : 1000;
-      tl.fromTo(p, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease, immediateRender: true }, t);
+      tl.fromTo(p, { strokeDasharray: `${L} ${L}`, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease, immediateRender: true }, t);
     });
   };
   window.pulse = (sel, t, s = 1.1, d = 0.5) => {
