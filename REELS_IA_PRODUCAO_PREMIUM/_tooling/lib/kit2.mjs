@@ -30,7 +30,7 @@ export function ctaHtml2(id, { pre, word, color = "var(--a1)", sub = "", follow 
     <div class="abs center-x tc" id="${id}-pre" style="top:200px;width:1000px"><div class="kw" style="font-size:96px">${pre}</div></div>
     <div class="abs center-x tc" id="${id}-k" style="top:400px;width:940px"><div class="sticker dark" style="font-size:34px">${icon("message-circle", "#fff", 2.4)}COMENTA A PALAVRA</div></div>
     <div class="abs burst" id="${id}-burst" style="left:540px;top:640px;width:0;height:0"></div>
-    <div class="abs center-x tc" id="${id}-word" style="top:520px;width:1060px"><div class="kw" style="font-size:${word.length > 9 ? 150 : 200}px;color:${color};text-shadow:0 12px 0 rgba(0,0,0,.18)">${esc(word)}</div></div>
+    <div class="abs center-x tc" id="${id}-word" style="top:520px;width:1060px"><div class="kw" style="font-size:${word.length > 11 ? 116 : word.length > 9 ? 150 : 200}px;color:${color};text-shadow:0 12px 0 rgba(0,0,0,.18)">${esc(word)}</div></div>
     <div class="abs igbox" id="${id}-box" style="left:90px;top:780px"><div class="av"><div></div></div><div class="tx" id="${id}-tx" data-text="${esc(word)}"></div><div class="send">Publicar</div></div>
     ${follow ? `<div class="abs center-x tc" style="top:975px;width:600px"><div class="follow" id="${id}-fol">${icon("user-plus", "#fff", 2.4)}Seguir</div></div>`
     : `<div class="abs" id="${id}-dn" style="left:470px;top:960px;width:140px;height:140px;color:${color}">${icon("chevrons-down", "currentColor", 2.6)}</div>`}

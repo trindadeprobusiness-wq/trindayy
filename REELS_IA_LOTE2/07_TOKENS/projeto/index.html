@@ -1072,7 +1072,7 @@ scene("s8", 35.500, 48.000, {"in":"left","push":0.03,"last":false});
 
 inn("#s8-h",35.442,"up",.45);
 inn("#s8-win",37.181999999999995,"rise",.5);inn("#s8-g",37.282,"right",.45);
-fromTo("#s8-lv",{scaleY:.12},{scaleY:.25,duration:.5},38.083);
+set("#s8-lv",{scaleY:.12},35.442);fromTo("#s8-lv",{scaleY:.12},{scaleY:.25,duration:.5},38.083);
 inn("#s8-b0",37.98,"drop",.45);
 inn("#s8-b1",41.02,"drop",.45);to("#s8-lv",{scaleY:0.47,duration:.6,ease:E.o},41.22);
 inn("#s8-b2",42.94,"drop",.45);to("#s8-lv",{scaleY:0.69,duration:.6,ease:E.o},43.14);

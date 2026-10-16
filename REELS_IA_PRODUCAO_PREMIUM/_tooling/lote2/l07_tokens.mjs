@@ -159,7 +159,7 @@ inn("#s7-p1",${t.pa - 0.1},"fade",.3);inn("#s7-p2",${t.pa},"fade",.3);${S("pop",
   `, js: `
 inn("#s8-h",${t.ta},"up",.45);
 inn("#s8-win",${t.qu - 0.1},"rise",.5);inn("#s8-g",${t.qu},"right",.45);${S("whoosh_s", t.qu - 0.1, .45)}
-fromTo("#s8-lv",{scaleY:.12},{scaleY:.25,duration:.5},${t.co});
+set("#s8-lv",{scaleY:.12},${t.ta});fromTo("#s8-lv",{scaleY:.12},{scaleY:.25,duration:.5},${t.co});
 ${blocks.map(([, , , tt], i) => `inn("#s8-b${i}",${(tt - 0.1).toFixed(2)},"drop",.45);${V.sfx(i ? "drop" : "pop", tt - 0.1, 0.6)}${i ? `to("#s8-lv",{scaleY:${(0.25 + i * 0.22).toFixed(2)},duration:.6,ease:E.o},${(tt + 0.1).toFixed(2)});` : ""}`).join("\n")}
 inn("#s8-wl",${t.ca},"fade",.4);
 inn("#s8-up",${t.au},"pop",.4);shake("#s8-g",${t.cs});${S("alert", t.cs, .6)}
