@@ -53,8 +53,9 @@ export function gh3({ id, owner, repo, avatar, desc = "", tags = [], nameId }) {
 }
 export const browser = ({ id, x, y, w, h, url = "", urlId, body = "" }) =>
   `<div class="brw" id="${id}" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px"><div class="bb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><div class="url">${icon("lock", "#a1a1aa", 2.2)}<span ${urlId ? `id="${urlId}" data-text="${esc(url)}"` : ""}>${urlId ? "" : esc(url)}</span></div></div><div style="position:relative;height:${h - 74}px">${body}</div></div>`;
+// o id fica num wrapper de tela cheia: animações de escala/posição no id não desfazem a escala do aparelho
 export const iphone = ({ id, x, y, scale = 1, screen = "", bg = "#fff" }) =>
-  `<div class="iph" id="${id}" style="left:${x}px;top:${y}px;transform:scale(${scale});transform-origin:center center"><div class="scr" style="background:${bg}"><div class="isl"></div>${screen}</div></div>`;
+  `<div id="${id}" style="position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none"><div class="iph" style="left:${x}px;top:${y}px;transform:scale(${scale});transform-origin:center center"><div class="scr" style="background:${bg}"><div class="isl"></div>${screen}</div></div></div>`;
 // título palavra a palavra: cada palavra vira .wd (anime com inn("#id .wd", t, "blur", .5, {stagger:.07}))
 export const words = (txt, cls = "") => txt.split(" ").map((w) => `<span class="wd ${cls}">${w} </span>`).join("");
 export const ico = (name, color, sw = 2, size = 64) => `<span style="display:inline-block;width:${size}px;height:${size}px;vertical-align:middle">${icon(name, color, sw)}</span>`;

@@ -1,55 +1,1447 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        width: 1920px;
-        height: 1080px;
-        overflow: hidden;
-        background: #0a0a0a;
-      }
-      #root {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      }
-      #title {
-        color: #f4f4f5;
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
-      }
-    </style>
-  </head>
-  <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="10"
-      data-width="1920"
-      data-height="1080"
-    >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
-    </div>
-    <script>
-      const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6 }, 0);
-      window.__timelines["main"] = tl;
-      tl.seek(0);
-    </script>
-  </body>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Instinct — modelo de negócio</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+/* ===== Shared design system — REELS IA PRODUÇÃO PREMIUM ===== */
+@font-face { font-family: "Inter"; font-weight: 400; src: url("assets/fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; src: url("assets/fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url("assets/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; src: url("assets/fonts/inter-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 800; src: url("assets/fonts/inter-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 900; src: url("assets/fonts/inter-latin-900-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 500; src: url("assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 700; src: url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; src: url("assets/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 600; src: url("assets/fonts/jetbrains-mono-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 700; src: url("assets/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  --bg: #060a13; --bg2: #0b1222; --panel: #0f1729; --panel2: #141e35; --line: rgba(148, 178, 255, 0.16);
+  --text: #f5f7fb; --muted: #9aa6bd; --dim: #5d6880;
+  --blue: #2f7bff; --cyan: #22d3ee; --green: #34d399; --red: #ff4d5e; --amber: #fbbf24;
+  --accent: var(--cyan);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+body { color: var(--text); font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+#root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+
+/* ---------- Background ---------- */
+.bg { position: absolute; inset: 0; overflow: hidden; }
+.bg-grid { position: absolute; inset: -200px; background-image:
+  linear-gradient(rgba(120, 160, 255, 0.055) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(120, 160, 255, 0.055) 1px, transparent 1px);
+  background-size: 72px 72px; }
+.bg-glow { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; opacity: 0.55; }
+.bg-glow.a { left: -380px; top: -260px; background: radial-gradient(circle, rgba(47, 123, 255, 0.42), transparent 62%); }
+.bg-glow.b { right: -420px; top: 760px; background: radial-gradient(circle, rgba(34, 211, 238, 0.30), transparent 62%); }
+.bg-glow.c { left: 120px; top: 1250px; width: 900px; height: 900px; background: radial-gradient(circle, var(--tint, rgba(47, 123, 255, 0.0)), transparent 65%); opacity: 1; }
+.vignette { position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(130% 85% at 50% 42%, transparent 55%, rgba(0, 0, 0, 0.72) 100%); }
+.grain { position: absolute; inset: 0; opacity: 0.06; mix-blend-mode: overlay; background-size: 220px 220px; }
+
+/* ---------- Scenes ---------- */
+.scene { position: absolute; inset: 0; }
+.scene > .inner { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.center-x { left: 0; right: 0; margin-left: auto; margin-right: auto; }
+.row { display: flex; align-items: center; }
+.col { display: flex; flex-direction: column; }
+.gap8 { gap: 8px; } .gap12 { gap: 12px; } .gap16 { gap: 16px; } .gap20 { gap: 20px; } .gap24 { gap: 24px; } .gap32 { gap: 32px; }
+
+/* ---------- Type ---------- */
+.kicker { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 26px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+.display { font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -0.035em; line-height: 0.95; }
+.h1 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 96px; letter-spacing: -0.035em; line-height: 1; }
+.h2 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 68px; letter-spacing: -0.03em; line-height: 1.04; }
+.h3 { font-family: "Inter", sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.02em; line-height: 1.1; }
+.body { font-size: 32px; font-weight: 500; color: var(--muted); line-height: 1.35; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.hl { color: var(--accent); }
+.hl-red { color: var(--red); } .hl-green { color: var(--green); } .hl-amber { color: var(--amber); }
+.tc { text-align: center; }
+
+/* ---------- Surfaces ---------- */
+.card { background: linear-gradient(165deg, rgba(24, 35, 62, 0.94), rgba(11, 17, 32, 0.96));
+  border: 1.5px solid var(--line); border-radius: 30px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+.card.light { background: linear-gradient(170deg, #ffffff, #eef2f8); color: #0b1222; border-color: rgba(255, 255, 255, 0.6); }
+.glass { background: rgba(18, 28, 52, 0.62); border: 1.5px solid rgba(160, 190, 255, 0.18); border-radius: 28px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08); }
+.tile { width: 200px; height: 200px; border-radius: 48px; display: grid; place-items: center;
+  background: linear-gradient(160deg, #1b2747, #0d1426); border: 2px solid rgba(160, 190, 255, 0.2);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+.tile.white { background: linear-gradient(160deg, #ffffff, #e9eef7); border-color: rgba(255, 255, 255, 0.7); }
+.tile img { width: 62%; height: 62%; object-fit: contain; }
+.chip { display: inline-flex; align-items: center; gap: 14px; padding: 16px 28px; border-radius: 999px;
+  font-weight: 700; font-size: 32px; background: rgba(30, 44, 78, 0.9); border: 1.5px solid rgba(160, 190, 255, 0.22); color: var(--text); white-space: nowrap; }
+.chip svg { width: 34px; height: 34px; }
+.chip.blue { background: rgba(47, 123, 255, 0.18); border-color: rgba(47, 123, 255, 0.6); color: #cfe0ff; }
+.chip.cyan { background: rgba(34, 211, 238, 0.14); border-color: rgba(34, 211, 238, 0.6); color: #c9f6ff; }
+.chip.green { background: rgba(52, 211, 153, 0.14); border-color: rgba(52, 211, 153, 0.6); color: #c8f7e5; }
+.chip.red { background: rgba(255, 77, 94, 0.16); border-color: rgba(255, 77, 94, 0.65); color: #ffd0d5; }
+.chip.amber { background: rgba(251, 191, 36, 0.14); border-color: rgba(251, 191, 36, 0.6); color: #ffeab0; }
+.chip.solid { background: var(--text); color: #0b1222; border-color: transparent; }
+.badge { display: inline-flex; align-items: center; gap: 16px; padding: 14px 34px; border-radius: 22px;
+  font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 92px; letter-spacing: -0.03em; line-height: 1; }
+.icon svg { width: 100%; height: 100%; }
+.ic { display: inline-block; width: 1em; height: 1em; }
+.ic svg { width: 100%; height: 100%; display: block; }
+
+/* ---------- Window / terminal ---------- */
+.win { border-radius: 26px; overflow: hidden; background: #0c1220; border: 1.5px solid rgba(160, 190, 255, 0.2);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6); }
+.win-bar { height: 62px; display: flex; align-items: center; gap: 12px; padding: 0 24px; background: #141c2e; border-bottom: 1px solid rgba(160, 190, 255, 0.12); }
+.win-bar i { width: 18px; height: 18px; border-radius: 50%; display: block; }
+.win-bar i:nth-child(1) { background: #ff5f57; } .win-bar i:nth-child(2) { background: #febc2e; } .win-bar i:nth-child(3) { background: #28c840; }
+.win-bar .t { margin-left: 18px; font-family: "JetBrains Mono", monospace; font-size: 22px; color: var(--muted); }
+.term { font-family: "JetBrains Mono", monospace; font-size: 27px; line-height: 1.55; color: #dbe5ff; padding: 26px 30px; white-space: pre; }
+.term .p { color: var(--green); } .term .c { color: var(--dim); } .term .k { color: var(--cyan); } .term .r { color: var(--red); } .term .y { color: var(--amber); }
+
+/* ---------- GitHub repo replica (dark) ---------- */
+.gh { width: 940px; border-radius: 26px; background: #0d1117; border: 1.5px solid #30363d; overflow: hidden;
+  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.65); font-family: "Inter", sans-serif; color: #e6edf3; }
+.gh-top { display: flex; align-items: center; gap: 18px; padding: 22px 30px; background: #010409; border-bottom: 1px solid #30363d; }
+.gh-top img { width: 46px; height: 46px; }
+.gh-top .path { font-size: 28px; color: #e6edf3; } .gh-top .path b { font-weight: 700; }
+.gh-tabs { display: flex; gap: 26px; padding: 0 30px; background: #010409; border-bottom: 1px solid #30363d; font-size: 22px; color: #9198a1; }
+.gh-tabs span { padding: 16px 0; } .gh-tabs span.on { color: #e6edf3; border-bottom: 3px solid #f78166; font-weight: 600; }
+.gh-head { display: flex; align-items: center; gap: 16px; padding: 26px 30px 10px; }
+.gh-head .av { width: 56px; height: 56px; border-radius: 12px; background: #fff; display: grid; place-items: center; overflow: hidden; }
+.gh-head .av img { width: 80%; height: 80%; object-fit: contain; }
+.gh-head .name { font-size: 40px; font-weight: 700; }
+.gh-pub { font-size: 20px; color: #9198a1; border: 1.5px solid #3d444d; border-radius: 999px; padding: 3px 14px; }
+.gh-desc { padding: 10px 30px 18px; font-size: 27px; line-height: 1.38; color: #c9d1d9; }
+.gh-topics { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 30px 22px; }
+.gh-topics span { font-size: 21px; font-weight: 600; color: #4493f8; background: rgba(56, 139, 253, 0.12); padding: 6px 16px; border-radius: 999px; }
+.gh-stats { display: flex; gap: 14px; padding: 0 30px 28px; }
+.gh-btn { display: inline-flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 600; color: #e6edf3;
+  background: #21262d; border: 1.5px solid #3d444d; border-radius: 12px; padding: 10px 18px; }
+.gh-btn .n { background: #3d444d; border-radius: 999px; padding: 2px 12px; font-size: 21px; }
+.gh-btn svg { width: 26px; height: 26px; }
+.gh-btn.star { border-color: #e3b341; box-shadow: 0 0 0 4px rgba(227, 179, 65, 0.15); }
+
+/* ---------- Node graph ---------- */
+.node { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.node .dot { width: 150px; height: 150px; border-radius: 40px; display: grid; place-items: center;
+  background: linear-gradient(160deg, #1b2747, #0d1426); border: 2px solid rgba(160, 190, 255, 0.24); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55); }
+.node .dot svg, .node .dot img { width: 58%; height: 58%; object-fit: contain; }
+.node .lb { font-weight: 700; font-size: 28px; color: var(--text); white-space: nowrap; }
+svg.wires { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+
+/* ---------- Captions ---------- */
+.caps { position: absolute; left: 0; right: 0; top: 0; height: 1920px; pointer-events: none; }
+.cap { position: absolute; left: 70px; right: 70px; top: 1268px; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start;
+  gap: 0 18px; text-align: center; }
+.cap .w { position: relative; display: inline-block; font-family: "Inter", sans-serif; font-weight: 800; font-size: 60px; line-height: 1.18;
+  letter-spacing: -0.015em; color: #ffffff; opacity: 0.38;
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 26px rgba(0, 0, 0, 0.75), 0 2px 10px rgba(0, 0, 0, 0.9); }
+.cap .w.k { color: var(--capk, #22d3ee); }
+
+/* ---------- Header strip (persistent) ---------- */
+.handle { position: absolute; left: 0; right: 0; top: 74px; text-align: center; }
+
+/* ===== ENERGIA v2 — lote 2 (appended after base.css) ===== */
+:root { --ink: #0f1115; --paper: #f4efe6; --a1: #ff6a3d; --a2: #2f7bff; --a3: #ffd23f; --capbg: #ff6a3d; --capfg: #0f1115; }
+.theme-light #root, .theme-light body { background: var(--paper); }
+.theme-light .bg { background: radial-gradient(120% 80% at 50% 0%, #fbf8f2 0%, var(--paper) 60%, #e9e1d3 100%); }
+.theme-light .bg-grid { background-image: radial-gradient(rgba(15, 17, 21, .10) 2px, transparent 2.5px); background-size: 46px 46px; }
+.theme-light .bg-glow.a { background: radial-gradient(circle, rgba(255, 106, 61, .30), transparent 62%); }
+.theme-light .bg-glow.b { background: radial-gradient(circle, rgba(47, 123, 255, .22), transparent 62%); }
+.theme-light .vignette { background: radial-gradient(130% 85% at 50% 42%, transparent 62%, rgba(80, 60, 30, .18) 100%); }
+.theme-light { color: var(--ink); }
+.theme-light .display, .theme-light .h1, .theme-light .h2, .theme-light .h3 { color: var(--ink); }
+.theme-light .kicker { color: #6b6457; }
+.theme-light .card { background: #fffdf9; border: 2px solid rgba(15, 17, 21, .08); box-shadow: 0 24px 60px rgba(60, 40, 10, .16), 0 2px 0 rgba(255, 255, 255, .9) inset; color: var(--ink); }
+.theme-light .chip { background: #fff; border: 2px solid rgba(15, 17, 21, .10); color: var(--ink); box-shadow: 0 10px 24px rgba(60, 40, 10, .12); }
+.theme-light .tile { background: #fff; border: 2px solid rgba(15, 17, 21, .08); box-shadow: 0 22px 50px rgba(60, 40, 10, .18); }
+.theme-dark .bg-grid { background-image: radial-gradient(rgba(160, 190, 255, .16) 2px, transparent 2.5px); background-size: 46px 46px; }
+
+/* big kinetic words */
+.kw { display: inline-block; font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -.045em; line-height: .92; }
+.tc > .kw:not(.row) { display: block; }
+.hlbox { display: inline-block; padding: 0 .14em; border-radius: .14em; background: var(--a1); color: #fff; }
+.sticker { display: inline-flex; align-items: center; gap: 14px; padding: 16px 30px; border-radius: 22px; font: 900 40px Inter; letter-spacing: -.01em;
+  background: var(--a3); color: #111; box-shadow: 0 14px 0 rgba(0, 0, 0, .18), 0 26px 50px rgba(0, 0, 0, .22); transform-origin: center; }
+.sticker svg { width: 44px; height: 44px; }
+.sticker.dark { background: #111; color: #fff; }
+.sticker.orange { background: var(--a1); color: #fff; }
+.sticker.blue { background: var(--a2); color: #fff; }
+.sticker.green { background: #22c55e; color: #fff; }
+.sticker.red { background: #ef4444; color: #fff; }
+.num-big { font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -.05em; line-height: .85; }
+.shot { border-radius: 26px; overflow: hidden; box-shadow: 0 40px 100px rgba(0, 0, 0, .35); border: 2px solid rgba(255, 255, 255, .5); background: #111; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ring { position: absolute; border-radius: 50%; border: 3px dashed rgba(255, 106, 61, .45); }
+.agentcard { width: 300px; border-radius: 30px; padding: 26px 22px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.agentcard .ai { width: 112px; height: 112px; border-radius: 30px; display: grid; place-items: center; }
+.agentcard .ai svg { width: 56%; height: 56%; }
+.agentcard .an { font: 800 32px Inter; text-align: center; letter-spacing: -.02em; }
+.agentcard .as { font: 600 20px "JetBrains Mono"; opacity: .6; text-align: center; }
+
+/* transitions + progress */
+.swipe { position: absolute; left: -10%; top: -10%; width: 120%; height: 120%; z-index: 40; pointer-events: none; }
+.progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; z-index: 45; transform-origin: left center; background: linear-gradient(90deg, var(--a1), var(--a3)); }
+.burst i { position: absolute; width: 22px; height: 22px; border-radius: 6px; }
+
+/* captions v2: pill highlight */
+.cap { top: 1235px; gap: 6px 14px; }
+.cap .w { font-family: "Inter", sans-serif; font-weight: 900; font-size: 74px; letter-spacing: -.02em; line-height: 1.16; padding: 0 14px; border-radius: 16px;
+  color: #fff; opacity: 1; text-transform: uppercase;
+  text-shadow: 0 5px 0 rgba(0, 0, 0, .55), 0 0 24px rgba(0, 0, 0, .55); -webkit-text-stroke: 2px rgba(0, 0, 0, .55); }
+.theme-light .cap .w { color: var(--ink); text-shadow: 0 4px 0 rgba(255, 255, 255, .9), 0 0 20px rgba(255, 255, 255, .9); -webkit-text-stroke: 0; }
+.cap .w.k { color: var(--capk); }
+
+
+.igbox{width:900px;height:132px;border-radius:66px;background:#fff;display:flex;align-items:center;gap:24px;padding:0 26px;box-shadow:0 30px 90px rgba(0,0,0,.35);border:2px solid rgba(0,0,0,.06)}
+.igbox .av{width:84px;height:84px;border-radius:50%;background:conic-gradient(from 210deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75);padding:5px}
+.igbox .av div{width:100%;height:100%;border-radius:50%;background:#1b2747}
+.igbox .tx{font:900 64px "Space Grotesk";color:#0b1222;letter-spacing:-.01em}
+.igbox .send{margin-left:auto;font:800 30px Inter;color:#0095f6}
+.follow{display:inline-flex;align-items:center;gap:16px;padding:24px 46px;border-radius:24px;background:#0095f6;color:#fff;font:800 40px Inter;box-shadow:0 24px 60px rgba(0,149,246,.35)}
+.follow svg{width:44px;height:44px}
+.meter{width:760px;height:64px;border-radius:32px;background:rgba(127,127,127,.18);border:3px solid rgba(127,127,127,.35);overflow:hidden;position:relative}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;width:100%;transform-origin:left center;border-radius:32px}
+.blk{height:118px;border-radius:26px;display:flex;align-items:center;gap:22px;padding:0 30px;font:900 44px Inter;letter-spacing:-.02em;box-shadow:0 14px 0 rgba(0,0,0,.18),0 26px 50px rgba(0,0,0,.2)}
+.blk img,.blk .bi{width:70px;height:70px;object-fit:contain}
+.blk .bi svg{width:100%;height:100%}
+.step3{display:flex;flex-direction:column;align-items:center;gap:14px;width:290px}
+.step3 .sn{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;font:700 80px "Space Grotesk";box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.step3 .sl{font:900 38px Inter;letter-spacing:-.02em;text-align:center}
+.prov{width:150px;height:150px;border-radius:40px;background:#fff;display:grid;place-items:center;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.prov img{width:62%;height:62%;object-fit:contain}
+
+.gh3{width:940px;border-radius:30px;background:#0d1117;border:1.5px solid #30363d;overflow:hidden;box-shadow:0 50px 120px rgba(0,0,0,.5);font-family:Inter;color:#e6edf3}
+.gh3 .top{display:flex;align-items:center;gap:18px;padding:24px 32px;background:#010409;border-bottom:1px solid #30363d}
+.gh3 .top img{width:44px;height:44px}
+.gh3 .top .path{font-size:29px;color:#e6edf3}.gh3 .top .path b{font-weight:700}
+.gh3 .head{display:flex;align-items:center;gap:20px;padding:30px 32px 8px}
+.gh3 .head .av{width:84px;height:84px;border-radius:18px;overflow:hidden;background:#fff;flex:none}
+.gh3 .head .av img{width:100%;height:100%;object-fit:cover}
+.gh3 .head .nm{font:700 44px "Space Grotesk";letter-spacing:-.02em;white-space:nowrap}
+.gh3 .pub{font-size:21px;color:#9198a1;border:1.5px solid #3d444d;border-radius:999px;padding:3px 14px;margin-left:auto}
+.gh3 .desc{padding:14px 32px 30px;font-size:30px;line-height:1.4;color:#c9d1d9}
+.gh3 .tags{display:flex;flex-wrap:wrap;gap:10px;padding:0 32px 30px}
+.gh3 .tags span{font:600 22px Inter;color:#4493f8;background:rgba(56,139,253,.12);padding:7px 18px;border-radius:999px}
+.brw{position:absolute;border-radius:28px;overflow:hidden;background:#111;box-shadow:0 50px 120px rgba(0,0,0,.5);border:1.5px solid rgba(255,255,255,.12)}
+.brw .bb{height:74px;display:flex;align-items:center;gap:12px;padding:0 24px;background:#1c1c1f}
+.brw .bb i{display:block;width:18px;height:18px;border-radius:50%}
+.brw .url{margin-left:18px;flex:1;height:46px;border-radius:23px;background:#2a2a2e;display:flex;align-items:center;gap:12px;padding:0 20px;font:500 24px Inter;color:#d4d4d8;white-space:nowrap;overflow:hidden}
+.brw .url svg{width:24px;height:24px;flex:none}
+.iph{position:absolute;width:430px;height:900px;border-radius:72px;background:#111;padding:16px;box-shadow:0 60px 140px rgba(0,0,0,.45),inset 0 0 0 3px #3a3a3c}
+.iph .scr{position:relative;width:100%;height:100%;border-radius:58px;overflow:hidden;background:#fff}
+.iph .isl{position:absolute;left:50%;top:22px;width:130px;height:38px;margin-left:-65px;border-radius:20px;background:#000;z-index:5}
+.iph .scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bub{display:inline-block;max-width:600px;padding:22px 30px;border-radius:34px;font:600 34px Inter;line-height:1.3}
+.bub.me{background:#0a84ff;color:#fff;border-bottom-right-radius:10px}
+.bub.ai{background:#e9e9eb;color:#111;border-bottom-left-radius:10px}
+.bub.wa{background:#d9fdd3;color:#111;border-bottom-right-radius:10px}
+.bub.wb{background:#fff;color:#111;border-bottom-left-radius:10px}
+.stamp{display:inline-block;padding:14px 34px;border:8px solid currentColor;border-radius:22px;font:900 80px "Space Grotesk";letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.wd{display:inline-block;white-space:pre}
+.lbl{font:600 24px "JetBrains Mono";letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.exm{position:absolute;padding:8px 18px;border-radius:12px;font:700 22px "JetBrains Mono";letter-spacing:.1em;text-transform:uppercase;background:rgba(127,127,127,.18);border:1.5px solid rgba(127,127,127,.4)}
+.chipx{display:inline-flex;align-items:center;gap:14px;padding:18px 30px;border-radius:999px;font:800 36px Inter;white-space:nowrap}
+.chipx svg,.chipx img{width:40px;height:40px;object-fit:contain}
+.pane{border-radius:30px;padding:30px}
+.mono{font-family:"JetBrains Mono"}
+
+#root{background:#f3efe7}
+.ed{font-family:"Space Grotesk";font-weight:700;letter-spacing:-.045em;line-height:.92;color:#111111}
+.rule{position:absolute;height:4px;background:#111111}
+.tick{position:absolute;left:0;top:1150px;width:3000px;height:64px;background:#111111;color:#f3efe7;display:flex;align-items:center;gap:50px;font:700 30px "JetBrains Mono";white-space:nowrap;padding-left:30px}
+.tick b{color:#5ee59a}
+.rol{display:inline-block;height:1em;overflow:hidden;vertical-align:top}
+.paper{background:#fffdf8;border-radius:30px;box-shadow:0 24px 60px rgba(60,40,10,.14);border:1.5px solid rgba(17,17,17,.08)}
+.task{display:flex;align-items:center;gap:26px;padding:28px 34px;font:800 46px Inter;color:#111111}
+.task .ti{width:96px;height:96px;border-radius:26px;display:grid;place-items:center}
+.task .ti svg{width:56%;height:56%}
+.app{width:150px;height:150px;border-radius:38px;display:grid;place-items:center;box-shadow:0 12px 30px rgba(60,40,10,.18)}
+.app svg{width:54%;height:54%}
+.coin{position:absolute;width:64px;height:64px;border-radius:50%;background:#f5c542;border:5px solid #c9971a;display:grid;place-items:center;font:900 30px Inter;color:#7a5800}
+.dot{position:absolute;width:26px;height:26px;border-radius:50%;background:#111111}
+.rc{font:600 36px "JetBrains Mono";color:#111111;display:flex;justify-content:space-between;padding:14px 0;border-bottom:3px dashed rgba(17,17,17,.2)}
+.dark .ed{color:#fff}
+
+:root { --accent: #0b8a4c; --capk: #0b8a4c; --a1: #ff5a36; --a2: #0b8a4c; --a3: #ffd23f; --capbg: #111111; --capfg: #fff; --ink: #111111; --paper: #f3efe7; }
+</style>
+</head>
+<body class="theme-light">
+<div id="root" data-composition-id="main" data-start="0" data-duration="123.700" data-width="1080" data-height="1920">
+  <div class="bg"><div class="bg-grid"></div><div class="bg-glow a"></div><div class="bg-glow b"></div><div class="bg-glow c"></div></div>
+<section id="s1" class="scene clip " data-start="0.000" data-duration="7.680" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs" id="s1-k" style="left:70px;top:310px"><div class="lbl" style="color:#8a8478">startup · agentes de IA</div></div>
+    <div class="abs ed" id="s1-h" style="left:70px;top:360px;width:940px;font-size:96px"><span class="wd ">uma </span><span class="wd ">startup </span><span class="wd ">de </span><span class="wd ">agentes </span><span class="wd ">de </span><span class="wd ">IA </span></div>
+    <div class="rule" id="s1-r" style="left:70px;top:600px;width:940px"></div>
+    <div class="abs" id="s1-av" style="left:70px;top:640px"><div class="lbl" style="color:#8a8478">avaliação</div></div>
+    <div class="abs ed" id="s1-n" style="left:60px;top:690px;font-size:330px;color:#0b8a4c"><span style="font-size:130px;vertical-align:top;margin-right:10px">US$</span><span id="s1-c">0</span></div>
+    <div class="abs ed" id="s1-b" style="left:70px;top:990px;font-size:130px">bilhões</div>
+    <div class="tick" id="s1-t"><span>AGENTES DE IA <b>▲</b></span><span>STARTUP</span><span>AVALIAÇÃO <b>US$ 10 BI</b></span><span>AGENTES DE IA <b>▲</b></span><span>STARTUP</span><span>AVALIAÇÃO <b>US$ 10 BI</b></span><span>AGENTES DE IA <b>▲</b></span><span>STARTUP</span><span>AVALIAÇÃO <b>US$ 10 BI</b></span><span>AGENTES DE IA <b>▲</b></span><span>STARTUP</span><span>AVALIAÇÃO <b>US$ 10 BI</b></span><span>AGENTES DE IA <b>▲</b></span><span>STARTUP</span><span>AVALIAÇÃO <b>US$ 10 BI</b></span><span>AGENTES DE IA <b>▲</b></span><span>STARTUP</span><span>AVALIAÇÃO <b>US$ 10 BI</b></span></div>
+  </div></div></section>
+<section id="s2" class="scene clip " data-start="7.680" data-duration="10.080" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs ed" id="s2-h" style="left:70px;top:310px;width:940px;font-size:88px"><span class="wd ">algo </span><span class="wd ">que </span><span class="wd ">você </span><span class="wd ">usa </span><span class="wd" style="color:#ff5a36">todo dia</span></div>
+    <div id="s2-ph" style="opacity:0;position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none"><div class="iph" style="left:325px;top:400px;transform:scale(0.74);transform-origin:center center"><div class="scr" style="background:#fff"><div class="isl"></div><div style="position:absolute;left:0;right:0;top:70px;height:90px;border-bottom:1.5px solid #eee;display:flex;align-items:center;gap:14px;padding:0 26px"><div style="width:54px;height:54px;border-radius:50%;background:#111111;display:grid;place-items:center"><div style="width:58%;height:58%">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+  <path d="M20 2v4" />
+  <path d="M22 4h-4" />
+  <circle cx="4" cy="20" r="2" />
+</svg>
+</div></div><div style="font:800 28px Inter;color:#111111">assistente</div></div><div style="position:absolute;left:22px;right:22px;top:190px;display:flex;flex-direction:column;gap:18px"><div id="s2-b1" class="bub ai" style="font-size:30px;align-self:flex-start">Oi! Como posso ajudar?</div></div></div></div></div>
+    <div class="abs" id="s2-lb" style="left:690px;top:930px"><div class="sticker" style="font-size:28px;background:#111111;color:#fff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" />
+</svg>
+assistente pessoal</div></div>
+    <div class="abs" id="s2-cal" style="left:60px;top:600px"><div class="sticker" style="font-size:30px;background:#fff;color:#111111">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ff5a36"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />
+  <path d="M8 13h.01" />
+  <path d="M12 13h.01" />
+  <path d="M16 13h.01" />
+  <path d="M8 17h.01" />
+  <path d="M12 17h.01" />
+  <path d="M16 17h.01" />
+</svg>
+todos os dias</div></div>
+  </div></div></section>
+<section id="s3" class="scene clip " data-start="17.760" data-duration="8.128" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs" id="s3-k" style="left:70px;top:330px"><div class="lbl" style="color:#8a8478">a empresa</div></div>
+    <div class="abs ed" id="s3-n" style="left:60px;top:380px;font-size:220px"><span class="wd">I</span><span class="wd">n</span><span class="wd">s</span><span class="wd">t</span><span class="wd">i</span><span class="wd">n</span><span class="wd">c</span><span class="wd">t</span></div>
+    <div class="rule" id="s3-r" style="left:70px;top:640px;width:940px"></div>
+    <div class="abs" id="s3-bub" style="left:90px;top:720px"><div class="bub wb" style="font-size:44px;box-shadow:0 14px 40px rgba(60,40,10,.15)">reserva uma mesa pra mim?</div></div>
+    <div class="abs" id="s3-ar" style="left:470px;top:860px;width:110px;height:110px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#111111"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 5v14" />
+  <path d="m19 12-7 7-7-7" />
+</svg>
+</div>
+    <div class="abs" id="s3-btn" style="left:250px;top:1000px;width:580px;height:140px;border-radius:70px;background:#0b8a4c;color:#fff;display:flex;align-items:center;justify-content:center;gap:20px;font:900 60px Inter;box-shadow:0 20px 50px rgba(11,138,76,.35)"><div style="width:62px;height:62px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
+</svg>
+</div>executar</div>
+    <div class="exm" id="s3-ex" style="left:840px;top:330px;color:#8a8478">exemplo</div>
+  </div></div></section>
+<section id="s4" class="scene clip " data-start="25.888" data-duration="6.879" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs ed" id="s4-h" style="left:70px;top:310px;width:940px;font-size:90px"><span class="wd ">imagina </span><span class="wd ">pedir </span><span class="wd ">pra </span><span class="wd ">IA: </span></div>
+    <div class="abs col gap24" style="left:70px;top:540px;width:940px">
+      <div class="paper task" id="s4-k0"><div class="ti" style="background:#ff5a36">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+  <path d="M7 2v20" />
+  <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+</svg>
+</div>reservar um restaurante<div id="s4-ok0" style="margin-left:auto;width:64px;height:64px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#0b8a4c"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="m16 9-5.5 5.5L8 12" />
+</svg>
+</div></div><div class="paper task" id="s4-k1"><div class="ti" style="background:#0b8a4c">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />
+  <path d="m9 15 2 2 4-4" />
+</svg>
+</div>marcar um compromisso<div id="s4-ok1" style="margin-left:auto;width:64px;height:64px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#0b8a4c"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="m16 9-5.5 5.5L8 12" />
+</svg>
+</div></div><div class="paper task" id="s4-k2"><div class="ti" style="background:#111111">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+  <circle cx="7" cy="17" r="2" />
+  <path d="M9 17h6" />
+  <circle cx="17" cy="17" r="2" />
+</svg>
+</div>pedir um carro<div id="s4-ok2" style="margin-left:auto;width:64px;height:64px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#0b8a4c"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="m16 9-5.5 5.5L8 12" />
+</svg>
+</div></div></div>
+  </div></div></section>
+<section id="s5" class="scene clip " data-start="32.767" data-duration="5.440" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs ed" id="s5-h" style="left:70px;top:310px;width:940px;font-size:90px"><span class="wd ">em </span><span class="wd ">vez </span><span class="wd ">de </span><span class="wd ">vários </span><span class="wd ">apps… </span></div>
+    <div class="abs app" id="s5-a0" style="left:210px;top:520px;background:#ff5a36">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+  <path d="M7 2v20" />
+  <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+</svg>
+</div><div class="abs app" id="s5-a1" style="left:440px;top:520px;background:#0b8a4c">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />
+</svg>
+</div><div class="abs app" id="s5-a2" style="left:670px;top:520px;background:#111111">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+  <circle cx="7" cy="17" r="2" />
+  <path d="M9 17h6" />
+  <circle cx="17" cy="17" r="2" />
+</svg>
+</div><div class="abs app" id="s5-a3" style="left:210px;top:730px;background:#7c5cff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 10a4 4 0 0 1-8 0" />
+  <path d="M3.103 6.034h17.794" />
+  <path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z" />
+</svg>
+</div><div class="abs app" id="s5-a4" style="left:440px;top:730px;background:#0a84ff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+</svg>
+</div><div class="abs app" id="s5-a5" style="left:670px;top:730px;background:#ff5a36">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+  <path d="M13 5v2" />
+  <path d="M13 17v2" />
+  <path d="M13 11v2" />
+</svg>
+</div><div class="abs app" id="s5-a6" style="left:210px;top:940px;background:#0b8a4c">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" />
+</svg>
+</div><div class="abs app" id="s5-a7" style="left:440px;top:940px;background:#111111">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="5" rx="2" />
+  <line x1="2" x2="22" y1="10" y2="10" />
+  <path d="M6 14h2" />
+</svg>
+</div><div class="abs app" id="s5-a8" style="left:670px;top:940px;background:#c2410c">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 22v-6.57" />
+  <path d="M12 11h.01" />
+  <path d="M12 7h.01" />
+  <path d="M14 15.43V22" />
+  <path d="M15 16a5 5 0 0 0-6 0" />
+  <path d="M16 11h.01" />
+  <path d="M16 7h.01" />
+  <path d="M8 11h.01" />
+  <path d="M8 7h.01" />
+  <rect x="4" y="2" width="16" height="20" rx="2" />
+</svg>
+</div>
+    <div class="abs" id="s5-m" style="left:170px;top:700px"><div class="bub me" style="font-size:52px;padding:30px 44px;background:#111111">uma mensagem</div></div>
+  </div></div></section>
+<section id="s6" class="scene clip " data-start="38.207" data-duration="5.280" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs ed" id="s6-h" style="left:70px;top:310px;width:600px;font-size:84px"><span class="wd ">a </span><span class="wd ">IA </span><span class="wd ">entende </span><span class="wd ">e </span><span class="wd ">executa </span></div>
+    <div id="s6-ph" style="position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none"><div class="iph" style="left:520px;top:400px;transform:scale(0.78);transform-origin:center center"><div class="scr" style="background:#fff"><div class="isl"></div><div style="position:absolute;left:0;right:0;top:70px;height:90px;border-bottom:1.5px solid #eee;display:flex;align-items:center;gap:14px;padding:0 26px"><div style="width:54px;height:54px;border-radius:50%;background:#111111;display:grid;place-items:center"><div style="width:58%;height:58%">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+  <path d="M20 2v4" />
+  <path d="M22 4h-4" />
+  <circle cx="4" cy="20" r="2" />
+</svg>
+</div></div><div style="font:800 28px Inter;color:#111111">assistente</div></div><div style="position:absolute;left:22px;right:22px;top:190px;display:flex;flex-direction:column;gap:18px"><div id="s6-u" class="bub me" style="font-size:28px;align-self:flex-end">Mesa pra 2 hoje às 20h?</div><div id="s6-ty" class="bub ai" style="font-size:28px;align-self:flex-start">digitando…</div><div id="s6-r" class="bub ai" style="font-size:28px;align-self:flex-start;background:#d9f5e5">Reservado ✓</div></div></div></div></div>
+    <div class="exm" id="s6-ex" style="left:70px;top:620px;color:#8a8478">exemplo ilustrativo</div>
+  </div></div></section>
+<section id="s7" class="scene clip dark" data-start="43.487" data-duration="6.413" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs" style="inset:-60px;background:#111111"></div>
+    <div class="abs ed" id="s7-a" style="left:70px;top:360px;font-size:110px;color:#fff">não é só a</div>
+    <div class="abs ed" id="s7-t" style="left:70px;top:480px;font-size:150px;color:#fff">tecnologia</div>
+    <div class="abs ed" id="s7-m" style="left:70px;top:740px;font-size:150px;color:#f3efe7"><span class="wd ">O </span><span class="wd ">MODELO </span></div>
+    <div class="abs ed" id="s7-n" style="left:70px;top:890px;font-size:150px;color:#5ee59a"><span class="wd ">DE </span><span class="wd ">NEGÓCIO </span></div>
+  </div></div></section>
+<section id="s8" class="scene clip " data-start="49.900" data-duration="8.720" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs paper" id="s8-s" style="left:70px;top:330px;width:940px;height:200px;display:flex;align-items:center;gap:28px;padding:0 40px">
+      <div style="width:100px;height:100px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#8a8478"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m17 2 4 4-4 4" />
+  <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+  <path d="m7 22-4-4 4-4" />
+  <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+</svg>
+</div><div><div class="lbl" style="color:#8a8478">só isso?</div><div style="font:800 54px Inter;color:#111111">assinatura mensal</div></div>
+      <div id="s8-x" style="position:absolute;left:30px;right:30px;top:96px;height:10px;background:#ff5a36;transform-origin:left center"></div></div>
+    <div class="abs row" id="s8-fl" style="left:70px;top:700px;width:940px;justify-content:space-between">
+      <div class="tc" id="s8-n0"><div style="width:190px;height:190px;border-radius:50%;background:#111111;display:grid;place-items:center;margin:0 auto"><div style="width:48%;height:48%">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" />
+</svg>
+</div></div><div style="font:800 40px Inter;margin-top:14px;color:#111111">usuário</div></div><div class="tc" id="s8-n1"><div style="width:190px;height:190px;border-radius:50%;background:#0b8a4c;display:grid;place-items:center;margin:0 auto"><div style="width:48%;height:48%">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+  <path d="M20 2v4" />
+  <path d="M22 4h-4" />
+  <circle cx="4" cy="20" r="2" />
+</svg>
+</div></div><div style="font:800 40px Inter;margin-top:14px;color:#111111">Instinct</div></div><div class="tc" id="s8-n2"><div style="width:190px;height:190px;border-radius:50%;background:#ff5a36;display:grid;place-items:center;margin:0 auto"><div style="width:48%;height:48%">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5" />
+  <path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244" />
+  <path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05" />
+</svg>
+</div></div><div style="font:800 40px Inter;margin-top:14px;color:#111111">empresa</div></div></div>
+    <svg class="wires" viewBox="0 0 1080 1920"><path id="s8-w" d="M260 795 H 820" stroke="#111111" stroke-width="6" stroke-dasharray="14 14" fill="none"/></svg>
+    <div class="coin" id="s8-c" style="left:228px;top:763px">$</div>
+    <div class="abs" id="s8-lb" style="left:250px;top:1030px"><div class="sticker" style="font-size:40px;background:#0b8a4c;color:#fff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 3 4 7l4 4" />
+  <path d="M4 7h16" />
+  <path d="m16 21 4-4-4-4" />
+  <path d="M20 17H4" />
+</svg>
+intermedia transações</div></div>
+  </div></div></section>
+<section id="s9" class="scene clip " data-start="58.620" data-duration="10.988" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs paper" id="s9-r" style="left:190px;top:310px;width:700px;padding:40px 50px">
+      <div class="lbl" style="color:#8a8478;text-align:center">recibo · via assistente</div>
+      <div class="rc" id="s9-l0"><span>serviço</span><span>✓</span></div><div class="rc" id="s9-l1"><span>reserva</span><span>✓</span></div><div class="rc" id="s9-l2"><span>compra</span><span>✓</span></div>
+      <div style="margin-top:34px"><div class="lbl" style="color:#8a8478">valor da operação</div>
+        <div style="position:relative;height:70px;border-radius:18px;background:#ebe6dc;margin-top:12px;overflow:hidden"><div id="s9-f" style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#111111;transform-origin:left center"></div><div id="s9-cm" style="opacity:0;position:absolute;right:0;top:0;bottom:0;width:22%;background:#0b8a4c"></div></div></div></div>
+    <div class="abs" id="s9-lb" style="left:560px;top:1000px"><div class="sticker" style="font-size:46px;background:#0b8a4c;color:#fff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M13.744 17.736a6 6 0 1 1-7.48-7.48" />
+  <path d="M15 6h1v4" />
+  <path d="m6.134 14.768.866-.5 2 3.464" />
+  <circle cx="16" cy="8" r="6" />
+</svg>
+comissão</div></div>
+    <div class="abs" id="s9-ar" style="left:820px;top:880px;width:90px;height:110px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#0b8a4c"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m5 12 7-7 7 7" />
+  <path d="M12 19V5" />
+</svg>
+</div>
+  </div></div></section>
+<section id="s10" class="scene clip " data-start="69.608" data-duration="11.920" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs ed" id="s10-h" style="left:70px;top:310px;width:940px;font-size:96px"><span class="wd ">pensa </span><span class="wd ">na </span> <span class="wd" style="color:#0b8a4c">escala</span></div>
+    <div class="dot" id="s10-d0" style="left:80px;top:1059px;background:#ff5a36"></div><div class="dot" id="s10-d1" style="left:340px;top:605px;background:#111111"></div><div class="dot" id="s10-d2" style="left:736px;top:811px;background:#111111"></div><div class="dot" id="s10-d3" style="left:376px;top:951px;background:#111111"></div><div class="dot" id="s10-d4" style="left:760px;top:817px;background:#111111"></div><div class="dot" id="s10-d5" style="left:696px;top:877px;background:#ff5a36"></div><div class="dot" id="s10-d6" style="left:815px;top:625px;background:#111111"></div><div class="dot" id="s10-d7" style="left:417px;top:923px;background:#111111"></div><div class="dot" id="s10-d8" style="left:708px;top:504px;background:#111111"></div><div class="dot" id="s10-d9" style="left:696px;top:769px;background:#111111"></div><div class="dot" id="s10-d10" style="left:910px;top:987px;background:#ff5a36"></div><div class="dot" id="s10-d11" style="left:191px;top:798px;background:#111111"></div><div class="dot" id="s10-d12" style="left:911px;top:911px;background:#111111"></div><div class="dot" id="s10-d13" style="left:659px;top:840px;background:#111111"></div><div class="dot" id="s10-d14" style="left:901px;top:1051px;background:#111111"></div><div class="dot" id="s10-d15" style="left:415px;top:685px;background:#ff5a36"></div><div class="dot" id="s10-d16" style="left:833px;top:683px;background:#111111"></div><div class="dot" id="s10-d17" style="left:217px;top:660px;background:#111111"></div><div class="dot" id="s10-d18" style="left:466px;top:659px;background:#111111"></div><div class="dot" id="s10-d19" style="left:924px;top:827px;background:#111111"></div><div class="dot" id="s10-d20" style="left:736px;top:1032px;background:#ff5a36"></div><div class="dot" id="s10-d21" style="left:133px;top:645px;background:#111111"></div><div class="dot" id="s10-d22" style="left:585px;top:796px;background:#111111"></div><div class="dot" id="s10-d23" style="left:459px;top:593px;background:#111111"></div><div class="dot" id="s10-d24" style="left:898px;top:505px;background:#111111"></div><div class="dot" id="s10-d25" style="left:409px;top:690px;background:#ff5a36"></div><div class="dot" id="s10-d26" style="left:678px;top:1062px;background:#111111"></div><div class="dot" id="s10-d27" style="left:543px;top:576px;background:#111111"></div><div class="dot" id="s10-d28" style="left:445px;top:652px;background:#111111"></div><div class="dot" id="s10-d29" style="left:408px;top:741px;background:#111111"></div><div class="dot" id="s10-d30" style="left:379px;top:810px;background:#ff5a36"></div><div class="dot" id="s10-d31" style="left:633px;top:619px;background:#111111"></div><div class="dot" id="s10-d32" style="left:896px;top:763px;background:#111111"></div><div class="dot" id="s10-d33" style="left:857px;top:876px;background:#111111"></div><div class="dot" id="s10-d34" style="left:651px;top:800px;background:#111111"></div><div class="dot" id="s10-d35" style="left:534px;top:911px;background:#ff5a36"></div><div class="dot" id="s10-d36" style="left:926px;top:724px;background:#111111"></div><div class="dot" id="s10-d37" style="left:717px;top:631px;background:#111111"></div><div class="dot" id="s10-d38" style="left:608px;top:694px;background:#111111"></div><div class="dot" id="s10-d39" style="left:378px;top:721px;background:#111111"></div><div class="dot" id="s10-d40" style="left:795px;top:1032px;background:#ff5a36"></div><div class="dot" id="s10-d41" style="left:180px;top:994px;background:#111111"></div><div class="dot" id="s10-d42" style="left:150px;top:730px;background:#111111"></div><div class="dot" id="s10-d43" style="left:218px;top:520px;background:#111111"></div><div class="dot" id="s10-d44" style="left:977px;top:611px;background:#111111"></div><div class="dot" id="s10-d45" style="left:649px;top:562px;background:#ff5a36"></div><div class="dot" id="s10-d46" style="left:491px;top:849px;background:#111111"></div><div class="dot" id="s10-d47" style="left:204px;top:1060px;background:#111111"></div><div class="dot" id="s10-d48" style="left:876px;top:1040px;background:#111111"></div><div class="dot" id="s10-d49" style="left:877px;top:1051px;background:#111111"></div><div class="dot" id="s10-d50" style="left:765px;top:646px;background:#ff5a36"></div><div class="dot" id="s10-d51" style="left:89px;top:629px;background:#111111"></div><div class="dot" id="s10-d52" style="left:148px;top:471px;background:#111111"></div><div class="dot" id="s10-d53" style="left:635px;top:618px;background:#111111"></div><div class="dot" id="s10-d54" style="left:747px;top:783px;background:#111111"></div><div class="dot" id="s10-d55" style="left:699px;top:622px;background:#ff5a36"></div><div class="dot" id="s10-d56" style="left:874px;top:621px;background:#111111"></div><div class="dot" id="s10-d57" style="left:417px;top:1042px;background:#111111"></div><div class="dot" id="s10-d58" style="left:187px;top:783px;background:#111111"></div><div class="dot" id="s10-d59" style="left:83px;top:1054px;background:#111111"></div><div class="dot" id="s10-d60" style="left:653px;top:1060px;background:#ff5a36"></div><div class="dot" id="s10-d61" style="left:99px;top:1046px;background:#111111"></div><div class="dot" id="s10-d62" style="left:249px;top:1090px;background:#111111"></div><div class="dot" id="s10-d63" style="left:589px;top:905px;background:#111111"></div><div class="dot" id="s10-d64" style="left:320px;top:613px;background:#111111"></div><div class="dot" id="s10-d65" style="left:268px;top:831px;background:#ff5a36"></div><div class="dot" id="s10-d66" style="left:127px;top:962px;background:#111111"></div><div class="dot" id="s10-d67" style="left:711px;top:927px;background:#111111"></div><div class="dot" id="s10-d68" style="left:528px;top:491px;background:#111111"></div><div class="dot" id="s10-d69" style="left:179px;top:1058px;background:#111111"></div>
+    <div class="abs" id="s10-c" style="left:440px;top:690px;width:200px;height:200px;border-radius:50%;background:#0b8a4c;display:grid;place-items:center;box-shadow:0 0 0 18px rgba(11,138,76,.18),0 0 0 40px rgba(11,138,76,.08)"><div style="font:900 44px Inter;color:#fff">receita</div></div>
+  </div></div></section>
+<section id="s11" class="scene clip " data-start="81.528" data-duration="10.879" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs ed" id="s11-h" style="left:70px;top:310px;width:940px;font-size:90px"><span class="wd ">outra </span><span class="wd ">vantagem: </span></div>
+    <div class="abs paper" id="s11-p" style="left:70px;top:460px;width:500px;height:520px;padding:24px">
+      <div style="height:44px;border-radius:10px;background:#e3ddd1;margin-bottom:16px"></div>
+      <div style="display:flex;gap:14px"><div style="flex:none;width:130px;display:flex;flex-direction:column;gap:12px"><div style="height:30px;border-radius:8px;background:#ebe6dc"></div><div style="height:30px;border-radius:8px;background:#ebe6dc"></div><div style="height:30px;border-radius:8px;background:#ebe6dc"></div><div style="height:30px;border-radius:8px;background:#ebe6dc"></div><div style="height:30px;border-radius:8px;background:#ebe6dc"></div><div style="height:30px;border-radius:8px;background:#ebe6dc"></div></div><div style="flex:none;width:130px;display:flex;flex-direction:column;gap:12px"><div style="height:30px;border-radius:8px;background:#ebe6dc"></div><div style="height:30px;border-radius:8px;background:#ebe6dc"></div><div style="height:30px;border-radius:8px;background:#ebe6dc"></div><div style="height:30px;border-radius:8px;background:#ebe6dc"></div><div style="height:30px;border-radius:8px;background:#ebe6dc"></div><div style="height:30px;border-radius:8px;background:#ebe6dc"></div></div><div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px"><div style="height:70px;border-radius:10px;background:#ebe6dc"></div><div style="height:70px;border-radius:10px;background:#ebe6dc"></div><div style="height:70px;border-radius:10px;background:#ebe6dc"></div><div style="height:70px;border-radius:10px;background:#ebe6dc"></div><div style="height:70px;border-radius:10px;background:#ebe6dc"></div><div style="height:70px;border-radius:10px;background:#ebe6dc"></div><div style="height:70px;border-radius:10px;background:#ebe6dc"></div><div style="height:70px;border-radius:10px;background:#ebe6dc"></div></div></div>
+      <div class="lbl" style="color:#8a8478;margin-top:20px">plataforma nova</div>
+      <div id="s11-x" style="position:absolute;left:20px;right:20px;top:250px;height:12px;background:#ff5a36;transform:rotate(-20deg)"></div></div>
+    <div class="abs" id="s11-c" style="left:610px;top:560px;width:400px">
+      <div class="bub wb" style="font-size:40px;box-shadow:0 14px 40px rgba(60,40,10,.15)">é só conversar</div>
+      <div style="margin-top:22px;width:110px;height:110px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#0b8a4c"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+  <path d="m9 11 3 3L22 4" />
+</svg>
+</div></div>
+  </div></div></section>
+<section id="s12" class="scene clip " data-start="92.407" data-duration="6.113" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs ed" id="s12-h" style="left:70px;top:310px;width:940px;font-size:96px"><span class="wd ">pras </span><span class="wd ">empresas </span></div>
+    <svg class="wires" viewBox="0 0 1080 1920"><path id="s12-f" d="M140 500 H 940 L 680 900 V 1120 H 400 V 900 Z" stroke="#111111" stroke-width="6" fill="rgba(17,17,17,.04)" stroke-linejoin="round"/></svg>
+    <div class="abs" id="s12-a" style="left:260px;top:560px"><div class="sticker" style="font-size:44px;background:#ff5a36;color:#fff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <line x1="19" x2="19" y1="8" y2="14" />
+  <line x1="22" x2="16" y1="11" y2="11" />
+</svg>
+adquirir clientes</div></div>
+    <div class="abs" id="s12-b" style="left:380px;top:950px"><div class="sticker" style="font-size:44px;background:#0b8a4c;color:#fff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 7h6v6" />
+  <path d="m22 7-8.5 8.5-5-5L2 17" />
+</svg>
+vendas</div></div>
+  </div></div></section>
+<section id="s13" class="scene clip " data-start="98.520" data-duration="11.360" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs" id="s13-k" style="left:70px;top:320px"><div class="lbl" style="color:#8a8478">a grande oportunidade</div></div>
+    <div class="abs ed" id="s13-c" style="left:70px;top:390px;font-size:112px;white-space:nowrap;color:#8a8478">mais um chatbot<div id="s13-x" style="position:absolute;left:-10px;right:-10px;top:52px;height:14px;background:#ff5a36;transform-origin:left center"></div></div>
+    <div class="abs ed" id="s13-a" style="left:70px;top:560px;font-size:210px;color:#0b8a4c">AGENTES</div>
+    <div class="abs col gap20" style="left:70px;top:820px;width:940px">
+      <div class="paper task" id="s13-r1" style="padding:22px 30px;font-size:42px"><div class="ti" style="background:#111111;width:80px;height:80px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
+</svg>
+</div>resolvem problemas reais</div>
+      <div class="paper task" id="s13-r2" style="padding:22px 30px;font-size:42px"><div class="ti" style="background:#0b8a4c;width:80px;height:80px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 3 4 7l4 4" />
+  <path d="M4 7h16" />
+  <path d="m16 21 4-4-4-4" />
+  <path d="M20 17H4" />
+</svg>
+</div>participam de transações</div></div>
+  </div></div></section>
+<section id="s14" class="scene clip " data-start="109.880" data-duration="5.840" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs ed" id="s14-h" style="left:70px;top:310px;width:940px;font-size:90px"><span class="wd ">o </span><span class="wd ">mercado </span><span class="wd ">de </span> <span class="wd" style="color:#0b8a4c">agentes</span> <span class="wd">de IA</span></div>
+    <div class="abs paper" id="s14-p" style="left:70px;top:560px;width:940px;height:560px;padding:40px">
+      <div class="lbl" style="color:#8a8478">interesse</div>
+      <svg viewBox="0 0 860 440" style="width:860px;height:440px"><path d="M0 420 H 860" stroke="rgba(17,17,17,.15)" stroke-width="3"/><path id="s14-c" d="M10 400 C 200 390, 330 360, 450 300 S 700 90, 850 30" stroke="#0b8a4c" stroke-width="10" fill="none" stroke-linecap="round"/></svg></div>
+  </div></div></section>
+<section id="s15" class="scene clip " data-start="115.720" data-duration="7.980" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs ed tc" id="s15-h" style="left:40px;top:300px;width:1000px;font-size:130px">me <span style="background:#ff5a36;color:#fff;padding:0 .12em;border-radius:.12em">conta!</span></div>
+    <div class="abs paper" id="s15-p" style="left:90px;top:520px;width:900px;padding:40px 44px">
+      <div style="font:800 50px Inter;line-height:1.2;color:#111111">Você usaria um assistente de IA pras tarefas do dia a dia?</div>
+      <div class="row gap24" style="margin-top:34px">
+        <div id="s15-y" style="flex:1;height:120px;border-radius:30px;background:#0b8a4c;color:#fff;display:grid;place-items:center;font:900 54px Inter">SIM</div>
+        <div id="s15-n" style="flex:1;height:120px;border-radius:30px;background:#111111;color:#fff;display:grid;place-items:center;font:900 54px Inter">NÃO</div></div></div>
+    <div class="abs igbox" id="s15-b" style="left:90px;top:960px"><div class="av"><div></div></div><div class="tx" style="font:600 40px Inter;color:#8a8478">comente sua opinião…</div><div class="send">Publicar</div></div>
+    <div class="abs" id="s15-dn" style="left:470px;top:1110px;width:120px;height:120px;color:#ff5a36">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m7 6 5 5 5-5" />
+  <path d="m7 13 5 5 5-5" />
+</svg>
+</div>
+  </div></div></section>
+  
+  <div class="vignette"></div>
+  <div class="swipe" id="sw0" style="background:#111111"></div><div class="swipe" id="sw1" style="background:#ff5a36"></div><div class="swipe" id="sw2" style="background:#0b8a4c"></div><div class="swipe" id="sw3" style="background:#111111"></div><div class="swipe" id="sw4" style="background:#ff5a36"></div><div class="swipe" id="sw5" style="background:#0b8a4c"></div><div class="swipe" id="sw6" style="background:#111111"></div><div class="swipe" id="sw7" style="background:#ff5a36"></div><div class="swipe" id="sw8" style="background:#0b8a4c"></div><div class="swipe" id="sw9" style="background:#111111"></div><div class="swipe" id="sw10" style="background:#ff5a36"></div><div class="swipe" id="sw11" style="background:#0b8a4c"></div><div class="swipe" id="sw12" style="background:#111111"></div><div class="swipe" id="sw13" style="background:#ff5a36"></div>
+  <div class="progress"></div>
+  <div class="caps">
+<div class="cap clip" data-start="-0.040" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="0.000">Uma</span><span class="w" data-s="0.320">startup</span><span class="w" data-s="0.800">de</span></div></div>
+<div class="cap clip" data-start="0.920" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="0.960">agentes</span><span class="w" data-s="1.440">de</span></div></div>
+<div class="cap clip" data-start="1.560" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="1.600">inteligência</span></div></div>
+<div class="cap clip" data-start="2.200" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="2.240">artificial</span><span class="w" data-s="2.800">chamou</span></div></div>
+<div class="cap clip" data-start="3.240" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="3.280">a</span><span class="w" data-s="3.360">atenção</span><span class="w" data-s="3.680">do</span></div></div>
+<div class="cap clip" data-start="3.800" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="3.840">mercado</span><span class="w" data-s="4.320">com</span><span class="w" data-s="4.480">uma</span></div></div>
+<div class="cap clip" data-start="4.600" data-duration="1.440" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="4.640">avaliação</span><span class="w" data-s="5.280">de</span><span class="w k" data-s="5.520">10</span></div></div>
+<div class="cap clip" data-start="6.040" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="6.080">bilhões</span><span class="w" data-s="6.640">de</span></div></div>
+<div class="cap clip" data-start="6.760" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="6.800">dólares.</span></div></div>
+<div class="cap clip" data-start="7.720" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="7.760">E</span><span class="w" data-s="7.920">o</span><span class="w" data-s="8.080">mais</span></div></div>
+<div class="cap clip" data-start="8.280" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="8.320">curioso</span><span class="w" data-s="8.800">é</span><span class="w" data-s="8.960">que</span></div></div>
+<div class="cap clip" data-start="9.160" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="9.200">a</span><span class="w" data-s="9.280">proposta</span><span class="w" data-s="9.760">do</span></div></div>
+<div class="cap clip" data-start="9.800" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="9.840">negócio</span><span class="w" data-s="10.320">gira</span><span class="w" data-s="10.720">em</span></div></div>
+<div class="cap clip" data-start="10.760" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="10.800">torno</span><span class="w" data-s="11.040">de</span><span class="w" data-s="11.280">algo</span></div></div>
+<div class="cap clip" data-start="11.480" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="11.520">que</span><span class="w" data-s="11.760">você</span></div></div>
+<div class="cap clip" data-start="12.040" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="12.080">provavelmente</span></div></div>
+<div class="cap clip" data-start="12.760" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="12.800">utiliza</span><span class="w" data-s="13.440">todos</span><span class="w" data-s="13.760">os</span></div></div>
+<div class="cap clip" data-start="13.880" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="13.920">dias</span></div></div>
+<div class="cap clip" data-start="14.600" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="14.640">um</span><span class="w k" data-s="14.880">assistente</span></div></div>
+<div class="cap clip" data-start="15.480" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="15.520">pessoal</span><span class="w" data-s="16.000">de</span></div></div>
+<div class="cap clip" data-start="16.120" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="16.160">inteligência</span></div></div>
+<div class="cap clip" data-start="16.840" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="16.880">artificial.</span></div></div>
+<div class="cap clip" data-start="17.800" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="17.840">A</span><span class="w" data-s="18.000">empresa</span><span class="w" data-s="18.400">se</span></div></div>
+<div class="cap clip" data-start="18.520" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="18.560">chama</span><span class="w k" data-s="18.880">Instinct</span></div></div>
+<div class="cap clip" data-start="19.720" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="19.760">e</span><span class="w" data-s="19.920">a</span><span class="w" data-s="20.080">ideia</span></div></div>
+<div class="cap clip" data-start="20.360" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="20.400">é</span><span class="w" data-s="20.640">transformar</span><span class="w" data-s="21.200">uma</span></div></div>
+<div class="cap clip" data-start="21.320" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="21.360">conversa</span><span class="w" data-s="21.840">simples</span></div></div>
+<div class="cap clip" data-start="22.200" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="22.240">em</span><span class="w" data-s="22.480">uma</span><span class="w" data-s="22.640">experiência</span></div></div>
+<div class="cap clip" data-start="23.000" data-duration="0.527" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="23.040">capaz.</span></div></div>
+<div class="cap clip" data-start="23.527" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="23.567">Capaz</span><span class="w" data-s="23.807">de</span><span class="w k" data-s="23.967">executar</span></div></div>
+<div class="cap clip" data-start="24.407" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="24.447">tarefas</span><span class="w" data-s="24.927">para</span><span class="w" data-s="25.087">o</span></div></div>
+<div class="cap clip" data-start="25.127" data-duration="0.801" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="25.167">usuário.</span></div></div>
+<div class="cap clip" data-start="25.928" data-duration="0.879" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="25.968">Imagina</span><span class="w" data-s="26.448">que</span><span class="w" data-s="26.607">você</span></div></div>
+<div class="cap clip" data-start="26.807" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="26.847">precisa</span><span class="w" data-s="27.247">reservar</span></div></div>
+<div class="cap clip" data-start="27.687" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="27.727">um</span><span class="w" data-s="27.888">restaurante</span></div></div>
+<div class="cap clip" data-start="28.567" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="28.607">marcar</span><span class="w" data-s="29.007">um</span></div></div>
+<div class="cap clip" data-start="29.127" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="29.167">compromisso</span><span class="w" data-s="29.887">ou</span></div></div>
+<div class="cap clip" data-start="30.087" data-duration="0.801" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="30.127">pedir</span><span class="w" data-s="30.527">um</span><span class="w" data-s="30.607">carro</span></div></div>
+<div class="cap clip" data-start="30.888" data-duration="0.639" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="30.928">para</span><span class="w" data-s="31.087">chegar</span><span class="w" data-s="31.407">a</span></div></div>
+<div class="cap clip" data-start="31.527" data-duration="1.280" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="31.567">determinado</span><span class="w" data-s="32.208">lugar.</span></div></div>
+<div class="cap clip" data-start="32.807" data-duration="0.561" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="32.847">Em</span><span class="w" data-s="33.007">vez</span><span class="w" data-s="33.167">de</span></div></div>
+<div class="cap clip" data-start="33.368" data-duration="0.719" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="33.408">abrir</span><span class="w" data-s="33.727">vários</span></div></div>
+<div class="cap clip" data-start="34.087" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="34.127">aplicativos</span></div></div>
+<div class="cap clip" data-start="35.047" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="35.087">você</span><span class="w" data-s="35.408">simplesmente</span></div></div>
+<div class="cap clip" data-start="36.087" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="36.127">manda</span><span class="w" data-s="36.607">uma</span><span class="w k" data-s="36.767">mensagem</span></div></div>
+<div class="cap clip" data-start="37.127" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="37.167">para</span><span class="w" data-s="37.328">o</span><span class="w k" data-s="37.487">assistente.</span></div></div>
+<div class="cap clip" data-start="38.247" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="38.287">A</span><span class="w" data-s="38.448">inteligência</span></div></div>
+<div class="cap clip" data-start="39.047" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="39.087">artificial</span><span class="w" data-s="39.807">entende</span></div></div>
+<div class="cap clip" data-start="40.167" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="40.207">o</span><span class="w" data-s="40.367">que</span><span class="w" data-s="40.527">você</span></div></div>
+<div class="cap clip" data-start="40.727" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="40.767">precisa</span><span class="w" data-s="41.248">e</span><span class="w" data-s="41.487">ajuda</span></div></div>
+<div class="cap clip" data-start="41.847" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="41.887">a</span><span class="w k" data-s="42.047">executar</span><span class="w" data-s="42.527">aquela</span></div></div>
+<div class="cap clip" data-start="42.807" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="42.847">tarefa.</span></div></div>
+<div class="cap clip" data-start="43.527" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="43.567">Mas</span><span class="w" data-s="43.807">a</span><span class="w" data-s="44.047">parte</span></div></div>
+<div class="cap clip" data-start="44.327" data-duration="0.801" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="44.367">mais</span><span class="w" data-s="44.607">interessante</span></div></div>
+<div class="cap clip" data-start="45.128" data-duration="0.892" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="45.168">não</span><span class="w" data-s="45.328">é</span></div></div>
+<div class="cap clip" data-start="46.020" data-duration="0.480" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="46.060">apenas</span><span class="w" data-s="46.380">a</span></div></div>
+<div class="cap clip" data-start="46.500" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="46.540">tecnologia</span></div></div>
+<div class="cap clip" data-start="47.300" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="47.340">é</span><span class="w" data-s="47.580">o</span><span class="w k" data-s="47.740">modelo</span></div></div>
+<div class="cap clip" data-start="48.180" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="48.220">de</span><span class="w k" data-s="48.380">negócio</span><span class="w" data-s="48.940">por</span></div></div>
+<div class="cap clip" data-start="49.060" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="49.100">trás</span><span class="w" data-s="49.420">dela.</span></div></div>
+<div class="cap clip" data-start="49.940" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="49.980">Porque</span><span class="w" data-s="50.300">uma</span><span class="w" data-s="50.540">empresa</span></div></div>
+<div class="cap clip" data-start="50.820" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="50.860">como</span><span class="w" data-s="51.100">essa</span><span class="w" data-s="51.500">não</span></div></div>
+<div class="cap clip" data-start="51.700" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="51.740">precisa</span><span class="w" data-s="52.140">depender</span></div></div>
+<div class="cap clip" data-start="52.660" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="52.700">exclusivamente</span><span class="w" data-s="53.500">de</span></div></div>
+<div class="cap clip" data-start="53.620" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="53.660">assinaturas</span></div></div>
+<div class="cap clip" data-start="54.260" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="54.300">mensais.</span></div></div>
+<div class="cap clip" data-start="54.980" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="55.020">Ela</span><span class="w" data-s="55.340">também</span><span class="w" data-s="55.660">pode</span></div></div>
+<div class="cap clip" data-start="55.860" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="55.900">ganhar</span><span class="w" data-s="56.300">dinheiro</span></div></div>
+<div class="cap clip" data-start="56.820" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="56.860">intermediando</span></div></div>
+<div class="cap clip" data-start="57.700" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="57.740">transações.</span></div></div>
+<div class="cap clip" data-start="58.660" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="58.700">Por</span><span class="w" data-s="58.940">exemplo</span></div></div>
+<div class="cap clip" data-start="59.460" data-duration="0.480" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="59.500">quando</span><span class="w" data-s="59.740">alguém</span></div></div>
+<div class="cap clip" data-start="59.940" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="59.980">solicita</span><span class="w" data-s="60.620">um</span></div></div>
+<div class="cap clip" data-start="60.660" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="60.700">serviço</span></div></div>
+<div class="cap clip" data-start="61.220" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="61.260">realiza</span><span class="w" data-s="61.820">uma</span></div></div>
+<div class="cap clip" data-start="61.940" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="61.980">reserva</span><span class="w" data-s="62.460">ou</span><span class="w" data-s="62.700">faz</span></div></div>
+<div class="cap clip" data-start="62.900" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="62.940">uma</span><span class="w" data-s="63.180">compra</span></div></div>
+<div class="cap clip" data-start="63.540" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="63.580">utilizando</span><span class="w" data-s="63.980">o</span></div></div>
+<div class="cap clip" data-start="64.100" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="64.140">assistente</span></div></div>
+<div class="cap clip" data-start="65.060" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="65.100">existe</span><span class="w" data-s="65.500">a</span></div></div>
+<div class="cap clip" data-start="65.620" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="65.660">possibilidade</span><span class="w" data-s="66.380">de</span></div></div>
+<div class="cap clip" data-start="66.500" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="66.540">gerar</span><span class="w" data-s="67.020">uma</span><span class="w k" data-s="67.180">comissão</span></div></div>
+<div class="cap clip" data-start="67.700" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="67.740">sobre</span><span class="w" data-s="67.980">aquela</span></div></div>
+<div class="cap clip" data-start="68.340" data-duration="1.308" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="68.380">operação.</span></div></div>
+<div class="cap clip" data-start="69.648" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="69.688">Pensa</span><span class="w" data-s="70.167">na</span><span class="w k" data-s="70.327">escala</span></div></div>
+<div class="cap clip" data-start="70.768" data-duration="0.799" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="70.808">disso.</span></div></div>
+<div class="cap clip" data-start="71.567" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="71.607">Milhares</span><span class="w" data-s="72.247">de</span></div></div>
+<div class="cap clip" data-start="72.447" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="72.487">pessoas</span><span class="w" data-s="72.887">utilizando</span></div></div>
+<div class="cap clip" data-start="73.407" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="73.447">um</span><span class="w k" data-s="73.607">assistente</span></div></div>
+<div class="cap clip" data-start="74.207" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="74.247">diariamente</span></div></div>
+<div class="cap clip" data-start="75.167" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="75.207">realizando</span></div></div>
+<div class="cap clip" data-start="75.887" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="75.927">diferentes</span><span class="w" data-s="76.487">tipos</span></div></div>
+<div class="cap clip" data-start="76.847" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="76.887">de</span><span class="w" data-s="77.047">transações.</span></div></div>
+<div class="cap clip" data-start="78.047" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="78.087">Cada</span><span class="w" data-s="78.488">operação</span></div></div>
+<div class="cap clip" data-start="79.007" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="79.047">representa</span><span class="w" data-s="79.688">uma</span></div></div>
+<div class="cap clip" data-start="79.887" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="79.927">oportunidade</span><span class="w" data-s="80.727">de</span></div></div>
+<div class="cap clip" data-start="80.847" data-duration="0.721" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="80.887">receita.</span></div></div>
+<div class="cap clip" data-start="81.568" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="81.608">E</span><span class="w" data-s="81.847">existe</span><span class="w" data-s="82.247">outra</span></div></div>
+<div class="cap clip" data-start="82.608" data-duration="0.639" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="82.648">vantagem</span></div></div>
+<div class="cap clip" data-start="83.247" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="83.287">importante.</span></div></div>
+<div class="cap clip" data-start="84.047" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="84.087">O</span><span class="w" data-s="84.247">usuário</span><span class="w" data-s="84.967">não</span></div></div>
+<div class="cap clip" data-start="85.087" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="85.127">precisa</span><span class="w" data-s="85.608">aprender</span><span class="w" data-s="86.007">a</span></div></div>
+<div class="cap clip" data-start="86.127" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="86.167">utilizar</span><span class="w" data-s="86.647">uma</span></div></div>
+<div class="cap clip" data-start="86.767" data-duration="0.641" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="86.807">plataforma</span></div></div>
+<div class="cap clip" data-start="87.408" data-duration="0.719" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="87.448">completamente</span></div></div>
+<div class="cap clip" data-start="88.127" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="88.167">nova.</span></div></div>
+<div class="cap clip" data-start="88.847" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="88.887">Ele</span><span class="w" data-s="89.208">simplesmente</span></div></div>
+<div class="cap clip" data-start="89.967" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="90.007">conversa</span><span class="w" data-s="90.567">com</span><span class="w" data-s="90.807">uma</span></div></div>
+<div class="cap clip" data-start="91.007" data-duration="0.561" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="91.047">inteligência</span></div></div>
+<div class="cap clip" data-start="91.568" data-duration="0.879" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="91.608">artificial.</span></div></div>
+<div class="cap clip" data-start="92.447" data-duration="1.473" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="92.487">Para</span><span class="w" data-s="92.647">as</span><span class="w" data-s="92.807">empresas</span></div></div>
+<div class="cap clip" data-start="93.920" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="93.960">também</span><span class="w" data-s="94.360">pode</span></div></div>
+<div class="cap clip" data-start="94.560" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="94.600">representar</span><span class="w" data-s="95.160">uma</span></div></div>
+<div class="cap clip" data-start="95.360" data-duration="0.400" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="95.400">maneira</span><span class="w" data-s="95.720">de</span></div></div>
+<div class="cap clip" data-start="95.760" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="95.800">adquirir</span><span class="w k" data-s="96.440">clientes</span></div></div>
+<div class="cap clip" data-start="96.880" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="96.920">e</span><span class="w" data-s="97.160">facilitar</span></div></div>
+<div class="cap clip" data-start="97.760" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="97.800">vendas.</span></div></div>
+<div class="cap clip" data-start="98.560" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="98.600">No</span><span class="w" data-s="98.840">final</span></div></div>
+<div class="cap clip" data-start="99.360" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="99.400">a</span><span class="w" data-s="99.640">grande</span></div></div>
+<div class="cap clip" data-start="99.920" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="99.960">oportunidade</span><span class="w" data-s="100.680">não</span></div></div>
+<div class="cap clip" data-start="100.960" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="101.000">está</span><span class="w" data-s="101.240">apenas</span><span class="w" data-s="101.640">em</span></div></div>
+<div class="cap clip" data-start="101.760" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="101.800">criar</span><span class="w" data-s="102.200">mais</span><span class="w" data-s="102.360">um</span></div></div>
+<div class="cap clip" data-start="102.480" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="102.520">chatbot.</span></div></div>
+<div class="cap clip" data-start="103.600" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="103.640">Está</span><span class="w" data-s="103.880">em</span><span class="w" data-s="104.040">construir</span></div></div>
+<div class="cap clip" data-start="104.560" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="104.600">agentes</span><span class="w" data-s="105.160">capazes</span><span class="w" data-s="105.640">de</span></div></div>
+<div class="cap clip" data-start="105.760" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="105.800">resolver</span><span class="w" data-s="106.360">problemas</span></div></div>
+<div class="cap clip" data-start="106.800" data-duration="1.440" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="106.840">reais</span><span class="w" data-s="107.400">e</span><span class="w" data-s="107.640">participar</span></div></div>
+<div class="cap clip" data-start="108.240" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="108.280">de</span><span class="w" data-s="108.520">transações</span></div></div>
+<div class="cap clip" data-start="109.040" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="109.080">comerciais.</span></div></div>
+<div class="cap clip" data-start="109.920" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="109.960">E</span><span class="w" data-s="110.120">é</span><span class="w" data-s="110.280">por</span></div></div>
+<div class="cap clip" data-start="110.480" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="110.520">isso</span><span class="w" data-s="110.680">que</span><span class="w" data-s="110.840">esse</span></div></div>
+<div class="cap clip" data-start="111.040" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="111.080">mercado</span><span class="w" data-s="111.480">de</span><span class="w k" data-s="111.640">agentes</span></div></div>
+<div class="cap clip" data-start="112.080" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="112.120">de</span><span class="w" data-s="112.280">inteligência</span></div></div>
+<div class="cap clip" data-start="112.800" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="112.840">artificial</span><span class="w" data-s="113.560">está</span></div></div>
+<div class="cap clip" data-start="113.840" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="113.880">despertando</span><span class="w" data-s="114.680">tanto</span></div></div>
+<div class="cap clip" data-start="114.960" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="115.000">interesse.</span></div></div>
+<div class="cap clip" data-start="115.760" data-duration="1.213" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="115.800">Agora</span><span class="w" data-s="116.200">me</span><span class="w" data-s="116.360">conta!</span></div></div>
+<div class="cap clip" data-start="116.973" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="117.013">Você</span><span class="w" data-s="117.332">utilizaria</span><span class="w" data-s="117.972">um</span></div></div>
+<div class="cap clip" data-start="118.093" data-duration="0.719" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="118.133">assistente</span><span class="w" data-s="118.692">de</span></div></div>
+<div class="cap clip" data-start="118.812" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="118.852">inteligência</span></div></div>
+<div class="cap clip" data-start="119.372" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="119.412">artificial</span><span class="w" data-s="120.052">para</span></div></div>
+<div class="cap clip" data-start="120.172" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="120.212">resolver</span><span class="w" data-s="120.692">suas</span></div></div>
+<div class="cap clip" data-start="120.892" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="120.932">tarefas</span><span class="w" data-s="121.332">do</span><span class="w" data-s="121.413">dia</span></div></div>
+<div class="cap clip" data-start="121.612" data-duration="1.189" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="121.652">a</span><span class="w" data-s="121.732">dia?</span></div></div>
+  </div>
+  <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="123.700" data-track-index="10" data-volume="1"></audio>
+</div>
+<script>
+/* Runtime motion helpers — deterministic, seek-safe (all tweens live on one paused timeline). */
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  window.tl = tl;
+  const $ = (s) => (typeof s === "string" ? document.querySelectorAll(s) : s);
+  const E = { o: "power3.out", o4: "power4.out", io: "power2.inOut", back: "back.out(1.7)", soft: "sine.inOut", expo: "expo.out" };
+  window.E = E;
+  const FROM = {
+    up: { y: 70, opacity: 0 }, down: { y: -70, opacity: 0 }, left: { x: -110, opacity: 0 }, right: { x: 110, opacity: 0 },
+    pop: { scale: 0.55, opacity: 0 }, zoom: { scale: 1.25, opacity: 0 }, fade: { opacity: 0 }, rise: { y: 140, opacity: 0, scale: 0.94 },
+    slam: { scale: 1.9, opacity: 0, rotation: -6 }, flip: { rotationX: -80, opacity: 0, y: 40, transformPerspective: 900 },
+    wipe: { clipPath: "inset(0 100% 0 0)" }, drop: { y: -160, opacity: 0, rotation: -8 },
+    blur: { y: 26, opacity: 0, filter: "blur(10px)" }, bscale: { scale: 0.94, opacity: 0, filter: "blur(10px)" },
+  };
+  const TO = { y: 0, x: 0, opacity: 1, scale: 1, rotation: 0, rotationX: 0, clipPath: "inset(0 0% 0 0)", filter: "blur(0px)" };
+  // entrance
+  window.inn = (sel, t, k = "up", d, extra) => {
+    const f = FROM[k] || FROM.up;
+    const to = {};
+    for (const key in f) to[key] = TO[key];
+    if (f.transformPerspective) delete to.transformPerspective;
+    const ease = k === "pop" || k === "drop" ? E.back : k === "slam" ? "back.out(1.4)" : k === "wipe" ? E.io : k === "blur" || k === "bscale" ? E.expo : E.o;
+    tl.fromTo(sel, { ...f }, { ...to, duration: d || (k === "slam" ? 0.45 : k === "wipe" ? 0.7 : 0.6), ease, stagger: extra && extra.stagger, immediateRender: true }, t);
+  };
+  // exit
+  window.out = (sel, t, k = "fade", d = 0.35) => {
+    const to = k === "down" ? { y: 60, opacity: 0 } : k === "up" ? { y: -60, opacity: 0 } : k === "shrink" ? { scale: 0.8, opacity: 0 } : k === "left" ? { x: -120, opacity: 0 } : { opacity: 0 };
+    tl.to(sel, { ...to, duration: d, ease: "power2.in" }, t);
+  };
+  window.set = (sel, vars, t) => tl.set(sel, vars, t);
+  window.to = (sel, vars, t) => tl.to(sel, vars, t);
+  window.fromTo = (sel, a, b, t) => tl.fromTo(sel, a, { immediateRender: false, ...b }, t);
+  // typewriter (text stored in data-text)
+  window.type = (sel, t, d) => {
+    $(sel).forEach((el) => {
+      const full = el.getAttribute("data-text") || el.textContent;
+      el.textContent = "";
+      const p = { n: 0 };
+      tl.to(p, { n: full.length, duration: d || Math.max(0.3, full.length * 0.035), ease: "none",
+        onUpdate: () => { el.textContent = full.slice(0, Math.round(p.n)); } }, t);
+    });
+  };
+  // number counter; fmt: (v)=>string
+  const FMT = {
+    int: (v) => Math.round(v).toLocaleString("pt-BR"),
+    mil: (v) => Math.round(v) + " mil",
+    time: (v) => { const s = Math.round(v); return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); },
+    pct: (v) => Math.round(v) + "%",
+    plus: (v) => "+" + Math.round(v),
+  };
+  window.count = (sel, t, d, from, toV, fmt = "int") => {
+    $(sel).forEach((el) => {
+      const p = { v: from }; const f = FMT[fmt] || FMT.int;
+      el.textContent = f(from);
+      tl.to(p, { v: toV, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = f(p.v); } }, t);
+    });
+  };
+  // svg stroke draw
+  window.draw = (sel, t, d = 0.8, ease = "power2.inOut") => {
+    $(sel).forEach((p) => {
+      const L = p.getTotalLength ? p.getTotalLength() : 1000;
+      tl.fromTo(p, { strokeDasharray: `${L} ${L}`, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease, immediateRender: true }, t);
+    });
+  };
+  window.pulse = (sel, t, s = 1.1, d = 0.5) => {
+    tl.fromTo(sel, { scale: 1 }, { scale: s, duration: d / 2, yoyo: true, repeat: 1, ease: E.soft, immediateRender: false }, t);
+  };
+  window.shake = (sel, t) => {
+    tl.fromTo(sel, { x: 0 }, { keyframes: { x: [0, -14, 12, -9, 6, -3, 0] }, duration: 0.42, ease: "none", immediateRender: false }, t);
+  };
+  window.strike = (sel, t, d = 0.35) => tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: d, ease: E.io, transformOrigin: "left center", immediateRender: true }, t);
+  window.glow = (sel, t, color, d = 0.4) => tl.to(sel, { boxShadow: `0 0 0 4px ${color}, 0 0 70px ${color}`, duration: d, ease: E.o }, t);
+  window.unglow = (sel, t, d = 0.4) => tl.to(sel, { boxShadow: "0 0 0 0px rgba(0,0,0,0), 0 20px 50px rgba(0,0,0,0.55)", duration: d }, t);
+  window.color = (sel, t, c, d = 0.25) => tl.to(sel, { color: c, duration: d }, t);
+  window.bgc = (sel, t, c, d = 0.3) => tl.to(sel, { backgroundColor: c, duration: d }, t);
+  // scene wrapper choreography
+  window.scene = (id, t0, t1, opt = {}) => {
+    const inner = `#${id} > .inner`, cam = `#${id} .cam`;
+    const kin = opt.in || "rise";
+    if (kin !== "none") {
+      const f = kin === "zoom" ? { scale: 1.12, opacity: 0 } : kin === "left" ? { x: 160, opacity: 0 } : kin === "cut" ? { opacity: 0 } : { y: 120, scale: 0.97, opacity: 0 };
+      tl.fromTo(inner, f, { x: 0, y: 0, scale: 1, opacity: 1, duration: kin === "cut" ? 0.08 : 0.55, ease: E.o4, immediateRender: true }, t0);
+    }
+    if (!opt.last) tl.to(inner, { opacity: 0, scale: 0.965, y: -50, duration: 0.32, ease: "power2.in" }, t1 - 0.32);
+    const push = opt.push === undefined ? 0.035 : opt.push;
+    tl.fromTo(cam, { scale: 1 }, { scale: 1 + push, duration: Math.max(0.5, t1 - t0), ease: "none", immediateRender: true }, t0);
+  };
+  // captions: data-ws JSON on each .cap: [[start,end,isKey],...]
+  window.captions = () => {
+    document.querySelectorAll(".cap").forEach((cap) => {
+      const t0 = parseFloat(cap.getAttribute("data-start"));
+      const t1 = t0 + parseFloat(cap.getAttribute("data-duration"));
+      const ci = cap.querySelector(".capin");
+      tl.fromTo(ci, { y: 26, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.16, ease: E.o, immediateRender: true }, t0);
+      tl.to(ci, { opacity: 0, duration: 0.08 }, t1 - 0.08);
+      cap.querySelectorAll(".w").forEach((w) => {
+        const s = parseFloat(w.getAttribute("data-s"));
+        tl.to(w, { opacity: 1, duration: 0.08, ease: "none" }, s);
+        if (w.classList.contains("k")) tl.fromTo(w, { scale: 1 }, { scale: 1.12, duration: 0.12, yoyo: true, repeat: 1, ease: E.soft, immediateRender: false }, s);
+      });
+    });
+  };
+  // background drift
+  window.bgDrift = (dur) => {
+    tl.fromTo(".bg-grid", { x: 0, y: 0 }, { x: -72, y: -144, duration: dur, ease: "none", immediateRender: true }, 0);
+    tl.fromTo(".bg-glow.a", { x: 0, y: 0 }, { x: 160, y: 220, duration: dur, ease: "sine.inOut", immediateRender: true }, 0);
+    tl.fromTo(".bg-glow.b", { x: 0, y: 0 }, { x: -200, y: -260, duration: dur, ease: "sine.inOut", immediateRender: true }, 0);
+  };
+  window.tint = (t, c, d = 0.6) => tl.to(".bg-glow.c", { "--tint": c, duration: d }, t);
+})();
+
+/* ENERGIA v2 runtime additions (seek-safe; uses the same global tl) */
+(function () {
+  const css = getComputedStyle(document.documentElement);
+  const capbg = (css.getPropertyValue("--capbg") || "#ff6a3d").trim();
+  const capfg = (css.getPropertyValue("--capfg") || "#0f1115").trim();
+  // captions with a moving highlight pill on the word being spoken
+  window.captions = () => {
+    document.querySelectorAll(".cap").forEach((cap) => {
+      const t0 = parseFloat(cap.getAttribute("data-start"));
+      const t1 = t0 + parseFloat(cap.getAttribute("data-duration"));
+      const ci = cap.querySelector(".capin");
+      tl.fromTo(ci, { scale: 0.7, y: 30, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.22, ease: "back.out(2.2)", immediateRender: true }, t0);
+      tl.to(ci, { opacity: 0, duration: 0.06 }, t1 - 0.06);
+      const ws = [...cap.querySelectorAll(".w")];
+      ws.forEach((w, i) => {
+        const s = parseFloat(w.getAttribute("data-s"));
+        const e = i + 1 < ws.length ? parseFloat(ws[i + 1].getAttribute("data-s")) : t1;
+        const base = getComputedStyle(w).color;
+        tl.fromTo(w, { backgroundColor: "rgba(0,0,0,0)" }, { backgroundColor: capbg, color: capfg, duration: 0.05, immediateRender: false }, s);
+        tl.fromTo(w, { scale: 1 }, { scale: 1.12, duration: 0.09, yoyo: true, repeat: 1, ease: "sine.out", immediateRender: false }, s);
+        if (e - s > 0.05) tl.to(w, { backgroundColor: "rgba(0,0,0,0)", color: base, duration: 0.05 }, e - 0.02);
+      });
+    });
+  };
+  // full-frame diagonal swipe transition
+  window.swipe = (id, t, d = 0.5) => {
+    tl.fromTo(`#${id}`, { xPercent: -130, skewX: -12 }, { xPercent: 130, skewX: -12, duration: d, ease: "power2.inOut", immediateRender: true }, t - d / 2);
+  };
+  // camera punch-in on a keyword (on scene .cam is already used; punch a wrapper)
+  window.punch = (sel, t, amt = 0.06) => {
+    tl.fromTo(sel, { scale: 1 }, { scale: 1 + amt, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, t);
+  };
+  // deterministic particle burst from the centre of a container
+  window.burst = (sel, t, n = 26, colors = ["#ff6a3d", "#ffd23f", "#2f7bff", "#22c55e", "#ffffff"]) => {
+    const host = document.querySelector(sel); if (!host) return;
+    let seed = 11; const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < n; i++) {
+      const p = document.createElement("i");
+      p.style.left = "50%"; p.style.top = "50%"; p.style.background = colors[i % colors.length]; p.style.opacity = 0;
+      host.appendChild(p);
+      const a = r() * Math.PI * 2, dist = 220 + r() * 380;
+      tl.fromTo(p, { x: 0, y: 0, opacity: 1, rotation: 0, scale: 0.6 + r() },
+        { x: Math.cos(a) * dist, y: Math.sin(a) * dist + 120, rotation: r() * 540, opacity: 0, duration: 1.1 + r() * 0.5, ease: "power3.out", immediateRender: false }, t);
+    }
+  };
+  window.progress = (dur) => tl.fromTo(".progress", { scaleX: 0 }, { scaleX: 1, duration: dur, ease: "none", immediateRender: true }, 0);
+  // floating drift for decorative items
+  window.floaty = (sel, t, d, amp = 18) => tl.fromTo(sel, { y: -amp }, { y: amp, duration: d, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, t);
+})();
+
+// s1
+scene("s1", 0.000, 7.680, {"in":"none","push":0.04,"last":false});
+
+inn("#s1-k",0,"fade",.3);inn("#s1-h .wd",0.02,"blur",.45,{stagger:.06});
+strike("#s1-r",2.8,.5);
+fromTo("#s1-t",{x:0},{x:-1400,duration:9,ease:"none",immediateRender:true},0);
+inn("#s1-av",4.54,"fade",.3);inn("#s1-n",4.54,"up",.4);
+count("#s1-c",4.64,1.03,0,10,"int");
+pulse("#s1-n",5.67,1.05,.3);
+inn("#s1-b",6,"slam");
+
+// s2
+scene("s2", 7.680, 17.760, {"in":"cut","push":0.03,"last":false});
+
+inn("#s2-h .wd",7.7299999999999995,"blur",.45,{stagger:.08});
+fromTo("#s2-ph",{y:600,opacity:0},{y:0,opacity:1,duration:.7,ease:"expo.out"},11.18);
+inn("#s2-cal",13.34,"pop",.35);
+inn("#s2-b1",14.83,"pop",.35);
+inn("#s2-lb",15.44,"slam");
+
+// s3
+scene("s3", 17.760, 25.888, {"in":"zoom","push":0.035,"last":false});
+
+inn("#s3-k",18,"fade",.3);
+inn("#s3-n .wd",18.779999999999998,"blur",.4,{stagger:.05});
+strike("#s3-r",19.279999999999998,.5);
+inn("#s3-bub",21.259999999999998,"pop",.4);inn("#s3-ex",21.36,"fade",.3);
+inn("#s3-ar",22.939999999999998,"down",.35);
+inn("#s3-btn",23.866999999999997,"slam");
+pulse("#s3-btn",24.647,1.06,.4);
+
+// s4
+scene("s4", 25.888, 32.767, {"in":"left","push":0.03,"last":false});
+
+inn("#s4-h .wd",25.968,"blur",.45,{stagger:.08});
+inn("#s4-k0",27.74,"rise",.45);set("#s4-ok0",{opacity:0},25.888);inn("#s4-ok0",28.39,"pop",.3);
+inn("#s4-k1",29.02,"rise",.45);set("#s4-ok1",{opacity:0},25.888);inn("#s4-ok1",29.67,"pop",.3);
+inn("#s4-k2",30.46,"rise",.45);set("#s4-ok2",{opacity:0},25.888);inn("#s4-ok2",31.11,"pop",.3);
+
+
+// s5
+scene("s5", 32.767, 38.207, {"in":"zoom","push":0.03,"last":false});
+
+inn("#s5-h .wd",32.817,"blur",.45,{stagger:.08});
+inn("#s5-a0",33.41,"pop",.3);inn("#s5-a1",33.47,"pop",.3);inn("#s5-a2",33.53,"pop",.3);inn("#s5-a3",33.59,"pop",.3);inn("#s5-a4",33.65,"pop",.3);inn("#s5-a5",33.71,"pop",.3);inn("#s5-a6",33.77,"pop",.3);inn("#s5-a7",33.83,"pop",.3);inn("#s5-a8",33.89,"pop",.3);
+to("#s5-a0",{x:120,y:250,scale:.2,opacity:0,duration:.45,ease:"power3.in"},35.78);to("#s5-a1",{x:-110,y:250,scale:.2,opacity:0,duration:.45,ease:"power3.in"},35.80);to("#s5-a2",{x:-340,y:250,scale:.2,opacity:0,duration:.45,ease:"power3.in"},35.82);to("#s5-a3",{x:120,y:40,scale:.2,opacity:0,duration:.45,ease:"power3.in"},35.84);to("#s5-a4",{x:-110,y:40,scale:.2,opacity:0,duration:.45,ease:"power3.in"},35.86);to("#s5-a5",{x:-340,y:40,scale:.2,opacity:0,duration:.45,ease:"power3.in"},35.88);to("#s5-a6",{x:120,y:-170,scale:.2,opacity:0,duration:.45,ease:"power3.in"},35.90);to("#s5-a7",{x:-110,y:-170,scale:.2,opacity:0,duration:.45,ease:"power3.in"},35.92);to("#s5-a8",{x:-340,y:-170,scale:.2,opacity:0,duration:.45,ease:"power3.in"},35.94);
+inn("#s5-m",36.227000000000004,"pop",.45);
+
+// s6
+scene("s6", 38.207, 43.487, {"in":"rise","push":0.03,"last":false});
+
+inn("#s6-h .wd",38.287,"blur",.45,{stagger:.08});
+inn("#s6-ph",38.387,"bscale",.5);inn("#s6-ex",38.687,"fade",.3);
+inn("#s6-u",38.887,"pop",.35);
+set("#s6-ty",{opacity:0},38.207);inn("#s6-ty",39.757000000000005,"pop",.3);to("#s6-ty",{opacity:0,height:0,padding:0,duration:.2},41.846999999999994);
+set("#s6-r",{opacity:0},38.207);inn("#s6-r",41.997,"pop",.35);
+
+// s7
+scene("s7", 43.487, 49.900, {"in":"cut","push":0.04,"last":false});
+
+inn("#s7-a",43.567,"blur",.45);
+inn("#s7-t",46.44,"blur",.45);to("#s7-t",{opacity:.3,duration:.4},47.14);
+inn("#s7-m .wd",47.64,"slam",.4,{stagger:.08});
+inn("#s7-n .wd",48.28,"slam",.4,{stagger:.08});
+
+// s8
+scene("s8", 49.900, 58.620, {"in":"rise","push":0.03,"last":false});
+
+inn("#s8-s",49.98,"up",.45);
+strike("#s8-x",53.61,.4);to("#s8-s",{opacity:.5,duration:.3},54.16);
+inn("#s8-n0",55.80,"pop",.4);inn("#s8-n1",55.95,"pop",.4);inn("#s8-n2",56.10,"pop",.4);
+set("#s8-w",{opacity:0},49.9);set("#s8-w",{opacity:1},56.3);
+set("#s8-c",{opacity:0},49.9);fromTo("#s8-c",{x:0,opacity:1},{x:560,duration:1.1,ease:"power2.inOut"},56.76);
+pulse("#s8-n1",57.26,1.1,.3);
+inn("#s8-lb",57.64,"slam");
+
+// s9
+scene("s9", 58.620, 69.608, {"in":"zoom","push":0.03,"last":false});
+
+inn("#s9-r",58.7,"down",.45);
+inn("#s9-l0",60.60,"left",.3);inn("#s9-l1",61.88,"left",.3);inn("#s9-l2",63.08,"left",.3);
+set("#s9-f",{scaleX:0},58.620000000000005);to("#s9-f",{scaleX:1,duration:.8,ease:"power2.out"},65.1);
+set("#s9-cm",{opacity:0},58.620000000000005);fromTo("#s9-cm",{opacity:0,scaleY:.4},{opacity:1,scaleY:1,duration:.35,ease:"back.out(2)"},67.08000000000001);
+inn("#s9-lb",67.13000000000001,"slam");inn("#s9-ar",67.28,"up",.35);
+
+// s10
+scene("s10", 69.608, 81.528, {"in":"left","push":0.04,"last":false});
+
+inn("#s10-h .wd",69.688,"blur",.45,{stagger:.1});
+inn("#s10-d0",71.51,"pop",.25);inn("#s10-d1",71.55,"pop",.25);inn("#s10-d2",71.59,"pop",.25);inn("#s10-d3",71.63,"pop",.25);inn("#s10-d4",71.67,"pop",.25);inn("#s10-d5",71.71,"pop",.25);inn("#s10-d6",71.75,"pop",.25);inn("#s10-d7",71.79,"pop",.25);inn("#s10-d8",71.83,"pop",.25);inn("#s10-d9",71.87,"pop",.25);inn("#s10-d10",71.91,"pop",.25);inn("#s10-d11",71.95,"pop",.25);inn("#s10-d12",71.99,"pop",.25);inn("#s10-d13",72.03,"pop",.25);inn("#s10-d14",72.07,"pop",.25);inn("#s10-d15",72.11,"pop",.25);inn("#s10-d16",72.15,"pop",.25);inn("#s10-d17",72.19,"pop",.25);inn("#s10-d18",72.23,"pop",.25);inn("#s10-d19",72.27,"pop",.25);inn("#s10-d20",72.31,"pop",.25);inn("#s10-d21",72.35,"pop",.25);inn("#s10-d22",72.39,"pop",.25);inn("#s10-d23",72.43,"pop",.25);inn("#s10-d24",72.47,"pop",.25);inn("#s10-d25",72.51,"pop",.25);inn("#s10-d26",72.55,"pop",.25);inn("#s10-d27",72.59,"pop",.25);inn("#s10-d28",72.63,"pop",.25);inn("#s10-d29",72.67,"pop",.25);inn("#s10-d30",72.71,"pop",.25);inn("#s10-d31",72.75,"pop",.25);inn("#s10-d32",72.79,"pop",.25);inn("#s10-d33",72.83,"pop",.25);inn("#s10-d34",72.87,"pop",.25);inn("#s10-d35",71.51,"pop",.25);inn("#s10-d36",71.55,"pop",.25);inn("#s10-d37",71.59,"pop",.25);inn("#s10-d38",71.63,"pop",.25);inn("#s10-d39",71.67,"pop",.25);inn("#s10-d40",71.71,"pop",.25);inn("#s10-d41",71.75,"pop",.25);inn("#s10-d42",71.79,"pop",.25);inn("#s10-d43",71.83,"pop",.25);inn("#s10-d44",71.87,"pop",.25);inn("#s10-d45",71.91,"pop",.25);inn("#s10-d46",71.95,"pop",.25);inn("#s10-d47",71.99,"pop",.25);inn("#s10-d48",72.03,"pop",.25);inn("#s10-d49",72.07,"pop",.25);inn("#s10-d50",72.11,"pop",.25);inn("#s10-d51",72.15,"pop",.25);inn("#s10-d52",72.19,"pop",.25);inn("#s10-d53",72.23,"pop",.25);inn("#s10-d54",72.27,"pop",.25);inn("#s10-d55",72.31,"pop",.25);inn("#s10-d56",72.35,"pop",.25);inn("#s10-d57",72.39,"pop",.25);inn("#s10-d58",72.43,"pop",.25);inn("#s10-d59",72.47,"pop",.25);inn("#s10-d60",72.51,"pop",.25);inn("#s10-d61",72.55,"pop",.25);inn("#s10-d62",72.59,"pop",.25);inn("#s10-d63",72.63,"pop",.25);inn("#s10-d64",72.67,"pop",.25);inn("#s10-d65",72.71,"pop",.25);inn("#s10-d66",72.75,"pop",.25);inn("#s10-d67",72.79,"pop",.25);inn("#s10-d68",72.83,"pop",.25);inn("#s10-d69",72.87,"pop",.25);
+fromTo("#s10-d0",{x:0,y:0},{x:447,y:-282,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},76.85);fromTo("#s10-d4",{x:0,y:0},{x:-233,y:-40,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},76.92);fromTo("#s10-d8",{x:0,y:0},{x:-181,y:273,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},76.99);fromTo("#s10-d12",{x:0,y:0},{x:-384,y:-134,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.06);fromTo("#s10-d16",{x:0,y:0},{x:-306,y:94,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.13);fromTo("#s10-d20",{x:0,y:0},{x:-209,y:-255,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.20);fromTo("#s10-d24",{x:0,y:0},{x:-371,y:272,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.27);fromTo("#s10-d28",{x:0,y:0},{x:82,y:125,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.34);fromTo("#s10-d32",{x:0,y:0},{x:-369,y:14,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.41);fromTo("#s10-d36",{x:0,y:0},{x:-399,y:53,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.48);fromTo("#s10-d40",{x:0,y:0},{x:-268,y:-255,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.55);fromTo("#s10-d44",{x:0,y:0},{x:-450,y:166,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.62);fromTo("#s10-d48",{x:0,y:0},{x:-349,y:-263,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.69);fromTo("#s10-d52",{x:0,y:0},{x:379,y:306,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.76);fromTo("#s10-d56",{x:0,y:0},{x:-347,y:156,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.83);fromTo("#s10-d60",{x:0,y:0},{x:-126,y:-283,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.90);fromTo("#s10-d64",{x:0,y:0},{x:207,y:164,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},77.97);fromTo("#s10-d68",{x:0,y:0},{x:-1,y:286,scale:.4,duration:.6,ease:"power2.in",repeat:1,repeatDelay:.6},78.04);
+inn("#s10-c",77.98700000000001,"pop",.4);pulse("#s10-c",80.837,1.15,.4);
+
+// s11
+scene("s11", 81.528, 92.407, {"in":"zoom","push":0.03,"last":false});
+
+inn("#s11-h .wd",81.608,"blur",.45,{stagger:.1});
+inn("#s11-p",84.367,"left",.45);
+set("#s11-x",{scaleX:0},81.528);to("#s11-x",{scaleX:1,duration:.35,ease:"power2.inOut"},86.807);to("#s11-p",{opacity:.45,duration:.3},87.307);
+inn("#s11-c",89.857,"pop",.45);
+
+// s12
+scene("s12", 92.407, 98.520, {"in":"rise","push":0.03,"last":false});
+
+inn("#s12-h .wd",92.487,"blur",.45,{stagger:.1});
+draw("#s12-f",94.39999999999999,.7);
+inn("#s12-a",95.7,"pop",.4);
+inn("#s12-b",97.64999999999999,"slam");
+
+// s13
+scene("s13", 98.520, 109.880, {"in":"zoom","push":0.03,"last":false});
+
+inn("#s13-k",98.6,"fade",.3);inn("#s13-c",99.86,"blur",.45);
+strike("#s13-x",102.52,.35);to("#s13-c",{opacity:.5,duration:.3},102.92);
+inn("#s13-a",104.5,"slam");
+inn("#s13-r1",105.7,"rise",.4);
+inn("#s13-r2",107.92,"rise",.4);
+
+// s14
+scene("s14", 109.880, 115.720, {"in":"left","push":0.04,"last":false});
+
+inn("#s14-h .wd",109.96,"blur",.45,{stagger:.08});
+inn("#s14-p",110.98,"up",.45);
+draw("#s14-c",113.78,1.2);
+
+// s15
+scene("s15", 115.720, 123.700, {"in":"zoom","push":0.03,"last":true});
+
+inn("#s15-h",115.75,"slam");
+inn("#s15-p",116.863,"rise",.45);
+inn("#s15-y",117.332,"pop",.35);inn("#s15-n",117.482,"pop",.35);
+pulse("#s15-y",120.932,1.06,.4);pulse("#s15-n",121.33200000000001,1.06,.4);
+inn("#s15-b",121.113,"up",.4);
+inn("#s15-dn",121.813,"drop",.4);fromTo("#s15-dn",{y:0},{y:26,duration:.32,yoyo:true,repeat:3,ease:"sine.inOut",immediateRender:false},122.313);
+
+swipe("sw0", 7.710, 0.5);
+swipe("sw1", 17.790, 0.5);
+swipe("sw2", 25.918, 0.5);
+swipe("sw3", 32.797, 0.5);
+swipe("sw4", 38.237, 0.5);
+swipe("sw5", 43.517, 0.5);
+swipe("sw6", 49.930, 0.5);
+swipe("sw7", 58.650, 0.5);
+swipe("sw8", 69.638, 0.5);
+swipe("sw9", 81.558, 0.5);
+swipe("sw10", 92.437, 0.5);
+swipe("sw11", 98.550, 0.5);
+swipe("sw12", 109.910, 0.5);
+swipe("sw13", 115.750, 0.5);
+progress(123.700);
+
+captions();
+bgDrift(123.700);
+tl.set({}, {}, 123.700);
+window.__timelines["main"] = tl;
+</script>
+</body>
 </html>
