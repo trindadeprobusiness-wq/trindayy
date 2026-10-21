@@ -1,0 +1,597 @@
+[
+{
+"text": "Alguém",
+"start": 0.0,
+"end": 0.32
+},
+{
+"text": "lançou",
+"start": 0.32,
+"end": 0.72
+},
+{
+"text": "uma",
+"start": 0.72,
+"end": 0.88
+},
+{
+"text": "equipe",
+"start": 0.88,
+"end": 1.12
+},
+{
+"text": "de",
+"start": 1.12,
+"end": 1.36
+},
+{
+"text": "autônoma",
+"start": 1.36,
+"end": 2.0
+},
+{
+"text": "para",
+"start": 2.0,
+"end": 2.24
+},
+{
+"text": "YouTube",
+"start": 2.24,
+"end": 2.69
+},
+{
+"text": "que",
+"start": 2.72,
+"end": 2.88
+},
+{
+"text": "trabalha",
+"start": 2.88,
+"end": 3.28
+},
+{
+"text": "24",
+"start": 3.28,
+"end": 3.92
+},
+{
+"text": "horas",
+"start": 3.92,
+"end": 4.16
+},
+{
+"text": "por",
+"start": 4.16,
+"end": 4.32
+},
+{
+"text": "dia,",
+"start": 4.32,
+"end": 4.72
+},
+{
+"text": "7",
+"start": 4.72,
+"end": 5.12
+},
+{
+"text": "dias",
+"start": 5.12,
+"end": 5.44
+},
+{
+"text": "por",
+"start": 5.44,
+"end": 5.6
+},
+{
+"text": "semana.",
+"start": 5.6,
+"end": 6.24
+},
+{
+"text": "É",
+"start": 6.24,
+"end": 6.48
+},
+{
+"text": "totalmente",
+"start": 6.48,
+"end": 6.96
+},
+{
+"text": "gratuito",
+"start": 6.96,
+"end": 7.52
+},
+{
+"text": "e",
+"start": 7.52,
+"end": 7.76
+},
+{
+"text": "de",
+"start": 7.76,
+"end": 7.92
+},
+{
+"text": "código",
+"start": 7.92,
+"end": 8.32
+},
+{
+"text": "aberto.",
+"start": 8.32,
+"end": 8.96
+},
+{
+"text": "O",
+"start": 8.96,
+"end": 9.12
+},
+{
+"text": "sistema",
+"start": 9.12,
+"end": 9.52
+},
+{
+"text": "conta",
+"start": 9.52,
+"end": 9.84
+},
+{
+"text": "com",
+"start": 9.84,
+"end": 10.0
+},
+{
+"text": "seis",
+"start": 10.0,
+"end": 10.24
+},
+{
+"text": "agentes",
+"start": 10.24,
+"end": 10.8
+},
+{
+"text": "que",
+"start": 10.8,
+"end": 10.96
+},
+{
+"text": "fazem",
+"start": 10.96,
+"end": 11.28
+},
+{
+"text": "praticamente",
+"start": 11.28,
+"end": 11.84
+},
+{
+"text": "tudo",
+"start": 11.84,
+"end": 12.08
+},
+{
+"text": "para",
+"start": 12.08,
+"end": 12.24
+},
+{
+"text": "você,",
+"start": 12.24,
+"end": 12.72
+},
+{
+"text": "desde",
+"start": 12.72,
+"end": 13.12
+},
+{
+"text": "a",
+"start": 13.12,
+"end": 13.28
+},
+{
+"text": "estratégia",
+"start": 13.28,
+"end": 13.92
+},
+{
+"text": "de",
+"start": 13.92,
+"end": 14.08
+},
+{
+"text": "conteúdo,",
+"start": 14.08,
+"end": 14.88
+},
+{
+"text": "redação",
+"start": 14.88,
+"end": 15.44
+},
+{
+"text": "de",
+"start": 15.44,
+"end": 15.6
+},
+{
+"text": "roteiros,",
+"start": 15.6,
+"end": 16.32
+},
+{
+"text": "até",
+"start": 16.32,
+"end": 16.64
+},
+{
+"text": "mesmo",
+"start": 16.64,
+"end": 16.88
+},
+{
+"text": "a",
+"start": 16.88,
+"end": 17.04
+},
+{
+"text": "produção",
+"start": 17.04,
+"end": 17.44
+},
+{
+"text": "dos",
+"start": 17.44,
+"end": 17.68
+},
+{
+"text": "vídeos.",
+"start": 17.68,
+"end": 18.24
+},
+{
+"text": "E",
+"start": 18.24,
+"end": 18.48
+},
+{
+"text": "além",
+"start": 18.48,
+"end": 18.72
+},
+{
+"text": "disso,",
+"start": 18.72,
+"end": 19.12
+},
+{
+"text": "também",
+"start": 19.12,
+"end": 19.36
+},
+{
+"text": "cuida",
+"start": 19.36,
+"end": 19.84
+},
+{
+"text": "até",
+"start": 19.84,
+"end": 20.08
+},
+{
+"text": "do",
+"start": 20.08,
+"end": 20.24
+},
+{
+"text": "próprio",
+"start": 20.24,
+"end": 20.64
+},
+{
+"text": "SEO",
+"start": 20.64,
+"end": 21.36
+},
+{
+"text": "para",
+"start": 21.36,
+"end": 21.52
+},
+{
+"text": "YouTube",
+"start": 21.52,
+"end": 21.97
+},
+{
+"text": "e",
+"start": 22.16,
+"end": 22.32
+},
+{
+"text": "do",
+"start": 22.32,
+"end": 22.56
+},
+{
+"text": "agendamento",
+"start": 22.56,
+"end": 23.28
+},
+{
+"text": "das",
+"start": 23.28,
+"end": 23.44
+},
+{
+"text": "postagens.",
+"start": 23.44,
+"end": 24.288
+},
+{
+"text": "E",
+"start": 24.288,
+"end": 24.367
+},
+{
+"text": "o",
+"start": 24.367,
+"end": 24.447
+},
+{
+"text": "melhor",
+"start": 24.447,
+"end": 24.687
+},
+{
+"text": "de",
+"start": 24.687,
+"end": 24.767
+},
+{
+"text": "tudo",
+"start": 24.767,
+"end": 24.927
+},
+{
+"text": "é",
+"start": 24.927,
+"end": 25.007
+},
+{
+"text": "que",
+"start": 25.007,
+"end": 25.167
+},
+{
+"text": "com",
+"start": 25.167,
+"end": 25.327
+},
+{
+"text": "essa",
+"start": 25.327,
+"end": 25.487
+},
+{
+"text": "arquitetura",
+"start": 25.487,
+"end": 26.127
+},
+{
+"text": "aqui",
+"start": 26.127,
+"end": 26.528
+},
+{
+"text": "possui",
+"start": 26.528,
+"end": 27.008
+},
+{
+"text": "um",
+"start": 27.008,
+"end": 27.087
+},
+{
+"text": "ciclo",
+"start": 27.087,
+"end": 27.407
+},
+{
+"text": "de",
+"start": 27.407,
+"end": 27.487
+},
+{
+"text": "feedback,",
+"start": 27.487,
+"end": 28.047
+},
+{
+"text": "o",
+"start": 28.047,
+"end": 28.127
+},
+{
+"text": "que",
+"start": 28.127,
+"end": 28.288
+},
+{
+"text": "o",
+"start": 28.288,
+"end": 28.447
+},
+{
+"text": "torna",
+"start": 28.447,
+"end": 28.927
+},
+{
+"text": "cada",
+"start": 28.927,
+"end": 29.168
+},
+{
+"text": "vez",
+"start": 29.168,
+"end": 29.327
+},
+{
+"text": "melhor.",
+"start": 29.327,
+"end": 29.807
+},
+{
+"text": "E",
+"start": 29.807,
+"end": 29.967
+},
+{
+"text": "como",
+"start": 29.967,
+"end": 30.127
+},
+{
+"text": "ele",
+"start": 30.127,
+"end": 30.288
+},
+{
+"text": "é",
+"start": 30.288,
+"end": 30.367
+},
+{
+"text": "de",
+"start": 30.367,
+"end": 30.447
+},
+{
+"text": "código",
+"start": 30.447,
+"end": 30.768
+},
+{
+"text": "aberto,",
+"start": 30.768,
+"end": 31.167
+},
+{
+"text": "você",
+"start": 31.167,
+"end": 31.407
+},
+{
+"text": "mesmo",
+"start": 31.407,
+"end": 31.647
+},
+{
+"text": "pode",
+"start": 31.647,
+"end": 31.807
+},
+{
+"text": "escolher",
+"start": 31.807,
+"end": 32.207
+},
+{
+"text": "os",
+"start": 32.207,
+"end": 32.288
+},
+{
+"text": "providers",
+"start": 32.288,
+"end": 32.847
+},
+{
+"text": "e",
+"start": 32.847,
+"end": 33.008
+},
+{
+"text": "alterar",
+"start": 33.008,
+"end": 33.407
+},
+{
+"text": "também.",
+"start": 33.407,
+"end": 33.807
+},
+{
+"text": "Comenta",
+"start": 33.807,
+"end": 34.128
+},
+{
+"text": "aí,",
+"start": 34.128,
+"end": 34.367
+},
+{
+"text": "YouTube,",
+"start": 34.367,
+"end": 34.607
+},
+{
+"text": "que",
+"start": 34.607,
+"end": 34.767
+},
+{
+"text": "eu",
+"start": 34.767,
+"end": 34.847
+},
+{
+"text": "te",
+"start": 34.847,
+"end": 34.927
+},
+{
+"text": "mando",
+"start": 34.927,
+"end": 35.088
+},
+{
+"text": "o",
+"start": 35.088,
+"end": 35.168
+},
+{
+"text": "link",
+"start": 35.168,
+"end": 35.487
+},
+{
+"text": "direto",
+"start": 35.487,
+"end": 35.807
+},
+{
+"text": "desse",
+"start": 35.807,
+"end": 36.047
+},
+{
+"text": "repositório",
+"start": 36.047,
+"end": 36.527
+},
+{
+"text": "aqui.",
+"start": 36.527,
+"end": 36.805
+}
+]

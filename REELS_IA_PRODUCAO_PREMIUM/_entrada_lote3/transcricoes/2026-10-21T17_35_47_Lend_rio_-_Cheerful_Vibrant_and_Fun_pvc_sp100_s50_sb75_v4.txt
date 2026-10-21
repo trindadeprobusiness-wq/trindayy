@@ -1,0 +1,1 @@
+Você sabia que existe uma alternativa de código aberto ao Higgsfield para gerar vídeos com inteligência artificial? O projeto se chama OpenHigsfield AI e está disponível no GitHub. Ele oferece recursos de geração de vídeos por inteligência artificial e uma opção para testar diretamente pelo navegador. Quer conhecer essa ferramenta? Comenta vídeo que eu te envio repositório.

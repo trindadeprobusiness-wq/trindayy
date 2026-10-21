@@ -1,0 +1,662 @@
+[
+{
+"text": "Did",
+"start": 0.16,
+"end": 0.32
+},
+{
+"text": "you",
+"start": 0.32,
+"end": 0.4
+},
+{
+"text": "know",
+"start": 0.4,
+"end": 0.56
+},
+{
+"text": "Claude",
+"start": 0.56,
+"end": 1.12
+},
+{
+"text": "can",
+"start": 1.12,
+"end": 1.28
+},
+{
+"text": "have",
+"start": 1.28,
+"end": 1.36
+},
+{
+"text": "its",
+"start": 1.36,
+"end": 1.52
+},
+{
+"text": "own",
+"start": 1.52,
+"end": 1.68
+},
+{
+"text": "WhatsApp?",
+"start": 1.68,
+"end": 2.8
+},
+{
+"text": "Here's",
+"start": 2.8,
+"end": 3.12
+},
+{
+"text": "how.",
+"start": 3.12,
+"end": 3.52
+},
+{
+"text": "A",
+"start": 3.52,
+"end": 3.6
+},
+{
+"text": "tool",
+"start": 3.6,
+"end": 3.84
+},
+{
+"text": "called",
+"start": 3.84,
+"end": 4.08
+},
+{
+"text": "Capso",
+"start": 4.08,
+"end": 4.8
+},
+{
+"text": "connects",
+"start": 4.8,
+"end": 5.12
+},
+{
+"text": "Claude",
+"start": 5.12,
+"end": 5.52
+},
+{
+"text": "to",
+"start": 5.52,
+"end": 5.68
+},
+{
+"text": "WhatsApp's",
+"start": 5.68,
+"end": 6.4
+},
+{
+"text": "official",
+"start": 6.4,
+"end": 6.8
+},
+{
+"text": "API",
+"start": 6.8,
+"end": 7.44
+},
+{
+"text": "and",
+"start": 7.44,
+"end": 7.68
+},
+{
+"text": "the",
+"start": 7.68,
+"end": 7.76
+},
+{
+"text": "free",
+"start": 7.76,
+"end": 8.16
+},
+{
+"text": "plan",
+"start": 8.16,
+"end": 8.56
+},
+{
+"text": "gives",
+"start": 8.56,
+"end": 8.8
+},
+{
+"text": "you",
+"start": 8.8,
+"end": 8.96
+},
+{
+"text": "2,000",
+"start": 8.96,
+"end": 9.52
+},
+{
+"text": "messages",
+"start": 9.52,
+"end": 10.08
+},
+{
+"text": "a",
+"start": 10.08,
+"end": 10.24
+},
+{
+"text": "month.",
+"start": 10.24,
+"end": 10.8
+},
+{
+"text": "Step",
+"start": 10.8,
+"end": 11.12
+},
+{
+"text": "one,",
+"start": 11.12,
+"end": 11.44
+},
+{
+"text": "create",
+"start": 11.44,
+"end": 11.68
+},
+{
+"text": "a",
+"start": 11.68,
+"end": 11.76
+},
+{
+"text": "free",
+"start": 11.76,
+"end": 12.0
+},
+{
+"text": "Capso",
+"start": 12.0,
+"end": 12.56
+},
+{
+"text": "account",
+"start": 12.56,
+"end": 12.8
+},
+{
+"text": "and",
+"start": 12.8,
+"end": 12.96
+},
+{
+"text": "connect",
+"start": 12.96,
+"end": 13.28
+},
+{
+"text": "a",
+"start": 13.28,
+"end": 13.44
+},
+{
+"text": "number.",
+"start": 13.44,
+"end": 14.0
+},
+{
+"text": "Step",
+"start": 14.0,
+"end": 14.32
+},
+{
+"text": "two,",
+"start": 14.32,
+"end": 14.72
+},
+{
+"text": "open",
+"start": 14.72,
+"end": 14.96
+},
+{
+"text": "Claude",
+"start": 14.96,
+"end": 15.52
+},
+{
+"text": "code",
+"start": 15.52,
+"end": 15.84
+},
+{
+"text": "and",
+"start": 15.84,
+"end": 16.0
+},
+{
+"text": "install",
+"start": 16.0,
+"end": 16.32
+},
+{
+"text": "their",
+"start": 16.32,
+"end": 16.56
+},
+{
+"text": "WhatsApps",
+"start": 16.56,
+"end": 17.6
+},
+{
+"text": "with",
+"start": 17.6,
+"end": 17.76
+},
+{
+"text": "one",
+"start": 17.76,
+"end": 18.0
+},
+{
+"text": "command.",
+"start": 18.0,
+"end": 18.72
+},
+{
+"text": "Step",
+"start": 18.72,
+"end": 19.04
+},
+{
+"text": "three,",
+"start": 19.04,
+"end": 19.44
+},
+{
+"text": "just",
+"start": 19.44,
+"end": 19.6
+},
+{
+"text": "tell",
+"start": 19.6,
+"end": 19.84
+},
+{
+"text": "Claude",
+"start": 19.84,
+"end": 20.4
+},
+{
+"text": "what",
+"start": 20.4,
+"end": 20.56
+},
+{
+"text": "you",
+"start": 20.56,
+"end": 20.8
+},
+{
+"text": "want.",
+"start": 20.8,
+"end": 21.2
+},
+{
+"text": "Build",
+"start": 21.2,
+"end": 21.52
+},
+{
+"text": "me",
+"start": 21.52,
+"end": 21.68
+},
+{
+"text": "a",
+"start": 21.68,
+"end": 21.76
+},
+{
+"text": "WhatsApp",
+"start": 21.76,
+"end": 22.64
+},
+{
+"text": "that",
+"start": 22.64,
+"end": 22.8
+},
+{
+"text": "books",
+"start": 22.8,
+"end": 23.2
+},
+{
+"text": "appointments.",
+"start": 23.2,
+"end": 24.062
+},
+{
+"text": "It",
+"start": 24.062,
+"end": 24.222
+},
+{
+"text": "writes",
+"start": 24.222,
+"end": 24.542
+},
+{
+"text": "the",
+"start": 24.542,
+"end": 24.623
+},
+{
+"text": "whole",
+"start": 24.623,
+"end": 24.862
+},
+{
+"text": "thing",
+"start": 24.862,
+"end": 25.102
+},
+{
+"text": "for",
+"start": 25.102,
+"end": 25.262
+},
+{
+"text": "you.",
+"start": 25.262,
+"end": 25.582
+},
+{
+"text": "And",
+"start": 25.582,
+"end": 25.822
+},
+{
+"text": "now",
+"start": 25.822,
+"end": 25.982
+},
+{
+"text": "your",
+"start": 25.982,
+"end": 26.222
+},
+{
+"text": "agent",
+"start": 26.222,
+"end": 26.543
+},
+{
+"text": "has",
+"start": 26.543,
+"end": 26.702
+},
+{
+"text": "its",
+"start": 26.702,
+"end": 26.783
+},
+{
+"text": "own",
+"start": 26.783,
+"end": 26.942
+},
+{
+"text": "number.",
+"start": 26.942,
+"end": 27.342
+},
+{
+"text": "Someone",
+"start": 27.342,
+"end": 27.582
+},
+{
+"text": "asks",
+"start": 27.582,
+"end": 27.902
+},
+{
+"text": "if",
+"start": 27.902,
+"end": 27.982
+},
+{
+"text": "you're",
+"start": 27.982,
+"end": 28.222
+},
+{
+"text": "free",
+"start": 28.222,
+"end": 28.382
+},
+{
+"text": "on",
+"start": 28.382,
+"end": 28.543
+},
+{
+"text": "Friday,",
+"start": 28.543,
+"end": 29.023
+},
+{
+"text": "it",
+"start": 29.023,
+"end": 29.182
+},
+{
+"text": "offers",
+"start": 29.182,
+"end": 29.503
+},
+{
+"text": "the",
+"start": 29.503,
+"end": 29.662
+},
+{
+"text": "open",
+"start": 29.662,
+"end": 29.902
+},
+{
+"text": "slots",
+"start": 29.902,
+"end": 30.302
+},
+{
+"text": "and",
+"start": 30.302,
+"end": 30.462
+},
+{
+"text": "books",
+"start": 30.462,
+"end": 30.782
+},
+{
+"text": "them",
+"start": 30.782,
+"end": 30.942
+},
+{
+"text": "in,",
+"start": 30.942,
+"end": 31.342
+},
+{
+"text": "even",
+"start": 31.342,
+"end": 31.503
+},
+{
+"text": "at",
+"start": 31.503,
+"end": 31.662
+},
+{
+"text": "midnight.",
+"start": 31.662,
+"end": 32.462
+},
+{
+"text": "Just",
+"start": 32.462,
+"end": 32.702
+},
+{
+"text": "know",
+"start": 32.702,
+"end": 32.943
+},
+{
+"text": "the",
+"start": 32.943,
+"end": 33.023
+},
+{
+"text": "rules,",
+"start": 33.023,
+"end": 33.422
+},
+{
+"text": "get",
+"start": 33.422,
+"end": 33.662
+},
+{
+"text": "people's",
+"start": 33.662,
+"end": 33.983
+},
+{
+"text": "opt-in",
+"start": 33.983,
+"end": 34.542
+},
+{
+"text": "first,",
+"start": 34.542,
+"end": 34.863
+},
+{
+"text": "and",
+"start": 34.863,
+"end": 35.023
+},
+{
+"text": "after",
+"start": 35.023,
+"end": 35.262
+},
+{
+"text": "24",
+"start": 35.262,
+"end": 35.742
+},
+{
+"text": "hours",
+"start": 35.742,
+"end": 35.983
+},
+{
+"text": "of",
+"start": 35.983,
+"end": 36.142
+},
+{
+"text": "silence,",
+"start": 36.142,
+"end": 36.782
+},
+{
+"text": "you",
+"start": 36.782,
+"end": 36.943
+},
+{
+"text": "can",
+"start": 36.943,
+"end": 37.102
+},
+{
+"text": "only",
+"start": 37.102,
+"end": 37.262
+},
+{
+"text": "send",
+"start": 37.262,
+"end": 37.582
+},
+{
+"text": "approved",
+"start": 37.582,
+"end": 38.062
+},
+{
+"text": "templates.",
+"start": 38.062,
+"end": 38.943
+},
+{
+"text": "Comment",
+"start": 38.943,
+"end": 39.422
+},
+{
+"text": "WhatsApp",
+"start": 39.422,
+"end": 39.983
+},
+{
+"text": "and",
+"start": 39.983,
+"end": 40.142
+},
+{
+"text": "I'll",
+"start": 40.142,
+"end": 40.302
+},
+{
+"text": "send",
+"start": 40.302,
+"end": 40.462
+},
+{
+"text": "you",
+"start": 40.462,
+"end": 40.622
+},
+{
+"text": "the",
+"start": 40.622,
+"end": 40.702
+},
+{
+"text": "full",
+"start": 40.702,
+"end": 41.022
+},
+{
+"text": "setup.",
+"start": 41.022,
+"end": 42.113
+}
+]

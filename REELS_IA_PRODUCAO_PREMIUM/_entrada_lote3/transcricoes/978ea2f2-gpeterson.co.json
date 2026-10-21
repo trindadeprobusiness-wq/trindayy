@@ -1,0 +1,537 @@
+[
+{
+"text": "Acabaram",
+"start": 0.0,
+"end": 0.56
+},
+{
+"text": "de",
+"start": 0.56,
+"end": 0.64
+},
+{
+"text": "liberar",
+"start": 0.64,
+"end": 0.88
+},
+{
+"text": "o",
+"start": 0.88,
+"end": 0.96
+},
+{
+"text": "Hicksfield",
+"start": 0.96,
+"end": 1.6
+},
+{
+"text": "totalmente",
+"start": 1.6,
+"end": 2.0
+},
+{
+"text": "de",
+"start": 2.0,
+"end": 2.16
+},
+{
+"text": "graça.",
+"start": 2.16,
+"end": 2.64
+},
+{
+"text": "Você",
+"start": 2.64,
+"end": 2.88
+},
+{
+"text": "com",
+"start": 2.88,
+"end": 3.04
+},
+{
+"text": "certeza",
+"start": 3.04,
+"end": 3.52
+},
+{
+"text": "já",
+"start": 3.52,
+"end": 3.68
+},
+{
+"text": "deve",
+"start": 3.68,
+"end": 3.92
+},
+{
+"text": "ter",
+"start": 3.92,
+"end": 4.0
+},
+{
+"text": "visto",
+"start": 4.0,
+"end": 4.24
+},
+{
+"text": "que",
+"start": 4.24,
+"end": 4.48
+},
+{
+"text": "agora",
+"start": 4.48,
+"end": 4.72
+},
+{
+"text": "tá",
+"start": 4.72,
+"end": 4.88
+},
+{
+"text": "no",
+"start": 4.88,
+"end": 5.04
+},
+{
+"text": "hype",
+"start": 5.04,
+"end": 5.44
+},
+{
+"text": "fazer",
+"start": 5.44,
+"end": 5.68
+},
+{
+"text": "aqueles",
+"start": 5.68,
+"end": 5.92
+},
+{
+"text": "personagens",
+"start": 5.92,
+"end": 6.48
+},
+{
+"text": "de",
+"start": 6.48,
+"end": 6.64
+},
+{
+"text": "inteligência",
+"start": 6.64,
+"end": 7.2
+},
+{
+"text": "artificial.",
+"start": 7.2,
+"end": 7.84
+},
+{
+"text": "Porém,",
+"start": 7.84,
+"end": 8.16
+},
+{
+"text": "pra",
+"start": 8.16,
+"end": 8.32
+},
+{
+"text": "você",
+"start": 8.32,
+"end": 8.48
+},
+{
+"text": "fazer",
+"start": 8.48,
+"end": 8.72
+},
+{
+"text": "ele,",
+"start": 8.72,
+"end": 9.04
+},
+{
+"text": "você",
+"start": 9.04,
+"end": 9.28
+},
+{
+"text": "precisa",
+"start": 9.28,
+"end": 9.6
+},
+{
+"text": "de",
+"start": 9.6,
+"end": 9.84
+},
+{
+"text": "uma",
+"start": 9.84,
+"end": 10.0
+},
+{
+"text": "plataforma.",
+"start": 10.0,
+"end": 10.72
+},
+{
+"text": "E",
+"start": 10.72,
+"end": 10.88
+},
+{
+"text": "geralmente",
+"start": 10.88,
+"end": 11.28
+},
+{
+"text": "o",
+"start": 11.28,
+"end": 11.44
+},
+{
+"text": "pessoal",
+"start": 11.44,
+"end": 11.68
+},
+{
+"text": "usa",
+"start": 11.68,
+"end": 11.92
+},
+{
+"text": "o",
+"start": 11.92,
+"end": 12.0
+},
+{
+"text": "próprio",
+"start": 12.0,
+"end": 12.24
+},
+{
+"text": "Hic",
+"start": 12.24,
+"end": 12.56
+},
+{
+"text": "Shield,",
+"start": 12.56,
+"end": 13.04
+},
+{
+"text": "porém,",
+"start": 13.04,
+"end": 13.36
+},
+{
+"text": "ele",
+"start": 13.36,
+"end": 13.52
+},
+{
+"text": "é",
+"start": 13.52,
+"end": 13.68
+},
+{
+"text": "muito",
+"start": 13.68,
+"end": 13.84
+},
+{
+"text": "caro.",
+"start": 13.84,
+"end": 14.16
+},
+{
+"text": "E",
+"start": 14.16,
+"end": 14.32
+},
+{
+"text": "pra",
+"start": 14.32,
+"end": 14.48
+},
+{
+"text": "resolver",
+"start": 14.48,
+"end": 14.8
+},
+{
+"text": "isso,",
+"start": 14.8,
+"end": 14.96
+},
+{
+"text": "alguém",
+"start": 14.96,
+"end": 15.2
+},
+{
+"text": "teve",
+"start": 15.2,
+"end": 15.44
+},
+{
+"text": "a",
+"start": 15.44,
+"end": 15.52
+},
+{
+"text": "brilhante",
+"start": 15.52,
+"end": 15.84
+},
+{
+"text": "ideia",
+"start": 15.84,
+"end": 16.08
+},
+{
+"text": "de",
+"start": 16.08,
+"end": 16.16
+},
+{
+"text": "simplesmente",
+"start": 16.16,
+"end": 16.56
+},
+{
+"text": "clonar",
+"start": 16.56,
+"end": 16.96
+},
+{
+"text": "o",
+"start": 16.96,
+"end": 17.04
+},
+{
+"text": "Hicksfield,",
+"start": 17.04,
+"end": 17.76
+},
+{
+"text": "colocando",
+"start": 17.76,
+"end": 18.08
+},
+{
+"text": "ele",
+"start": 18.08,
+"end": 18.32
+},
+{
+"text": "pra",
+"start": 18.32,
+"end": 18.48
+},
+{
+"text": "você",
+"start": 18.48,
+"end": 18.64
+},
+{
+"text": "poder",
+"start": 18.64,
+"end": 18.88
+},
+{
+"text": "gerar",
+"start": 18.88,
+"end": 19.2
+},
+{
+"text": "tanto",
+"start": 19.2,
+"end": 19.44
+},
+{
+"text": "vídeo,",
+"start": 19.44,
+"end": 19.76
+},
+{
+"text": "imagem,",
+"start": 19.76,
+"end": 20.24
+},
+{
+"text": "vídeo",
+"start": 20.24,
+"end": 20.48
+},
+{
+"text": "de",
+"start": 20.48,
+"end": 20.56
+},
+{
+"text": "cinema.",
+"start": 20.56,
+"end": 21.41
+},
+{
+"text": "Totalmente",
+"start": 21.447,
+"end": 21.927
+},
+{
+"text": "de",
+"start": 21.927,
+"end": 22.087
+},
+{
+"text": "graça,",
+"start": 22.087,
+"end": 22.567
+},
+{
+"text": "localmente",
+"start": 22.567,
+"end": 23.047
+},
+{
+"text": "no",
+"start": 23.047,
+"end": 23.207
+},
+{
+"text": "seu",
+"start": 23.207,
+"end": 23.367
+},
+{
+"text": "PC.",
+"start": 23.367,
+"end": 23.847
+},
+{
+"text": "Então,",
+"start": 23.847,
+"end": 24.087
+},
+{
+"text": "meu,",
+"start": 24.087,
+"end": 24.407
+},
+{
+"text": "se",
+"start": 24.407,
+"end": 24.567
+},
+{
+"text": "você",
+"start": 24.567,
+"end": 24.727
+},
+{
+"text": "quer",
+"start": 24.727,
+"end": 24.967
+},
+{
+"text": "receber",
+"start": 24.967,
+"end": 25.367
+},
+{
+"text": "esse",
+"start": 25.367,
+"end": 25.607
+},
+{
+"text": "repositório",
+"start": 25.607,
+"end": 26.248
+},
+{
+"text": "totalmente",
+"start": 26.248,
+"end": 26.647
+},
+{
+"text": "de",
+"start": 26.647,
+"end": 26.807
+},
+{
+"text": "graça",
+"start": 26.807,
+"end": 27.127
+},
+{
+"text": "pra",
+"start": 27.127,
+"end": 27.288
+},
+{
+"text": "você",
+"start": 27.288,
+"end": 27.447
+},
+{
+"text": "usar,",
+"start": 27.447,
+"end": 27.847
+},
+{
+"text": "comenta",
+"start": 27.847,
+"end": 28.407
+},
+{
+"text": "Eu",
+"start": 28.407,
+"end": 28.567
+},
+{
+"text": "quero",
+"start": 28.567,
+"end": 28.807
+},
+{
+"text": "aqui",
+"start": 28.807,
+"end": 29.047
+},
+{
+"text": "nos",
+"start": 29.047,
+"end": 29.127
+},
+{
+"text": "comentários",
+"start": 29.127,
+"end": 29.447
+},
+{
+"text": "que",
+"start": 29.447,
+"end": 29.527
+},
+{
+"text": "eu",
+"start": 29.527,
+"end": 29.607
+},
+{
+"text": "te",
+"start": 29.607,
+"end": 29.767
+},
+{
+"text": "envio.",
+"start": 29.767,
+"end": 30.164
+}
+]
