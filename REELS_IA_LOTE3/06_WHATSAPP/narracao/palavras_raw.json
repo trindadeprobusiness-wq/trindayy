@@ -1,0 +1,777 @@
+[
+{
+"text": "Você",
+"start": 0.0,
+"end": 0.4
+},
+{
+"text": "sabia",
+"start": 0.4,
+"end": 0.8
+},
+{
+"text": "que",
+"start": 0.8,
+"end": 0.96
+},
+{
+"text": "consegue",
+"start": 0.96,
+"end": 1.36
+},
+{
+"text": "conectar",
+"start": 1.36,
+"end": 1.76
+},
+{
+"text": "o",
+"start": 1.76,
+"end": 1.84
+},
+{
+"text": "Cloud",
+"start": 1.84,
+"end": 2.4
+},
+{
+"text": "diretamente",
+"start": 2.4,
+"end": 3.04
+},
+{
+"text": "ao",
+"start": 3.04,
+"end": 3.28
+},
+{
+"text": "WhatsApp",
+"start": 3.28,
+"end": 3.84
+},
+{
+"text": "para",
+"start": 3.84,
+"end": 4.0
+},
+{
+"text": "criar",
+"start": 4.0,
+"end": 4.32
+},
+{
+"text": "seu",
+"start": 4.32,
+"end": 4.56
+},
+{
+"text": "próprio",
+"start": 4.56,
+"end": 4.96
+},
+{
+"text": "agente",
+"start": 4.96,
+"end": 5.36
+},
+{
+"text": "de",
+"start": 5.36,
+"end": 5.44
+},
+{
+"text": "inteligência",
+"start": 5.44,
+"end": 6.08
+},
+{
+"text": "artificial?",
+"start": 6.08,
+"end": 7.04
+},
+{
+"text": "E",
+"start": 7.04,
+"end": 7.28
+},
+{
+"text": "o",
+"start": 7.28,
+"end": 7.44
+},
+{
+"text": "mais",
+"start": 7.44,
+"end": 7.68
+},
+{
+"text": "interessante",
+"start": 7.68,
+"end": 8.24
+},
+{
+"text": "é",
+"start": 8.24,
+"end": 8.4
+},
+{
+"text": "que",
+"start": 8.4,
+"end": 8.56
+},
+{
+"text": "você",
+"start": 8.56,
+"end": 8.8
+},
+{
+"text": "não",
+"start": 8.8,
+"end": 9.04
+},
+{
+"text": "precisa",
+"start": 9.04,
+"end": 9.44
+},
+{
+"text": "desenvolver",
+"start": 9.44,
+"end": 10.16
+},
+{
+"text": "toda",
+"start": 10.16,
+"end": 10.32
+},
+{
+"text": "a",
+"start": 10.32,
+"end": 10.48
+},
+{
+"text": "integração",
+"start": 10.48,
+"end": 11.04
+},
+{
+"text": "do",
+"start": 11.04,
+"end": 11.2
+},
+{
+"text": "zero.",
+"start": 11.2,
+"end": 11.84
+},
+{
+"text": "Existe",
+"start": 11.84,
+"end": 12.24
+},
+{
+"text": "uma",
+"start": 12.24,
+"end": 12.4
+},
+{
+"text": "ferramenta",
+"start": 12.4,
+"end": 12.88
+},
+{
+"text": "chamada",
+"start": 12.88,
+"end": 13.28
+},
+{
+"text": "Capsu,",
+"start": 13.28,
+"end": 14.0
+},
+{
+"text": "que",
+"start": 14.0,
+"end": 14.16
+},
+{
+"text": "facilita",
+"start": 14.16,
+"end": 14.64
+},
+{
+"text": "a",
+"start": 14.64,
+"end": 14.72
+},
+{
+"text": "conexão",
+"start": 14.72,
+"end": 15.2
+},
+{
+"text": "com",
+"start": 15.2,
+"end": 15.36
+},
+{
+"text": "a",
+"start": 15.36,
+"end": 15.52
+},
+{
+"text": "API",
+"start": 15.52,
+"end": 16.08
+},
+{
+"text": "oficial",
+"start": 16.08,
+"end": 16.48
+},
+{
+"text": "do",
+"start": 16.48,
+"end": 16.64
+},
+{
+"text": "WhatsApp.",
+"start": 16.64,
+"end": 17.52
+},
+{
+"text": "O",
+"start": 17.52,
+"end": 17.68
+},
+{
+"text": "processo",
+"start": 17.68,
+"end": 18.16
+},
+{
+"text": "funciona",
+"start": 18.16,
+"end": 18.64
+},
+{
+"text": "assim.",
+"start": 18.64,
+"end": 19.2
+},
+{
+"text": "Primeiro,",
+"start": 19.2,
+"end": 19.76
+},
+{
+"text": "você",
+"start": 19.76,
+"end": 20.0
+},
+{
+"text": "cria",
+"start": 20.0,
+"end": 20.4
+},
+{
+"text": "sua",
+"start": 20.4,
+"end": 20.64
+},
+{
+"text": "conta",
+"start": 20.64,
+"end": 20.88
+},
+{
+"text": "e",
+"start": 20.88,
+"end": 21.04
+},
+{
+"text": "conecta",
+"start": 21.04,
+"end": 21.68
+},
+{
+"text": "um",
+"start": 21.68,
+"end": 21.76
+},
+{
+"text": "número",
+"start": 21.76,
+"end": 22.0
+},
+{
+"text": "de",
+"start": 22.0,
+"end": 22.16
+},
+{
+"text": "WhatsApp.",
+"start": 22.16,
+"end": 22.907
+},
+{
+"text": "Depois,",
+"start": 22.907,
+"end": 23.467
+},
+{
+"text": "adiciona",
+"start": 23.467,
+"end": 24.107
+},
+{
+"text": "as",
+"start": 24.107,
+"end": 24.267
+},
+{
+"text": "habilidades",
+"start": 24.267,
+"end": 24.828
+},
+{
+"text": "necessárias",
+"start": 24.828,
+"end": 25.387
+},
+{
+"text": "ao",
+"start": 25.387,
+"end": 25.627
+},
+{
+"text": "Cloud",
+"start": 25.627,
+"end": 26.027
+},
+{
+"text": "Code.",
+"start": 26.027,
+"end": 26.667
+},
+{
+"text": "E",
+"start": 26.667,
+"end": 26.827
+},
+{
+"text": "agora",
+"start": 26.827,
+"end": 27.147
+},
+{
+"text": "vem",
+"start": 27.147,
+"end": 27.468
+},
+{
+"text": "a",
+"start": 27.468,
+"end": 27.627
+},
+{
+"text": "melhor",
+"start": 27.627,
+"end": 28.107
+},
+{
+"text": "parte.",
+"start": 28.107,
+"end": 28.747
+},
+{
+"text": "Você",
+"start": 28.747,
+"end": 29.147
+},
+{
+"text": "simplesmente",
+"start": 29.147,
+"end": 29.787
+},
+{
+"text": "descreve",
+"start": 29.787,
+"end": 30.427
+},
+{
+"text": "o",
+"start": 30.427,
+"end": 30.587
+},
+{
+"text": "que",
+"start": 30.587,
+"end": 30.747
+},
+{
+"text": "quer",
+"start": 30.747,
+"end": 30.987
+},
+{
+"text": "construir.",
+"start": 30.987,
+"end": 31.627
+},
+{
+"text": "Pode",
+"start": 31.627,
+"end": 31.867
+},
+{
+"text": "ser",
+"start": 31.867,
+"end": 32.107
+},
+{
+"text": "um",
+"start": 32.107,
+"end": 32.267
+},
+{
+"text": "agente",
+"start": 32.267,
+"end": 32.587
+},
+{
+"text": "de",
+"start": 32.587,
+"end": 32.667
+},
+{
+"text": "atendimento,",
+"start": 32.667,
+"end": 33.548
+},
+{
+"text": "um",
+"start": 33.548,
+"end": 33.707
+},
+{
+"text": "assistente",
+"start": 33.707,
+"end": 34.187
+},
+{
+"text": "que",
+"start": 34.187,
+"end": 34.347
+},
+{
+"text": "responde",
+"start": 34.347,
+"end": 34.907
+},
+{
+"text": "perguntas",
+"start": 34.907,
+"end": 35.548
+},
+{
+"text": "ou",
+"start": 35.548,
+"end": 35.787
+},
+{
+"text": "uma",
+"start": 35.787,
+"end": 35.947
+},
+{
+"text": "automação",
+"start": 35.947,
+"end": 36.587
+},
+{
+"text": "que",
+"start": 36.587,
+"end": 36.747
+},
+{
+"text": "organiza",
+"start": 36.747,
+"end": 37.227
+},
+{
+"text": "agendamentos.",
+"start": 37.227,
+"end": 38.107
+},
+{
+"text": "O",
+"start": 38.107,
+"end": 38.267
+},
+{
+"text": "Cloud",
+"start": 38.267,
+"end": 38.747
+},
+{
+"text": "Code",
+"start": 38.747,
+"end": 39.147
+},
+{
+"text": "ajuda",
+"start": 39.147,
+"end": 39.547
+},
+{
+"text": "a",
+"start": 39.547,
+"end": 39.627
+},
+{
+"text": "criar",
+"start": 39.627,
+"end": 39.947
+},
+{
+"text": "a",
+"start": 39.947,
+"end": 40.028
+},
+{
+"text": "estrutura",
+"start": 40.028,
+"end": 40.508
+},
+{
+"text": "da",
+"start": 40.508,
+"end": 40.667
+},
+{
+"text": "aplicação",
+"start": 40.667,
+"end": 41.227
+},
+{
+"text": "e",
+"start": 41.227,
+"end": 41.387
+},
+{
+"text": "os",
+"start": 41.387,
+"end": 41.547
+},
+{
+"text": "fluxos",
+"start": 41.547,
+"end": 42.108
+},
+{
+"text": "necessários",
+"start": 42.108,
+"end": 42.667
+},
+{
+"text": "para",
+"start": 42.667,
+"end": 42.827
+},
+{
+"text": "conectar.",
+"start": 42.827,
+"end": 43.757
+},
+{
+"text": "Tudo.",
+"start": 43.76,
+"end": 44.24
+},
+{
+"text": "Mas",
+"start": 44.24,
+"end": 44.48
+},
+{
+"text": "é",
+"start": 44.48,
+"end": 44.8
+},
+{
+"text": "importante",
+"start": 44.8,
+"end": 45.2
+},
+{
+"text": "respeitar",
+"start": 45.2,
+"end": 45.68
+},
+{
+"text": "as",
+"start": 45.68,
+"end": 45.84
+},
+{
+"text": "regras",
+"start": 45.84,
+"end": 46.32
+},
+{
+"text": "oficiais",
+"start": 46.32,
+"end": 46.8
+},
+{
+"text": "do",
+"start": 46.8,
+"end": 46.96
+},
+{
+"text": "WhatsApp,",
+"start": 46.96,
+"end": 47.68
+},
+{
+"text": "incluindo",
+"start": 47.68,
+"end": 48.24
+},
+{
+"text": "o",
+"start": 48.24,
+"end": 48.32
+},
+{
+"text": "consentimento",
+"start": 48.32,
+"end": 49.04
+},
+{
+"text": "dos",
+"start": 49.04,
+"end": 49.2
+},
+{
+"text": "contatos",
+"start": 49.2,
+"end": 49.76
+},
+{
+"text": "e",
+"start": 49.76,
+"end": 49.92
+},
+{
+"text": "a",
+"start": 49.92,
+"end": 50.08
+},
+{
+"text": "janela",
+"start": 50.08,
+"end": 50.48
+},
+{
+"text": "de",
+"start": 50.48,
+"end": 50.64
+},
+{
+"text": "atendimento",
+"start": 50.64,
+"end": 51.2
+},
+{
+"text": "de",
+"start": 51.2,
+"end": 51.36
+},
+{
+"text": "24",
+"start": 51.36,
+"end": 52.0
+},
+{
+"text": "horas.",
+"start": 52.0,
+"end": 52.64
+},
+{
+"text": "Quer",
+"start": 52.64,
+"end": 52.96
+},
+{
+"text": "aprender",
+"start": 52.96,
+"end": 53.28
+},
+{
+"text": "a",
+"start": 53.28,
+"end": 53.44
+},
+{
+"text": "montar",
+"start": 53.44,
+"end": 53.76
+},
+{
+"text": "essa",
+"start": 53.76,
+"end": 53.92
+},
+{
+"text": "integração?",
+"start": 53.92,
+"end": 54.64
+},
+{
+"text": "Comenta",
+"start": 54.64,
+"end": 55.12
+},
+{
+"text": "no",
+"start": 55.12,
+"end": 55.28
+},
+{
+"text": "WhatsApp",
+"start": 55.28,
+"end": 55.84
+},
+{
+"text": "que",
+"start": 55.84,
+"end": 56.0
+},
+{
+"text": "eu",
+"start": 56.0,
+"end": 56.08
+},
+{
+"text": "te",
+"start": 56.08,
+"end": 56.24
+},
+{
+"text": "envio",
+"start": 56.24,
+"end": 56.56
+},
+{
+"text": "o",
+"start": 56.56,
+"end": 56.72
+},
+{
+"text": "material.",
+"start": 56.72,
+"end": 57.234
+}
+]

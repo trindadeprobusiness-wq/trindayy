@@ -1,0 +1,752 @@
+[
+{
+"text": "Imagina",
+"start": 0.0,
+"end": 0.64
+},
+{
+"text": "conseguir",
+"start": 0.64,
+"end": 1.04
+},
+{
+"text": "rodar",
+"start": 1.04,
+"end": 1.36
+},
+{
+"text": "jogos",
+"start": 1.36,
+"end": 1.68
+},
+{
+"text": "de",
+"start": 1.68,
+"end": 1.84
+},
+{
+"text": "PlayStation",
+"start": 1.84,
+"end": 2.48
+},
+{
+"text": "5",
+"start": 2.48,
+"end": 2.96
+},
+{
+"text": "diretamente",
+"start": 2.96,
+"end": 3.68
+},
+{
+"text": "no",
+"start": 3.68,
+"end": 3.92
+},
+{
+"text": "computador!",
+"start": 3.92,
+"end": 5.04
+},
+{
+"text": "E",
+"start": 5.04,
+"end": 5.2
+},
+{
+"text": "agora",
+"start": 5.2,
+"end": 5.52
+},
+{
+"text": "imagine",
+"start": 5.52,
+"end": 6.0
+},
+{
+"text": "o",
+"start": 6.0,
+"end": 6.16
+},
+{
+"text": "que",
+"start": 6.16,
+"end": 6.32
+},
+{
+"text": "isso",
+"start": 6.32,
+"end": 6.48
+},
+{
+"text": "poderia",
+"start": 6.48,
+"end": 6.96
+},
+{
+"text": "significar",
+"start": 6.96,
+"end": 7.44
+},
+{
+"text": "para",
+"start": 7.44,
+"end": 7.6
+},
+{
+"text": "um",
+"start": 7.6,
+"end": 7.76
+},
+{
+"text": "jogo",
+"start": 7.76,
+"end": 8.0
+},
+{
+"text": "como",
+"start": 8.0,
+"end": 8.24
+},
+{
+"text": "GTA",
+"start": 8.24,
+"end": 8.88
+},
+{
+"text": "VI.",
+"start": 8.88,
+"end": 9.68
+},
+{
+"text": "Parece",
+"start": 9.68,
+"end": 10.16
+},
+{
+"text": "impossível,",
+"start": 10.16,
+"end": 10.96
+},
+{
+"text": "mas",
+"start": 10.96,
+"end": 11.2
+},
+{
+"text": "apareceu",
+"start": 11.2,
+"end": 11.76
+},
+{
+"text": "um",
+"start": 11.76,
+"end": 11.84
+},
+{
+"text": "projeto",
+"start": 11.84,
+"end": 12.16
+},
+{
+"text": "no",
+"start": 12.16,
+"end": 12.24
+},
+{
+"text": "GitHub",
+"start": 12.24,
+"end": 13.04
+},
+{
+"text": "que",
+"start": 13.04,
+"end": 13.2
+},
+{
+"text": "está",
+"start": 13.2,
+"end": 13.36
+},
+{
+"text": "chamando",
+"start": 13.36,
+"end": 13.84
+},
+{
+"text": "a",
+"start": 13.84,
+"end": 13.92
+},
+{
+"text": "atenção.",
+"start": 13.92,
+"end": 14.64
+},
+{
+"text": "O",
+"start": 14.64,
+"end": 14.8
+},
+{
+"text": "nome",
+"start": 14.8,
+"end": 15.04
+},
+{
+"text": "dele",
+"start": 15.04,
+"end": 15.36
+},
+{
+"text": "é",
+"start": 15.36,
+"end": 15.68
+},
+{
+"text": "NPS",
+"start": 15.68,
+"end": 16.64
+},
+{
+"text": "5.",
+"start": 16.64,
+"end": 17.28
+},
+{
+"text": "A",
+"start": 17.28,
+"end": 17.44
+},
+{
+"text": "proposta",
+"start": 17.44,
+"end": 17.92
+},
+{
+"text": "é",
+"start": 17.92,
+"end": 18.16
+},
+{
+"text": "desenvolver",
+"start": 18.16,
+"end": 18.72
+},
+{
+"text": "uma",
+"start": 18.72,
+"end": 18.88
+},
+{
+"text": "camada",
+"start": 18.88,
+"end": 19.36
+},
+{
+"text": "de",
+"start": 19.36,
+"end": 19.52
+},
+{
+"text": "compatibilidade",
+"start": 19.52,
+"end": 20.4
+},
+{
+"text": "capaz",
+"start": 20.4,
+"end": 20.8
+},
+{
+"text": "de",
+"start": 20.8,
+"end": 20.96
+},
+{
+"text": "lidar",
+"start": 20.96,
+"end": 21.28
+},
+{
+"text": "com",
+"start": 21.28,
+"end": 21.52
+},
+{
+"text": "instruções",
+"start": 21.52,
+"end": 22.0
+},
+{
+"text": "gráficas",
+"start": 22.0,
+"end": 22.56
+},
+{
+"text": "utilizadas",
+"start": 22.56,
+"end": 23.12
+},
+{
+"text": "pelo",
+"start": 23.12,
+"end": 23.36
+},
+{
+"text": "PlayStation.",
+"start": 23.36,
+"end": 24.647
+},
+{
+"text": "E",
+"start": 24.647,
+"end": 24.807
+},
+{
+"text": "o",
+"start": 24.807,
+"end": 24.967
+},
+{
+"text": "mais",
+"start": 24.967,
+"end": 25.287
+},
+{
+"text": "interessante",
+"start": 25.287,
+"end": 25.848
+},
+{
+"text": "é",
+"start": 25.848,
+"end": 26.007
+},
+{
+"text": "que",
+"start": 26.007,
+"end": 26.167
+},
+{
+"text": "o",
+"start": 26.167,
+"end": 26.247
+},
+{
+"text": "projeto",
+"start": 26.247,
+"end": 26.728
+},
+{
+"text": "mira",
+"start": 26.728,
+"end": 27.127
+},
+{
+"text": "sistemas",
+"start": 27.127,
+"end": 27.527
+},
+{
+"text": "como",
+"start": 27.527,
+"end": 27.767
+},
+{
+"text": "Windows",
+"start": 27.767,
+"end": 28.247
+},
+{
+"text": "e",
+"start": 28.247,
+"end": 28.407
+},
+{
+"text": "Linux.",
+"start": 28.407,
+"end": 29.207
+},
+{
+"text": "Basicamente,",
+"start": 29.207,
+"end": 30.007
+},
+{
+"text": "a",
+"start": 30.007,
+"end": 30.167
+},
+{
+"text": "ideia",
+"start": 30.167,
+"end": 30.567
+},
+{
+"text": "é",
+"start": 30.567,
+"end": 30.727
+},
+{
+"text": "reduzir",
+"start": 30.727,
+"end": 31.207
+},
+{
+"text": "algumas",
+"start": 31.207,
+"end": 31.527
+},
+{
+"text": "das",
+"start": 31.527,
+"end": 31.687
+},
+{
+"text": "barreiras",
+"start": 31.687,
+"end": 32.247
+},
+{
+"text": "técnicas",
+"start": 32.247,
+"end": 32.727
+},
+{
+"text": "que",
+"start": 32.727,
+"end": 32.887
+},
+{
+"text": "impedem",
+"start": 32.887,
+"end": 33.527
+},
+{
+"text": "determinados",
+"start": 33.527,
+"end": 34.007
+},
+{
+"text": "jogos",
+"start": 34.007,
+"end": 34.408
+},
+{
+"text": "de",
+"start": 34.408,
+"end": 34.567
+},
+{
+"text": "console",
+"start": 34.567,
+"end": 35.127
+},
+{
+"text": "de",
+"start": 35.127,
+"end": 35.288
+},
+{
+"text": "funcionar",
+"start": 35.288,
+"end": 35.767
+},
+{
+"text": "em",
+"start": 35.767,
+"end": 35.927
+},
+{
+"text": "outras",
+"start": 35.927,
+"end": 36.247
+},
+{
+"text": "plataformas.",
+"start": 36.247,
+"end": 37.127
+},
+{
+"text": "Mas",
+"start": 37.127,
+"end": 37.448
+},
+{
+"text": "atenção!",
+"start": 37.448,
+"end": 38.247
+},
+{
+"text": "Isso",
+"start": 38.247,
+"end": 38.567
+},
+{
+"text": "ainda",
+"start": 38.567,
+"end": 38.887
+},
+{
+"text": "não",
+"start": 38.887,
+"end": 39.127
+},
+{
+"text": "significa",
+"start": 39.127,
+"end": 39.687
+},
+{
+"text": "que",
+"start": 39.687,
+"end": 39.927
+},
+{
+"text": "GTA",
+"start": 39.927,
+"end": 40.408
+},
+{
+"text": "VI",
+"start": 40.408,
+"end": 40.727
+},
+{
+"text": "esteja",
+"start": 40.727,
+"end": 41.127
+},
+{
+"text": "rodando",
+"start": 41.127,
+"end": 41.527
+},
+{
+"text": "no",
+"start": 41.527,
+"end": 41.687
+},
+{
+"text": "PC",
+"start": 41.687,
+"end": 42.088
+},
+{
+"text": "por",
+"start": 42.088,
+"end": 42.248
+},
+{
+"text": "meio",
+"start": 42.248,
+"end": 42.487
+},
+{
+"text": "dessa",
+"start": 42.487,
+"end": 42.807
+},
+{
+"text": "ferramenta.",
+"start": 42.807,
+"end": 43.607
+},
+{
+"text": "Estamos",
+"start": 43.607,
+"end": 44.008
+},
+{
+"text": "falando",
+"start": 44.008,
+"end": 44.328
+},
+{
+"text": "de",
+"start": 44.328,
+"end": 44.567
+},
+{
+"text": "uma",
+"start": 44.567,
+"end": 44.727
+},
+{
+"text": "proposta",
+"start": 44.727,
+"end": 45.207
+},
+{
+"text": "experimental",
+"start": 45.207,
+"end": 46.088
+},
+{
+"text": "que",
+"start": 46.088,
+"end": 46.328
+},
+{
+"text": "precisa",
+"start": 46.328,
+"end": 46.727
+},
+{
+"text": "demonstrar",
+"start": 46.727,
+"end": 47.367
+},
+{
+"text": "seus",
+"start": 47.367,
+"end": 47.607
+},
+{
+"text": "resultados",
+"start": 47.607,
+"end": 48.168
+},
+{
+"text": "na",
+"start": 48.168,
+"end": 48.328
+},
+{
+"text": "prática.",
+"start": 48.328,
+"end": 49.05
+},
+{
+"text": "Se",
+"start": 49.05,
+"end": 49.29
+},
+{
+"text": "você",
+"start": 49.29,
+"end": 49.53
+},
+{
+"text": "gosta",
+"start": 49.53,
+"end": 49.85
+},
+{
+"text": "de",
+"start": 49.85,
+"end": 50.01
+},
+{
+"text": "tecnologia,",
+"start": 50.01,
+"end": 50.89
+},
+{
+"text": "programação",
+"start": 50.89,
+"end": 51.53
+},
+{
+"text": "e",
+"start": 51.53,
+"end": 51.69
+},
+{
+"text": "projetos",
+"start": 51.69,
+"end": 52.17
+},
+{
+"text": "que",
+"start": 52.17,
+"end": 52.41
+},
+{
+"text": "desafiam",
+"start": 52.41,
+"end": 53.05
+},
+{
+"text": "os",
+"start": 53.05,
+"end": 53.13
+},
+{
+"text": "limites",
+"start": 53.13,
+"end": 53.53
+},
+{
+"text": "do",
+"start": 53.53,
+"end": 53.69
+},
+{
+"text": "hardware,",
+"start": 53.69,
+"end": 54.25
+},
+{
+"text": "vale",
+"start": 54.25,
+"end": 54.57
+},
+{
+"text": "a",
+"start": 54.57,
+"end": 54.65
+},
+{
+"text": "pena",
+"start": 54.65,
+"end": 54.97
+},
+{
+"text": "conhecer.",
+"start": 54.97,
+"end": 55.61
+},
+{
+"text": "Comenta",
+"start": 55.61,
+"end": 56.17
+},
+{
+"text": "PS5",
+"start": 56.17,
+"end": 57.05
+},
+{
+"text": "que",
+"start": 57.05,
+"end": 57.21
+},
+{
+"text": "eu",
+"start": 57.21,
+"end": 57.29
+},
+{
+"text": "te",
+"start": 57.29,
+"end": 57.45
+},
+{
+"text": "envio",
+"start": 57.45,
+"end": 57.77
+},
+{
+"text": "o",
+"start": 57.77,
+"end": 57.85
+},
+{
+"text": "repositório.",
+"start": 57.85,
+"end": 58.593
+}
+]

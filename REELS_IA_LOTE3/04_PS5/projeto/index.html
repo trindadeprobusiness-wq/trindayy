@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>PS5 no PC — AnyPS5</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+/* ===== Shared design system — REELS IA PRODUÇÃO PREMIUM ===== */
+@font-face { font-family: "Inter"; font-weight: 400; src: url("assets/fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; src: url("assets/fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url("assets/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; src: url("assets/fonts/inter-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 800; src: url("assets/fonts/inter-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 900; src: url("assets/fonts/inter-latin-900-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 500; src: url("assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 700; src: url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; src: url("assets/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 600; src: url("assets/fonts/jetbrains-mono-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 700; src: url("assets/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  --bg: #060a13; --bg2: #0b1222; --panel: #0f1729; --panel2: #141e35; --line: rgba(148, 178, 255, 0.16);
+  --text: #f5f7fb; --muted: #9aa6bd; --dim: #5d6880;
+  --blue: #2f7bff; --cyan: #22d3ee; --green: #34d399; --red: #ff4d5e; --amber: #fbbf24;
+  --accent: var(--cyan);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+body { color: var(--text); font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+#root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+
+/* ---------- Background ---------- */
+.bg { position: absolute; inset: 0; overflow: hidden; }
+.bg-grid { position: absolute; inset: -200px; background-image:
+  linear-gradient(rgba(120, 160, 255, 0.055) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(120, 160, 255, 0.055) 1px, transparent 1px);
+  background-size: 72px 72px; }
+.bg-glow { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; opacity: 0.55; }
+.bg-glow.a { left: -380px; top: -260px; background: radial-gradient(circle, rgba(47, 123, 255, 0.42), transparent 62%); }
+.bg-glow.b { right: -420px; top: 760px; background: radial-gradient(circle, rgba(34, 211, 238, 0.30), transparent 62%); }
+.bg-glow.c { left: 120px; top: 1250px; width: 900px; height: 900px; background: radial-gradient(circle, var(--tint, rgba(47, 123, 255, 0.0)), transparent 65%); opacity: 1; }
+.vignette { position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(130% 85% at 50% 42%, transparent 55%, rgba(0, 0, 0, 0.72) 100%); }
+.grain { position: absolute; inset: 0; opacity: 0.06; mix-blend-mode: overlay; background-size: 220px 220px; }
+
+/* ---------- Scenes ---------- */
+.scene { position: absolute; inset: 0; }
+.scene > .inner { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.center-x { left: 0; right: 0; margin-left: auto; margin-right: auto; }
+.row { display: flex; align-items: center; }
+.col { display: flex; flex-direction: column; }
+.gap8 { gap: 8px; } .gap12 { gap: 12px; } .gap16 { gap: 16px; } .gap20 { gap: 20px; } .gap24 { gap: 24px; } .gap32 { gap: 32px; }
+
+/* ---------- Type ---------- */
+.kicker { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 26px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+.display { font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -0.035em; line-height: 0.95; }
+.h1 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 96px; letter-spacing: -0.035em; line-height: 1; }
+.h2 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 68px; letter-spacing: -0.03em; line-height: 1.04; }
+.h3 { font-family: "Inter", sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.02em; line-height: 1.1; }
+.body { font-size: 32px; font-weight: 500; color: var(--muted); line-height: 1.35; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.hl { color: var(--accent); }
+.hl-red { color: var(--red); } .hl-green { color: var(--green); } .hl-amber { color: var(--amber); }
+.tc { text-align: center; }
+
+/* ---------- Surfaces ---------- */
+.card { background: linear-gradient(165deg, rgba(24, 35, 62, 0.94), rgba(11, 17, 32, 0.96));
+  border: 1.5px solid var(--line); border-radius: 30px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+.card.light { background: linear-gradient(170deg, #ffffff, #eef2f8); color: #0b1222; border-color: rgba(255, 255, 255, 0.6); }
+.glass { background: rgba(18, 28, 52, 0.62); border: 1.5px solid rgba(160, 190, 255, 0.18); border-radius: 28px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08); }
+.tile { width: 200px; height: 200px; border-radius: 48px; display: grid; place-items: center;
+  background: linear-gradient(160deg, #1b2747, #0d1426); border: 2px solid rgba(160, 190, 255, 0.2);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+.tile.white { background: linear-gradient(160deg, #ffffff, #e9eef7); border-color: rgba(255, 255, 255, 0.7); }
+.tile img { width: 62%; height: 62%; object-fit: contain; }
+.chip { display: inline-flex; align-items: center; gap: 14px; padding: 16px 28px; border-radius: 999px;
+  font-weight: 700; font-size: 32px; background: rgba(30, 44, 78, 0.9); border: 1.5px solid rgba(160, 190, 255, 0.22); color: var(--text); white-space: nowrap; }
+.chip svg { width: 34px; height: 34px; }
+.chip.blue { background: rgba(47, 123, 255, 0.18); border-color: rgba(47, 123, 255, 0.6); color: #cfe0ff; }
+.chip.cyan { background: rgba(34, 211, 238, 0.14); border-color: rgba(34, 211, 238, 0.6); color: #c9f6ff; }
+.chip.green { background: rgba(52, 211, 153, 0.14); border-color: rgba(52, 211, 153, 0.6); color: #c8f7e5; }
+.chip.red { background: rgba(255, 77, 94, 0.16); border-color: rgba(255, 77, 94, 0.65); color: #ffd0d5; }
+.chip.amber { background: rgba(251, 191, 36, 0.14); border-color: rgba(251, 191, 36, 0.6); color: #ffeab0; }
+.chip.solid { background: var(--text); color: #0b1222; border-color: transparent; }
+.badge { display: inline-flex; align-items: center; gap: 16px; padding: 14px 34px; border-radius: 22px;
+  font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 92px; letter-spacing: -0.03em; line-height: 1; }
+.icon svg { width: 100%; height: 100%; }
+.ic { display: inline-block; width: 1em; height: 1em; }
+.ic svg { width: 100%; height: 100%; display: block; }
+
+/* ---------- Window / terminal ---------- */
+.win { border-radius: 26px; overflow: hidden; background: #0c1220; border: 1.5px solid rgba(160, 190, 255, 0.2);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6); }
+.win-bar { height: 62px; display: flex; align-items: center; gap: 12px; padding: 0 24px; background: #141c2e; border-bottom: 1px solid rgba(160, 190, 255, 0.12); }
+.win-bar i { width: 18px; height: 18px; border-radius: 50%; display: block; }
+.win-bar i:nth-child(1) { background: #ff5f57; } .win-bar i:nth-child(2) { background: #febc2e; } .win-bar i:nth-child(3) { background: #28c840; }
+.win-bar .t { margin-left: 18px; font-family: "JetBrains Mono", monospace; font-size: 22px; color: var(--muted); }
+.term { font-family: "JetBrains Mono", monospace; font-size: 27px; line-height: 1.55; color: #dbe5ff; padding: 26px 30px; white-space: pre; }
+.term .p { color: var(--green); } .term .c { color: var(--dim); } .term .k { color: var(--cyan); } .term .r { color: var(--red); } .term .y { color: var(--amber); }
+
+/* ---------- GitHub repo replica (dark) ---------- */
+.gh { width: 940px; border-radius: 26px; background: #0d1117; border: 1.5px solid #30363d; overflow: hidden;
+  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.65); font-family: "Inter", sans-serif; color: #e6edf3; }
+.gh-top { display: flex; align-items: center; gap: 18px; padding: 22px 30px; background: #010409; border-bottom: 1px solid #30363d; }
+.gh-top img { width: 46px; height: 46px; }
+.gh-top .path { font-size: 28px; color: #e6edf3; } .gh-top .path b { font-weight: 700; }
+.gh-tabs { display: flex; gap: 26px; padding: 0 30px; background: #010409; border-bottom: 1px solid #30363d; font-size: 22px; color: #9198a1; }
+.gh-tabs span { padding: 16px 0; } .gh-tabs span.on { color: #e6edf3; border-bottom: 3px solid #f78166; font-weight: 600; }
+.gh-head { display: flex; align-items: center; gap: 16px; padding: 26px 30px 10px; }
+.gh-head .av { width: 56px; height: 56px; border-radius: 12px; background: #fff; display: grid; place-items: center; overflow: hidden; }
+.gh-head .av img { width: 80%; height: 80%; object-fit: contain; }
+.gh-head .name { font-size: 40px; font-weight: 700; }
+.gh-pub { font-size: 20px; color: #9198a1; border: 1.5px solid #3d444d; border-radius: 999px; padding: 3px 14px; }
+.gh-desc { padding: 10px 30px 18px; font-size: 27px; line-height: 1.38; color: #c9d1d9; }
+.gh-topics { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 30px 22px; }
+.gh-topics span { font-size: 21px; font-weight: 600; color: #4493f8; background: rgba(56, 139, 253, 0.12); padding: 6px 16px; border-radius: 999px; }
+.gh-stats { display: flex; gap: 14px; padding: 0 30px 28px; }
+.gh-btn { display: inline-flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 600; color: #e6edf3;
+  background: #21262d; border: 1.5px solid #3d444d; border-radius: 12px; padding: 10px 18px; }
+.gh-btn .n { background: #3d444d; border-radius: 999px; padding: 2px 12px; font-size: 21px; }
+.gh-btn svg { width: 26px; height: 26px; }
+.gh-btn.star { border-color: #e3b341; box-shadow: 0 0 0 4px rgba(227, 179, 65, 0.15); }
+
+/* ---------- Node graph ---------- */
+.node { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.node .dot { width: 150px; height: 150px; border-radius: 40px; display: grid; place-items: center;
+  background: linear-gradient(160deg, #1b2747, #0d1426); border: 2px solid rgba(160, 190, 255, 0.24); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55); }
+.node .dot svg, .node .dot img { width: 58%; height: 58%; object-fit: contain; }
+.node .lb { font-weight: 700; font-size: 28px; color: var(--text); white-space: nowrap; }
+svg.wires { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+
+/* ---------- Captions ---------- */
+.caps { position: absolute; left: 0; right: 0; top: 0; height: 1920px; pointer-events: none; }
+.cap { position: absolute; left: 70px; right: 70px; top: 1268px; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start;
+  gap: 0 18px; text-align: center; }
+.cap .w { position: relative; display: inline-block; font-family: "Inter", sans-serif; font-weight: 800; font-size: 60px; line-height: 1.18;
+  letter-spacing: -0.015em; color: #ffffff; opacity: 0.38;
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 26px rgba(0, 0, 0, 0.75), 0 2px 10px rgba(0, 0, 0, 0.9); }
+.cap .w.k { color: var(--capk, #22d3ee); }
+
+/* ---------- Header strip (persistent) ---------- */
+.handle { position: absolute; left: 0; right: 0; top: 74px; text-align: center; }
+
+/* ===== ENERGIA v2 — lote 2 (appended after base.css) ===== */
+:root { --ink: #0f1115; --paper: #f4efe6; --a1: #ff6a3d; --a2: #2f7bff; --a3: #ffd23f; --capbg: #ff6a3d; --capfg: #0f1115; }
+.theme-light #root, .theme-light body { background: var(--paper); }
+.theme-light .bg { background: radial-gradient(120% 80% at 50% 0%, #fbf8f2 0%, var(--paper) 60%, #e9e1d3 100%); }
+.theme-light .bg-grid { background-image: radial-gradient(rgba(15, 17, 21, .10) 2px, transparent 2.5px); background-size: 46px 46px; }
+.theme-light .bg-glow.a { background: radial-gradient(circle, rgba(255, 106, 61, .30), transparent 62%); }
+.theme-light .bg-glow.b { background: radial-gradient(circle, rgba(47, 123, 255, .22), transparent 62%); }
+.theme-light .vignette { background: radial-gradient(130% 85% at 50% 42%, transparent 62%, rgba(80, 60, 30, .18) 100%); }
+.theme-light { color: var(--ink); }
+.theme-light .display, .theme-light .h1, .theme-light .h2, .theme-light .h3 { color: var(--ink); }
+.theme-light .kicker { color: #6b6457; }
+.theme-light .card { background: #fffdf9; border: 2px solid rgba(15, 17, 21, .08); box-shadow: 0 24px 60px rgba(60, 40, 10, .16), 0 2px 0 rgba(255, 255, 255, .9) inset; color: var(--ink); }
+.theme-light .chip { background: #fff; border: 2px solid rgba(15, 17, 21, .10); color: var(--ink); box-shadow: 0 10px 24px rgba(60, 40, 10, .12); }
+.theme-light .tile { background: #fff; border: 2px solid rgba(15, 17, 21, .08); box-shadow: 0 22px 50px rgba(60, 40, 10, .18); }
+.theme-dark .bg-grid { background-image: radial-gradient(rgba(160, 190, 255, .16) 2px, transparent 2.5px); background-size: 46px 46px; }
+
+/* big kinetic words */
+.kw { display: inline-block; font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -.045em; line-height: .92; }
+.tc > .kw:not(.row) { display: block; }
+.hlbox { display: inline-block; padding: 0 .14em; border-radius: .14em; background: var(--a1); color: #fff; }
+.sticker { display: inline-flex; align-items: center; gap: 14px; padding: 16px 30px; border-radius: 22px; font: 900 40px Inter; letter-spacing: -.01em;
+  background: var(--a3); color: #111; box-shadow: 0 14px 0 rgba(0, 0, 0, .18), 0 26px 50px rgba(0, 0, 0, .22); transform-origin: center; }
+.sticker svg { width: 44px; height: 44px; }
+.sticker.dark { background: #111; color: #fff; }
+.sticker.orange { background: var(--a1); color: #fff; }
+.sticker.blue { background: var(--a2); color: #fff; }
+.sticker.green { background: #22c55e; color: #fff; }
+.sticker.red { background: #ef4444; color: #fff; }
+.num-big { font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -.05em; line-height: .85; }
+.shot { border-radius: 26px; overflow: hidden; box-shadow: 0 40px 100px rgba(0, 0, 0, .35); border: 2px solid rgba(255, 255, 255, .5); background: #111; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ring { position: absolute; border-radius: 50%; border: 3px dashed rgba(255, 106, 61, .45); }
+.agentcard { width: 300px; border-radius: 30px; padding: 26px 22px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.agentcard .ai { width: 112px; height: 112px; border-radius: 30px; display: grid; place-items: center; }
+.agentcard .ai svg { width: 56%; height: 56%; }
+.agentcard .an { font: 800 32px Inter; text-align: center; letter-spacing: -.02em; }
+.agentcard .as { font: 600 20px "JetBrains Mono"; opacity: .6; text-align: center; }
+
+/* transitions + progress */
+.swipe { position: absolute; left: -10%; top: -10%; width: 120%; height: 120%; z-index: 40; pointer-events: none; }
+.progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; z-index: 45; transform-origin: left center; background: linear-gradient(90deg, var(--a1), var(--a3)); }
+.burst i { position: absolute; width: 22px; height: 22px; border-radius: 6px; }
+
+/* captions v2: pill highlight */
+.cap { top: 1235px; gap: 6px 14px; }
+.cap .w { font-family: "Inter", sans-serif; font-weight: 900; font-size: 74px; letter-spacing: -.02em; line-height: 1.16; padding: 0 14px; border-radius: 16px;
+  color: #fff; opacity: 1; text-transform: uppercase;
+  text-shadow: 0 5px 0 rgba(0, 0, 0, .55), 0 0 24px rgba(0, 0, 0, .55); -webkit-text-stroke: 2px rgba(0, 0, 0, .55); }
+.theme-light .cap .w { color: var(--ink); text-shadow: 0 4px 0 rgba(255, 255, 255, .9), 0 0 20px rgba(255, 255, 255, .9); -webkit-text-stroke: 0; }
+.cap .w.k { color: var(--capk); }
+
+
+.igbox{width:900px;height:132px;border-radius:66px;background:#fff;display:flex;align-items:center;gap:24px;padding:0 26px;box-shadow:0 30px 90px rgba(0,0,0,.35);border:2px solid rgba(0,0,0,.06)}
+.igbox .av{width:84px;height:84px;border-radius:50%;background:conic-gradient(from 210deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75);padding:5px}
+.igbox .av div{width:100%;height:100%;border-radius:50%;background:#1b2747}
+.igbox .tx{font:900 64px "Space Grotesk";color:#0b1222;letter-spacing:-.01em}
+.igbox .send{margin-left:auto;font:800 30px Inter;color:#0095f6}
+.follow{display:inline-flex;align-items:center;gap:16px;padding:24px 46px;border-radius:24px;background:#0095f6;color:#fff;font:800 40px Inter;box-shadow:0 24px 60px rgba(0,149,246,.35)}
+.follow svg{width:44px;height:44px}
+.meter{width:760px;height:64px;border-radius:32px;background:rgba(127,127,127,.18);border:3px solid rgba(127,127,127,.35);overflow:hidden;position:relative}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;width:100%;transform-origin:left center;border-radius:32px}
+.blk{height:118px;border-radius:26px;display:flex;align-items:center;gap:22px;padding:0 30px;font:900 44px Inter;letter-spacing:-.02em;box-shadow:0 14px 0 rgba(0,0,0,.18),0 26px 50px rgba(0,0,0,.2)}
+.blk img,.blk .bi{width:70px;height:70px;object-fit:contain}
+.blk .bi svg{width:100%;height:100%}
+.step3{display:flex;flex-direction:column;align-items:center;gap:14px;width:290px}
+.step3 .sn{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;font:700 80px "Space Grotesk";box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.step3 .sl{font:900 38px Inter;letter-spacing:-.02em;text-align:center}
+.prov{width:150px;height:150px;border-radius:40px;background:#fff;display:grid;place-items:center;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.prov img{width:62%;height:62%;object-fit:contain}
+
+.gh3{width:940px;border-radius:30px;background:#0d1117;border:1.5px solid #30363d;overflow:hidden;box-shadow:0 50px 120px rgba(0,0,0,.5);font-family:Inter;color:#e6edf3}
+.gh3 .top{display:flex;align-items:center;gap:18px;padding:24px 32px;background:#010409;border-bottom:1px solid #30363d}
+.gh3 .top img{width:44px;height:44px}
+.gh3 .top .path{font-size:29px;color:#e6edf3}.gh3 .top .path b{font-weight:700}
+.gh3 .head{display:flex;align-items:center;gap:20px;padding:30px 32px 8px}
+.gh3 .head .av{width:84px;height:84px;border-radius:18px;overflow:hidden;background:#fff;flex:none}
+.gh3 .head .av img{width:100%;height:100%;object-fit:cover}
+.gh3 .head .nm{font:700 44px "Space Grotesk";letter-spacing:-.02em;white-space:nowrap}
+.gh3 .pub{font-size:21px;color:#9198a1;border:1.5px solid #3d444d;border-radius:999px;padding:3px 14px;margin-left:auto}
+.gh3 .desc{padding:14px 32px 30px;font-size:30px;line-height:1.4;color:#c9d1d9}
+.gh3 .tags{display:flex;flex-wrap:wrap;gap:10px;padding:0 32px 30px}
+.gh3 .tags span{font:600 22px Inter;color:#4493f8;background:rgba(56,139,253,.12);padding:7px 18px;border-radius:999px}
+.brw{position:absolute;border-radius:28px;overflow:hidden;background:#111;box-shadow:0 50px 120px rgba(0,0,0,.5);border:1.5px solid rgba(255,255,255,.12)}
+.brw .bb{height:74px;display:flex;align-items:center;gap:12px;padding:0 24px;background:#1c1c1f}
+.brw .bb i{display:block;width:18px;height:18px;border-radius:50%}
+.brw .url{margin-left:18px;flex:1;height:46px;border-radius:23px;background:#2a2a2e;display:flex;align-items:center;gap:12px;padding:0 20px;font:500 24px Inter;color:#d4d4d8;white-space:nowrap;overflow:hidden}
+.brw .url svg{width:24px;height:24px;flex:none}
+.iph{position:absolute;width:430px;height:900px;border-radius:72px;background:#111;padding:16px;box-shadow:0 60px 140px rgba(0,0,0,.45),inset 0 0 0 3px #3a3a3c}
+.iph .scr{position:relative;width:100%;height:100%;border-radius:58px;overflow:hidden;background:#fff}
+.iph .isl{position:absolute;left:50%;top:22px;width:130px;height:38px;margin-left:-65px;border-radius:20px;background:#000;z-index:5}
+.iph .scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bub{display:inline-block;max-width:600px;padding:22px 30px;border-radius:34px;font:600 34px Inter;line-height:1.3}
+.bub.me{background:#0a84ff;color:#fff;border-bottom-right-radius:10px}
+.bub.ai{background:#e9e9eb;color:#111;border-bottom-left-radius:10px}
+.bub.wa{background:#d9fdd3;color:#111;border-bottom-right-radius:10px}
+.bub.wb{background:#fff;color:#111;border-bottom-left-radius:10px}
+.stamp{display:inline-block;padding:14px 34px;border:8px solid currentColor;border-radius:22px;font:900 80px "Space Grotesk";letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.wd{display:inline-block;white-space:pre}
+.lbl{font:600 24px "JetBrains Mono";letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.exm{position:absolute;padding:8px 18px;border-radius:12px;font:700 22px "JetBrains Mono";letter-spacing:.1em;text-transform:uppercase;background:rgba(127,127,127,.18);border:1.5px solid rgba(127,127,127,.4)}
+.chipx{display:inline-flex;align-items:center;gap:14px;padding:18px 30px;border-radius:999px;font:800 36px Inter;white-space:nowrap}
+.chipx svg,.chipx img{width:40px;height:40px;object-fit:contain}
+.pane{border-radius:30px;padding:30px}
+.mono{font-family:"JetBrains Mono"}
+
+#root{background:#050a1f} .bg-glow.a{background:radial-gradient(circle,rgba(47,107,255,.32),transparent 62%)} .bg-glow.b{background:radial-gradient(circle,rgba(255,46,136,.22),transparent 62%)}
+.theme-dark .bg-grid{background-image:radial-gradient(rgba(120,150,255,.14) 2px,transparent 2.5px)}
+.neon{background:linear-gradient(180deg,#ffd36e 0%,#ff7a59 45%,#ff2e88 100%);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(255,46,136,.45))}
+.layer{position:absolute;left:110px;width:860px;height:150px;border-radius:30px;display:flex;align-items:center;gap:24px;padding:0 36px;font:800 44px Inter}
+.layer .li{width:80px;height:80px}
+.blk3{position:absolute;width:118px;height:76px;border-radius:12px;background:#1c2547;border:2px solid #34407a;box-shadow:inset 0 -6px 0 rgba(0,0,0,.25)}
+.lg{position:absolute;width:250px;height:250px;border-radius:60px;background:#fff;display:grid;place-items:center;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.lg img{width:60%;height:60%;object-fit:contain}
+.ret{position:absolute;width:330px;height:330px}
+
+:root { --accent: #2f6bff; --capk: #ff2e88; --a1: #2f6bff; --a2: #ff2e88; --a3: #38bdf8; --capbg: #2f6bff; --capfg: #fff; --bg: #050a1f; }
+</style>
+</head>
+<body class="theme-dark">
+<div id="root" data-composition-id="main" data-start="0" data-duration="59.900" data-width="1080" data-height="1920">
+  <div class="bg"><div class="bg-grid"></div><div class="bg-glow a"></div><div class="bg-glow b"></div><div class="bg-glow c"></div></div>
+<section id="s1" class="scene clip " data-start="0.000" data-duration="4.960" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s1-h" style="top:310px;width:1040px"><div class="kw" style="font-size:150px"><span class="wd ">PS5 </span> <span class="wd" style="color:#ff2e88">→</span> <span class="wd" style="color:#2f6bff">PC</span></div></div>
+    <div class="abs" id="s1-mon" style="left:190px;top:560px;width:700px;height:460px">
+      <div id="s1-scr" style="width:700px;height:420px;border-radius:30px;background:#0a0f24;border:14px solid #20294a;display:grid;place-items:center;overflow:hidden"><div id="s1-on" style="width:100%;height:100%;background:radial-gradient(circle at 50% 50%,rgba(47,107,255,.85),rgba(255,46,136,.5) 55%,transparent 80%);opacity:0"></div></div>
+      <div style="width:160px;height:60px;margin:0 auto;background:#20294a;clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)"></div></div>
+    <div class="abs" id="s1-pad" style="opacity:0;left:380px;top:640px;width:320px;height:320px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <line x1="6" x2="10" y1="11" y2="11" />
+  <line x1="8" x2="8" y1="9" y2="13" />
+  <line x1="15" x2="15.01" y1="12" y2="12" />
+  <line x1="18" x2="18.01" y1="10" y2="10" />
+  <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+</svg>
+</div>
+  </div></div></section>
+<section id="s2" class="scene clip " data-start="4.960" data-duration="4.640" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s2-h" style="top:310px;width:1040px"><div class="kw" style="font-size:90px"><span class="wd ">agora </span><span class="wd ">imagine </span><span class="wd ">em </span></div></div>
+    <div class="abs center-x tc" id="s2-g" style="top:520px;width:1080px"><div class="kw" style="font-size:300px;letter-spacing:-.02em"><span class="wd neon" id="s2-c0" style="opacity:0">G</span><span class="wd neon" id="s2-c1" style="opacity:0">T</span><span class="wd neon" id="s2-c2" style="opacity:0">A</span></div></div>
+    <div class="abs center-x tc" id="s2-v" style="top:800px;width:1080px"><div class="kw neon" style="font-size:280px">VI</div></div>
+    <div class="abs" id="s2-q" style="left:820px;top:820px;font:700 230px 'Space Grotesk';color:#fff;opacity:.9">?</div>
+  </div></div></section>
+<section id="s3" class="scene clip " data-start="9.600" data-duration="4.960" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs" id="s3-st" style="opacity:0;left:110px;top:520px;color:#ff3b47;transform:rotate(-8deg)"><div class="stamp" style="font-size:120px;background:rgba(5,10,31,.6)">IMPOSSÍVEL</div></div>
+    <svg class="wires" viewBox="0 0 1080 1920"><path id="s3-cr" d="M540 470 L 500 560 L 580 620 L 510 700 L 570 760 L 530 860" stroke="#fff" stroke-width="10" fill="none" stroke-linejoin="round"/></svg>
+    <div class="abs" id="s3-gh" style="left:340px;top:880px"><div class="sticker" style="font-size:52px;background:#fff;color:#111"><img src="assets/logos/github-icon.svg" style="width:60px;height:60px"/>GitHub</div></div>
+    <div class="abs center-x tc" id="s3-h" style="top:310px;width:1040px"><div class="kw" style="font-size:80px"><span class="wd ">parece </span><span class="wd ">impossível… </span></div></div>
+  </div></div></section>
+<section id="s4" class="scene clip " data-start="14.560" data-duration="2.640" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s4-h" style="top:310px;width:1040px"><div class="kw" style="font-size:96px"><span class="wd ">o </span><span class="wd ">nome </span><span class="wd ">dele </span><span class="wd ">é </span></div></div>
+    <div class="abs center-x tc" id="s4-nm" style="top:470px;width:1040px"><div class="kw" style="font-size:190px;color:#2f6bff"><span id="s4-ty" data-text="AnyPS5"></span></div></div>
+    <div class="abs" id="s4-gh" style="left:70px;top:740px"><div class="gh3" id="s4-card">
+  <div class="top"><img src="assets/logos/github-white.svg"/><div class="path">boykopovar / <b>AnyPS5</b></div></div>
+  <div class="head"><div class="av"><img src="assets/photos3/av_boykopovar.png"/></div><div class="nm" >AnyPS5</div><div class="pub">Public</div></div>
+  <div class="desc">Tool for automatic executables porting to Linux and Windows.</div>
+  
+</div></div>
+  </div></div></section>
+<section id="s5" class="scene clip " data-start="17.200" data-duration="7.367" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s5-h" style="top:300px;width:1040px"><div class="kw" style="font-size:80px"><span class="wd ">uma </span><span class="wd ">camada </span><span class="wd ">de </span></div><div class="kw" style="font-size:80px;color:#2f6bff"><span class="wd ">compatibilidade </span></div></div>
+    <div class="layer" id="s5-l0" style="top:520px;background:#141a36;border:2px solid #2a3570"><div class="li">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ff2e88"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <line x1="6" x2="10" y1="11" y2="11" />
+  <line x1="8" x2="8" y1="9" y2="13" />
+  <line x1="15" x2="15.01" y1="12" y2="12" />
+  <line x1="18" x2="18.01" y1="10" y2="10" />
+  <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+</svg>
+</div>jogo de console</div>
+    <div class="layer" id="s5-l1" style="opacity:0;top:760px;background:#2f6bff;color:#fff;box-shadow:0 0 80px rgba(47,107,255,.55)"><div class="li">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+</svg>
+</div>camada de compatibilidade</div>
+    <div class="layer" id="s5-l2" style="top:1000px;background:#141a36;border:2px solid #2a3570"><div class="li">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#38bdf8"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="3" rx="2" />
+  <line x1="8" x2="16" y1="21" y2="21" />
+  <line x1="12" x2="12" y1="17" y2="21" />
+</svg>
+</div>PC · Windows / Linux</div>
+    <div class="abs" id="s5-p0" style="left:200px;top:690px;width:22px;height:22px;border-radius:6px;background:#ff2e88"></div><div class="abs" id="s5-p1" style="left:360px;top:690px;width:22px;height:22px;border-radius:6px;background:#ff2e88"></div><div class="abs" id="s5-p2" style="left:520px;top:690px;width:22px;height:22px;border-radius:6px;background:#ff2e88"></div><div class="abs" id="s5-p3" style="left:680px;top:690px;width:22px;height:22px;border-radius:6px;background:#ff2e88"></div><div class="abs" id="s5-p4" style="left:840px;top:690px;width:22px;height:22px;border-radius:6px;background:#ff2e88"></div><div class="abs" id="s5-p5" style="left:200px;top:690px;width:22px;height:22px;border-radius:6px;background:#ff2e88"></div><div class="abs" id="s5-p6" style="left:360px;top:690px;width:22px;height:22px;border-radius:6px;background:#ff2e88"></div><div class="abs" id="s5-p7" style="left:520px;top:690px;width:22px;height:22px;border-radius:6px;background:#ff2e88"></div><div class="abs" id="s5-p8" style="left:680px;top:690px;width:22px;height:22px;border-radius:6px;background:#ff2e88"></div><div class="abs" id="s5-p9" style="left:840px;top:690px;width:22px;height:22px;border-radius:6px;background:#ff2e88"></div>
+    <div class="exm" id="s5-ne" style="left:700px;top:1170px;color:#38bdf8">README: “no emulation”</div>
+  </div></div></section>
+<section id="s6" class="scene clip " data-start="24.567" data-duration="4.560" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s6-h" style="top:310px;width:1040px"><div class="kw" style="font-size:96px"><span class="wd ">o </span><span class="wd ">projeto </span> <span class="wd" style="color:#ff2e88">mira</span></div></div>
+    <div class="lg" id="s6-w" style="left:130px;top:620px"><img src="assets/logos/microsoft-icon.svg"/></div>
+    <div class="lg" id="s6-l" style="left:700px;top:620px"><img src="assets/logos/linux-tux.svg"/></div>
+    <svg class="ret" id="s6-r" viewBox="0 0 330 330" style="opacity:0;left:90px;top:580px"><circle cx="165" cy="165" r="140" stroke="#ff2e88" stroke-width="8" fill="none"/><path d="M165 0 V60 M165 270 V330 M0 165 H60 M270 165 H330" stroke="#ff2e88" stroke-width="8"/></svg>
+  </div></div></section>
+<section id="s7" class="scene clip " data-start="29.127" data-duration="7.920" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s7-h" style="top:300px;width:1040px"><div class="kw" style="font-size:86px"><span class="wd ">reduzir </span> <span class="wd" style="color:#2f6bff">barreiras</span></div></div>
+    <div class="abs tc" id="s7-a" style="left:60px;top:680px;width:340px"><div style="width:180px;height:180px;margin:0 auto;border-radius:44px;background:#141a36;border:2px solid #2a3570;display:grid;place-items:center"><div style="width:58%;height:58%">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ff2e88"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <line x1="6" x2="10" y1="11" y2="11" />
+  <line x1="8" x2="8" y1="9" y2="13" />
+  <line x1="15" x2="15.01" y1="12" y2="12" />
+  <line x1="18" x2="18.01" y1="10" y2="10" />
+  <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+</svg>
+</div></div><div style="font:800 40px Inter;margin-top:16px">console</div></div>
+    <div class="abs tc" id="s7-b" style="left:680px;top:680px;width:340px"><div style="width:180px;height:180px;margin:0 auto;border-radius:44px;background:#141a36;border:2px solid #2a3570;display:grid;place-items:center"><div style="width:58%;height:58%">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#38bdf8"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="3" rx="2" />
+  <line x1="8" x2="16" y1="21" y2="21" />
+  <line x1="12" x2="12" y1="17" y2="21" />
+</svg>
+</div></div><div style="font:800 40px Inter;margin-top:16px">PC</div></div>
+    <div class="blk3" id="s7-k0" style="left:470px;top:560px"></div><div class="blk3" id="s7-k1" style="left:594px;top:560px"></div><div class="blk3" id="s7-k2" style="left:470px;top:644px"></div><div class="blk3" id="s7-k3" style="left:594px;top:644px"></div><div class="blk3" id="s7-k4" style="left:470px;top:728px"></div><div class="blk3" id="s7-k5" style="left:594px;top:728px"></div><div class="blk3" id="s7-k6" style="left:470px;top:812px"></div><div class="blk3" id="s7-k7" style="left:594px;top:812px"></div><div class="blk3" id="s7-k8" style="left:470px;top:896px"></div><div class="blk3" id="s7-k9" style="left:594px;top:896px"></div><div class="blk3" id="s7-k10" style="left:470px;top:980px"></div><div class="blk3" id="s7-k11" style="left:594px;top:980px"></div>
+    <div class="abs" id="s7-ar" style="left:390px;top:735px;width:300px;height:60px;opacity:0"><svg viewBox="0 0 300 60" style="width:300px;height:60px"><path d="M10 30 H 270 M 240 8 L 280 30 L 240 52" stroke="#2f6bff" stroke-width="8" fill="none" stroke-linecap="round"/></svg></div>
+  </div></div></section>
+<section id="s8" class="scene clip " data-start="37.047" data-duration="11.923" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs" id="s8-bg" style="opacity:0;inset:-60px;background:radial-gradient(120% 80% at 50% 40%,#3a0712,#14030a 70%)"></div>
+    <div class="abs center-x tc" id="s8-w" style="top:300px;width:1000px"><div class="sticker" style="font-size:56px;background:#ff3b47;color:#fff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg>
+atenção</div></div>
+    <div class="abs center-x tc" id="s8-q" style="top:470px;width:1080px"><div class="kw" style="font-size:150px"><span class="neon">GTA VI</span></div><div class="kw" style="font-size:110px">no PC?</div></div>
+    <div class="abs" id="s8-st" style="opacity:0;left:170px;top:600px;color:#ff3b47;transform:rotate(-9deg)"><div class="stamp" style="font-size:130px;background:rgba(20,3,10,.75)">AINDA NÃO</div></div>
+    <div class="abs pane tc" id="s8-ex" style="left:140px;top:860px;width:800px;background:#1f0a12;border:2px solid #5a1a2a">
+      <div class="row gap20" style="justify-content:center"><div style="width:90px;height:90px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ffb4c0"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" />
+  <path d="M6.453 15h11.094" />
+  <path d="M8.5 2h7" />
+</svg>
+</div><div style="font:700 72px 'Space Grotesk';color:#fff;letter-spacing:-.03em">experimental</div></div>
+      <div id="s8-pr" style="font:700 34px Inter;color:#ffb4c0;margin-top:14px">precisa provar resultados na prática</div></div>
+  </div></div></section>
+<section id="s9" class="scene clip " data-start="48.970" data-duration="5.200" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs col gap20" style="left:90px;top:320px"><div class="chipx" id="s9-c0" style="background:#2f6bff;color:#fff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 20v2" />
+  <path d="M12 2v2" />
+  <path d="M17 20v2" />
+  <path d="M17 2v2" />
+  <path d="M2 12h2" />
+  <path d="M2 17h2" />
+  <path d="M2 7h2" />
+  <path d="M20 12h2" />
+  <path d="M20 17h2" />
+  <path d="M20 7h2" />
+  <path d="M7 20v2" />
+  <path d="M7 2v2" />
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <rect x="8" y="8" width="8" height="8" rx="1" />
+</svg>
+tecnologia</div><div class="chipx" id="s9-c1" style="background:#ff2e88;color:#fff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m18 16 4-4-4-4" />
+  <path d="m6 8-4 4 4 4" />
+  <path d="m14.5 4-5 16" />
+</svg>
+programação</div><div class="chipx" id="s9-c2" style="background:#38bdf8;color:#fff">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" />
+  <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
+  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" />
+</svg>
+projetos ousados</div></div>
+    <div class="abs pane" id="s9-hw" style="left:90px;top:680px;width:900px;background:#0c1330;border:2px solid #2a3570">
+      <div class="row gap24"><div style="width:120px;height:120px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#38bdf8"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 20v2" />
+  <path d="M12 2v2" />
+  <path d="M17 20v2" />
+  <path d="M17 2v2" />
+  <path d="M2 12h2" />
+  <path d="M2 17h2" />
+  <path d="M2 7h2" />
+  <path d="M20 12h2" />
+  <path d="M20 17h2" />
+  <path d="M20 7h2" />
+  <path d="M7 20v2" />
+  <path d="M7 2v2" />
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <rect x="8" y="8" width="8" height="8" rx="1" />
+</svg>
+</div><div style="font:700 60px 'Space Grotesk'">limites do hardware</div></div>
+      <div class="meter" style="width:840px;margin-top:26px"><div class="fill" id="s9-f" style="background:linear-gradient(90deg,#38bdf8,#2f6bff,#ff2e88)"></div></div></div>
+  </div></div></section>
+<section id="s10" class="scene clip " data-start="54.170" data-duration="5.730" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s10-pre" style="top:200px;width:1000px"><div class="kw" style="font-size:96px">vale a pena <span class="hlbox">conhecer</span></div></div>
+    <div class="abs center-x tc" id="s10-k" style="top:400px;width:940px"><div class="sticker dark" style="font-size:34px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+</svg>
+COMENTA A PALAVRA</div></div>
+    <div class="abs burst" id="s10-burst" style="left:540px;top:640px;width:0;height:0"></div>
+    <div class="abs center-x tc" id="s10-word" style="top:520px;width:1060px"><div class="kw" style="font-size:200px;color:#ff2e88;text-shadow:0 12px 0 rgba(0,0,0,.18)">PS5</div></div>
+    <div class="abs igbox" id="s10-box" style="left:90px;top:780px"><div class="av"><div></div></div><div class="tx" id="s10-tx" data-text="PS5"></div><div class="send">Publicar</div></div>
+    <div class="abs" id="s10-dn" style="left:470px;top:960px;width:140px;height:140px;color:#ff2e88">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m7 6 5 5 5-5" />
+  <path d="m7 13 5 5 5-5" />
+</svg>
+</div>
+    </div></div></section>
+  
+  <div class="vignette"></div>
+  <div class="swipe" id="sw0" style="background:#2f6bff"></div><div class="swipe" id="sw1" style="background:#ff2e88"></div><div class="swipe" id="sw2" style="background:#38bdf8"></div><div class="swipe" id="sw3" style="background:#2f6bff"></div><div class="swipe" id="sw4" style="background:#ff2e88"></div><div class="swipe" id="sw5" style="background:#38bdf8"></div><div class="swipe" id="sw6" style="background:#2f6bff"></div><div class="swipe" id="sw7" style="background:#ff2e88"></div><div class="swipe" id="sw8" style="background:#38bdf8"></div>
+  <div class="progress"></div>
+  <div class="caps">
+<div class="cap clip" data-start="-0.040" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="0.000">Imagina</span><span class="w" data-s="0.640">conseguir</span></div></div>
+<div class="cap clip" data-start="1.000" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="1.040">rodar</span><span class="w" data-s="1.360">jogos</span><span class="w" data-s="1.680">de</span></div></div>
+<div class="cap clip" data-start="1.800" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="1.840">PlayStation</span><span class="w" data-s="2.480">5</span></div></div>
+<div class="cap clip" data-start="2.920" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="2.960">diretamente</span><span class="w" data-s="3.680">no</span></div></div>
+<div class="cap clip" data-start="3.880" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="3.920">computador!</span></div></div>
+<div class="cap clip" data-start="5.000" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="5.040">E</span><span class="w" data-s="5.200">agora</span><span class="w" data-s="5.520">imagine</span></div></div>
+<div class="cap clip" data-start="5.960" data-duration="0.480" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="6.000">o</span><span class="w" data-s="6.160">que</span><span class="w" data-s="6.320">isso</span></div></div>
+<div class="cap clip" data-start="6.440" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="6.480">poderia</span><span class="w" data-s="6.960">significar</span></div></div>
+<div class="cap clip" data-start="7.400" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="7.440">para</span><span class="w" data-s="7.600">um</span><span class="w" data-s="7.760">jogo</span></div></div>
+<div class="cap clip" data-start="7.960" data-duration="1.680" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="8.000">como</span><span class="w k" data-s="8.240">GTA</span><span class="w k" data-s="8.880">VI.</span></div></div>
+<div class="cap clip" data-start="9.640" data-duration="1.280" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="9.680">Parece</span><span class="w k" data-s="10.160">impossível</span></div></div>
+<div class="cap clip" data-start="10.920" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="10.960">mas</span><span class="w" data-s="11.200">apareceu</span><span class="w" data-s="11.760">um</span></div></div>
+<div class="cap clip" data-start="11.800" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="11.840">projeto</span><span class="w" data-s="12.160">no</span><span class="w k" data-s="12.240">GitHub</span></div></div>
+<div class="cap clip" data-start="13.000" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="13.040">que</span><span class="w" data-s="13.200">está</span><span class="w" data-s="13.360">chamando</span></div></div>
+<div class="cap clip" data-start="13.800" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="13.840">a</span><span class="w k" data-s="13.920">atenção.</span></div></div>
+<div class="cap clip" data-start="14.600" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="14.640">O</span><span class="w" data-s="14.800">nome</span><span class="w" data-s="15.040">dele</span></div></div>
+<div class="cap clip" data-start="15.320" data-duration="1.920" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="15.360">é</span><span class="w" data-s="15.680">AnyPS5.</span></div></div>
+<div class="cap clip" data-start="17.240" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="17.280">A</span><span class="w" data-s="17.440">proposta</span><span class="w" data-s="17.920">é</span></div></div>
+<div class="cap clip" data-start="18.120" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="18.160">desenvolver</span><span class="w" data-s="18.720">uma</span></div></div>
+<div class="cap clip" data-start="18.840" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="18.880">camada</span><span class="w" data-s="19.360">de</span></div></div>
+<div class="cap clip" data-start="19.480" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="19.520">compatibilidade</span></div></div>
+<div class="cap clip" data-start="20.360" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="20.400">capaz</span><span class="w" data-s="20.800">de</span><span class="w" data-s="20.960">lidar</span></div></div>
+<div class="cap clip" data-start="21.240" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="21.280">com</span><span class="w" data-s="21.520">instruções</span></div></div>
+<div class="cap clip" data-start="21.960" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="22.000">gráficas</span></div></div>
+<div class="cap clip" data-start="22.520" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="22.560">utilizadas</span><span class="w" data-s="23.120">pelo</span></div></div>
+<div class="cap clip" data-start="23.320" data-duration="1.287" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="23.360">PlayStation.</span></div></div>
+<div class="cap clip" data-start="24.607" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="24.647">E</span><span class="w" data-s="24.807">o</span><span class="w" data-s="24.967">mais</span></div></div>
+<div class="cap clip" data-start="25.247" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="25.287">interessante</span><span class="w" data-s="25.848">é</span><span class="w" data-s="26.007">que</span></div></div>
+<div class="cap clip" data-start="26.127" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="26.167">o</span><span class="w" data-s="26.247">projeto</span><span class="w" data-s="26.728">mira</span></div></div>
+<div class="cap clip" data-start="27.087" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="27.127">sistemas</span><span class="w" data-s="27.527">como</span></div></div>
+<div class="cap clip" data-start="27.727" data-duration="1.440" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="27.767">Windows</span><span class="w" data-s="28.247">e</span><span class="w k" data-s="28.407">Linux.</span></div></div>
+<div class="cap clip" data-start="29.167" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="29.207">Basicamente</span></div></div>
+<div class="cap clip" data-start="29.967" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="30.007">a</span><span class="w" data-s="30.167">ideia</span><span class="w" data-s="30.567">é</span></div></div>
+<div class="cap clip" data-start="30.687" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="30.727">reduzir</span><span class="w" data-s="31.207">algumas</span></div></div>
+<div class="cap clip" data-start="31.487" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="31.527">das</span><span class="w" data-s="31.687">barreiras</span></div></div>
+<div class="cap clip" data-start="32.207" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="32.247">técnicas</span><span class="w" data-s="32.727">que</span></div></div>
+<div class="cap clip" data-start="32.847" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="32.887">impedem</span></div></div>
+<div class="cap clip" data-start="33.487" data-duration="0.881" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="33.527">determinados</span><span class="w" data-s="34.007">jogos</span></div></div>
+<div class="cap clip" data-start="34.368" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="34.408">de</span><span class="w" data-s="34.567">console</span><span class="w" data-s="35.127">de</span></div></div>
+<div class="cap clip" data-start="35.248" data-duration="0.639" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="35.288">funcionar</span><span class="w" data-s="35.767">em</span></div></div>
+<div class="cap clip" data-start="35.887" data-duration="0.320" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="35.927">outras</span></div></div>
+<div class="cap clip" data-start="36.207" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="36.247">plataformas.</span></div></div>
+<div class="cap clip" data-start="37.087" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="37.127">Mas</span><span class="w k" data-s="37.448">atenção!</span></div></div>
+<div class="cap clip" data-start="38.207" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="38.247">Isso</span><span class="w" data-s="38.567">ainda</span><span class="w k" data-s="38.887">não</span></div></div>
+<div class="cap clip" data-start="39.087" data-duration="1.281" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="39.127">significa</span><span class="w" data-s="39.687">que</span><span class="w k" data-s="39.927">GTA</span></div></div>
+<div class="cap clip" data-start="40.368" data-duration="1.119" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="40.408">VI</span><span class="w" data-s="40.727">esteja</span><span class="w" data-s="41.127">rodando</span></div></div>
+<div class="cap clip" data-start="41.487" data-duration="0.721" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="41.527">no</span><span class="w" data-s="41.687">PC</span><span class="w" data-s="42.088">por</span></div></div>
+<div class="cap clip" data-start="42.208" data-duration="0.559" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="42.248">meio</span><span class="w" data-s="42.487">dessa</span></div></div>
+<div class="cap clip" data-start="42.767" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="42.807">ferramenta.</span></div></div>
+<div class="cap clip" data-start="43.567" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="43.607">Estamos</span><span class="w" data-s="44.008">falando</span><span class="w" data-s="44.328">de</span></div></div>
+<div class="cap clip" data-start="44.527" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="44.567">uma</span><span class="w" data-s="44.727">proposta</span></div></div>
+<div class="cap clip" data-start="45.167" data-duration="1.121" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="45.207">experimental</span><span class="w" data-s="46.088">que</span></div></div>
+<div class="cap clip" data-start="46.288" data-duration="1.039" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="46.328">precisa</span><span class="w" data-s="46.727">demonstrar</span></div></div>
+<div class="cap clip" data-start="47.327" data-duration="0.961" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="47.367">seus</span><span class="w" data-s="47.607">resultados</span><span class="w" data-s="48.168">na</span></div></div>
+<div class="cap clip" data-start="48.288" data-duration="0.722" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="48.328">prática.</span></div></div>
+<div class="cap clip" data-start="49.010" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="49.050">Se</span><span class="w" data-s="49.290">você</span><span class="w" data-s="49.530">gosta</span></div></div>
+<div class="cap clip" data-start="49.810" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="49.850">de</span><span class="w" data-s="50.010">tecnologia</span></div></div>
+<div class="cap clip" data-start="50.850" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="50.890">programação</span><span class="w" data-s="51.530">e</span></div></div>
+<div class="cap clip" data-start="51.650" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="51.690">projetos</span><span class="w" data-s="52.170">que</span></div></div>
+<div class="cap clip" data-start="52.370" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="52.410">desafiam</span><span class="w" data-s="53.050">os</span></div></div>
+<div class="cap clip" data-start="53.090" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="53.130">limites</span><span class="w" data-s="53.530">do</span></div></div>
+<div class="cap clip" data-start="53.650" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="53.690">hardware</span></div></div>
+<div class="cap clip" data-start="54.210" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="54.250">vale</span><span class="w" data-s="54.570">a</span><span class="w" data-s="54.650">pena</span></div></div>
+<div class="cap clip" data-start="54.930" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="54.970">conhecer.</span></div></div>
+<div class="cap clip" data-start="55.570" data-duration="1.600" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="55.610">Comenta</span><span class="w k" data-s="56.170">PS5</span><span class="w" data-s="57.050">que</span></div></div>
+<div class="cap clip" data-start="57.170" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="57.210">eu</span><span class="w" data-s="57.290">te</span><span class="w" data-s="57.450">envio</span></div></div>
+<div class="cap clip" data-start="57.730" data-duration="1.463" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="57.770">o</span><span class="w" data-s="57.850">repositório.</span></div></div>
+  </div>
+  <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="59.900" data-track-index="10" data-volume="1"></audio>
+</div>
+<script>
+/* Runtime motion helpers — deterministic, seek-safe (all tweens live on one paused timeline). */
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  window.tl = tl;
+  const $ = (s) => (typeof s === "string" ? document.querySelectorAll(s) : s);
+  const E = { o: "power3.out", o4: "power4.out", io: "power2.inOut", back: "back.out(1.7)", soft: "sine.inOut", expo: "expo.out" };
+  window.E = E;
+  const FROM = {
+    up: { y: 70, opacity: 0 }, down: { y: -70, opacity: 0 }, left: { x: -110, opacity: 0 }, right: { x: 110, opacity: 0 },
+    pop: { scale: 0.55, opacity: 0 }, zoom: { scale: 1.25, opacity: 0 }, fade: { opacity: 0 }, rise: { y: 140, opacity: 0, scale: 0.94 },
+    slam: { scale: 1.9, opacity: 0, rotation: -6 }, flip: { rotationX: -80, opacity: 0, y: 40, transformPerspective: 900 },
+    wipe: { clipPath: "inset(0 100% 0 0)" }, drop: { y: -160, opacity: 0, rotation: -8 },
+    blur: { y: 26, opacity: 0, filter: "blur(10px)" }, bscale: { scale: 0.94, opacity: 0, filter: "blur(10px)" },
+  };
+  const TO = { y: 0, x: 0, opacity: 1, scale: 1, rotation: 0, rotationX: 0, clipPath: "inset(0 0% 0 0)", filter: "blur(0px)" };
+  // entrance
+  window.inn = (sel, t, k = "up", d, extra) => {
+    const f = FROM[k] || FROM.up;
+    const to = {};
+    for (const key in f) to[key] = TO[key];
+    if (f.transformPerspective) delete to.transformPerspective;
+    const ease = k === "pop" || k === "drop" ? E.back : k === "slam" ? "back.out(1.4)" : k === "wipe" ? E.io : k === "blur" || k === "bscale" ? E.expo : E.o;
+    tl.fromTo(sel, { ...f }, { ...to, duration: d || (k === "slam" ? 0.45 : k === "wipe" ? 0.7 : 0.6), ease, stagger: extra && extra.stagger, immediateRender: true }, t);
+  };
+  // exit
+  window.out = (sel, t, k = "fade", d = 0.35) => {
+    const to = k === "down" ? { y: 60, opacity: 0 } : k === "up" ? { y: -60, opacity: 0 } : k === "shrink" ? { scale: 0.8, opacity: 0 } : k === "left" ? { x: -120, opacity: 0 } : { opacity: 0 };
+    tl.to(sel, { ...to, duration: d, ease: "power2.in" }, t);
+  };
+  window.set = (sel, vars, t) => tl.set(sel, vars, t);
+  window.to = (sel, vars, t) => tl.to(sel, vars, t);
+  window.fromTo = (sel, a, b, t) => tl.fromTo(sel, a, { immediateRender: false, ...b }, t);
+  // typewriter (text stored in data-text)
+  window.type = (sel, t, d) => {
+    $(sel).forEach((el) => {
+      const full = el.getAttribute("data-text") || el.textContent;
+      el.textContent = "";
+      const p = { n: 0 };
+      tl.to(p, { n: full.length, duration: d || Math.max(0.3, full.length * 0.035), ease: "none",
+        onUpdate: () => { el.textContent = full.slice(0, Math.round(p.n)); } }, t);
+    });
+  };
+  // number counter; fmt: (v)=>string
+  const FMT = {
+    int: (v) => Math.round(v).toLocaleString("pt-BR"),
+    mil: (v) => Math.round(v) + " mil",
+    time: (v) => { const s = Math.round(v); return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); },
+    pct: (v) => Math.round(v) + "%",
+    plus: (v) => "+" + Math.round(v),
+  };
+  window.count = (sel, t, d, from, toV, fmt = "int") => {
+    $(sel).forEach((el) => {
+      const p = { v: from }; const f = FMT[fmt] || FMT.int;
+      el.textContent = f(from);
+      tl.to(p, { v: toV, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = f(p.v); } }, t);
+    });
+  };
+  // svg stroke draw
+  window.draw = (sel, t, d = 0.8, ease = "power2.inOut") => {
+    $(sel).forEach((p) => {
+      const L = p.getTotalLength ? p.getTotalLength() : 1000;
+      tl.fromTo(p, { strokeDasharray: `${L} ${L}`, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease, immediateRender: true }, t);
+    });
+  };
+  window.pulse = (sel, t, s = 1.1, d = 0.5) => {
+    tl.fromTo(sel, { scale: 1 }, { scale: s, duration: d / 2, yoyo: true, repeat: 1, ease: E.soft, immediateRender: false }, t);
+  };
+  window.shake = (sel, t) => {
+    tl.fromTo(sel, { x: 0 }, { keyframes: { x: [0, -14, 12, -9, 6, -3, 0] }, duration: 0.42, ease: "none", immediateRender: false }, t);
+  };
+  window.strike = (sel, t, d = 0.35) => tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: d, ease: E.io, transformOrigin: "left center", immediateRender: true }, t);
+  window.glow = (sel, t, color, d = 0.4) => tl.to(sel, { boxShadow: `0 0 0 4px ${color}, 0 0 70px ${color}`, duration: d, ease: E.o }, t);
+  window.unglow = (sel, t, d = 0.4) => tl.to(sel, { boxShadow: "0 0 0 0px rgba(0,0,0,0), 0 20px 50px rgba(0,0,0,0.55)", duration: d }, t);
+  window.color = (sel, t, c, d = 0.25) => tl.to(sel, { color: c, duration: d }, t);
+  window.bgc = (sel, t, c, d = 0.3) => tl.to(sel, { backgroundColor: c, duration: d }, t);
+  // scene wrapper choreography
+  window.scene = (id, t0, t1, opt = {}) => {
+    const inner = `#${id} > .inner`, cam = `#${id} .cam`;
+    const kin = opt.in || "rise";
+    if (kin !== "none") {
+      const f = kin === "zoom" ? { scale: 1.12, opacity: 0 } : kin === "left" ? { x: 160, opacity: 0 } : kin === "cut" ? { opacity: 0 } : { y: 120, scale: 0.97, opacity: 0 };
+      tl.fromTo(inner, f, { x: 0, y: 0, scale: 1, opacity: 1, duration: kin === "cut" ? 0.08 : 0.55, ease: E.o4, immediateRender: true }, t0);
+    }
+    if (!opt.last) tl.to(inner, { opacity: 0, scale: 0.965, y: -50, duration: 0.32, ease: "power2.in" }, t1 - 0.32);
+    const push = opt.push === undefined ? 0.035 : opt.push;
+    tl.fromTo(cam, { scale: 1 }, { scale: 1 + push, duration: Math.max(0.5, t1 - t0), ease: "none", immediateRender: true }, t0);
+  };
+  // captions: data-ws JSON on each .cap: [[start,end,isKey],...]
+  window.captions = () => {
+    document.querySelectorAll(".cap").forEach((cap) => {
+      const t0 = parseFloat(cap.getAttribute("data-start"));
+      const t1 = t0 + parseFloat(cap.getAttribute("data-duration"));
+      const ci = cap.querySelector(".capin");
+      tl.fromTo(ci, { y: 26, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.16, ease: E.o, immediateRender: true }, t0);
+      tl.to(ci, { opacity: 0, duration: 0.08 }, t1 - 0.08);
+      cap.querySelectorAll(".w").forEach((w) => {
+        const s = parseFloat(w.getAttribute("data-s"));
+        tl.to(w, { opacity: 1, duration: 0.08, ease: "none" }, s);
+        if (w.classList.contains("k")) tl.fromTo(w, { scale: 1 }, { scale: 1.12, duration: 0.12, yoyo: true, repeat: 1, ease: E.soft, immediateRender: false }, s);
+      });
+    });
+  };
+  // background drift
+  window.bgDrift = (dur) => {
+    tl.fromTo(".bg-grid", { x: 0, y: 0 }, { x: -72, y: -144, duration: dur, ease: "none", immediateRender: true }, 0);
+    tl.fromTo(".bg-glow.a", { x: 0, y: 0 }, { x: 160, y: 220, duration: dur, ease: "sine.inOut", immediateRender: true }, 0);
+    tl.fromTo(".bg-glow.b", { x: 0, y: 0 }, { x: -200, y: -260, duration: dur, ease: "sine.inOut", immediateRender: true }, 0);
+  };
+  window.tint = (t, c, d = 0.6) => tl.to(".bg-glow.c", { "--tint": c, duration: d }, t);
+})();
+
+/* ENERGIA v2 runtime additions (seek-safe; uses the same global tl) */
+(function () {
+  const css = getComputedStyle(document.documentElement);
+  const capbg = (css.getPropertyValue("--capbg") || "#ff6a3d").trim();
+  const capfg = (css.getPropertyValue("--capfg") || "#0f1115").trim();
+  // captions with a moving highlight pill on the word being spoken
+  window.captions = () => {
+    document.querySelectorAll(".cap").forEach((cap) => {
+      const t0 = parseFloat(cap.getAttribute("data-start"));
+      const t1 = t0 + parseFloat(cap.getAttribute("data-duration"));
+      const ci = cap.querySelector(".capin");
+      tl.fromTo(ci, { scale: 0.7, y: 30, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.22, ease: "back.out(2.2)", immediateRender: true }, t0);
+      tl.to(ci, { opacity: 0, duration: 0.06 }, t1 - 0.06);
+      const ws = [...cap.querySelectorAll(".w")];
+      ws.forEach((w, i) => {
+        const s = parseFloat(w.getAttribute("data-s"));
+        const e = i + 1 < ws.length ? parseFloat(ws[i + 1].getAttribute("data-s")) : t1;
+        const base = getComputedStyle(w).color;
+        tl.fromTo(w, { backgroundColor: "rgba(0,0,0,0)" }, { backgroundColor: capbg, color: capfg, duration: 0.05, immediateRender: false }, s);
+        tl.fromTo(w, { scale: 1 }, { scale: 1.12, duration: 0.09, yoyo: true, repeat: 1, ease: "sine.out", immediateRender: false }, s);
+        if (e - s > 0.05) tl.to(w, { backgroundColor: "rgba(0,0,0,0)", color: base, duration: 0.05 }, e - 0.02);
+      });
+    });
+  };
+  // full-frame diagonal swipe transition
+  window.swipe = (id, t, d = 0.5) => {
+    tl.fromTo(`#${id}`, { xPercent: -130, skewX: -12 }, { xPercent: 130, skewX: -12, duration: d, ease: "power2.inOut", immediateRender: true }, t - d / 2);
+  };
+  // camera punch-in on a keyword (on scene .cam is already used; punch a wrapper)
+  window.punch = (sel, t, amt = 0.06) => {
+    tl.fromTo(sel, { scale: 1 }, { scale: 1 + amt, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, t);
+  };
+  // deterministic particle burst from the centre of a container
+  window.burst = (sel, t, n = 26, colors = ["#ff6a3d", "#ffd23f", "#2f7bff", "#22c55e", "#ffffff"]) => {
+    const host = document.querySelector(sel); if (!host) return;
+    let seed = 11; const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < n; i++) {
+      const p = document.createElement("i");
+      p.style.left = "50%"; p.style.top = "50%"; p.style.background = colors[i % colors.length]; p.style.opacity = 0;
+      host.appendChild(p);
+      const a = r() * Math.PI * 2, dist = 220 + r() * 380;
+      tl.fromTo(p, { x: 0, y: 0, opacity: 1, rotation: 0, scale: 0.6 + r() },
+        { x: Math.cos(a) * dist, y: Math.sin(a) * dist + 120, rotation: r() * 540, opacity: 0, duration: 1.1 + r() * 0.5, ease: "power3.out", immediateRender: false }, t);
+    }
+  };
+  window.progress = (dur) => tl.fromTo(".progress", { scaleX: 0 }, { scaleX: 1, duration: dur, ease: "none", immediateRender: true }, 0);
+  // floating drift for decorative items
+  window.floaty = (sel, t, d, amp = 18) => tl.fromTo(sel, { y: -amp }, { y: amp, duration: d, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, t);
+})();
+
+// s1
+scene("s1", 0.000, 4.960, {"in":"none","push":0.05,"last":false});
+
+inn("#s1-h .wd",0.02,"blur",.5,{stagger:.1});
+inn("#s1-mon",0.3,"bscale",.5);
+fromTo("#s1-pad",{opacity:0,scale:1.8,rotation:-200,x:-300,y:-200},{opacity:1,scale:1,rotation:0,x:0,y:0,duration:.9,ease:"power3.out"},1.6900000000000002);
+to("#s1-pad",{scale:.55,duration:.4,ease:"power2.in"},3.57);
+to("#s1-on",{opacity:1,duration:.3},3.87);
+to("#s1-pad",{scale:.62,duration:.2},4.02);
+
+// s2
+scene("s2", 4.960, 9.600, {"in":"cut","push":0.04,"last":false});
+
+inn("#s2-h .wd",5.01,"blur",.45,{stagger:.1});
+fromTo("#s2-c0",{y:160,opacity:0},{y:0,opacity:1,duration:.4,ease:"back.out(1.6)"},8.14);fromTo("#s2-c1",{y:160,opacity:0},{y:0,opacity:1,duration:.4,ease:"back.out(1.6)"},8.24);fromTo("#s2-c2",{y:160,opacity:0},{y:0,opacity:1,duration:.4,ease:"back.out(1.6)"},8.34);
+inn("#s2-v",8.8,"slam");
+inn("#s2-q",9.23,"pop",.4);pulse("#s2-q",9.680000000000001,1.15,.4);
+
+// s3
+scene("s3", 9.600, 14.560, {"in":"zoom","push":0.04,"last":false});
+
+inn("#s3-h .wd",9.68,"blur",.45,{stagger:.1});
+fromTo("#s3-st",{scale:2.4,opacity:0,rotation:-24},{scale:1,opacity:1,rotation:-8,duration:.32,ease:"back.out(1.6)"},10.1);
+draw("#s3-cr",10.91,.35,"power3.out");
+to("#s3-st",{opacity:.35,filter:"blur(3px)",duration:.4},11.2);
+inn("#s3-gh",12.14,"slam");
+pulse("#s3-gh",13.92,1.08,.4);
+
+// s4
+scene("s4", 14.560, 17.200, {"in":"rise","push":0.035,"last":false});
+
+inn("#s4-h .wd",14.64,"blur",.45,{stagger:.08});
+type("#s4-ty",15.629999999999999,.5);
+inn("#s4-gh",15.98,"rise",.45);
+
+// s5
+scene("s5", 17.200, 24.567, {"in":"zoom","push":0.03,"last":false});
+
+inn("#s5-h .wd",17.28,"blur",.45,{stagger:.08});
+inn("#s5-l0",18.06,"down",.4);inn("#s5-l2",18.26,"up",.4);
+fromTo("#s5-l1",{scaleX:0,opacity:0},{scaleX:1,opacity:1,duration:.5,ease:"expo.out"},18.8);
+set("#s5-p0",{opacity:0},17.200000000000003);fromTo("#s5-p0",{y:0,opacity:1,backgroundColor:"#ff2e88"},{keyframes:{y:[0,120,240,320],backgroundColor:["#ff2e88","#ff2e88","#38bdf8","#38bdf8"],opacity:[1,1,1,0]},duration:1.2,ease:"none",repeat:1},21.42);set("#s5-p1",{opacity:0},17.200000000000003);fromTo("#s5-p1",{y:0,opacity:1,backgroundColor:"#ff2e88"},{keyframes:{y:[0,120,240,320],backgroundColor:["#ff2e88","#ff2e88","#38bdf8","#38bdf8"],opacity:[1,1,1,0]},duration:1.2,ease:"none",repeat:1},21.55);set("#s5-p2",{opacity:0},17.200000000000003);fromTo("#s5-p2",{y:0,opacity:1,backgroundColor:"#ff2e88"},{keyframes:{y:[0,120,240,320],backgroundColor:["#ff2e88","#ff2e88","#38bdf8","#38bdf8"],opacity:[1,1,1,0]},duration:1.2,ease:"none",repeat:1},21.68);set("#s5-p3",{opacity:0},17.200000000000003);fromTo("#s5-p3",{y:0,opacity:1,backgroundColor:"#ff2e88"},{keyframes:{y:[0,120,240,320],backgroundColor:["#ff2e88","#ff2e88","#38bdf8","#38bdf8"],opacity:[1,1,1,0]},duration:1.2,ease:"none",repeat:1},21.81);set("#s5-p4",{opacity:0},17.200000000000003);fromTo("#s5-p4",{y:0,opacity:1,backgroundColor:"#ff2e88"},{keyframes:{y:[0,120,240,320],backgroundColor:["#ff2e88","#ff2e88","#38bdf8","#38bdf8"],opacity:[1,1,1,0]},duration:1.2,ease:"none",repeat:1},21.94);set("#s5-p5",{opacity:0},17.200000000000003);fromTo("#s5-p5",{y:0,opacity:1,backgroundColor:"#ff2e88"},{keyframes:{y:[0,120,240,320],backgroundColor:["#ff2e88","#ff2e88","#38bdf8","#38bdf8"],opacity:[1,1,1,0]},duration:1.2,ease:"none",repeat:1},22.07);set("#s5-p6",{opacity:0},17.200000000000003);fromTo("#s5-p6",{y:0,opacity:1,backgroundColor:"#ff2e88"},{keyframes:{y:[0,120,240,320],backgroundColor:["#ff2e88","#ff2e88","#38bdf8","#38bdf8"],opacity:[1,1,1,0]},duration:1.2,ease:"none",repeat:1},22.20);set("#s5-p7",{opacity:0},17.200000000000003);fromTo("#s5-p7",{y:0,opacity:1,backgroundColor:"#ff2e88"},{keyframes:{y:[0,120,240,320],backgroundColor:["#ff2e88","#ff2e88","#38bdf8","#38bdf8"],opacity:[1,1,1,0]},duration:1.2,ease:"none",repeat:1},22.33);set("#s5-p8",{opacity:0},17.200000000000003);fromTo("#s5-p8",{y:0,opacity:1,backgroundColor:"#ff2e88"},{keyframes:{y:[0,120,240,320],backgroundColor:["#ff2e88","#ff2e88","#38bdf8","#38bdf8"],opacity:[1,1,1,0]},duration:1.2,ease:"none",repeat:1},22.46);set("#s5-p9",{opacity:0},17.200000000000003);fromTo("#s5-p9",{y:0,opacity:1,backgroundColor:"#ff2e88"},{keyframes:{y:[0,120,240,320],backgroundColor:["#ff2e88","#ff2e88","#38bdf8","#38bdf8"],opacity:[1,1,1,0]},duration:1.2,ease:"none",repeat:1},22.59);
+inn("#s5-ne",23.259999999999998,"fade",.35);
+
+// s6
+scene("s6", 24.567, 29.127, {"in":"left","push":0.035,"last":false});
+
+inn("#s6-h .wd",24.647,"blur",.45,{stagger:.1});
+inn("#s6-w",26.728,"pop",.4);inn("#s6-l",26.878,"pop",.4);
+fromTo("#s6-r",{opacity:0,scale:1.6,x:240},{opacity:1,scale:1,x:0,duration:.35,ease:"power3.out"},27.617);
+to("#s6-r",{x:570,duration:.35,ease:"power3.inOut"},28.207);
+pulse("#s6-w",27.867,1.08,.3);pulse("#s6-l",28.557,1.08,.3);
+
+// s7
+scene("s7", 29.127, 37.047, {"in":"rise","push":0.03,"last":false});
+
+inn("#s7-h .wd",29.207,"blur",.45,{stagger:.1});
+inn("#s7-a",29.407,"left",.4);inn("#s7-b",29.507,"right",.4);
+inn("#s7-k0",29.61,"drop",.3);inn("#s7-k1",29.64,"drop",.3);inn("#s7-k2",29.67,"drop",.3);inn("#s7-k3",29.70,"drop",.3);inn("#s7-k4",29.73,"drop",.3);inn("#s7-k5",29.76,"drop",.3);inn("#s7-k6",29.79,"drop",.3);inn("#s7-k7",29.82,"drop",.3);inn("#s7-k8",29.85,"drop",.3);inn("#s7-k9",29.88,"drop",.3);inn("#s7-k10",29.91,"drop",.3);inn("#s7-k11",29.94,"drop",.3);
+fromTo("#s7-k0",{y:0,rotation:0,opacity:1},{y:700,rotation:-40,opacity:0,duration:.8,ease:"power2.in"},30.73);fromTo("#s7-k2",{y:0,rotation:0,opacity:1},{y:860,rotation:-54,opacity:0,duration:.8,ease:"power2.in"},30.85);fromTo("#s7-k3",{y:0,rotation:0,opacity:1},{y:700,rotation:61,opacity:0,duration:.8,ease:"power2.in"},30.97);fromTo("#s7-k5",{y:0,rotation:0,opacity:1},{y:860,rotation:75,opacity:0,duration:.8,ease:"power2.in"},31.09);fromTo("#s7-k6",{y:0,rotation:0,opacity:1},{y:700,rotation:-82,opacity:0,duration:.8,ease:"power2.in"},31.21);fromTo("#s7-k7",{y:0,rotation:0,opacity:1},{y:780,rotation:89,opacity:0,duration:.8,ease:"power2.in"},31.33);fromTo("#s7-k8",{y:0,rotation:0,opacity:1},{y:860,rotation:-96,opacity:0,duration:.8,ease:"power2.in"},31.45);fromTo("#s7-k10",{y:0,rotation:0,opacity:1},{y:780,rotation:-110,opacity:0,duration:.8,ease:"power2.in"},31.57);fromTo("#s7-k11",{y:0,rotation:0,opacity:1},{y:860,rotation:117,opacity:0,duration:.8,ease:"power2.in"},31.69);
+glow("#s7-k1",31.307000000000002,"rgba(255,46,136,.6)",.3);glow("#s7-k4",31.307000000000002,"rgba(255,46,136,.6)",.3);glow("#s7-k9",31.307000000000002,"rgba(255,46,136,.6)",.3);
+to("#s7-ar",{opacity:1,duration:.3},34.567);draw("#s7-ar path",34.567,.6);
+
+// s8
+scene("s8", 37.047, 48.970, {"in":"cut","push":0.035,"last":false});
+
+fromTo("#s8-bg",{opacity:0},{opacity:1,duration:.15},37.047000000000004);
+inn("#s8-w",37.077000000000005,"slam");
+inn("#s8-q",38.147,"bscale",.45);
+fromTo("#s8-st",{scale:2.6,opacity:0,rotation:-26},{scale:1,opacity:1,rotation:-9,duration:.3,ease:"back.out(1.6)"},38.827);shake("#s8-q",39.087);
+to("#s8-q",{y:-90,scale:.8,duration:.5,ease:"power3.inOut"},43.307);to("#s8-st",{y:-120,scale:.8,duration:.5,ease:"power3.inOut"},43.307);
+inn("#s8-ex",45.107,"bscale",.45);
+inn("#s8-pr",46.626999999999995,"blur",.4);
+
+// s9
+scene("s9", 48.970, 54.170, {"in":"zoom","push":0.03,"last":false});
+
+inn("#s9-c0",49.91,"left",.4);
+inn("#s9-c1",50.79,"left",.4);
+inn("#s9-c2",51.59,"left",.4);
+inn("#s9-hw",52.309999999999995,"up",.45);
+set("#s9-f",{scaleX:0},48.97);to("#s9-f",{scaleX:1,duration:.9,ease:"power3.out"},53.03);
+shake("#s9-hw",53.69);
+
+// s10
+scene("s10", 54.170, 59.900, {"in":"zoom","push":0.03,"last":true});
+
+inn("#s10-pre",54.2,"slam");
+inn("#s10-k",55.51,"pop",.35);
+inn("#s10-word",56.15,"slam");
+burst("#s10-burst",56.22,34);
+fromTo("#s10-word",{rotation:0},{keyframes:{rotation:[0,-3,3,-2,0]},duration:.5,ease:"none"},56.57);
+inn("#s10-box",56.27,"up",.4);type("#s10-tx",56.42,.4);
+inn("#s10-dn",57.800000000000004,"drop",.4);
+fromTo("#s10-dn",{y:0},{y:26,duration:.32,yoyo:true,repeat:9,ease:"sine.inOut",immediateRender:false},58.25);
+
+swipe("sw0", 4.990, 0.5);
+swipe("sw1", 9.630, 0.5);
+swipe("sw2", 14.590, 0.5);
+swipe("sw3", 17.230, 0.5);
+swipe("sw4", 24.597, 0.5);
+swipe("sw5", 29.157, 0.5);
+swipe("sw6", 37.077, 0.5);
+swipe("sw7", 49.000, 0.5);
+swipe("sw8", 54.200, 0.5);
+progress(59.900);
+
+captions();
+bgDrift(59.900);
+tl.set({}, {}, 59.900);
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

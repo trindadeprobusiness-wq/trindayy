@@ -1,0 +1,592 @@
+[
+{
+"text": "Provavelmente",
+"start": 0.4,
+"end": 1.04
+},
+{
+"text": "já",
+"start": 1.04,
+"end": 1.2
+},
+{
+"text": "viu",
+"start": 1.2,
+"end": 1.52
+},
+{
+"text": "aqueles",
+"start": 1.52,
+"end": 1.84
+},
+{
+"text": "vídeos",
+"start": 1.84,
+"end": 2.32
+},
+{
+"text": "impressionantes",
+"start": 2.32,
+"end": 3.28
+},
+{
+"text": "criados",
+"start": 3.28,
+"end": 3.76
+},
+{
+"text": "com",
+"start": 3.76,
+"end": 3.92
+},
+{
+"text": "inteligência",
+"start": 3.92,
+"end": 4.56
+},
+{
+"text": "artificial",
+"start": 4.56,
+"end": 5.12
+},
+{
+"text": "usando",
+"start": 5.12,
+"end": 5.44
+},
+{
+"text": "o",
+"start": 5.44,
+"end": 5.52
+},
+{
+"text": "Higgsfield.",
+"start": 5.52,
+"end": 6.8
+},
+{
+"text": "O",
+"start": 6.8,
+"end": 7.12
+},
+{
+"text": "problema",
+"start": 7.12,
+"end": 7.57
+},
+{
+"text": "é",
+"start": 7.6,
+"end": 7.76
+},
+{
+"text": "que",
+"start": 7.76,
+"end": 8.0
+},
+{
+"text": "muitos",
+"start": 8.0,
+"end": 8.4
+},
+{
+"text": "recursos",
+"start": 8.4,
+"end": 8.88
+},
+{
+"text": "da",
+"start": 8.88,
+"end": 9.04
+},
+{
+"text": "plataforma",
+"start": 9.04,
+"end": 9.6
+},
+{
+"text": "exigem",
+"start": 9.6,
+"end": 10.16
+},
+{
+"text": "uma",
+"start": 10.16,
+"end": 10.32
+},
+{
+"text": "assinatura",
+"start": 10.32,
+"end": 10.96
+},
+{
+"text": "paga.",
+"start": 10.96,
+"end": 11.97
+},
+{
+"text": "Mas",
+"start": 12.48,
+"end": 12.8
+},
+{
+"text": "olha",
+"start": 12.8,
+"end": 13.2
+},
+{
+"text": "o",
+"start": 13.2,
+"end": 13.36
+},
+{
+"text": "que",
+"start": 13.36,
+"end": 13.44
+},
+{
+"text": "eu",
+"start": 13.44,
+"end": 13.6
+},
+{
+"text": "encontrei.",
+"start": 13.6,
+"end": 14.4
+},
+{
+"text": "Existe",
+"start": 14.4,
+"end": 14.8
+},
+{
+"text": "um",
+"start": 14.8,
+"end": 14.96
+},
+{
+"text": "projeto",
+"start": 14.96,
+"end": 15.44
+},
+{
+"text": "público",
+"start": 15.44,
+"end": 16.24
+},
+{
+"text": "Rigsfield",
+"start": 16.24,
+"end": 17.04
+},
+{
+"text": "disponível",
+"start": 17.04,
+"end": 17.52
+},
+{
+"text": "no",
+"start": 17.52,
+"end": 17.68
+},
+{
+"text": "GitHub.",
+"start": 17.68,
+"end": 18.48
+},
+{
+"text": "E",
+"start": 18.48,
+"end": 18.64
+},
+{
+"text": "o",
+"start": 18.64,
+"end": 18.88
+},
+{
+"text": "mais",
+"start": 18.88,
+"end": 19.12
+},
+{
+"text": "interessante",
+"start": 19.12,
+"end": 19.68
+},
+{
+"text": "é",
+"start": 19.68,
+"end": 19.92
+},
+{
+"text": "que",
+"start": 19.92,
+"end": 20.08
+},
+{
+"text": "ele",
+"start": 20.08,
+"end": 20.24
+},
+{
+"text": "trabalha",
+"start": 20.24,
+"end": 20.64
+},
+{
+"text": "com",
+"start": 20.64,
+"end": 20.88
+},
+{
+"text": "uma",
+"start": 20.88,
+"end": 21.2
+},
+{
+"text": "parte",
+"start": 21.2,
+"end": 21.52
+},
+{
+"text": "muito",
+"start": 21.52,
+"end": 21.84
+},
+{
+"text": "importante",
+"start": 21.84,
+"end": 22.29
+},
+{
+"text": "do",
+"start": 22.32,
+"end": 22.56
+},
+{
+"text": "universo",
+"start": 22.56,
+"end": 23.04
+},
+{
+"text": "da",
+"start": 23.04,
+"end": 23.2
+},
+{
+"text": "inteligência",
+"start": 23.2,
+"end": 23.76
+},
+{
+"text": "artificial.",
+"start": 23.76,
+"end": 24.637
+},
+{
+"text": "A",
+"start": 24.637,
+"end": 24.957
+},
+{
+"text": "infraestrutura",
+"start": 24.957,
+"end": 25.758
+},
+{
+"text": "para",
+"start": 25.758,
+"end": 25.998
+},
+{
+"text": "executar",
+"start": 25.998,
+"end": 26.637
+},
+{
+"text": "e",
+"start": 26.637,
+"end": 26.878
+},
+{
+"text": "treinos.",
+"start": 26.878,
+"end": 28.237
+},
+{
+"text": "Só",
+"start": 28.237,
+"end": 28.477
+},
+{
+"text": "que",
+"start": 28.477,
+"end": 28.637
+},
+{
+"text": "existe",
+"start": 28.637,
+"end": 28.957
+},
+{
+"text": "um",
+"start": 28.957,
+"end": 29.118
+},
+{
+"text": "detalhe",
+"start": 29.118,
+"end": 29.677
+},
+{
+"text": "que",
+"start": 29.677,
+"end": 29.837
+},
+{
+"text": "você",
+"start": 29.837,
+"end": 30.078
+},
+{
+"text": "precisa",
+"start": 30.078,
+"end": 30.558
+},
+{
+"text": "entender.",
+"start": 30.558,
+"end": 31.437
+},
+{
+"text": "Esse",
+"start": 31.437,
+"end": 31.677
+},
+{
+"text": "repositório",
+"start": 31.677,
+"end": 32.557
+},
+{
+"text": "não",
+"start": 32.557,
+"end": 32.717
+},
+{
+"text": "é",
+"start": 32.717,
+"end": 32.877
+},
+{
+"text": "o",
+"start": 32.877,
+"end": 33.037
+},
+{
+"text": "mesmo",
+"start": 33.037,
+"end": 33.438
+},
+{
+"text": "gerador",
+"start": 33.438,
+"end": 33.837
+},
+{
+"text": "de",
+"start": 33.837,
+"end": 33.917
+},
+{
+"text": "vídeos",
+"start": 33.917,
+"end": 34.317
+},
+{
+"text": "da",
+"start": 34.317,
+"end": 34.478
+},
+{
+"text": "plataforma",
+"start": 34.478,
+"end": 35.037
+},
+{
+"text": "comercial.",
+"start": 35.037,
+"end": 36.237
+},
+{
+"text": "Ainda",
+"start": 36.237,
+"end": 36.717
+},
+{
+"text": "assim,",
+"start": 36.717,
+"end": 37.117
+},
+{
+"text": "é",
+"start": 37.117,
+"end": 37.357
+},
+{
+"text": "um",
+"start": 37.357,
+"end": 37.437
+},
+{
+"text": "projeto",
+"start": 37.437,
+"end": 37.837
+},
+{
+"text": "interessante",
+"start": 37.837,
+"end": 38.397
+},
+{
+"text": "para",
+"start": 38.397,
+"end": 38.558
+},
+{
+"text": "quem",
+"start": 38.558,
+"end": 38.797
+},
+{
+"text": "gosta",
+"start": 38.797,
+"end": 39.037
+},
+{
+"text": "de",
+"start": 39.037,
+"end": 39.197
+},
+{
+"text": "explorar",
+"start": 39.197,
+"end": 39.677
+},
+{
+"text": "tecnologias",
+"start": 39.677,
+"end": 40.397
+},
+{
+"text": "abertas",
+"start": 40.397,
+"end": 40.877
+},
+{
+"text": "de",
+"start": 40.877,
+"end": 40.957
+},
+{
+"text": "inteligência",
+"start": 40.957,
+"end": 41.597
+},
+{
+"text": "artificial.",
+"start": 41.597,
+"end": 42.318
+},
+{
+"text": "Quer",
+"start": 42.318,
+"end": 42.638
+},
+{
+"text": "conhecer",
+"start": 42.638,
+"end": 43.037
+},
+{
+"text": "o",
+"start": 43.037,
+"end": 43.117
+},
+{
+"text": "código",
+"start": 43.117,
+"end": 43.517
+},
+{
+"text": "e",
+"start": 43.517,
+"end": 43.677
+},
+{
+"text": "entender",
+"start": 43.677,
+"end": 44.158
+},
+{
+"text": "como",
+"start": 44.158,
+"end": 44.398
+},
+{
+"text": "ele",
+"start": 44.398,
+"end": 44.558
+},
+{
+"text": "funciona?",
+"start": 44.558,
+"end": 45.197
+},
+{
+"text": "Comenta",
+"start": 45.197,
+"end": 45.597
+},
+{
+"text": "a",
+"start": 45.597,
+"end": 45.757
+},
+{
+"text": "Hicksfield",
+"start": 45.757,
+"end": 46.478
+},
+{
+"text": "que",
+"start": 46.478,
+"end": 46.638
+},
+{
+"text": "eu",
+"start": 46.638,
+"end": 46.717
+},
+{
+"text": "te",
+"start": 46.717,
+"end": 46.877
+},
+{
+"text": "envio",
+"start": 46.877,
+"end": 47.197
+},
+{
+"text": "o",
+"start": 47.197,
+"end": 47.277
+},
+{
+"text": "repositório!",
+"start": 47.277,
+"end": 48.039
+}
+]

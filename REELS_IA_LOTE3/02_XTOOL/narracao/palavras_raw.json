@@ -1,0 +1,1087 @@
+[
+{
+"text": "Você",
+"start": 0.0,
+"end": 0.45
+},
+{
+"text": "não",
+"start": 0.48,
+"end": 0.72
+},
+{
+"text": "precisa",
+"start": 0.72,
+"end": 1.2
+},
+{
+"text": "mais",
+"start": 1.2,
+"end": 1.44
+},
+{
+"text": "depender",
+"start": 1.44,
+"end": 1.92
+},
+{
+"text": "exclusivamente",
+"start": 1.92,
+"end": 2.64
+},
+{
+"text": "de",
+"start": 2.64,
+"end": 2.8
+},
+{
+"text": "um",
+"start": 2.8,
+"end": 2.96
+},
+{
+"text": "Mac",
+"start": 2.96,
+"end": 3.41
+},
+{
+"text": "para",
+"start": 3.44,
+"end": 3.6
+},
+{
+"text": "desenvolver",
+"start": 3.6,
+"end": 4.16
+},
+{
+"text": "aplicativos",
+"start": 4.16,
+"end": 4.72
+},
+{
+"text": "para",
+"start": 4.72,
+"end": 4.96
+},
+{
+"text": "iPhone.",
+"start": 4.96,
+"end": 6.0
+},
+{
+"text": "E",
+"start": 6.0,
+"end": 6.16
+},
+{
+"text": "o",
+"start": 6.16,
+"end": 6.32
+},
+{
+"text": "mais",
+"start": 6.32,
+"end": 6.64
+},
+{
+"text": "interessante",
+"start": 6.64,
+"end": 7.2
+},
+{
+"text": "é",
+"start": 7.2,
+"end": 7.36
+},
+{
+"text": "que",
+"start": 7.36,
+"end": 7.6
+},
+{
+"text": "agora",
+"start": 7.6,
+"end": 7.92
+},
+{
+"text": "você",
+"start": 7.92,
+"end": 8.16
+},
+{
+"text": "pode",
+"start": 8.16,
+"end": 8.48
+},
+{
+"text": "combinar",
+"start": 8.48,
+"end": 9.04
+},
+{
+"text": "essa",
+"start": 9.04,
+"end": 9.28
+},
+{
+"text": "possibilidade",
+"start": 9.28,
+"end": 9.92
+},
+{
+"text": "com",
+"start": 9.92,
+"end": 10.08
+},
+{
+"text": "o",
+"start": 10.08,
+"end": 10.16
+},
+{
+"text": "Clod",
+"start": 10.16,
+"end": 10.72
+},
+{
+"text": "Code.",
+"start": 10.72,
+"end": 11.36
+},
+{
+"text": "Existe",
+"start": 11.36,
+"end": 11.76
+},
+{
+"text": "um",
+"start": 11.76,
+"end": 11.92
+},
+{
+"text": "projeto",
+"start": 11.92,
+"end": 12.24
+},
+{
+"text": "de",
+"start": 12.24,
+"end": 12.4
+},
+{
+"text": "código",
+"start": 12.4,
+"end": 12.8
+},
+{
+"text": "aberto",
+"start": 12.8,
+"end": 13.2
+},
+{
+"text": "chamado",
+"start": 13.2,
+"end": 13.76
+},
+{
+"text": "X",
+"start": 13.76,
+"end": 14.08
+},
+{
+"text": "Tool,",
+"start": 14.08,
+"end": 14.56
+},
+{
+"text": "que",
+"start": 14.56,
+"end": 14.72
+},
+{
+"text": "está",
+"start": 14.72,
+"end": 14.96
+},
+{
+"text": "chamando",
+"start": 14.96,
+"end": 15.28
+},
+{
+"text": "a",
+"start": 15.28,
+"end": 15.36
+},
+{
+"text": "atenção",
+"start": 15.36,
+"end": 15.76
+},
+{
+"text": "de",
+"start": 15.76,
+"end": 15.92
+},
+{
+"text": "quem",
+"start": 15.92,
+"end": 16.16
+},
+{
+"text": "desenvolve",
+"start": 16.16,
+"end": 16.8
+},
+{
+"text": "aplicativos.",
+"start": 16.8,
+"end": 17.76
+},
+{
+"text": "Basicamente,",
+"start": 17.76,
+"end": 18.72
+},
+{
+"text": "ele",
+"start": 18.72,
+"end": 18.96
+},
+{
+"text": "funciona",
+"start": 18.96,
+"end": 19.52
+},
+{
+"text": "como",
+"start": 19.52,
+"end": 19.68
+},
+{
+"text": "uma",
+"start": 19.68,
+"end": 19.92
+},
+{
+"text": "alternativa",
+"start": 19.92,
+"end": 20.72
+},
+{
+"text": "multiplataforma",
+"start": 20.72,
+"end": 21.76
+},
+{
+"text": "a",
+"start": 21.76,
+"end": 22.0
+},
+{
+"text": "algumas",
+"start": 22.0,
+"end": 22.32
+},
+{
+"text": "ferramentas",
+"start": 22.32,
+"end": 22.88
+},
+{
+"text": "do",
+"start": 22.88,
+"end": 23.04
+},
+{
+"text": "X",
+"start": 23.04,
+"end": 23.36
+},
+{
+"text": "Code.",
+"start": 23.36,
+"end": 24.047
+},
+{
+"text": "Isso",
+"start": 24.047,
+"end": 24.367
+},
+{
+"text": "significa",
+"start": 24.367,
+"end": 24.927
+},
+{
+"text": "que",
+"start": 24.927,
+"end": 25.087
+},
+{
+"text": "você",
+"start": 25.087,
+"end": 25.327
+},
+{
+"text": "consegue",
+"start": 25.327,
+"end": 25.727
+},
+{
+"text": "trabalhar",
+"start": 25.727,
+"end": 26.128
+},
+{
+"text": "com",
+"start": 26.128,
+"end": 26.287
+},
+{
+"text": "aplicações",
+"start": 26.287,
+"end": 26.848
+},
+{
+"text": "para",
+"start": 26.848,
+"end": 27.087
+},
+{
+"text": "iOS",
+"start": 27.087,
+"end": 27.887
+},
+{
+"text": "utilizando",
+"start": 27.887,
+"end": 28.368
+},
+{
+"text": "Swift",
+"start": 28.368,
+"end": 28.848
+},
+{
+"text": "e",
+"start": 28.848,
+"end": 29.007
+},
+{
+"text": "Swift",
+"start": 29.007,
+"end": 29.487
+},
+{
+"text": "UI,",
+"start": 29.487,
+"end": 30.207
+},
+{
+"text": "inclusive",
+"start": 30.207,
+"end": 30.767
+},
+{
+"text": "em",
+"start": 30.767,
+"end": 31.007
+},
+{
+"text": "ambientes",
+"start": 31.007,
+"end": 31.567
+},
+{
+"text": "como",
+"start": 31.567,
+"end": 31.807
+},
+{
+"text": "Windows",
+"start": 31.807,
+"end": 32.367
+},
+{
+"text": "e",
+"start": 32.367,
+"end": 32.527
+},
+{
+"text": "Linux.",
+"start": 32.527,
+"end": 33.617
+},
+{
+"text": "E",
+"start": 33.648,
+"end": 33.888
+},
+{
+"text": "é",
+"start": 33.888,
+"end": 34.127
+},
+{
+"text": "aqui",
+"start": 34.127,
+"end": 34.367
+},
+{
+"text": "que",
+"start": 34.367,
+"end": 34.607
+},
+{
+"text": "a",
+"start": 34.607,
+"end": 34.688
+},
+{
+"text": "coisa",
+"start": 34.688,
+"end": 34.927
+},
+{
+"text": "fica",
+"start": 34.927,
+"end": 35.327
+},
+{
+"text": "interessante.",
+"start": 35.327,
+"end": 36.127
+},
+{
+"text": "Imagine",
+"start": 36.127,
+"end": 36.687
+},
+{
+"text": "pedir",
+"start": 36.687,
+"end": 37.007
+},
+{
+"text": "ao",
+"start": 37.007,
+"end": 37.167
+},
+{
+"text": "Cloud",
+"start": 37.167,
+"end": 37.647
+},
+{
+"text": "Code",
+"start": 37.647,
+"end": 37.967
+},
+{
+"text": "para",
+"start": 37.967,
+"end": 38.127
+},
+{
+"text": "desenvolver",
+"start": 38.127,
+"end": 38.768
+},
+{
+"text": "um",
+"start": 38.768,
+"end": 38.927
+},
+{
+"text": "aplicativo,",
+"start": 38.927,
+"end": 39.727
+},
+{
+"text": "criar",
+"start": 39.727,
+"end": 40.127
+},
+{
+"text": "as",
+"start": 40.127,
+"end": 40.287
+},
+{
+"text": "telas,",
+"start": 40.287,
+"end": 40.927
+},
+{
+"text": "organizar",
+"start": 40.927,
+"end": 41.488
+},
+{
+"text": "os",
+"start": 41.488,
+"end": 41.648
+},
+{
+"text": "componentes",
+"start": 41.648,
+"end": 42.367
+},
+{
+"text": "e",
+"start": 42.367,
+"end": 42.607
+},
+{
+"text": "escrever",
+"start": 42.607,
+"end": 43.167
+},
+{
+"text": "toda",
+"start": 43.167,
+"end": 43.408
+},
+{
+"text": "a",
+"start": 43.408,
+"end": 43.568
+},
+{
+"text": "estrutura",
+"start": 43.568,
+"end": 44.047
+},
+{
+"text": "do",
+"start": 44.047,
+"end": 44.127
+},
+{
+"text": "projeto.",
+"start": 44.127,
+"end": 44.767
+},
+{
+"text": "Com",
+"start": 44.767,
+"end": 44.927
+},
+{
+"text": "o",
+"start": 44.927,
+"end": 45.087
+},
+{
+"text": "X",
+"start": 45.087,
+"end": 45.408
+},
+{
+"text": "Tool,",
+"start": 45.408,
+"end": 45.85
+},
+{
+"text": "Você",
+"start": 45.85,
+"end": 46.17
+},
+{
+"text": "consegue",
+"start": 46.17,
+"end": 46.57
+},
+{
+"text": "levar",
+"start": 46.57,
+"end": 46.89
+},
+{
+"text": "esse",
+"start": 46.89,
+"end": 47.13
+},
+{
+"text": "desenvolvimento",
+"start": 47.13,
+"end": 47.85
+},
+{
+"text": "adiante,",
+"start": 47.85,
+"end": 48.57
+},
+{
+"text": "incluindo",
+"start": 48.57,
+"end": 49.13
+},
+{
+"text": "etapas",
+"start": 49.13,
+"end": 49.53
+},
+{
+"text": "de",
+"start": 49.53,
+"end": 49.69
+},
+{
+"text": "compilação",
+"start": 49.69,
+"end": 50.41
+},
+{
+"text": "e",
+"start": 50.41,
+"end": 50.65
+},
+{
+"text": "instalação",
+"start": 50.65,
+"end": 51.21
+},
+{
+"text": "em",
+"start": 51.21,
+"end": 51.45
+},
+{
+"text": "dispositivos",
+"start": 51.45,
+"end": 52.09
+},
+{
+"text": "compatíveis,",
+"start": 52.09,
+"end": 53.05
+},
+{
+"text": "respeitando",
+"start": 53.05,
+"end": 53.69
+},
+{
+"text": "os",
+"start": 53.69,
+"end": 53.77
+},
+{
+"text": "requisitos",
+"start": 53.77,
+"end": 54.33
+},
+{
+"text": "da",
+"start": 54.33,
+"end": 54.49
+},
+{
+"text": "Apple.",
+"start": 54.49,
+"end": 55.13
+},
+{
+"text": "Ou",
+"start": 55.13,
+"end": 55.29
+},
+{
+"text": "seja,",
+"start": 55.29,
+"end": 55.85
+},
+{
+"text": "estamos",
+"start": 55.85,
+"end": 56.25
+},
+{
+"text": "falando",
+"start": 56.25,
+"end": 56.65
+},
+{
+"text": "de",
+"start": 56.65,
+"end": 56.81
+},
+{
+"text": "uma",
+"start": 56.81,
+"end": 56.97
+},
+{
+"text": "maneira",
+"start": 56.97,
+"end": 57.45
+},
+{
+"text": "muito",
+"start": 57.45,
+"end": 57.69
+},
+{
+"text": "mais",
+"start": 57.69,
+"end": 57.93
+},
+{
+"text": "flexível",
+"start": 57.93,
+"end": 58.65
+},
+{
+"text": "de",
+"start": 58.65,
+"end": 58.81
+},
+{
+"text": "criar",
+"start": 58.81,
+"end": 59.13
+},
+{
+"text": "aplicativos",
+"start": 59.13,
+"end": 59.77
+},
+{
+"text": "nativos",
+"start": 59.77,
+"end": 60.25
+},
+{
+"text": "para",
+"start": 60.25,
+"end": 60.49
+},
+{
+"text": "iPhone.",
+"start": 60.49,
+"end": 61.29
+},
+{
+"text": "E",
+"start": 61.29,
+"end": 61.45
+},
+{
+"text": "o",
+"start": 61.45,
+"end": 61.61
+},
+{
+"text": "melhor,",
+"start": 61.61,
+"end": 62.25
+},
+{
+"text": "o",
+"start": 62.25,
+"end": 62.41
+},
+{
+"text": "projeto",
+"start": 62.41,
+"end": 62.89
+},
+{
+"text": "está",
+"start": 62.89,
+"end": 63.13
+},
+{
+"text": "disponível",
+"start": 63.13,
+"end": 63.77
+},
+{
+"text": "gratuitamente",
+"start": 63.77,
+"end": 64.49
+},
+{
+"text": "no",
+"start": 64.49,
+"end": 64.65
+},
+{
+"text": "GitHub.",
+"start": 64.65,
+"end": 65.53
+},
+{
+"text": "Para",
+"start": 65.53,
+"end": 65.77
+},
+{
+"text": "quem",
+"start": 65.77,
+"end": 66.01
+},
+{
+"text": "trabalha",
+"start": 66.01,
+"end": 66.33
+},
+{
+"text": "com",
+"start": 66.33,
+"end": 66.49
+},
+{
+"text": "inteligência",
+"start": 66.49,
+"end": 67.13
+},
+{
+"text": "artificial,",
+"start": 67.13,
+"end": 68.022
+},
+{
+"text": "Programação",
+"start": 68.022,
+"end": 68.662
+},
+{
+"text": "ou",
+"start": 68.662,
+"end": 68.902
+},
+{
+"text": "criação",
+"start": 68.902,
+"end": 69.302
+},
+{
+"text": "de",
+"start": 69.302,
+"end": 69.462
+},
+{
+"text": "aplicativos,",
+"start": 69.462,
+"end": 70.422
+},
+{
+"text": "essa",
+"start": 70.422,
+"end": 70.742
+},
+{
+"text": "combinação",
+"start": 70.742,
+"end": 71.382
+},
+{
+"text": "abre",
+"start": 71.382,
+"end": 71.782
+},
+{
+"text": "possibilidades",
+"start": 71.782,
+"end": 72.582
+},
+{
+"text": "muito",
+"start": 72.582,
+"end": 72.902
+},
+{
+"text": "interessantes,",
+"start": 72.902,
+"end": 74.022
+},
+{
+"text": "principalmente",
+"start": 74.022,
+"end": 74.742
+},
+{
+"text": "porque",
+"start": 74.742,
+"end": 75.062
+},
+{
+"text": "você",
+"start": 75.062,
+"end": 75.303
+},
+{
+"text": "consegue",
+"start": 75.303,
+"end": 75.702
+},
+{
+"text": "acelerar",
+"start": 75.702,
+"end": 76.342
+},
+{
+"text": "boa",
+"start": 76.342,
+"end": 76.663
+},
+{
+"text": "parte",
+"start": 76.663,
+"end": 76.982
+},
+{
+"text": "do",
+"start": 76.982,
+"end": 77.222
+},
+{
+"text": "desenvolvimento",
+"start": 77.222,
+"end": 78.182
+},
+{
+"text": "utilizando",
+"start": 78.182,
+"end": 78.743
+},
+{
+"text": "comandos",
+"start": 78.743,
+"end": 79.222
+},
+{
+"text": "em",
+"start": 79.222,
+"end": 79.382
+},
+{
+"text": "linguagem",
+"start": 79.382,
+"end": 79.942
+},
+{
+"text": "natural.",
+"start": 79.942,
+"end": 80.662
+},
+{
+"text": "Se",
+"start": 80.662,
+"end": 80.902
+},
+{
+"text": "você",
+"start": 80.902,
+"end": 81.142
+},
+{
+"text": "quer",
+"start": 81.142,
+"end": 81.382
+},
+{
+"text": "conhecer",
+"start": 81.382,
+"end": 81.783
+},
+{
+"text": "o",
+"start": 81.783,
+"end": 82.022
+},
+{
+"text": "X",
+"start": 82.022,
+"end": 82.262
+},
+{
+"text": "Tool",
+"start": 82.262,
+"end": 82.662
+},
+{
+"text": "e",
+"start": 82.662,
+"end": 82.743
+},
+{
+"text": "aprender",
+"start": 82.743,
+"end": 83.222
+},
+{
+"text": "como",
+"start": 83.222,
+"end": 83.462
+},
+{
+"text": "utilizá-lo",
+"start": 83.462,
+"end": 83.942
+},
+{
+"text": "com",
+"start": 83.942,
+"end": 84.102
+},
+{
+"text": "o",
+"start": 84.102,
+"end": 84.182
+},
+{
+"text": "Cloud",
+"start": 84.182,
+"end": 84.662
+},
+{
+"text": "Code,",
+"start": 84.662,
+"end": 85.142
+},
+{
+"text": "comenta",
+"start": 85.142,
+"end": 85.703
+},
+{
+"text": "app",
+"start": 85.703,
+"end": 86.153
+},
+{
+"text": "que",
+"start": 86.342,
+"end": 86.502
+},
+{
+"text": "eu",
+"start": 86.502,
+"end": 86.582
+},
+{
+"text": "te",
+"start": 86.582,
+"end": 86.742
+},
+{
+"text": "envio",
+"start": 86.742,
+"end": 87.142
+},
+{
+"text": "o",
+"start": 87.142,
+"end": 87.222
+},
+{
+"text": "repositório.",
+"start": 87.222,
+"end": 88.033
+}
+]

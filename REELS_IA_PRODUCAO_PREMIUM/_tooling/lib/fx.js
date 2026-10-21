@@ -10,15 +10,16 @@
     pop: { scale: 0.55, opacity: 0 }, zoom: { scale: 1.25, opacity: 0 }, fade: { opacity: 0 }, rise: { y: 140, opacity: 0, scale: 0.94 },
     slam: { scale: 1.9, opacity: 0, rotation: -6 }, flip: { rotationX: -80, opacity: 0, y: 40, transformPerspective: 900 },
     wipe: { clipPath: "inset(0 100% 0 0)" }, drop: { y: -160, opacity: 0, rotation: -8 },
+    blur: { y: 26, opacity: 0, filter: "blur(10px)" }, bscale: { scale: 0.94, opacity: 0, filter: "blur(10px)" },
   };
-  const TO = { y: 0, x: 0, opacity: 1, scale: 1, rotation: 0, rotationX: 0, clipPath: "inset(0 0% 0 0)" };
+  const TO = { y: 0, x: 0, opacity: 1, scale: 1, rotation: 0, rotationX: 0, clipPath: "inset(0 0% 0 0)", filter: "blur(0px)" };
   // entrance
   window.inn = (sel, t, k = "up", d, extra) => {
     const f = FROM[k] || FROM.up;
     const to = {};
     for (const key in f) to[key] = TO[key];
     if (f.transformPerspective) delete to.transformPerspective;
-    const ease = k === "pop" || k === "drop" ? E.back : k === "slam" ? "back.out(1.4)" : k === "wipe" ? E.io : E.o;
+    const ease = k === "pop" || k === "drop" ? E.back : k === "slam" ? "back.out(1.4)" : k === "wipe" ? E.io : k === "blur" || k === "bscale" ? E.expo : E.o;
     tl.fromTo(sel, { ...f }, { ...to, duration: d || (k === "slam" ? 0.45 : k === "wipe" ? 0.7 : 0.6), ease, stagger: extra && extra.stagger, immediateRender: true }, t);
   };
   // exit

@@ -1,0 +1,115 @@
+[
+ {
+  "type": "whoosh_s",
+  "t": 0.02,
+  "gain": 0.5
+ },
+ {
+  "type": "pop",
+  "t": 2.12,
+  "gain": 0.7
+ },
+ {
+  "type": "lock",
+  "t": 2.59,
+  "gain": 0.8
+ },
+ {
+  "type": "whoosh_s",
+  "t": 3.18,
+  "gain": 0.45
+ },
+ {
+  "type": "pop",
+  "t": 4.46,
+  "gain": 0.6
+ },
+ {
+  "type": "whoosh",
+  "t": 6.42,
+  "gain": 0.55,
+  "sw": true
+ },
+ {
+  "type": "whoosh",
+  "t": 6.62,
+  "gain": 0.45
+ },
+ {
+  "type": "typing",
+  "t": 7.95,
+  "gain": 0.6
+ },
+ {
+  "type": "impact",
+  "t": 10.64,
+  "gain": 0.7
+ },
+ {
+  "type": "whoosh",
+  "t": 11.22,
+  "gain": 0.55,
+  "sw": true
+ },
+ {
+  "type": "pop",
+  "t": 12.86,
+  "gain": 0.6
+ },
+ {
+  "type": "pop",
+  "t": 13.5,
+  "gain": 0.55
+ },
+ {
+  "type": "whoosh_s",
+  "t": 15.77,
+  "gain": 0.4
+ },
+ {
+  "type": "typing",
+  "t": 16.43,
+  "gain": 0.5
+ },
+ {
+  "type": "confirm",
+  "t": 17.92,
+  "gain": 0.6
+ },
+ {
+  "type": "whoosh",
+  "t": 18.42,
+  "gain": 0.55,
+  "sw": true
+ },
+ {
+  "type": "impact",
+  "t": 18.67,
+  "gain": 0.7
+ },
+ {
+  "type": "pop",
+  "t": 20.3,
+  "gain": 0.6
+ },
+ {
+  "type": "impact",
+  "t": 20.96,
+  "gain": 0.85
+ },
+ {
+  "type": "shimmer",
+  "t": 21.06,
+  "gain": 0.7
+ },
+ {
+  "type": "typing",
+  "t": 21.21,
+  "gain": 0.5
+ },
+ {
+  "type": "pop",
+  "t": 22.19,
+  "gain": 0.5
+ }
+]

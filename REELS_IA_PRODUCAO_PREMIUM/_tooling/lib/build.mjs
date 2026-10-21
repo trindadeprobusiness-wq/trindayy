@@ -165,7 +165,7 @@ window.__timelines["main"] = tl;
     fs.writeFileSync(path.join(projectDir, "legendas.srt"), this.transcriptSrt());
     // stage shared assets
     const A = path.join(projectDir, "assets");
-    for (const sub of ["fonts", "logos", "photos", "photos2", "video"]) cpDir(path.join(TOOL, "shared", sub), path.join(A, sub));
+    for (const sub of ["fonts", "logos", "photos", "photos2", "photos3", "video"]) cpDir(path.join(TOOL, "shared", sub), path.join(A, sub));
     fs.copyFileSync(path.join(TOOL, "shared", "gsap.min.js"), path.join(A, "gsap.min.js"));
     console.log(`[${this.id}] wrote ${this.scenes.length} scenes, ${this.captionGroups().length} caption groups, ${this.cues.length} sfx cues`);
   }
