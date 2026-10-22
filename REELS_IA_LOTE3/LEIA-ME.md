@@ -40,7 +40,12 @@ Cada pasta tem:
   - Kapso (a voz diz "Capsu").
   - WA-AKG, n8n e Higgsfield.
   - A gagueira "não é a É apenas" aparece limpa na legenda; o áudio não foi mexido.
-- Trilha e efeitos sintetizados do zero (sem samples de terceiros), com ducking sob a voz.
+- Trilha de retenção própria em cada vídeo (`_tooling/music3.py`, plano em `projeto/music_plan.json`), sintetizada do zero, sem samples de terceiros:
+  - Energia desde o 1º segundo e um tema melódico curto que volta nos picos.
+  - A música muda junto com cada corte de cena: subida antes, impacto na entrada.
+  - Quebra (só o pad) nas viradas da fala e pausa seca antes do CTA.
+  - Abaixa sozinha sob a voz (ducking).
+  - Estilos: 01 future bass lima · 02 pop eletrônico com marimba · 03 trap cinematográfico · 04 synthwave arcade · 05 groove house com acordes jazz · 06 tropical quente · 07 tech house minimal.
 - Metadados removidos de todos os MP4 e PNG (`_tooling/strip_metadata.sh`, conferido com `ffprobe` e pelo hook do repositório).
 
 ## Refazer / editar
@@ -49,7 +54,7 @@ Cada pasta tem:
 cd REELS_IA_PRODUCAO_PREMIUM/_tooling/lote3
 node l02_xtool.mjs                       # regenera o projeto do vídeo 02
 cd ../../../REELS_IA_LOTE3/02_XTOOL/projeto
-python3 -I ../../../REELS_IA_PRODUCAO_PREMIUM/_tooling/audio.py ../narracao/narracao_mario.mp3 sfx_cues.json assets/mix.wav --key D --bpm 112 --tail 1.27
+python3 -I ../../../REELS_IA_PRODUCAO_PREMIUM/_tooling/audio.py ../narracao/narracao_mario.mp3 sfx_cues.json assets/mix.wav --plan music_plan.json --tail 1.27
 python3 -I ../../../REELS_IA_PRODUCAO_PREMIUM/_tooling/audio.py ../narracao/narracao_mario.mp3 sfx_cues.json assets/mix_sem_musica.wav --no-music --tail 1.27
 npx hyperframes render -o renders/render.mp4 -q delivery --fps 30
 cd ../../../REELS_IA_PRODUCAO_PREMIUM/_tooling/lote3 && node finalize3.mjs 02_XTOOL   # FINAL com e sem música, sem metadados

@@ -280,11 +280,21 @@ def main():
     # voice: gentle presence lift, no timing/pitch change
     v = voice / (np.max(np.abs(voice)) + 1e-9) * db(-3)
     # music + ducking from voice envelope
-    m = music_bed(dur + 0.5, bpm=bpm, key=key)[:n]
-    m = m / (np.sqrt(np.mean(m ** 2)) + 1e-9) * db(-27)
+    plan_p = sys.argv[sys.argv.index("--plan") + 1] if "--plan" in sys.argv else None
+    if plan_p:  # lote 3: trilha de retenção que acompanha os cortes de cena (music3.py)
+        import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from music3 import track
+        plan = json.load(open(plan_p))
+        m = track(plan["style"], dur + 0.5, [tuple(s) for s in plan["sections"]])[:n]
+        m = m / (np.sqrt(np.mean(m ** 2)) + 1e-9) * db(plan.get("db", -23))
+        depth = plan.get("duck", 0.55)
+    else:
+        m = music_bed(dur + 0.5, bpm=bpm, key=key)[:n]
+        m = m / (np.sqrt(np.mean(m ** 2)) + 1e-9) * db(-27)
+        depth = 0.5
     env = np.sqrt(signal.sosfilt(signal.butter(2, 6, fs=SR, output="sos"), v ** 2).clip(0))
     env = env / (np.percentile(env, 95) + 1e-9)
-    duck = 1 - 0.5 * np.clip(env, 0, 1)
+    duck = 1 - depth * np.clip(env, 0, 1)
     duck = signal.sosfilt(signal.butter(1, 3, fs=SR, output="sos"), duck)
     m = m * duck
     if no_music:  # versão sem trilha: só voz + efeitos
