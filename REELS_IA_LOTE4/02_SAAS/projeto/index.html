@@ -1,0 +1,1341 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Desmontando um SaaS</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+/* ===== Shared design system — REELS IA PRODUÇÃO PREMIUM ===== */
+@font-face { font-family: "Inter"; font-weight: 400; src: url("assets/fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; src: url("assets/fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url("assets/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; src: url("assets/fonts/inter-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 800; src: url("assets/fonts/inter-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 900; src: url("assets/fonts/inter-latin-900-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 500; src: url("assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 700; src: url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; src: url("assets/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 600; src: url("assets/fonts/jetbrains-mono-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 700; src: url("assets/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  --bg: #060a13; --bg2: #0b1222; --panel: #0f1729; --panel2: #141e35; --line: rgba(148, 178, 255, 0.16);
+  --text: #f5f7fb; --muted: #9aa6bd; --dim: #5d6880;
+  --blue: #2f7bff; --cyan: #22d3ee; --green: #34d399; --red: #ff4d5e; --amber: #fbbf24;
+  --accent: var(--cyan);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+body { color: var(--text); font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+#root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+
+/* ---------- Background ---------- */
+.bg { position: absolute; inset: 0; overflow: hidden; }
+.bg-grid { position: absolute; inset: -200px; background-image:
+  linear-gradient(rgba(120, 160, 255, 0.055) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(120, 160, 255, 0.055) 1px, transparent 1px);
+  background-size: 72px 72px; }
+.bg-glow { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; opacity: 0.55; }
+.bg-glow.a { left: -380px; top: -260px; background: radial-gradient(circle, rgba(47, 123, 255, 0.42), transparent 62%); }
+.bg-glow.b { right: -420px; top: 760px; background: radial-gradient(circle, rgba(34, 211, 238, 0.30), transparent 62%); }
+.bg-glow.c { left: 120px; top: 1250px; width: 900px; height: 900px; background: radial-gradient(circle, var(--tint, rgba(47, 123, 255, 0.0)), transparent 65%); opacity: 1; }
+.vignette { position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(130% 85% at 50% 42%, transparent 55%, rgba(0, 0, 0, 0.72) 100%); }
+.grain { position: absolute; inset: 0; opacity: 0.06; mix-blend-mode: overlay; background-size: 220px 220px; }
+
+/* ---------- Scenes ---------- */
+.scene { position: absolute; inset: 0; }
+.scene > .inner { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.center-x { left: 0; right: 0; margin-left: auto; margin-right: auto; }
+.row { display: flex; align-items: center; }
+.col { display: flex; flex-direction: column; }
+.gap8 { gap: 8px; } .gap12 { gap: 12px; } .gap16 { gap: 16px; } .gap20 { gap: 20px; } .gap24 { gap: 24px; } .gap32 { gap: 32px; }
+
+/* ---------- Type ---------- */
+.kicker { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 26px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+.display { font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -0.035em; line-height: 0.95; }
+.h1 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 96px; letter-spacing: -0.035em; line-height: 1; }
+.h2 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 68px; letter-spacing: -0.03em; line-height: 1.04; }
+.h3 { font-family: "Inter", sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.02em; line-height: 1.1; }
+.body { font-size: 32px; font-weight: 500; color: var(--muted); line-height: 1.35; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.hl { color: var(--accent); }
+.hl-red { color: var(--red); } .hl-green { color: var(--green); } .hl-amber { color: var(--amber); }
+.tc { text-align: center; }
+
+/* ---------- Surfaces ---------- */
+.card { background: linear-gradient(165deg, rgba(24, 35, 62, 0.94), rgba(11, 17, 32, 0.96));
+  border: 1.5px solid var(--line); border-radius: 30px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+.card.light { background: linear-gradient(170deg, #ffffff, #eef2f8); color: #0b1222; border-color: rgba(255, 255, 255, 0.6); }
+.glass { background: rgba(18, 28, 52, 0.62); border: 1.5px solid rgba(160, 190, 255, 0.18); border-radius: 28px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08); }
+.tile { width: 200px; height: 200px; border-radius: 48px; display: grid; place-items: center;
+  background: linear-gradient(160deg, #1b2747, #0d1426); border: 2px solid rgba(160, 190, 255, 0.2);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+.tile.white { background: linear-gradient(160deg, #ffffff, #e9eef7); border-color: rgba(255, 255, 255, 0.7); }
+.tile img { width: 62%; height: 62%; object-fit: contain; }
+.chip { display: inline-flex; align-items: center; gap: 14px; padding: 16px 28px; border-radius: 999px;
+  font-weight: 700; font-size: 32px; background: rgba(30, 44, 78, 0.9); border: 1.5px solid rgba(160, 190, 255, 0.22); color: var(--text); white-space: nowrap; }
+.chip svg { width: 34px; height: 34px; }
+.chip.blue { background: rgba(47, 123, 255, 0.18); border-color: rgba(47, 123, 255, 0.6); color: #cfe0ff; }
+.chip.cyan { background: rgba(34, 211, 238, 0.14); border-color: rgba(34, 211, 238, 0.6); color: #c9f6ff; }
+.chip.green { background: rgba(52, 211, 153, 0.14); border-color: rgba(52, 211, 153, 0.6); color: #c8f7e5; }
+.chip.red { background: rgba(255, 77, 94, 0.16); border-color: rgba(255, 77, 94, 0.65); color: #ffd0d5; }
+.chip.amber { background: rgba(251, 191, 36, 0.14); border-color: rgba(251, 191, 36, 0.6); color: #ffeab0; }
+.chip.solid { background: var(--text); color: #0b1222; border-color: transparent; }
+.badge { display: inline-flex; align-items: center; gap: 16px; padding: 14px 34px; border-radius: 22px;
+  font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 92px; letter-spacing: -0.03em; line-height: 1; }
+.icon svg { width: 100%; height: 100%; }
+.ic { display: inline-block; width: 1em; height: 1em; }
+.ic svg { width: 100%; height: 100%; display: block; }
+
+/* ---------- Window / terminal ---------- */
+.win { border-radius: 26px; overflow: hidden; background: #0c1220; border: 1.5px solid rgba(160, 190, 255, 0.2);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6); }
+.win-bar { height: 62px; display: flex; align-items: center; gap: 12px; padding: 0 24px; background: #141c2e; border-bottom: 1px solid rgba(160, 190, 255, 0.12); }
+.win-bar i { width: 18px; height: 18px; border-radius: 50%; display: block; }
+.win-bar i:nth-child(1) { background: #ff5f57; } .win-bar i:nth-child(2) { background: #febc2e; } .win-bar i:nth-child(3) { background: #28c840; }
+.win-bar .t { margin-left: 18px; font-family: "JetBrains Mono", monospace; font-size: 22px; color: var(--muted); }
+.term { font-family: "JetBrains Mono", monospace; font-size: 27px; line-height: 1.55; color: #dbe5ff; padding: 26px 30px; white-space: pre; }
+.term .p { color: var(--green); } .term .c { color: var(--dim); } .term .k { color: var(--cyan); } .term .r { color: var(--red); } .term .y { color: var(--amber); }
+
+/* ---------- GitHub repo replica (dark) ---------- */
+.gh { width: 940px; border-radius: 26px; background: #0d1117; border: 1.5px solid #30363d; overflow: hidden;
+  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.65); font-family: "Inter", sans-serif; color: #e6edf3; }
+.gh-top { display: flex; align-items: center; gap: 18px; padding: 22px 30px; background: #010409; border-bottom: 1px solid #30363d; }
+.gh-top img { width: 46px; height: 46px; }
+.gh-top .path { font-size: 28px; color: #e6edf3; } .gh-top .path b { font-weight: 700; }
+.gh-tabs { display: flex; gap: 26px; padding: 0 30px; background: #010409; border-bottom: 1px solid #30363d; font-size: 22px; color: #9198a1; }
+.gh-tabs span { padding: 16px 0; } .gh-tabs span.on { color: #e6edf3; border-bottom: 3px solid #f78166; font-weight: 600; }
+.gh-head { display: flex; align-items: center; gap: 16px; padding: 26px 30px 10px; }
+.gh-head .av { width: 56px; height: 56px; border-radius: 12px; background: #fff; display: grid; place-items: center; overflow: hidden; }
+.gh-head .av img { width: 80%; height: 80%; object-fit: contain; }
+.gh-head .name { font-size: 40px; font-weight: 700; }
+.gh-pub { font-size: 20px; color: #9198a1; border: 1.5px solid #3d444d; border-radius: 999px; padding: 3px 14px; }
+.gh-desc { padding: 10px 30px 18px; font-size: 27px; line-height: 1.38; color: #c9d1d9; }
+.gh-topics { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 30px 22px; }
+.gh-topics span { font-size: 21px; font-weight: 600; color: #4493f8; background: rgba(56, 139, 253, 0.12); padding: 6px 16px; border-radius: 999px; }
+.gh-stats { display: flex; gap: 14px; padding: 0 30px 28px; }
+.gh-btn { display: inline-flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 600; color: #e6edf3;
+  background: #21262d; border: 1.5px solid #3d444d; border-radius: 12px; padding: 10px 18px; }
+.gh-btn .n { background: #3d444d; border-radius: 999px; padding: 2px 12px; font-size: 21px; }
+.gh-btn svg { width: 26px; height: 26px; }
+.gh-btn.star { border-color: #e3b341; box-shadow: 0 0 0 4px rgba(227, 179, 65, 0.15); }
+
+/* ---------- Node graph ---------- */
+.node { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.node .dot { width: 150px; height: 150px; border-radius: 40px; display: grid; place-items: center;
+  background: linear-gradient(160deg, #1b2747, #0d1426); border: 2px solid rgba(160, 190, 255, 0.24); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55); }
+.node .dot svg, .node .dot img { width: 58%; height: 58%; object-fit: contain; }
+.node .lb { font-weight: 700; font-size: 28px; color: var(--text); white-space: nowrap; }
+svg.wires { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+
+/* ---------- Captions ---------- */
+.caps { position: absolute; left: 0; right: 0; top: 0; height: 1920px; pointer-events: none; }
+.cap { position: absolute; left: 70px; right: 70px; top: 1268px; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start;
+  gap: 0 18px; text-align: center; }
+.cap .w { position: relative; display: inline-block; font-family: "Inter", sans-serif; font-weight: 800; font-size: 60px; line-height: 1.18;
+  letter-spacing: -0.015em; color: #ffffff; opacity: 0.38;
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 26px rgba(0, 0, 0, 0.75), 0 2px 10px rgba(0, 0, 0, 0.9); }
+.cap .w.k { color: var(--capk, #22d3ee); }
+
+/* ---------- Header strip (persistent) ---------- */
+.handle { position: absolute; left: 0; right: 0; top: 74px; text-align: center; }
+
+
+
+.agent{width:170px;height:170px;border-radius:44px;display:grid;place-items:center;background:linear-gradient(160deg,#1d2b52,#0e1630);border:2px solid rgba(34,211,238,.45);box-shadow:0 22px 60px rgba(0,0,0,.55)}
+.agent svg{width:58%;height:58%}
+.igbox{width:900px;height:132px;border-radius:66px;background:#fff;display:flex;align-items:center;gap:24px;padding:0 26px;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.igbox .av{width:84px;height:84px;border-radius:50%;background:conic-gradient(from 210deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75);padding:5px}
+.igbox .av div{width:100%;height:100%;border-radius:50%;background:#1b2747}
+.igbox .tx{font:900 64px "Space Grotesk";color:#0b1222;letter-spacing:-.01em}
+.igbox .send{margin-left:auto;font:800 30px Inter;color:#0095f6}
+.follow{display:inline-flex;align-items:center;gap:16px;padding:24px 46px;border-radius:24px;background:#0095f6;color:#fff;font:800 40px Inter;box-shadow:0 24px 60px rgba(0,149,246,.35)}
+.follow svg{width:44px;height:44px}
+.step{width:290px;height:300px;border-radius:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+.step .si{width:120px;height:120px;border-radius:32px;display:grid;place-items:center;background:rgba(34,211,238,.12);border:1.5px solid rgba(34,211,238,.45)}
+.step .si svg{width:56%;height:56%}
+.step .st{font:800 34px Inter}
+.polaroid{background:#f4f1ea;padding:16px 16px 54px;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.polaroid img{display:block;object-fit:cover}
+.polaroid .pl{font:500 24px "JetBrains Mono";color:#3a3a3a;margin-top:12px}
+
+.ph{position:absolute;left:70px;top:150px;width:940px;display:flex;align-items:center;gap:26px}
+.ph .num{width:112px;height:112px;border-radius:30px;display:grid;place-items:center;font:700 64px "Space Grotesk";border:3px solid;background:rgba(10,15,28,.8)}
+.ph .nm{font:700 66px "Space Grotesk";letter-spacing:-.03em;line-height:1}
+.ph .sb{font:600 22px "JetBrains Mono";letter-spacing:.14em;text-transform:uppercase;margin-top:10px}
+.ph .dots{margin-left:auto;display:flex;gap:10px}
+.ph .dots i{width:18px;height:18px;border-radius:50%;background:rgba(160,190,255,.2);display:block}
+.pnl{border-radius:30px;background:linear-gradient(165deg,rgba(24,35,62,.94),rgba(11,17,32,.96));border:2px solid rgba(160,190,255,.16);box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06)}
+.lbl4{font:600 22px "JetBrains Mono";letter-spacing:.16em;text-transform:uppercase;color:#7f8db0}
+.cnt{position:absolute;right:60px;top:60px;display:flex;align-items:center;gap:12px;padding:12px 22px;border-radius:999px;background:rgba(14,21,38,.92);border:2px solid rgba(160,190,255,.22);font:700 26px "JetBrains Mono";color:#dbe5ff;z-index:6}
+.cnt b{font-weight:700}
+.chk{display:flex;align-items:center;gap:22px;padding:18px 26px;font:800 34px Inter;border-radius:22px}
+.chk .bx{width:50px;height:50px;border-radius:14px;border:3px solid rgba(160,190,255,.35);display:grid;place-items:center;flex:none}
+.chk .bx svg{width:36px;height:36px}
+.big{font-family:"Space Grotesk";font-weight:700;letter-spacing:-.045em;line-height:.9}
+.ex{position:absolute;padding:6px 14px;border-radius:10px;font:700 18px "JetBrains Mono";letter-spacing:.12em;text-transform:uppercase;color:#8b97b3;background:rgba(160,190,255,.08);border:1.5px solid rgba(160,190,255,.2)}
+.iso{transform:perspective(1600px) rotateX(48deg) rotateZ(-30deg);transform-style:preserve-3d}
+.blk{position:absolute;border-radius:22px;display:grid;place-items:center;font:800 30px Inter;color:#0b1222;box-shadow:0 18px 0 rgba(0,0,0,.35),0 34px 50px rgba(0,0,0,.45)}
+
+.trm{position:absolute;left:70px;top:150px;width:940px;height:132px;border-radius:24px;background:#0b111f;border:2px solid rgba(160,190,255,.18);box-shadow:0 24px 60px rgba(0,0,0,.5);z-index:5;overflow:hidden}
+.trm .bar{height:44px;display:flex;align-items:center;gap:10px;padding:0 20px;background:#111a2c;font:600 19px "JetBrains Mono";color:#7f8db0}
+.trm .bar img{width:24px;height:24px}
+.trm .ln{position:absolute;left:24px;right:24px;top:62px;font:600 30px "JetBrains Mono";color:#eef3ff;white-space:nowrap;overflow:hidden}
+.trm .ln b{color:#d97757}
+.rack{position:absolute;left:60px;top:1050px;width:960px;display:flex;justify-content:space-between;z-index:5}
+.rack .sl{width:66px;height:66px;border-radius:18px;background:rgba(14,21,38,.92);border:2px solid rgba(160,190,255,.14);display:grid;place-items:center}
+.rack .sl svg{width:58%;height:58%}
+.prob{position:absolute;left:70px;top:330px;width:940px;height:330px;border-radius:30px;background:linear-gradient(165deg,rgba(60,14,24,.92),rgba(24,8,14,.95));border:3px solid rgba(255,77,94,.55);box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 60px rgba(255,77,94,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.prob .pk{font:700 22px "JetBrains Mono";letter-spacing:.16em;color:#ff8f9a}
+.prob .pv{font:700 92px "Space Grotesk";letter-spacing:-.03em;color:#fff;line-height:1}
+.prob .pv svg{width:110px;height:110px}
+.prob .pt{font:700 36px Inter;color:#ffd0d5;max-width:820px}
+.sol{position:absolute;left:400px;top:570px;width:280px;height:280px;border-radius:72px;display:grid;place-items:center;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.sol svg{width:52%;height:52%}
+.pname{position:absolute;left:40px;width:1000px;top:870px;text-align:center}
+
+:root { --accent: #22d3ee; --capk: #fbbf24;  }
+</style>
+</head>
+<body class="theme-dark">
+<div id="root" data-composition-id="main" data-start="0" data-duration="139.750" data-width="1080" data-height="1920">
+  <div class="bg"><div class="bg-grid"></div><div class="bg-glow a"></div><div class="bg-glow b"></div><div class="bg-glow c"></div></div>
+<section id="s0" class="scene clip " data-start="0.000" data-duration="9.840" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs" id="s0-mon" style="left:170px;top:340px;width:740px;height:520px">
+      <div id="s0-scr" style="position:relative;width:740px;height:460px;border-radius:30px;background:#0f1a30;border:14px solid #1d2840;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.55)">
+        <div id="s0-app" style="opacity:0;position:absolute;left:190px;top:80px;width:330px;height:270px;border-radius:44px;background:linear-gradient(160deg,#38bdf8,#2563eb);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;box-shadow:0 24px 60px rgba(37,99,235,.45)"><div style="width:110px;height:110px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fff"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />
+  <path d="m9 15 2 2 4-4" />
+</svg>
+</div><div style="font:800 46px Inter;color:#fff">APP</div></div>
+        <div id="s0-off" style="position:absolute;inset:0;background:#02040a"></div></div>
+      <div style="width:200px;height:64px;margin:0 auto;background:#1d2840;clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)"></div></div>
+    <div class="abs" id="s0-sp" style="left:700px;top:360px;width:110px;height:110px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#fbbf24"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+  <path d="M20 2v4" />
+  <path d="M22 4h-4" />
+  <circle cx="4" cy="20" r="2" />
+</svg>
+</div>
+    <div class="abs" id="s0-pc" style="left:330px;top:900px"><div class="chip red" style="font-size:36px">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ffd0d5"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="3" rx="2" />
+  <line x1="8" x2="16" y1="21" y2="21" />
+  <line x1="12" x2="12" y1="17" y2="21" />
+</svg>
+só no seu computador</div></div>
+  </div></div></section>
+<section id="p1" class="scene clip " data-start="9.840" data-duration="6.800" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    
+    <div class="sol" id="p1-so" style="opacity:0;background:#38bdf8">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+  <line x1="6" x2="6.01" y1="6" y2="6" />
+  <line x1="6" x2="6.01" y1="18" y2="18" />
+</svg>
+</div>
+    <div class="pname" id="p1-nm"><div class="kicker" style="color:#fbbf24">peça 1 de 13</div><div class="display" style="font-size:104px;color:#fbbf24;margin-top:10px">SERVIDOR</div></div>
+  </div></div></section>
+<section id="p2" class="scene clip " data-start="16.640" data-duration="8.692" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p2-pb"><div class="pk">PROBLEMA</div><div class="pv"><span class="mono" style="font-size:.62em">http://203.0.113.47</span></div><div class="pt">o cliente precisa digitar um número enorme</div></div>
+    <div class="sol" id="p2-so" style="opacity:0;background:#60a5fa">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+  <path d="M2 12h20" />
+</svg>
+</div>
+    <div class="pname" id="p2-nm"><div class="kicker" style="color:#fbbf24">peça 2 de 13</div><div class="display" style="font-size:104px;color:#fbbf24;margin-top:10px">DOMÍNIO</div></div>
+  </div></div></section>
+<section id="p3" class="scene clip " data-start="25.332" data-duration="9.600" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p3-pb"><div class="pk">PROBLEMA</div><div class="pv">14h <span style="color:#ff4d5e">✕</span></div><div class="pt">recarregou a página e o horário sumiu</div></div>
+    <div class="sol" id="p3-so" style="opacity:0;background:#fbbf24">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" />
+</svg>
+</div>
+    <div class="pname" id="p3-nm"><div class="kicker" style="color:#fbbf24">peça 3 de 13</div><div class="display" style="font-size:104px;color:#fbbf24;margin-top:10px">BANCO DE DADOS</div></div>
+  </div></div></section>
+<section id="p4" class="scene clip " data-start="34.932" data-duration="8.880" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p4-pb"><div class="pk">PROBLEMA</div><div class="pv">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ff4d5e"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" />
+</svg>
+</div><div class="pt">qualquer pessoa entra e mexe na agenda</div></div>
+    <div class="sol" id="p4-so" style="opacity:0;background:#a78bfa">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+  <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+</svg>
+</div>
+    <div class="pname" id="p4-nm"><div class="kicker" style="color:#fbbf24">peça 4 de 13</div><div class="display" style="font-size:104px;color:#fbbf24;margin-top:10px">LOGIN</div></div>
+  </div></div></section>
+<section id="p5" class="scene clip " data-start="43.812" data-duration="10.438" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p5-pb"><div class="pk">PROBLEMA</div><div class="pv">A <span style="color:#ff4d5e">→</span> agenda do B</div><div class="pt">o cliente A vê a agenda do cliente B</div></div>
+    <div class="sol" id="p5-so" style="opacity:0;background:#34d399">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg>
+</div>
+    <div class="pname" id="p5-nm"><div class="kicker" style="color:#fbbf24">peça 5 de 13</div><div class="display" style="font-size:104px;color:#fbbf24;margin-top:10px">PERMISSÕES</div></div>
+  </div></div></section>
+<section id="p6" class="scene clip " data-start="54.250" data-duration="11.360" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p6-pb"><div class="pk">PROBLEMA</div><div class="pv">tela <span style="color:#ff4d5e">⟶</span> banco</div><div class="pt">quem descobrir o caminho apaga tudo</div></div>
+    <div class="sol" id="p6-so" style="opacity:0;background:#22d3ee">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1" />
+  <path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1" />
+</svg>
+</div>
+    <div class="pname" id="p6-nm"><div class="kicker" style="color:#fbbf24">peça 6 de 13</div><div class="display" style="font-size:104px;color:#fbbf24;margin-top:10px">API</div></div>
+  </div></div></section>
+<section id="p7" class="scene clip " data-start="65.610" data-duration="8.567" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p7-pb"><div class="pk">PROBLEMA</div><div class="pv"><span style="color:#ff4d5e">PROIBIDO</span></div><div class="pt">guardar o cartão do cliente</div></div>
+    <div class="sol" id="p7-so" style="opacity:0;background:#f472b6">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="5" rx="2" />
+  <line x1="2" x2="22" y1="10" y2="10" />
+  <path d="M6 14h2" />
+</svg>
+</div>
+    <div class="pname" id="p7-nm"><div class="kicker" style="color:#fbbf24">peça 7 de 13</div><div class="display" style="font-size:74px;color:#fbbf24;margin-top:10px">GATEWAY DE PAGAMENTO</div></div>
+  </div></div></section>
+<section id="p8" class="scene clip " data-start="74.177" data-duration="10.080" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p8-pb"><div class="pk">PROBLEMA</div><div class="pv">pagou<span style="color:#ff4d5e">?</span></div><div class="pt">o pagamento acontece lá fora</div></div>
+    <div class="sol" id="p8-so" style="opacity:0;background:#fb923c">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+  <path d="M22 8c0-2.3-.8-4.3-2-6" />
+  <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" />
+  <path d="M4 2C2.8 3.7 2 5.7 2 8" />
+</svg>
+</div>
+    <div class="pname" id="p8-nm"><div class="kicker" style="color:#fbbf24">peça 8 de 13</div><div class="display" style="font-size:104px;color:#fbbf24;margin-top:10px">WEBHOOK</div></div>
+  </div></div></section>
+<section id="p9" class="scene clip " data-start="84.257" data-duration="8.673" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p9-pb"><div class="pk">PROBLEMA</div><div class="pv">cobrar na mão <span style="color:#ff4d5e">✕</span></div><div class="pt">todo mês, um por um, não dá</div></div>
+    <div class="sol" id="p9-so" style="opacity:0;background:#4ade80">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 10v4h4" />
+  <path d="m11 14 1.535-1.605a5 5 0 018 1.5" />
+  <path d="M16 2v3" />
+  <path d="m21 18-1.535 1.605a5 5 0 01-8-1.5" />
+  <path d="M21 22v-4h-4" />
+  <path d="M21 8.517V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h3.517" />
+  <path d="M3 9h4" />
+  <path d="M8 2v3" />
+</svg>
+</div>
+    <div class="pname" id="p9-nm"><div class="kicker" style="color:#fbbf24">peça 9 de 13</div><div class="display" style="font-size:104px;color:#fbbf24;margin-top:10px">ASSINATURA</div></div>
+  </div></div></section>
+<section id="p10" class="scene clip " data-start="92.930" data-duration="8.320" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p10-pb"><div class="pk">PROBLEMA</div><div class="pv">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ff4d5e"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+  <path d="M17 17H4a1 1 0 0 1-.74-1.673C4.59 13.956 6 12.499 6 8a6 6 0 0 1 .258-1.742" />
+  <path d="m2 2 20 20" />
+  <path d="M8.668 3.01A6 6 0 0 1 18 8c0 2.687.77 4.653 1.707 6.05" />
+</svg>
+</div><div class="pt">senha esquecida, cartão vencido… ninguém avisa</div></div>
+    <div class="sol" id="p10-so" style="opacity:0;background:#93c5fd">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+  <rect x="2" y="4" width="20" height="16" rx="2" />
+</svg>
+</div>
+    <div class="pname" id="p10-nm"><div class="kicker" style="color:#fbbf24">peça 10 de 13</div><div class="display" style="font-size:74px;color:#fbbf24;margin-top:10px">E-MAIL TRANSACIONAL</div></div>
+  </div></div></section>
+<section id="p11" class="scene clip " data-start="101.250" data-duration="13.082" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p11-pb"><div class="pk">PROBLEMA</div><div class="pv"><span class="mono" style="font-size:.6em">STRIPE_KEY=sk_live_••••</span></div><div class="pt">a chave subiu pro GitHub e um robô achou</div></div>
+    <div class="sol" id="p11-so" style="opacity:0;background:#facc15">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="18" x="3" y="3" rx="2" />
+  <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+  <path d="m7.9 7.9 2.7 2.7" />
+  <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+  <path d="m13.4 10.6 2.7-2.7" />
+  <circle cx="7.5" cy="16.5" r=".5" fill="currentColor" />
+  <path d="m7.9 16.1 2.7-2.7" />
+  <circle cx="16.5" cy="16.5" r=".5" fill="currentColor" />
+  <path d="m13.4 13.4 2.7 2.7" />
+  <circle cx="12" cy="12" r="2" />
+</svg>
+</div>
+    <div class="pname" id="p11-nm"><div class="kicker" style="color:#fbbf24">peça 11 de 13</div><div class="display" style="font-size:74px;color:#fbbf24;margin-top:10px">VARIÁVEIS DE AMBIENTE</div></div>
+  </div></div></section>
+<section id="p12" class="scene clip " data-start="114.332" data-duration="10.480" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p12-pb"><div class="pk">PROBLEMA</div><div class="pv">03:00 <span style="color:#ff4d5e">●</span></div><div class="pt">o servidor caiu e ninguém viu</div></div>
+    <div class="sol" id="p12-so" style="opacity:0;background:#f87171">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 18v-6a5 5 0 1 1 10 0v6" />
+  <path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z" />
+  <path d="M21 12h1" />
+  <path d="M18.5 4.5 18 5" />
+  <path d="M2 12h1" />
+  <path d="M12 2v1" />
+  <path d="m4.929 4.929.707.707" />
+  <path d="M12 12v6" />
+</svg>
+</div>
+    <div class="pname" id="p12-nm"><div class="kicker" style="color:#fbbf24">peça 12 de 13</div><div class="display" style="font-size:104px;color:#fbbf24;margin-top:10px">MONITORAMENTO</div></div>
+  </div></div></section>
+<section id="p13" class="scene clip " data-start="124.812" data-duration="8.000" data-track-index="2"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="prob" id="p13-pb"><div class="pk">PROBLEMA</div><div class="pv">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ff4d5e"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 11v6" />
+  <path d="M14 11v6" />
+  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+  <path d="M3 6h18" />
+  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+</svg>
+</div><div class="pt">um dia você apaga o banco inteiro</div></div>
+    <div class="sol" id="p13-so" style="opacity:0;background:#2dd4bf">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#06101c"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="5" x="2" y="3" rx="1" />
+  <path d="M4 8v11a2 2 0 0 0 2 2h2" />
+  <path d="M20 8v11a2 2 0 0 1-2 2h-2" />
+  <path d="m9 15 3-3 3 3" />
+  <path d="M12 12v9" />
+</svg>
+</div>
+    <div class="pname" id="p13-nm"><div class="kicker" style="color:#fbbf24">peça 13 de 13</div><div class="display" style="font-size:104px;color:#fbbf24;margin-top:10px">BACKUP</div></div>
+  </div></div></section>
+<section id="s14" class="scene clip " data-start="132.812" data-duration="6.938" data-track-index="1"><div class="inner"><div class="cam" style="position:absolute;inset:0">
+    <div class="abs center-x tc" id="s14-h" style="top:160px;width:1000px"><div class="kicker" style="color:#fbbf24">parabéns!</div><div class="display" style="font-size:96px;margin-top:12px">VOCÊ CONSTRUIU</div><div class="display" style="font-size:150px;color:#22d3ee">UM SaaS</div></div>
+    <div class="abs center-x tc" id="s14-q" style="top:600px;width:1000px"><div class="kicker">comenta aqui embaixo</div><div class="h2" style="margin-top:14px">qual peça você quer ver <span style="color:#fbbf24">desmontada?</span></div></div>
+    <div class="abs igbox" id="s14-box" style="left:90px;top:840px"><div class="av"><div></div></div><div class="tx" id="s14-tx" data-text="webhook 👀"></div><div class="send">Publicar</div></div>
+    <div class="abs" id="s14-dn" style="left:470px;top:1000px;width:140px;height:140px;color:#22d3ee">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m7 6 5 5 5-5" />
+  <path d="m7 13 5 5 5-5" />
+</svg>
+</div>
+  </div></div></section>
+  
+<div class="trm" id="trm"><div class="bar"><img src="assets/logos/claude-icon.svg"/>Claude Code<span style="margin-left:auto;font-size:16px">exemplo</span></div>
+  <div class="ln" id="rq0"><b>&gt;</b> <span id="rqt0" data-text="faz um app de agendamento"></span></div><div class="ln" id="rq1"><b>&gt;</b> <span id="rqt1" data-text="coloca meu app num servidor ligado 24h"></span></div><div class="ln" id="rq2"><b>&gt;</b> <span id="rqt2" data-text="liga o domínio agenda.com.br no servidor"></span></div><div class="ln" id="rq3"><b>&gt;</b> <span id="rqt3" data-text="salva os horários num banco de dados"></span></div><div class="ln" id="rq4"><b>&gt;</b> <span id="rqt4" data-text="cria login com e-mail e senha"></span></div><div class="ln" id="rq5"><b>&gt;</b> <span id="rqt5" data-text="cada usuário só vê os próprios horários"></span></div><div class="ln" id="rq6"><b>&gt;</b> <span id="rqt6" data-text="cria uma API entre a tela e o banco"></span></div><div class="ln" id="rq7"><b>&gt;</b> <span id="rqt7" data-text="integra um gateway de pagamento"></span></div><div class="ln" id="rq8"><b>&gt;</b> <span id="rqt8" data-text="avisa meu servidor quando o cliente pagar"></span></div><div class="ln" id="rq9"><b>&gt;</b> <span id="rqt9" data-text="cobra sozinho todo mês no mesmo dia"></span></div><div class="ln" id="rq10"><b>&gt;</b> <span id="rqt10" data-text="manda e-mail automático pro cliente"></span></div><div class="ln" id="rq11"><b>&gt;</b> <span id="rqt11" data-text="guarda as chaves fora do código (.env)"></span></div><div class="ln" id="rq12"><b>&gt;</b> <span id="rqt12" data-text="me avisa no celular se o servidor cair"></span></div><div class="ln" id="rq13"><b>&gt;</b> <span id="rqt13" data-text="faz uma cópia do banco toda noite"></span></div></div>
+<div class="cnt" id="cnt" style="top:70px">PEÇAS <b style="color:#fbbf24"><span id="cn">0</span>/13</b></div>
+<div class="rack" id="rack"><div class="sl" id="sl0">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+  <line x1="6" x2="6.01" y1="6" y2="6" />
+  <line x1="6" x2="6.01" y1="18" y2="18" />
+</svg>
+</div><div class="sl" id="sl1">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+  <path d="M2 12h20" />
+</svg>
+</div><div class="sl" id="sl2">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" />
+</svg>
+</div><div class="sl" id="sl3">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+  <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+</svg>
+</div><div class="sl" id="sl4">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg>
+</div><div class="sl" id="sl5">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1" />
+  <path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1" />
+</svg>
+</div><div class="sl" id="sl6">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="5" rx="2" />
+  <line x1="2" x2="22" y1="10" y2="10" />
+  <path d="M6 14h2" />
+</svg>
+</div><div class="sl" id="sl7">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+  <path d="M22 8c0-2.3-.8-4.3-2-6" />
+  <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" />
+  <path d="M4 2C2.8 3.7 2 5.7 2 8" />
+</svg>
+</div><div class="sl" id="sl8">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 10v4h4" />
+  <path d="m11 14 1.535-1.605a5 5 0 018 1.5" />
+  <path d="M16 2v3" />
+  <path d="m21 18-1.535 1.605a5 5 0 01-8-1.5" />
+  <path d="M21 22v-4h-4" />
+  <path d="M21 8.517V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h3.517" />
+  <path d="M3 9h4" />
+  <path d="M8 2v3" />
+</svg>
+</div><div class="sl" id="sl9">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+  <rect x="2" y="4" width="20" height="16" rx="2" />
+</svg>
+</div><div class="sl" id="sl10">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="18" x="3" y="3" rx="2" />
+  <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+  <path d="m7.9 7.9 2.7 2.7" />
+  <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+  <path d="m13.4 10.6 2.7-2.7" />
+  <circle cx="7.5" cy="16.5" r=".5" fill="currentColor" />
+  <path d="m7.9 16.1 2.7-2.7" />
+  <circle cx="16.5" cy="16.5" r=".5" fill="currentColor" />
+  <path d="m13.4 13.4 2.7 2.7" />
+  <circle cx="12" cy="12" r="2" />
+</svg>
+</div><div class="sl" id="sl11">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 18v-6a5 5 0 1 1 10 0v6" />
+  <path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z" />
+  <path d="M21 12h1" />
+  <path d="M18.5 4.5 18 5" />
+  <path d="M2 12h1" />
+  <path d="M12 2v1" />
+  <path d="m4.929 4.929.707.707" />
+  <path d="M12 12v6" />
+</svg>
+</div><div class="sl" id="sl12">
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#3d4a66"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="5" x="2" y="3" rx="1" />
+  <path d="M4 8v11a2 2 0 0 0 2 2h2" />
+  <path d="M20 8v11a2 2 0 0 1-2 2h-2" />
+  <path d="m9 15 3-3 3 3" />
+  <path d="M12 12v9" />
+</svg>
+</div></div>
+  <div class="vignette"></div>
+  
+  
+  <div class="caps">
+<div class="cap clip" data-start="-0.040" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="0.000">Você</span><span class="w" data-s="0.400">pede</span><span class="w" data-s="0.720">para</span><span class="w" data-s="0.800">o</span></div></div>
+<div class="cap clip" data-start="0.840" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="0.880">Claude</span></div></div>
+<div class="cap clip" data-start="1.480" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="1.520">faz</span><span class="w" data-s="1.840">um</span><span class="w" data-s="2.080">app</span><span class="w" data-s="2.400">de</span></div></div>
+<div class="cap clip" data-start="2.440" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="2.480">agendamento.</span></div></div>
+<div class="cap clip" data-start="3.560" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="3.600">Ele</span><span class="w" data-s="3.920">faz</span></div></div>
+<div class="cap clip" data-start="4.520" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="4.560">lindo.</span></div></div>
+<div class="cap clip" data-start="5.240" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="5.280">E</span><span class="w" data-s="5.440">ele</span><span class="w" data-s="5.680">só</span><span class="w" data-s="6.000">existe</span></div></div>
+<div class="cap clip" data-start="6.360" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="6.400">no</span><span class="w" data-s="6.560">seu</span><span class="w" data-s="6.800">computador.</span></div></div>
+<div class="cap clip" data-start="7.480" data-duration="1.280" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="7.520">Desligou</span><span class="w" data-s="8.160">o</span><span class="w" data-s="8.240">computador</span></div></div>
+<div class="cap clip" data-start="8.760" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="8.800">o</span><span class="w" data-s="8.960">app</span><span class="w k" data-s="9.280">sumiu.</span></div></div>
+<div class="cap clip" data-start="9.880" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="9.920">Então</span><span class="w" data-s="10.240">você</span><span class="w" data-s="10.400">pede</span><span class="w" data-s="10.720">para</span></div></div>
+<div class="cap clip" data-start="10.760" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="10.800">o</span><span class="w" data-s="10.880">Claude</span><span class="w" data-s="11.360">colocar</span><span class="w" data-s="11.680">ele</span></div></div>
+<div class="cap clip" data-start="11.880" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="11.920">num</span><span class="w" data-s="12.080">computador</span><span class="w" data-s="12.560">que</span><span class="w" data-s="12.640">fica</span></div></div>
+<div class="cap clip" data-start="12.920" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="12.960">ligado</span><span class="w" data-s="13.360">o</span><span class="w" data-s="13.440">dia</span><span class="w" data-s="13.760">inteiro</span></div></div>
+<div class="cap clip" data-start="14.120" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="14.160">na</span><span class="w" data-s="14.400">internet.</span></div></div>
+<div class="cap clip" data-start="15.080" data-duration="1.600" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="15.120">Esse</span><span class="w" data-s="15.440">é</span><span class="w" data-s="15.680">o</span><span class="w k" data-s="15.840">servidor.</span></div></div>
+<div class="cap clip" data-start="16.680" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="16.720">Mas</span><span class="w" data-s="17.120">para</span><span class="w" data-s="17.360">entrar</span></div></div>
+<div class="cap clip" data-start="17.880" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="17.920">o</span><span class="w" data-s="18.000">cliente</span><span class="w" data-s="18.480">precisa</span></div></div>
+<div class="cap clip" data-start="18.760" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="18.800">digitar</span><span class="w" data-s="19.280">um</span><span class="w" data-s="19.440">número</span></div></div>
+<div class="cap clip" data-start="19.880" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="19.920">enorme.</span></div></div>
+<div class="cap clip" data-start="20.600" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="20.640">Então</span><span class="w" data-s="20.960">você</span><span class="w" data-s="21.120">compra</span><span class="w" data-s="21.600">um</span></div></div>
+<div class="cap clip" data-start="21.640" data-duration="1.280" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="21.680">nome</span><span class="w" data-s="21.920">fácil</span><span class="w" data-s="22.320">que</span><span class="w" data-s="22.560">aponta</span></div></div>
+<div class="cap clip" data-start="22.920" data-duration="1.012" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="22.960">para</span><span class="w" data-s="23.120">o</span><span class="w k" data-s="23.200">servidor.</span></div></div>
+<div class="cap clip" data-start="23.932" data-duration="1.440" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="23.972">Esse</span><span class="w" data-s="24.292">é</span><span class="w" data-s="24.452">o</span><span class="w k" data-s="24.612">domínio.</span></div></div>
+<div class="cap clip" data-start="25.372" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="25.412">Mas</span><span class="w" data-s="25.572">o</span><span class="w" data-s="25.652">cliente</span><span class="w" data-s="26.053">marca</span></div></div>
+<div class="cap clip" data-start="26.332" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="26.372">um</span><span class="w" data-s="26.533">horário</span></div></div>
+<div class="cap clip" data-start="26.972" data-duration="1.360" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="27.012">recarrega</span><span class="w" data-s="27.732">a</span><span class="w" data-s="27.812">página</span><span class="w" data-s="28.213">e</span></div></div>
+<div class="cap clip" data-start="28.332" data-duration="1.600" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="28.372">o</span><span class="w" data-s="28.452">horário</span><span class="w k" data-s="28.852">sumiu.</span></div></div>
+<div class="cap clip" data-start="29.932" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="29.972">Então</span><span class="w" data-s="30.293">você</span><span class="w" data-s="30.532">pede</span><span class="w" data-s="30.852">para</span></div></div>
+<div class="cap clip" data-start="30.892" data-duration="1.280" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="30.932">o</span><span class="w" data-s="31.012">Claude</span><span class="w" data-s="31.492">guardar</span><span class="w" data-s="31.972">tudo</span></div></div>
+<div class="cap clip" data-start="32.172" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="32.212">num</span><span class="w" data-s="32.452">lugar</span><span class="w" data-s="32.693">que</span><span class="w" data-s="32.852">não</span></div></div>
+<div class="cap clip" data-start="33.052" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="33.092">apaga.</span></div></div>
+<div class="cap clip" data-start="33.932" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="33.972">Esse</span><span class="w" data-s="34.292">é</span><span class="w" data-s="34.452">o</span><span class="w k" data-s="34.613">banco</span></div></div>
+<div class="cap clip" data-start="34.972" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="35.012">de</span><span class="w k" data-s="35.172">dados.</span></div></div>
+<div class="cap clip" data-start="35.772" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="35.812">Mas</span><span class="w" data-s="36.052">agora</span><span class="w" data-s="36.532">qualquer</span></div></div>
+<div class="cap clip" data-start="36.972" data-duration="1.360" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="37.012">pessoa</span><span class="w" data-s="37.332">entra</span><span class="w" data-s="37.733">e</span><span class="w" data-s="37.892">mexe</span></div></div>
+<div class="cap clip" data-start="38.332" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="38.372">na</span><span class="w" data-s="38.532">agenda.</span></div></div>
+<div class="cap clip" data-start="39.132" data-duration="1.440" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="39.172">Então</span><span class="w" data-s="39.492">cada</span><span class="w" data-s="39.812">cliente</span><span class="w" data-s="40.212">cria</span></div></div>
+<div class="cap clip" data-start="40.572" data-duration="1.121" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="40.612">uma</span><span class="w" data-s="40.772">conta</span><span class="w" data-s="41.092">com</span><span class="w" data-s="41.253">e-mail</span></div></div>
+<div class="cap clip" data-start="41.693" data-duration="0.799" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="41.733">e</span><span class="w" data-s="41.892">senha.</span></div></div>
+<div class="cap clip" data-start="42.492" data-duration="1.360" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="42.532">Esse</span><span class="w" data-s="42.852">é</span><span class="w" data-s="43.012">o</span><span class="w k" data-s="43.172">login.</span></div></div>
+<div class="cap clip" data-start="43.852" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="43.892">Mas</span><span class="w" data-s="44.132">o</span><span class="w" data-s="44.212">cliente</span><span class="w" data-s="44.612">A</span></div></div>
+<div class="cap clip" data-start="44.892" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="44.932">entra</span><span class="w" data-s="45.333">e</span><span class="w" data-s="45.413">vê</span><span class="w" data-s="45.733">a</span></div></div>
+<div class="cap clip" data-start="45.772" data-duration="1.238" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="45.812">agenda</span><span class="w" data-s="46.132">do</span><span class="w" data-s="46.292">cliente</span><span class="w" data-s="46.612">B.</span></div></div>
+<div class="cap clip" data-start="47.010" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="47.050">Então</span><span class="w" data-s="47.450">você</span><span class="w" data-s="47.690">pede</span><span class="w" data-s="48.010">para</span></div></div>
+<div class="cap clip" data-start="48.050" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="48.090">o</span><span class="w" data-s="48.170">Claude</span><span class="w" data-s="48.650">marcar</span><span class="w" data-s="48.970">o</span></div></div>
+<div class="cap clip" data-start="49.090" data-duration="1.280" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="49.130">dono</span><span class="w" data-s="49.530">de</span><span class="w" data-s="49.610">cada</span><span class="w" data-s="49.930">horário</span></div></div>
+<div class="cap clip" data-start="50.370" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="50.410">e</span><span class="w" data-s="50.650">cada</span><span class="w" data-s="50.970">um</span><span class="w" data-s="51.130">só</span></div></div>
+<div class="cap clip" data-start="51.410" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="51.450">vê</span><span class="w" data-s="51.690">o</span><span class="w" data-s="51.770">que</span><span class="w" data-s="51.930">é</span></div></div>
+<div class="cap clip" data-start="52.050" data-duration="0.480" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="52.090">seu.</span></div></div>
+<div class="cap clip" data-start="52.530" data-duration="1.760" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="52.570">Essas</span><span class="w" data-s="52.970">são</span><span class="w" data-s="53.210">as</span><span class="w k" data-s="53.450">permissões.</span></div></div>
+<div class="cap clip" data-start="54.290" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="54.330">Mas</span><span class="w" data-s="54.570">a</span><span class="w" data-s="54.730">tela</span><span class="w" data-s="55.130">fala</span></div></div>
+<div class="cap clip" data-start="55.490" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="55.530">direto</span><span class="w" data-s="55.930">com</span><span class="w" data-s="56.090">o</span><span class="w k" data-s="56.170">banco</span></div></div>
+<div class="cap clip" data-start="56.530" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="56.570">e</span><span class="w" data-s="56.810">quem</span><span class="w" data-s="57.050">descobrir</span><span class="w" data-s="57.530">o</span></div></div>
+<div class="cap clip" data-start="57.570" data-duration="1.600" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="57.610">caminho</span><span class="w" data-s="58.090">apaga</span><span class="w" data-s="58.650">tudo.</span></div></div>
+<div class="cap clip" data-start="59.170" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="59.210">Então</span><span class="w" data-s="59.450">você</span><span class="w" data-s="59.690">põe</span><span class="w" data-s="60.010">uma</span></div></div>
+<div class="cap clip" data-start="60.130" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="60.170">peça</span><span class="w" data-s="60.490">no</span><span class="w" data-s="60.650">meio</span><span class="w" data-s="61.050">que</span></div></div>
+<div class="cap clip" data-start="61.170" data-duration="1.360" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="61.210">confere</span><span class="w" data-s="61.770">cada</span><span class="w" data-s="62.010">pedido</span></div></div>
+<div class="cap clip" data-start="62.530" data-duration="1.520" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="62.570">antes</span><span class="w" data-s="62.810">de</span><span class="w" data-s="62.970">deixar</span><span class="w" data-s="63.450">passar.</span></div></div>
+<div class="cap clip" data-start="64.050" data-duration="1.600" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="64.090">Essa</span><span class="w" data-s="64.410">é</span><span class="w" data-s="64.570">a</span><span class="w k" data-s="64.810">API.</span></div></div>
+<div class="cap clip" data-start="65.650" data-duration="1.360" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="65.690">Agora</span><span class="w" data-s="66.010">você</span><span class="w" data-s="66.250">quer</span><span class="w" data-s="66.490">cobrar</span></div></div>
+<div class="cap clip" data-start="67.010" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="67.050">mas</span><span class="w" data-s="67.290">guardar</span><span class="w" data-s="67.690">o</span><span class="w" data-s="67.770">cartão</span></div></div>
+<div class="cap clip" data-start="67.970" data-duration="1.607" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="68.010">do</span><span class="w" data-s="68.090">cliente</span><span class="w" data-s="68.410">é</span><span class="w k" data-s="68.897">proibido.</span></div></div>
+<div class="cap clip" data-start="69.577" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="69.617">Então</span><span class="w" data-s="69.937">você</span><span class="w" data-s="70.098">entrega</span><span class="w" data-s="70.577">o</span></div></div>
+<div class="cap clip" data-start="70.617" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="70.657">cartão</span><span class="w" data-s="71.057">para</span><span class="w" data-s="71.218">uma</span><span class="w" data-s="71.377">empresa</span></div></div>
+<div class="cap clip" data-start="71.737" data-duration="1.280" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="71.777">que</span><span class="w" data-s="71.937">só</span><span class="w" data-s="72.177">faz</span><span class="w" data-s="72.497">isso.</span></div></div>
+<div class="cap clip" data-start="73.017" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="73.057">Esse</span><span class="w" data-s="73.297">é</span><span class="w" data-s="73.457">o</span><span class="w k" data-s="73.618">gateway</span></div></div>
+<div class="cap clip" data-start="74.217" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="74.257">de</span><span class="w k" data-s="74.337">pagamento.</span></div></div>
+<div class="cap clip" data-start="75.097" data-duration="1.360" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="75.137">Mas</span><span class="w" data-s="75.297">o</span><span class="w k" data-s="75.457">pagamento</span><span class="w" data-s="75.937">acontece</span></div></div>
+<div class="cap clip" data-start="76.457" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="76.497">lá</span><span class="w" data-s="76.657">fora.</span></div></div>
+<div class="cap clip" data-start="77.177" data-duration="0.321" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="77.217">Então</span></div></div>
+<div class="cap clip" data-start="77.498" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="77.538">como</span><span class="w" data-s="77.777">o</span><span class="w" data-s="77.857">seu</span><span class="w" data-s="78.177">app</span></div></div>
+<div class="cap clip" data-start="78.458" data-duration="0.879" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="78.498">sabe</span><span class="w" data-s="78.737">que</span><span class="w" data-s="78.897">o</span><span class="w" data-s="78.977">cliente</span></div></div>
+<div class="cap clip" data-start="79.337" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="79.377">pagou?</span></div></div>
+<div class="cap clip" data-start="79.897" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="79.937">O</span><span class="w k" data-s="80.097">Gateway</span><span class="w" data-s="80.737">manda</span><span class="w" data-s="81.057">um</span></div></div>
+<div class="cap clip" data-start="81.097" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="81.137">aviso</span><span class="w" data-s="81.618">para</span><span class="w" data-s="81.698">o</span><span class="w" data-s="81.777">seu</span></div></div>
+<div class="cap clip" data-start="81.897" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="81.937">servidor.</span></div></div>
+<div class="cap clip" data-start="82.697" data-duration="1.600" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="82.737">Esse</span><span class="w" data-s="83.057">é</span><span class="w" data-s="83.137">o</span><span class="w k" data-s="83.297">webhook.</span></div></div>
+<div class="cap clip" data-start="84.297" data-duration="1.440" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="84.337">Mas</span><span class="w" data-s="84.577">cobrar</span><span class="w" data-s="85.057">todo</span><span class="w" data-s="85.377">mês</span></div></div>
+<div class="cap clip" data-start="85.737" data-duration="1.280" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="85.777">na</span><span class="w" data-s="85.937">mão</span><span class="w" data-s="86.338">não</span><span class="w" data-s="86.578">dá.</span></div></div>
+<div class="cap clip" data-start="87.017" data-duration="0.800" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="87.057">Então</span><span class="w" data-s="87.297">você</span><span class="w" data-s="87.457">pede</span><span class="w" data-s="87.777">para</span></div></div>
+<div class="cap clip" data-start="87.817" data-duration="1.680" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="87.857">o</span><span class="w" data-s="87.937">Claude</span><span class="w" data-s="88.498">cobrar</span><span class="w" data-s="88.897">sozinho</span></div></div>
+<div class="cap clip" data-start="89.497" data-duration="0.721" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="89.537">todo</span><span class="w" data-s="89.857">mês</span></div></div>
+<div class="cap clip" data-start="90.218" data-duration="1.152" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="90.258">no</span><span class="w" data-s="90.418">mesmo</span><span class="w" data-s="90.737">dia.</span></div></div>
+<div class="cap clip" data-start="91.370" data-duration="1.600" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="91.410">Essa</span><span class="w" data-s="91.810">é</span><span class="w" data-s="91.970">a</span><span class="w k" data-s="92.130">assinatura.</span></div></div>
+<div class="cap clip" data-start="92.970" data-duration="1.280" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="93.010">Mas</span><span class="w" data-s="93.250">o</span><span class="w" data-s="93.330">cliente</span><span class="w" data-s="93.730">esqueceu</span></div></div>
+<div class="cap clip" data-start="94.250" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="94.290">a</span><span class="w" data-s="94.370">senha</span><span class="w" data-s="94.850">e</span><span class="w" data-s="94.930">o</span></div></div>
+<div class="cap clip" data-start="94.970" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="95.010">cartão</span><span class="w" data-s="95.330">dele</span><span class="w" data-s="95.570">venceu</span></div></div>
+<div class="cap clip" data-start="96.170" data-duration="1.520" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="96.210">e</span><span class="w" data-s="96.370">ninguém</span><span class="w" data-s="96.690">avisa</span><span class="w" data-s="97.250">ninguém.</span></div></div>
+<div class="cap clip" data-start="97.690" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="97.730">Então</span><span class="w" data-s="97.970">o</span><span class="w" data-s="98.130">seu</span><span class="w" data-s="98.370">app</span></div></div>
+<div class="cap clip" data-start="98.650" data-duration="1.520" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="98.690">manda</span><span class="w" data-s="99.010">e-mail</span><span class="w" data-s="99.490">sozinho.</span></div></div>
+<div class="cap clip" data-start="100.170" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="100.210">Esse</span><span class="w" data-s="100.530">é</span><span class="w" data-s="100.690">o</span><span class="w" data-s="100.850">e-mail</span></div></div>
+<div class="cap clip" data-start="101.290" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="101.330">transacional.</span></div></div>
+<div class="cap clip" data-start="102.330" data-duration="0.880" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="102.370">Mas</span><span class="w" data-s="102.530">a</span><span class="w" data-s="102.690">chave</span><span class="w" data-s="103.090">do</span></div></div>
+<div class="cap clip" data-start="103.210" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w k" data-s="103.250">pagamento</span><span class="w" data-s="103.730">está</span><span class="w" data-s="103.970">escrita</span></div></div>
+<div class="cap clip" data-start="104.410" data-duration="0.640" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="104.450">no</span><span class="w" data-s="104.610">código.</span></div></div>
+<div class="cap clip" data-start="105.050" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="105.090">Subiu</span><span class="w" data-s="105.490">para</span><span class="w" data-s="105.570">o</span><span class="w" data-s="105.650">GitHub</span></div></div>
+<div class="cap clip" data-start="106.250" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="106.290">e</span><span class="w" data-s="106.450">um</span><span class="w" data-s="106.530">robô</span><span class="w" data-s="106.930">achou</span></div></div>
+<div class="cap clip" data-start="107.290" data-duration="1.360" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="107.330">em</span><span class="w" data-s="107.490">minutos.</span></div></div>
+<div class="cap clip" data-start="108.650" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="108.690">Então</span><span class="w" data-s="109.010">você</span><span class="w" data-s="109.330">guarda</span><span class="w" data-s="109.810">as</span></div></div>
+<div class="cap clip" data-start="109.850" data-duration="1.440" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="109.890">chaves</span><span class="w" data-s="110.370">fora</span><span class="w" data-s="110.690">do</span><span class="w" data-s="110.850">código</span></div></div>
+<div class="cap clip" data-start="111.290" data-duration="1.642" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="111.330">num</span><span class="w" data-s="111.570">cofre</span><span class="w" data-s="112.050">do</span><span class="w k" data-s="112.130">servidor.</span></div></div>
+<div class="cap clip" data-start="112.932" data-duration="1.440" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="112.972">Essas</span><span class="w" data-s="113.452">são</span><span class="w" data-s="113.612">as</span><span class="w k" data-s="113.772">variáveis</span></div></div>
+<div class="cap clip" data-start="114.372" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="114.412">de</span><span class="w k" data-s="114.572">ambiente.</span></div></div>
+<div class="cap clip" data-start="115.332" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="115.372">Mas</span><span class="w" data-s="115.533">o</span><span class="w k" data-s="115.692">servidor</span><span class="w" data-s="116.092">caiu</span></div></div>
+<div class="cap clip" data-start="116.452" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="116.492">às</span><span class="w" data-s="116.652">3</span><span class="w" data-s="116.972">da</span><span class="w" data-s="117.132">manhã</span></div></div>
+<div class="cap clip" data-start="117.492" data-duration="1.201" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="117.532">e</span><span class="w" data-s="117.693">você</span><span class="w" data-s="117.932">só</span><span class="w" data-s="118.172">descobriu</span></div></div>
+<div class="cap clip" data-start="118.693" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="118.733">quando</span><span class="w" data-s="118.892">o</span><span class="w" data-s="118.972">cliente</span></div></div>
+<div class="cap clip" data-start="119.253" data-duration="0.719" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="119.293">reclamou.</span></div></div>
+<div class="cap clip" data-start="119.972" data-duration="1.040" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="120.012">Então</span><span class="w" data-s="120.332">você</span><span class="w" data-s="120.492">coloca</span><span class="w" data-s="120.892">um</span></div></div>
+<div class="cap clip" data-start="121.012" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="121.052">alarme</span><span class="w" data-s="121.452">que</span><span class="w" data-s="121.613">te</span><span class="w" data-s="121.773">avisa</span></div></div>
+<div class="cap clip" data-start="122.132" data-duration="0.960" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="122.172">no</span><span class="w" data-s="122.332">celular.</span></div></div>
+<div class="cap clip" data-start="123.092" data-duration="1.760" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="123.132">Esse</span><span class="w" data-s="123.452">é</span><span class="w" data-s="123.613">o</span><span class="w k" data-s="123.773">monitoramento.</span></div></div>
+<div class="cap clip" data-start="124.852" data-duration="0.801" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="124.892">Mas</span><span class="w" data-s="125.132">um</span><span class="w" data-s="125.292">dia</span></div></div>
+<div class="cap clip" data-start="125.653" data-duration="0.719" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="125.693">sem</span><span class="w" data-s="125.932">querer</span></div></div>
+<div class="cap clip" data-start="126.372" data-duration="1.200" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="126.412">você</span><span class="w" data-s="126.653">apaga</span><span class="w" data-s="127.132">o</span><span class="w k" data-s="127.212">banco</span></div></div>
+<div class="cap clip" data-start="127.572" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="127.612">inteiro.</span></div></div>
+<div class="cap clip" data-start="128.292" data-duration="1.360" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="128.332">Então</span><span class="w" data-s="128.733">toda</span><span class="w" data-s="129.052">noite</span><span class="w" data-s="129.452">uma</span></div></div>
+<div class="cap clip" data-start="129.652" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="129.692">cópia</span><span class="w" data-s="130.092">vai</span><span class="w" data-s="130.333">para</span><span class="w" data-s="130.573">outro</span></div></div>
+<div class="cap clip" data-start="130.772" data-duration="0.560" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="130.812">lugar.</span></div></div>
+<div class="cap clip" data-start="131.332" data-duration="1.520" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="131.372">Esse</span><span class="w" data-s="131.692">é</span><span class="w" data-s="131.852">o</span><span class="w k" data-s="132.012">backup.</span></div></div>
+<div class="cap clip" data-start="132.852" data-duration="0.720" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="132.892">Parabéns!</span></div></div>
+<div class="cap clip" data-start="133.572" data-duration="1.520" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="133.612">Você</span><span class="w" data-s="133.932">construiu</span><span class="w" data-s="134.413">um</span><span class="w" data-s="134.573">SaaS.</span></div></div>
+<div class="cap clip" data-start="135.092" data-duration="0.998" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="135.132">Agora</span><span class="w" data-s="135.372">comenta.</span></div></div>
+<div class="cap clip" data-start="136.090" data-duration="1.120" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="136.130">Qual</span><span class="w" data-s="136.370">dessas</span><span class="w" data-s="136.690">peças</span><span class="w" data-s="137.010">você</span></div></div>
+<div class="cap clip" data-start="137.210" data-duration="1.839" data-track-index="9"><div class="capin" style="display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;width:100%"><span class="w" data-s="137.250">quer</span><span class="w" data-s="137.410">ver</span><span class="w k" data-s="137.650">desmontada?</span></div></div>
+  </div>
+  <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="139.750" data-track-index="10" data-volume="1"></audio>
+</div>
+<script>
+/* Runtime motion helpers — deterministic, seek-safe (all tweens live on one paused timeline). */
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  window.tl = tl;
+  const $ = (s) => (typeof s === "string" ? document.querySelectorAll(s) : s);
+  const E = { o: "power3.out", o4: "power4.out", io: "power2.inOut", back: "back.out(1.7)", soft: "sine.inOut", expo: "expo.out" };
+  window.E = E;
+  const FROM = {
+    up: { y: 70, opacity: 0 }, down: { y: -70, opacity: 0 }, left: { x: -110, opacity: 0 }, right: { x: 110, opacity: 0 },
+    pop: { scale: 0.55, opacity: 0 }, zoom: { scale: 1.25, opacity: 0 }, fade: { opacity: 0 }, rise: { y: 140, opacity: 0, scale: 0.94 },
+    slam: { scale: 1.9, opacity: 0, rotation: -6 }, flip: { rotationX: -80, opacity: 0, y: 40, transformPerspective: 900 },
+    wipe: { clipPath: "inset(0 100% 0 0)" }, drop: { y: -160, opacity: 0, rotation: -8 },
+    blur: { y: 26, opacity: 0, filter: "blur(10px)" }, bscale: { scale: 0.94, opacity: 0, filter: "blur(10px)" },
+  };
+  const TO = { y: 0, x: 0, opacity: 1, scale: 1, rotation: 0, rotationX: 0, clipPath: "inset(0 0% 0 0)", filter: "blur(0px)" };
+  // entrance
+  window.inn = (sel, t, k = "up", d, extra) => {
+    const f = FROM[k] || FROM.up;
+    const to = {};
+    for (const key in f) to[key] = TO[key];
+    if (f.transformPerspective) delete to.transformPerspective;
+    const ease = k === "pop" || k === "drop" ? E.back : k === "slam" ? "back.out(1.4)" : k === "wipe" ? E.io : k === "blur" || k === "bscale" ? E.expo : E.o;
+    tl.fromTo(sel, { ...f }, { ...to, duration: d || (k === "slam" ? 0.45 : k === "wipe" ? 0.7 : 0.6), ease, stagger: extra && extra.stagger, immediateRender: true }, t);
+  };
+  // exit
+  window.out = (sel, t, k = "fade", d = 0.35) => {
+    const to = k === "down" ? { y: 60, opacity: 0 } : k === "up" ? { y: -60, opacity: 0 } : k === "shrink" ? { scale: 0.8, opacity: 0 } : k === "left" ? { x: -120, opacity: 0 } : { opacity: 0 };
+    tl.to(sel, { ...to, duration: d, ease: "power2.in" }, t);
+  };
+  window.set = (sel, vars, t) => tl.set(sel, vars, t);
+  window.to = (sel, vars, t) => tl.to(sel, vars, t);
+  window.fromTo = (sel, a, b, t) => tl.fromTo(sel, a, { immediateRender: false, ...b }, t);
+  // typewriter (text stored in data-text)
+  window.type = (sel, t, d) => {
+    $(sel).forEach((el) => {
+      const full = el.getAttribute("data-text") || el.textContent;
+      el.textContent = "";
+      const p = { n: 0 };
+      tl.to(p, { n: full.length, duration: d || Math.max(0.3, full.length * 0.035), ease: "none",
+        onUpdate: () => { el.textContent = full.slice(0, Math.round(p.n)); } }, t);
+    });
+  };
+  // number counter; fmt: (v)=>string
+  const FMT = {
+    int: (v) => Math.round(v).toLocaleString("pt-BR"),
+    mil: (v) => Math.round(v) + " mil",
+    time: (v) => { const s = Math.round(v); return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); },
+    pct: (v) => Math.round(v) + "%",
+    plus: (v) => "+" + Math.round(v),
+  };
+  window.count = (sel, t, d, from, toV, fmt = "int") => {
+    $(sel).forEach((el) => {
+      const p = { v: from }; const f = FMT[fmt] || FMT.int;
+      el.textContent = f(from);
+      tl.to(p, { v: toV, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = f(p.v); } }, t);
+    });
+  };
+  // svg stroke draw
+  window.draw = (sel, t, d = 0.8, ease = "power2.inOut") => {
+    $(sel).forEach((p) => {
+      const L = p.getTotalLength ? p.getTotalLength() : 1000;
+      tl.fromTo(p, { strokeDasharray: `${L} ${L}`, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease, immediateRender: true }, t);
+    });
+  };
+  window.pulse = (sel, t, s = 1.1, d = 0.5) => {
+    tl.fromTo(sel, { scale: 1 }, { scale: s, duration: d / 2, yoyo: true, repeat: 1, ease: E.soft, immediateRender: false }, t);
+  };
+  window.shake = (sel, t) => {
+    tl.fromTo(sel, { x: 0 }, { keyframes: { x: [0, -14, 12, -9, 6, -3, 0] }, duration: 0.42, ease: "none", immediateRender: false }, t);
+  };
+  window.strike = (sel, t, d = 0.35) => tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: d, ease: E.io, transformOrigin: "left center", immediateRender: true }, t);
+  window.glow = (sel, t, color, d = 0.4) => tl.to(sel, { boxShadow: `0 0 0 4px ${color}, 0 0 70px ${color}`, duration: d, ease: E.o }, t);
+  window.unglow = (sel, t, d = 0.4) => tl.to(sel, { boxShadow: "0 0 0 0px rgba(0,0,0,0), 0 20px 50px rgba(0,0,0,0.55)", duration: d }, t);
+  window.color = (sel, t, c, d = 0.25) => tl.to(sel, { color: c, duration: d }, t);
+  window.bgc = (sel, t, c, d = 0.3) => tl.to(sel, { backgroundColor: c, duration: d }, t);
+  // scene wrapper choreography
+  window.scene = (id, t0, t1, opt = {}) => {
+    const inner = `#${id} > .inner`, cam = `#${id} .cam`;
+    const kin = opt.in || "rise";
+    if (kin !== "none") {
+      const f = kin === "zoom" ? { scale: 1.12, opacity: 0 } : kin === "left" ? { x: 160, opacity: 0 } : kin === "cut" ? { opacity: 0 } : { y: 120, scale: 0.97, opacity: 0 };
+      tl.fromTo(inner, f, { x: 0, y: 0, scale: 1, opacity: 1, duration: kin === "cut" ? 0.08 : 0.55, ease: E.o4, immediateRender: true }, t0);
+    }
+    if (!opt.last) tl.to(inner, { opacity: 0, scale: 0.965, y: -50, duration: 0.32, ease: "power2.in" }, t1 - 0.32);
+    const push = opt.push === undefined ? 0.035 : opt.push;
+    tl.fromTo(cam, { scale: 1 }, { scale: 1 + push, duration: Math.max(0.5, t1 - t0), ease: "none", immediateRender: true }, t0);
+  };
+  // captions: data-ws JSON on each .cap: [[start,end,isKey],...]
+  window.captions = () => {
+    document.querySelectorAll(".cap").forEach((cap) => {
+      const t0 = parseFloat(cap.getAttribute("data-start"));
+      const t1 = t0 + parseFloat(cap.getAttribute("data-duration"));
+      const ci = cap.querySelector(".capin");
+      tl.fromTo(ci, { y: 26, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.16, ease: E.o, immediateRender: true }, t0);
+      tl.to(ci, { opacity: 0, duration: 0.08 }, t1 - 0.08);
+      cap.querySelectorAll(".w").forEach((w) => {
+        const s = parseFloat(w.getAttribute("data-s"));
+        tl.to(w, { opacity: 1, duration: 0.08, ease: "none" }, s);
+        if (w.classList.contains("k")) tl.fromTo(w, { scale: 1 }, { scale: 1.12, duration: 0.12, yoyo: true, repeat: 1, ease: E.soft, immediateRender: false }, s);
+      });
+    });
+  };
+  // background drift
+  window.bgDrift = (dur) => {
+    tl.fromTo(".bg-grid", { x: 0, y: 0 }, { x: -72, y: -144, duration: dur, ease: "none", immediateRender: true }, 0);
+    tl.fromTo(".bg-glow.a", { x: 0, y: 0 }, { x: 160, y: 220, duration: dur, ease: "sine.inOut", immediateRender: true }, 0);
+    tl.fromTo(".bg-glow.b", { x: 0, y: 0 }, { x: -200, y: -260, duration: dur, ease: "sine.inOut", immediateRender: true }, 0);
+  };
+  window.tint = (t, c, d = 0.6) => tl.to(".bg-glow.c", { "--tint": c, duration: d }, t);
+})();
+
+
+// s0
+scene("s0", 0.000, 9.840, {"in":"none","push":0.04,"last":false});
+
+type("#rqt0",1.42,0.9);
+inn("#s0-mon",0.15,"up",.5);set("#s0-off",{opacity:0},0);
+fromTo("#s0-app",{scale:0,opacity:0,rotation:-10},{scale:1,opacity:1,rotation:0,duration:.55,ease:E.back},3.5);
+inn("#s0-sp",4.46,"pop",.35);pulse("#s0-app",4.56,1.08,.4);
+inn("#s0-pc",5.63,"up",.4);
+to("#s0-off",{opacity:1,duration:.12},7.619999999999999);to("#s0-sp",{opacity:0,duration:.1},7.619999999999999);
+shake("#s0-mon",9.18);
+
+// p1
+scene("p1", 9.840, 16.640, {"in":"rise","push":0.035,"last":false});
+
+
+type("#rqt1",10.07,1.216);
+fromTo("#p1-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},11.92);
+glow("#p1-so",12.32,"#38bdf888",.4);
+inn("#p1-nm",15.74,"slam");
+
+// p2
+scene("p2", 16.640, 25.332, {"in":"left","push":0.035,"last":false});
+
+inn("#p2-pb",16.69,"down",.45);
+to("#p2-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},20.84);
+type("#rqt2",20.79,1.28);
+fromTo("#p2-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},22.64);
+glow("#p2-so",23.04,"#60a5fa88",.4);
+inn("#p2-nm",24.511999999999997,"slam");
+
+// p3
+scene("p3", 25.332, 34.932, {"in":"rise","push":0.035,"last":false});
+
+inn("#p3-pb",25.382,"down",.45);
+to("#p3-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},30.172);
+type("#rqt3",30.12,1.1520000000000001);
+fromTo("#p3-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},31.97);
+glow("#p3-so",32.372,"#fbbf2488",.4);
+inn("#p3-nm",34.513,"slam");
+
+// p4
+scene("p4", 34.932, 43.812, {"in":"left","push":0.035,"last":false});
+
+inn("#p4-pb",34.982,"down",.45);
+to("#p4-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},39.372);
+type("#rqt4",39.32,0.928);
+fromTo("#p4-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},41.17);
+glow("#p4-so",41.571999999999996,"#a78bfa88",.4);
+inn("#p4-nm",43.071999999999996,"slam");
+
+// p5
+scene("p5", 43.812, 54.250, {"in":"rise","push":0.035,"last":false});
+
+inn("#p5-pb",43.862,"down",.45);
+to("#p5-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},47.25);
+type("#rqt5",47.20,1.248);
+fromTo("#p5-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},49.05);
+glow("#p5-so",49.449999999999996,"#34d39988",.4);
+inn("#p5-nm",53.35,"slam");
+
+// p6
+scene("p6", 54.250, 65.610, {"in":"left","push":0.035,"last":false});
+
+inn("#p6-pb",54.3,"down",.45);
+to("#p6-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},59.410000000000004);
+type("#rqt6",59.36,1.12);
+fromTo("#p6-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},61.21);
+glow("#p6-so",61.61,"#22d3ee88",.4);
+inn("#p6-nm",64.71000000000001,"slam");
+
+// p7
+scene("p7", 65.610, 74.177, {"in":"rise","push":0.035,"last":false});
+
+inn("#p7-pb",65.66,"down",.45);
+to("#p7-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},69.81700000000001);
+type("#rqt7",69.77,0.992);
+fromTo("#p7-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},71.62);
+glow("#p7-so",72.01700000000001,"#f472b688",.4);
+inn("#p7-nm",73.518,"slam");
+
+// p8
+scene("p8", 74.177, 84.257, {"in":"left","push":0.035,"last":false});
+
+inn("#p8-pb",74.227,"down",.45);
+to("#p8-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},77.417);
+type("#rqt8",77.37,1.312);
+fromTo("#p8-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},79.22);
+glow("#p8-so",79.617,"#fb923c88",.4);
+inn("#p8-nm",83.197,"slam");
+
+// p9
+scene("p9", 84.257, 92.930, {"in":"rise","push":0.035,"last":false});
+
+inn("#p9-pb",84.307,"down",.45);
+to("#p9-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},87.257);
+type("#rqt9",87.21,1.12);
+fromTo("#p9-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},89.06);
+glow("#p9-so",89.45700000000001,"#4ade8088",.4);
+inn("#p9-nm",92.03,"slam");
+
+// p10
+scene("p10", 92.930, 101.250, {"in":"left","push":0.035,"last":false});
+
+inn("#p10-pb",92.98,"down",.45);
+to("#p10-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},97.93);
+type("#rqt10",97.88,1.12);
+fromTo("#p10-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},99.71);
+glow("#p10-so",100.11,"#93c5fd88",.4);
+inn("#p10-nm",100.75,"slam");
+
+// p11
+scene("p11", 101.250, 114.332, {"in":"rise","push":0.035,"last":false});
+
+inn("#p11-pb",101.3,"down",.45);
+to("#p11-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},108.89);
+type("#rqt11",108.84,1.216);
+fromTo("#p11-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},110.69);
+glow("#p11-so",111.09,"#facc1588",.4);
+inn("#p11-nm",113.67200000000001,"slam");
+
+// p12
+scene("p12", 114.332, 124.812, {"in":"left","push":0.035,"last":false});
+
+inn("#p12-pb",114.382,"down",.45);
+to("#p12-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},120.212);
+type("#rqt12",120.16,1.216);
+fromTo("#p12-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},122.01);
+glow("#p12-so",122.412,"#f8717188",.4);
+inn("#p12-nm",123.673,"slam");
+
+// p13
+scene("p13", 124.812, 132.812, {"in":"rise","push":0.035,"last":false});
+
+inn("#p13-pb",124.862,"down",.45);
+to("#p13-pb",{scale:.82,y:-40,opacity:.28,duration:.45,ease:"power2.inOut"},128.53199999999998);
+type("#rqt13",128.48,1.056);
+fromTo("#p13-so",{scale:0,opacity:0,rotation:-14},{scale:1,opacity:1,rotation:0,duration:.5,ease:E.back},130.33);
+glow("#p13-so",130.732,"#2dd4bf88",.4);
+inn("#p13-nm",131.912,"slam");
+
+// s14
+scene("s14", 132.812, 139.750, {"in":"zoom","push":0.03,"last":true});
+
+inn("#s14-h",132.892,"slam");pulse("#s14-h",134.573,1.05,.35);
+pulse("#sl0",133.93,1.2,.25);pulse("#sl1",133.97,1.2,.25);pulse("#sl2",134.01,1.2,.25);pulse("#sl3",134.05,1.2,.25);pulse("#sl4",134.09,1.2,.25);pulse("#sl5",134.13,1.2,.25);pulse("#sl6",134.17,1.2,.25);pulse("#sl7",134.21,1.2,.25);pulse("#sl8",134.25,1.2,.25);pulse("#sl9",134.29,1.2,.25);pulse("#sl10",134.33,1.2,.25);pulse("#sl11",134.37,1.2,.25);pulse("#sl12",134.41,1.2,.25);
+inn("#s14-q",135.27200000000002,"up",.4);
+inn("#s14-box",136.07999999999998,"up",.4);type("#s14-tx",136.69,.6);
+inn("#s14-dn",137.65,"drop",.4);fromTo("#s14-dn",{y:0},{y:26,duration:.32,yoyo:true,repeat:5,ease:"sine.inOut",immediateRender:false},138.15);
+
+
+
+tl.fromTo("#trm",{opacity:0,y:-40},{opacity:1,y:0,duration:.45,ease:"expo.out",immediateRender:true},0.05);tl.fromTo("#rack",{opacity:0,y:40},{opacity:1,y:0,duration:.45,ease:"expo.out",immediateRender:true},0.3);tl.fromTo("#cnt",{opacity:0},{opacity:1,duration:.3,immediateRender:true},0.3);
+tl.set("#rq0",{opacity:0},0);
+tl.set("#rq1",{opacity:0},0);
+tl.set("#rq2",{opacity:0},0);
+tl.set("#rq3",{opacity:0},0);
+tl.set("#rq4",{opacity:0},0);
+tl.set("#rq5",{opacity:0},0);
+tl.set("#rq6",{opacity:0},0);
+tl.set("#rq7",{opacity:0},0);
+tl.set("#rq8",{opacity:0},0);
+tl.set("#rq9",{opacity:0},0);
+tl.set("#rq10",{opacity:0},0);
+tl.set("#rq11",{opacity:0},0);
+tl.set("#rq12",{opacity:0},0);
+tl.set("#rq13",{opacity:0},0);
+tl.set("#rq0",{opacity:1},1.42);
+tl.set("#rq1",{opacity:1},10.07);tl.set("#rq0",{opacity:0},10.07);
+tl.to("#sl0",{backgroundColor:"#38bdf8",borderColor:"#38bdf8",duration:.2},15.84);tl.to("#sl0 svg",{stroke:"#06101c",duration:.2},15.84);tl.fromTo("#sl0",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},15.84);
+tl.set("#rq2",{opacity:1},20.79);tl.set("#rq1",{opacity:0},20.79);
+tl.to("#sl1",{backgroundColor:"#60a5fa",borderColor:"#60a5fa",duration:.2},24.61);tl.to("#sl1 svg",{stroke:"#06101c",duration:.2},24.61);tl.fromTo("#sl1",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},24.61);
+tl.set("#rq3",{opacity:1},30.12);tl.set("#rq2",{opacity:0},30.12);
+tl.to("#sl2",{backgroundColor:"#fbbf24",borderColor:"#fbbf24",duration:.2},34.61);tl.to("#sl2 svg",{stroke:"#06101c",duration:.2},34.61);tl.fromTo("#sl2",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},34.61);
+tl.set("#rq4",{opacity:1},39.32);tl.set("#rq3",{opacity:0},39.32);
+tl.to("#sl3",{backgroundColor:"#a78bfa",borderColor:"#a78bfa",duration:.2},43.17);tl.to("#sl3 svg",{stroke:"#06101c",duration:.2},43.17);tl.fromTo("#sl3",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},43.17);
+tl.set("#rq5",{opacity:1},47.20);tl.set("#rq4",{opacity:0},47.20);
+tl.to("#sl4",{backgroundColor:"#34d399",borderColor:"#34d399",duration:.2},53.45);tl.to("#sl4 svg",{stroke:"#06101c",duration:.2},53.45);tl.fromTo("#sl4",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},53.45);
+tl.set("#rq6",{opacity:1},59.36);tl.set("#rq5",{opacity:0},59.36);
+tl.to("#sl5",{backgroundColor:"#22d3ee",borderColor:"#22d3ee",duration:.2},64.81);tl.to("#sl5 svg",{stroke:"#06101c",duration:.2},64.81);tl.fromTo("#sl5",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},64.81);
+tl.set("#rq7",{opacity:1},69.77);tl.set("#rq6",{opacity:0},69.77);
+tl.to("#sl6",{backgroundColor:"#f472b6",borderColor:"#f472b6",duration:.2},73.62);tl.to("#sl6 svg",{stroke:"#06101c",duration:.2},73.62);tl.fromTo("#sl6",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},73.62);
+tl.set("#rq8",{opacity:1},77.37);tl.set("#rq7",{opacity:0},77.37);
+tl.to("#sl7",{backgroundColor:"#fb923c",borderColor:"#fb923c",duration:.2},83.30);tl.to("#sl7 svg",{stroke:"#06101c",duration:.2},83.30);tl.fromTo("#sl7",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},83.30);
+tl.set("#rq9",{opacity:1},87.21);tl.set("#rq8",{opacity:0},87.21);
+tl.to("#sl8",{backgroundColor:"#4ade80",borderColor:"#4ade80",duration:.2},92.13);tl.to("#sl8 svg",{stroke:"#06101c",duration:.2},92.13);tl.fromTo("#sl8",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},92.13);
+tl.set("#rq10",{opacity:1},97.88);tl.set("#rq9",{opacity:0},97.88);
+tl.to("#sl9",{backgroundColor:"#93c5fd",borderColor:"#93c5fd",duration:.2},100.85);tl.to("#sl9 svg",{stroke:"#06101c",duration:.2},100.85);tl.fromTo("#sl9",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},100.85);
+tl.set("#rq11",{opacity:1},108.84);tl.set("#rq10",{opacity:0},108.84);
+tl.to("#sl10",{backgroundColor:"#facc15",borderColor:"#facc15",duration:.2},113.77);tl.to("#sl10 svg",{stroke:"#06101c",duration:.2},113.77);tl.fromTo("#sl10",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},113.77);
+tl.set("#rq12",{opacity:1},120.16);tl.set("#rq11",{opacity:0},120.16);
+tl.to("#sl11",{backgroundColor:"#f87171",borderColor:"#f87171",duration:.2},123.77);tl.to("#sl11 svg",{stroke:"#06101c",duration:.2},123.77);tl.fromTo("#sl11",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},123.77);
+tl.set("#rq13",{opacity:1},128.48);tl.set("#rq12",{opacity:0},128.48);
+tl.to("#sl12",{backgroundColor:"#2dd4bf",borderColor:"#2dd4bf",duration:.2},132.01);tl.to("#sl12 svg",{stroke:"#06101c",duration:.2},132.01);tl.fromTo("#sl12",{scale:1},{scale:1.25,duration:.15,yoyo:true,repeat:1,immediateRender:false},132.01);
+(function(){const el=document.getElementById("cn"),p={v:0};tl.to(p,{v:1,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},15.84);tl.to(p,{v:2,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},24.61);tl.to(p,{v:3,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},34.61);tl.to(p,{v:4,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},43.17);tl.to(p,{v:5,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},53.45);tl.to(p,{v:6,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},64.81);tl.to(p,{v:7,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},73.62);tl.to(p,{v:8,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},83.30);tl.to(p,{v:9,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},92.13);tl.to(p,{v:10,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},100.85);tl.to(p,{v:11,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},113.77);tl.to(p,{v:12,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},123.77);tl.to(p,{v:13,duration:.01,onUpdate:()=>{el.textContent=Math.round(p.v)}},132.01);})();
+tl.to("#trm",{opacity:0,y:-40,duration:.35},132.79);tl.to("#cnt",{opacity:0,duration:.3},132.79);tl.to("#rack",{y:-560,scale:1.04,duration:.6,ease:"power3.inOut"},132.79);
+captions();
+bgDrift(139.750);
+tl.set({}, {}, 139.750);
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -10,8 +10,8 @@ const LUCIDE = "/root/assets/node_modules/lucide-static/icons";
 const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "");
 
 export class Video {
-  constructor({ id, title, wordsPath, fixes = {}, keywords = [], audioDur, accent = "#22d3ee", capKey = "#22d3ee", kit2 = false, theme = "dark", capMaxWords = 4, capMaxChars = 24, vars = {} }) {
-    this.kit2 = kit2; this.theme = theme; this.capMaxWords = capMaxWords; this.capMaxChars = capMaxChars; this.vars = vars; this.swipes = [];
+  constructor({ id, title, wordsPath, fixes = {}, keywords = [], audioDur, accent = "#22d3ee", capKey = "#22d3ee", kit2 = false, autoHide = false, theme = "dark", capMaxWords = 4, capMaxChars = 24, vars = {} }) {
+    this.kit2 = kit2; this.autoHide = autoHide || kit2; this.theme = theme; this.capMaxWords = capMaxWords; this.capMaxChars = capMaxChars; this.vars = vars; this.swipes = [];
     this.id = id; this.title = title; this.accent = accent; this.capKey = capKey;
     const raw = JSON.parse(fs.readFileSync(wordsPath, "utf8"));
     // fixes: { "rawText@index" | "rawText": "fixed" }  (display only; timing untouched)
@@ -101,7 +101,7 @@ export class Video {
       const t0 = Math.max(0, s.t0), t1 = s.last ? D : s.t1;
       return `<section id="${s.id}" class="scene clip ${s.cls}" data-start="${t0.toFixed(3)}" data-duration="${(t1 - t0).toFixed(3)}" data-track-index="${1 + (i % 2)}"><div class="inner"><div class="cam" style="position:absolute;inset:0">${s.html}</div></div></section>`;
     }).join("\n");
-    if (this.kit2) {
+    if (this.autoHide) {
       // fromTo() entrances don't render before their start time (immediateRender:false), so an
       // element that enters from opacity:0 must start hidden inline or it flashes at scene start.
       const allJs = this.scenes.map((s) => s.js).join("\n");
@@ -165,7 +165,7 @@ window.__timelines["main"] = tl;
     fs.writeFileSync(path.join(projectDir, "legendas.srt"), this.transcriptSrt());
     // stage shared assets
     const A = path.join(projectDir, "assets");
-    for (const sub of ["fonts", "logos", "photos", "photos2", "photos3", "video"]) cpDir(path.join(TOOL, "shared", sub), path.join(A, sub));
+    for (const sub of ["fonts", "logos", "photos", "photos2", "photos3", "photos4", "video"]) cpDir(path.join(TOOL, "shared", sub), path.join(A, sub));
     fs.copyFileSync(path.join(TOOL, "shared", "gsap.min.js"), path.join(A, "gsap.min.js"));
     console.log(`[${this.id}] wrote ${this.scenes.length} scenes, ${this.captionGroups().length} caption groups, ${this.cues.length} sfx cues`);
   }

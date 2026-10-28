@@ -1,0 +1,197 @@
+[
+ {
+  "type": "pop",
+  "t": 0.14,
+  "gain": 0.6
+ },
+ {
+  "type": "glitch",
+  "t": 0.75,
+  "gain": 0.7
+ },
+ {
+  "type": "impact",
+  "t": 0.8,
+  "gain": 0.6
+ },
+ {
+  "type": "whoosh",
+  "t": 2.39,
+  "gain": 0.5
+ },
+ {
+  "type": "pop_multi",
+  "t": 3.38,
+  "gain": 0.5
+ },
+ {
+  "type": "counter",
+  "t": 5.36,
+  "gain": 0.55
+ },
+ {
+  "type": "impact",
+  "t": 7.55,
+  "gain": 0.75
+ },
+ {
+  "type": "whoosh",
+  "t": 8.07,
+  "gain": 0.5
+ },
+ {
+  "type": "whoosh",
+  "t": 8.44,
+  "gain": 0.6
+ },
+ {
+  "type": "typing",
+  "t": 9.44,
+  "gain": 0.5
+ },
+ {
+  "type": "pop_multi",
+  "t": 10.46,
+  "gain": 0.55
+ },
+ {
+  "type": "counter",
+  "t": 10.56,
+  "gain": 0.5
+ },
+ {
+  "type": "riser",
+  "t": 12.26,
+  "gain": 0.4
+ },
+ {
+  "type": "impact",
+  "t": 13.55,
+  "gain": 0.7
+ },
+ {
+  "type": "whoosh",
+  "t": 13.99,
+  "gain": 0.5
+ },
+ {
+  "type": "whoosh_s",
+  "t": 14.36,
+  "gain": 0.45
+ },
+ {
+  "type": "pop_multi",
+  "t": 16.06,
+  "gain": 0.5
+ },
+ {
+  "type": "whoosh_s",
+  "t": 16.71,
+  "gain": 0.45
+ },
+ {
+  "type": "typing",
+  "t": 18.04,
+  "gain": 0.45
+ },
+ {
+  "type": "whoosh_s",
+  "t": 18.79,
+  "gain": 0.45
+ },
+ {
+  "type": "pop_multi",
+  "t": 19.76,
+  "gain": 0.5
+ },
+ {
+  "type": "confirm",
+  "t": 20.36,
+  "gain": 0.5
+ },
+ {
+  "type": "whoosh",
+  "t": 20.47,
+  "gain": 0.5
+ },
+ {
+  "type": "impact",
+  "t": 20.72,
+  "gain": 0.7
+ },
+ {
+  "type": "whoosh",
+  "t": 22.057,
+  "gain": 0.6
+ },
+ {
+  "type": "pop_multi",
+  "t": 22.987,
+  "gain": 0.5
+ },
+ {
+  "type": "lock",
+  "t": 24.368,
+  "gain": 0.75
+ },
+ {
+  "type": "whoosh_s",
+  "t": 25.657,
+  "gain": 0.45
+ },
+ {
+  "type": "whoosh",
+  "t": 27.558,
+  "gain": 0.5
+ },
+ {
+  "type": "pop_multi",
+  "t": 27.908,
+  "gain": 0.5
+ },
+ {
+  "type": "impact",
+  "t": 29.278,
+  "gain": 0.85
+ },
+ {
+  "type": "shimmer",
+  "t": 29.428,
+  "gain": 0.5
+ },
+ {
+  "type": "whoosh",
+  "t": 30.197,
+  "gain": 0.5
+ },
+ {
+  "type": "impact",
+  "t": 30.377,
+  "gain": 0.7
+ },
+ {
+  "type": "pop",
+  "t": 30.597,
+  "gain": 0.6
+ },
+ {
+  "type": "typing",
+  "t": 31.087,
+  "gain": 0.55
+ },
+ {
+  "type": "shimmer",
+  "t": 31.137,
+  "gain": 0.7
+ },
+ {
+  "type": "click",
+  "t": 31.598,
+  "gain": 0.8
+ },
+ {
+  "type": "whoosh_s",
+  "t": 32.217,
+  "gain": 0.45
+ }
+]
