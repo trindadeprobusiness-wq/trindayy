@@ -1,0 +1,2037 @@
+[
+{
+"text": "Você",
+"start": 0.0,
+"end": 0.32
+},
+{
+"text": "pede",
+"start": 0.32,
+"end": 0.64
+},
+{
+"text": "pro",
+"start": 0.64,
+"end": 0.8
+},
+{
+"text": "Cloud,",
+"start": 0.8,
+"end": 1.28
+},
+{
+"text": "faz",
+"start": 1.28,
+"end": 1.6
+},
+{
+"text": "uma",
+"start": 1.6,
+"end": 1.76
+},
+{
+"text": "app",
+"start": 1.76,
+"end": 2.08
+},
+{
+"text": "de",
+"start": 2.08,
+"end": 2.16
+},
+{
+"text": "agendamento.",
+"start": 2.16,
+"end": 3.04
+},
+{
+"text": "Ele",
+"start": 3.04,
+"end": 3.36
+},
+{
+"text": "faz.",
+"start": 3.36,
+"end": 4.0
+},
+{
+"text": "Lindo.",
+"start": 4.0,
+"end": 4.88
+},
+{
+"text": "E",
+"start": 4.88,
+"end": 5.04
+},
+{
+"text": "ele",
+"start": 5.04,
+"end": 5.28
+},
+{
+"text": "só",
+"start": 5.28,
+"end": 5.6
+},
+{
+"text": "existe",
+"start": 5.6,
+"end": 6.0
+},
+{
+"text": "no",
+"start": 6.0,
+"end": 6.24
+},
+{
+"text": "seu",
+"start": 6.24,
+"end": 6.48
+},
+{
+"text": "computador.",
+"start": 6.48,
+"end": 7.28
+},
+{
+"text": "Desligou",
+"start": 7.28,
+"end": 8.0
+},
+{
+"text": "o",
+"start": 8.0,
+"end": 8.08
+},
+{
+"text": "computador,",
+"start": 8.08,
+"end": 8.72
+},
+{
+"text": "o",
+"start": 8.72,
+"end": 8.88
+},
+{
+"text": "app",
+"start": 8.88,
+"end": 9.2
+},
+{
+"text": "sumiu.",
+"start": 9.2,
+"end": 9.92
+},
+{
+"text": "Então",
+"start": 9.92,
+"end": 10.24
+},
+{
+"text": "você",
+"start": 10.24,
+"end": 10.48
+},
+{
+"text": "pede",
+"start": 10.48,
+"end": 10.88
+},
+{
+"text": "pro",
+"start": 10.88,
+"end": 11.04
+},
+{
+"text": "Clude",
+"start": 11.04,
+"end": 11.52
+},
+{
+"text": "colocar",
+"start": 11.52,
+"end": 11.92
+},
+{
+"text": "ele",
+"start": 11.92,
+"end": 12.08
+},
+{
+"text": "num",
+"start": 12.08,
+"end": 12.32
+},
+{
+"text": "computador",
+"start": 12.32,
+"end": 12.72
+},
+{
+"text": "que",
+"start": 12.72,
+"end": 12.88
+},
+{
+"text": "fica",
+"start": 12.88,
+"end": 13.12
+},
+{
+"text": "ligado",
+"start": 13.12,
+"end": 13.52
+},
+{
+"text": "o",
+"start": 13.52,
+"end": 13.6
+},
+{
+"text": "dia",
+"start": 13.6,
+"end": 13.84
+},
+{
+"text": "inteiro,",
+"start": 13.84,
+"end": 14.4
+},
+{
+"text": "na",
+"start": 14.4,
+"end": 14.64
+},
+{
+"text": "internet.",
+"start": 14.64,
+"end": 15.44
+},
+{
+"text": "Esse",
+"start": 15.44,
+"end": 15.76
+},
+{
+"text": "é",
+"start": 15.76,
+"end": 16.0
+},
+{
+"text": "o",
+"start": 16.0,
+"end": 16.16
+},
+{
+"text": "servidor.",
+"start": 16.16,
+"end": 17.04
+},
+{
+"text": "Mas,",
+"start": 17.04,
+"end": 17.6
+},
+{
+"text": "pra",
+"start": 17.6,
+"end": 17.84
+},
+{
+"text": "entrar,",
+"start": 17.84,
+"end": 18.4
+},
+{
+"text": "o",
+"start": 18.4,
+"end": 18.56
+},
+{
+"text": "cliente",
+"start": 18.56,
+"end": 18.96
+},
+{
+"text": "precisa",
+"start": 18.96,
+"end": 19.36
+},
+{
+"text": "digitar",
+"start": 19.36,
+"end": 19.84
+},
+{
+"text": "um",
+"start": 19.84,
+"end": 19.92
+},
+{
+"text": "número",
+"start": 19.92,
+"end": 20.4
+},
+{
+"text": "enorme.",
+"start": 20.4,
+"end": 21.12
+},
+{
+"text": "Então",
+"start": 21.12,
+"end": 21.44
+},
+{
+"text": "você",
+"start": 21.44,
+"end": 21.68
+},
+{
+"text": "compra",
+"start": 21.68,
+"end": 22.08
+},
+{
+"text": "um",
+"start": 22.08,
+"end": 22.16
+},
+{
+"text": "nome",
+"start": 22.16,
+"end": 22.4
+},
+{
+"text": "fácil,",
+"start": 22.4,
+"end": 22.72
+},
+{
+"text": "que",
+"start": 22.72,
+"end": 22.8
+},
+{
+"text": "é",
+"start": 22.8,
+"end": 22.88
+},
+{
+"text": "a",
+"start": 22.88,
+"end": 23.33
+},
+{
+"text": "Ponta",
+"start": 23.347,
+"end": 23.667
+},
+{
+"text": "para",
+"start": 23.667,
+"end": 23.748
+},
+{
+"text": "o",
+"start": 23.748,
+"end": 23.827
+},
+{
+"text": "servidor.",
+"start": 23.827,
+"end": 24.548
+},
+{
+"text": "Esse",
+"start": 24.548,
+"end": 24.867
+},
+{
+"text": "é",
+"start": 24.867,
+"end": 25.027
+},
+{
+"text": "o",
+"start": 25.027,
+"end": 25.188
+},
+{
+"text": "domínio.",
+"start": 25.188,
+"end": 25.908
+},
+{
+"text": "Mas",
+"start": 25.908,
+"end": 26.148
+},
+{
+"text": "o",
+"start": 26.148,
+"end": 26.227
+},
+{
+"text": "cliente",
+"start": 26.227,
+"end": 26.627
+},
+{
+"text": "marca",
+"start": 26.627,
+"end": 27.027
+},
+{
+"text": "um",
+"start": 27.027,
+"end": 27.107
+},
+{
+"text": "horário,",
+"start": 27.107,
+"end": 27.668
+},
+{
+"text": "recarrega",
+"start": 27.668,
+"end": 28.387
+},
+{
+"text": "a",
+"start": 28.387,
+"end": 28.467
+},
+{
+"text": "página",
+"start": 28.467,
+"end": 28.867
+},
+{
+"text": "e",
+"start": 28.867,
+"end": 29.027
+},
+{
+"text": "o",
+"start": 29.027,
+"end": 29.188
+},
+{
+"text": "horário",
+"start": 29.188,
+"end": 29.587
+},
+{
+"text": "sumiu.",
+"start": 29.587,
+"end": 30.307
+},
+{
+"text": "Então",
+"start": 30.307,
+"end": 30.628
+},
+{
+"text": "você",
+"start": 30.628,
+"end": 30.787
+},
+{
+"text": "pede",
+"start": 30.787,
+"end": 31.107
+},
+{
+"text": "para",
+"start": 31.107,
+"end": 31.188
+},
+{
+"text": "o",
+"start": 31.188,
+"end": 31.267
+},
+{
+"text": "Cloud",
+"start": 31.267,
+"end": 31.827
+},
+{
+"text": "guardar",
+"start": 31.827,
+"end": 32.227
+},
+{
+"text": "tudo",
+"start": 32.227,
+"end": 32.467
+},
+{
+"text": "num",
+"start": 32.467,
+"end": 32.707
+},
+{
+"text": "lugar",
+"start": 32.707,
+"end": 32.948
+},
+{
+"text": "que",
+"start": 32.948,
+"end": 33.108
+},
+{
+"text": "não",
+"start": 33.108,
+"end": 33.347
+},
+{
+"text": "apaga.",
+"start": 33.347,
+"end": 34.148
+},
+{
+"text": "Esse",
+"start": 34.148,
+"end": 34.547
+},
+{
+"text": "é",
+"start": 34.547,
+"end": 34.707
+},
+{
+"text": "o",
+"start": 34.707,
+"end": 34.787
+},
+{
+"text": "banco",
+"start": 34.787,
+"end": 35.188
+},
+{
+"text": "de",
+"start": 35.188,
+"end": 35.347
+},
+{
+"text": "dados.",
+"start": 35.347,
+"end": 36.068
+},
+{
+"text": "Mas",
+"start": 36.068,
+"end": 36.307
+},
+{
+"text": "agora",
+"start": 36.307,
+"end": 36.757
+},
+{
+"text": "qualquer",
+"start": 36.867,
+"end": 37.347
+},
+{
+"text": "pessoa",
+"start": 37.347,
+"end": 37.747
+},
+{
+"text": "entra",
+"start": 37.747,
+"end": 38.148
+},
+{
+"text": "e",
+"start": 38.148,
+"end": 38.307
+},
+{
+"text": "mexe",
+"start": 38.307,
+"end": 38.787
+},
+{
+"text": "na",
+"start": 38.787,
+"end": 38.947
+},
+{
+"text": "agenda.",
+"start": 38.947,
+"end": 39.667
+},
+{
+"text": "Então",
+"start": 39.667,
+"end": 39.987
+},
+{
+"text": "cada",
+"start": 39.987,
+"end": 40.307
+},
+{
+"text": "cliente",
+"start": 40.307,
+"end": 40.788
+},
+{
+"text": "cria",
+"start": 40.788,
+"end": 41.188
+},
+{
+"text": "uma",
+"start": 41.188,
+"end": 41.347
+},
+{
+"text": "conta,",
+"start": 41.347,
+"end": 41.747
+},
+{
+"text": "com",
+"start": 41.747,
+"end": 41.987
+},
+{
+"text": "e-mail",
+"start": 41.987,
+"end": 42.467
+},
+{
+"text": "e",
+"start": 42.467,
+"end": 42.627
+},
+{
+"text": "senha.",
+"start": 42.627,
+"end": 43.347
+},
+{
+"text": "Esse",
+"start": 43.347,
+"end": 43.667
+},
+{
+"text": "é",
+"start": 43.667,
+"end": 43.827
+},
+{
+"text": "o",
+"start": 43.827,
+"end": 43.907
+},
+{
+"text": "login.",
+"start": 43.907,
+"end": 44.627
+},
+{
+"text": "Mas",
+"start": 44.627,
+"end": 44.868
+},
+{
+"text": "o",
+"start": 44.868,
+"end": 44.948
+},
+{
+"text": "cliente",
+"start": 44.948,
+"end": 45.347
+},
+{
+"text": "A",
+"start": 45.347,
+"end": 45.797
+},
+{
+"text": "Entra",
+"start": 45.8,
+"end": 46.36
+},
+{
+"text": "e",
+"start": 46.36,
+"end": 46.52
+},
+{
+"text": "vê",
+"start": 46.52,
+"end": 46.76
+},
+{
+"text": "a",
+"start": 46.76,
+"end": 46.84
+},
+{
+"text": "agenda",
+"start": 46.84,
+"end": 47.24
+},
+{
+"text": "do",
+"start": 47.24,
+"end": 47.32
+},
+{
+"text": "cliente",
+"start": 47.32,
+"end": 47.72
+},
+{
+"text": "B.",
+"start": 47.72,
+"end": 48.28
+},
+{
+"text": "Então",
+"start": 48.28,
+"end": 48.6
+},
+{
+"text": "você",
+"start": 48.6,
+"end": 48.76
+},
+{
+"text": "pede",
+"start": 48.76,
+"end": 49.08
+},
+{
+"text": "pro",
+"start": 49.08,
+"end": 49.24
+},
+{
+"text": "Cloud",
+"start": 49.24,
+"end": 49.72
+},
+{
+"text": "marcar",
+"start": 49.72,
+"end": 50.04
+},
+{
+"text": "o",
+"start": 50.04,
+"end": 50.2
+},
+{
+"text": "dono",
+"start": 50.2,
+"end": 50.52
+},
+{
+"text": "de",
+"start": 50.52,
+"end": 50.68
+},
+{
+"text": "cada",
+"start": 50.68,
+"end": 50.92
+},
+{
+"text": "horário",
+"start": 50.92,
+"end": 51.48
+},
+{
+"text": "e",
+"start": 51.48,
+"end": 51.72
+},
+{
+"text": "cada",
+"start": 51.72,
+"end": 52.04
+},
+{
+"text": "um",
+"start": 52.04,
+"end": 52.28
+},
+{
+"text": "só",
+"start": 52.28,
+"end": 52.52
+},
+{
+"text": "vê",
+"start": 52.52,
+"end": 52.84
+},
+{
+"text": "o",
+"start": 52.84,
+"end": 52.92
+},
+{
+"text": "que",
+"start": 52.92,
+"end": 53.08
+},
+{
+"text": "é",
+"start": 53.08,
+"end": 53.24
+},
+{
+"text": "seu.",
+"start": 53.24,
+"end": 53.8
+},
+{
+"text": "Essas",
+"start": 53.8,
+"end": 54.28
+},
+{
+"text": "são",
+"start": 54.28,
+"end": 54.52
+},
+{
+"text": "as",
+"start": 54.52,
+"end": 54.68
+},
+{
+"text": "permissões.",
+"start": 54.68,
+"end": 55.56
+},
+{
+"text": "Mas",
+"start": 55.56,
+"end": 55.8
+},
+{
+"text": "a",
+"start": 55.8,
+"end": 56.04
+},
+{
+"text": "tela",
+"start": 56.04,
+"end": 56.44
+},
+{
+"text": "fala",
+"start": 56.44,
+"end": 56.76
+},
+{
+"text": "direto",
+"start": 56.76,
+"end": 57.16
+},
+{
+"text": "com",
+"start": 57.16,
+"end": 57.32
+},
+{
+"text": "o",
+"start": 57.32,
+"end": 57.48
+},
+{
+"text": "banco.",
+"start": 57.48,
+"end": 58.04
+},
+{
+"text": "Quem",
+"start": 58.04,
+"end": 58.28
+},
+{
+"text": "descobrir",
+"start": 58.28,
+"end": 58.92
+},
+{
+"text": "o",
+"start": 58.92,
+"end": 59.0
+},
+{
+"text": "caminho",
+"start": 59.0,
+"end": 59.64
+},
+{
+"text": "apaga",
+"start": 59.64,
+"end": 60.28
+},
+{
+"text": "tudo.",
+"start": 60.28,
+"end": 60.84
+},
+{
+"text": "Então",
+"start": 60.84,
+"end": 61.16
+},
+{
+"text": "você",
+"start": 61.16,
+"end": 61.32
+},
+{
+"text": "põe",
+"start": 61.32,
+"end": 61.64
+},
+{
+"text": "uma",
+"start": 61.64,
+"end": 61.88
+},
+{
+"text": "peça",
+"start": 61.88,
+"end": 62.2
+},
+{
+"text": "no",
+"start": 62.2,
+"end": 62.28
+},
+{
+"text": "meio",
+"start": 62.28,
+"end": 62.68
+},
+{
+"text": "que",
+"start": 62.68,
+"end": 62.84
+},
+{
+"text": "confere",
+"start": 62.84,
+"end": 63.4
+},
+{
+"text": "cada",
+"start": 63.4,
+"end": 63.64
+},
+{
+"text": "pedido",
+"start": 63.64,
+"end": 64.28
+},
+{
+"text": "antes",
+"start": 64.28,
+"end": 64.52
+},
+{
+"text": "de",
+"start": 64.52,
+"end": 64.68
+},
+{
+"text": "deixar",
+"start": 64.68,
+"end": 65.16
+},
+{
+"text": "passar.",
+"start": 65.16,
+"end": 65.8
+},
+{
+"text": "Essa",
+"start": 65.8,
+"end": 66.2
+},
+{
+"text": "é",
+"start": 66.2,
+"end": 66.44
+},
+{
+"text": "a",
+"start": 66.44,
+"end": 66.76
+},
+{
+"text": "API.",
+"start": 66.76,
+"end": 67.88
+},
+{
+"text": "Agora",
+"start": 67.88,
+"end": 68.36
+},
+{
+"text": "você",
+"start": 68.36,
+"end": 68.6
+},
+{
+"text": "quer",
+"start": 68.6,
+"end": 68.84
+},
+{
+"text": "cobrar.",
+"start": 68.84,
+"end": 69.522
+},
+{
+"text": "Mas",
+"start": 69.522,
+"end": 69.842
+},
+{
+"text": "guardar",
+"start": 69.842,
+"end": 70.322
+},
+{
+"text": "o",
+"start": 70.322,
+"end": 70.402
+},
+{
+"text": "cartão",
+"start": 70.402,
+"end": 70.723
+},
+{
+"text": "do",
+"start": 70.723,
+"end": 70.802
+},
+{
+"text": "cliente",
+"start": 70.802,
+"end": 71.282
+},
+{
+"text": "é",
+"start": 71.282,
+"end": 71.522
+},
+{
+"text": "proibido.",
+"start": 71.522,
+"end": 72.482
+},
+{
+"text": "Então",
+"start": 72.482,
+"end": 72.882
+},
+{
+"text": "você",
+"start": 72.882,
+"end": 73.122
+},
+{
+"text": "entrega",
+"start": 73.122,
+"end": 73.522
+},
+{
+"text": "o",
+"start": 73.522,
+"end": 73.602
+},
+{
+"text": "cartão",
+"start": 73.602,
+"end": 73.922
+},
+{
+"text": "para",
+"start": 73.922,
+"end": 74.082
+},
+{
+"text": "uma",
+"start": 74.082,
+"end": 74.243
+},
+{
+"text": "empresa",
+"start": 74.243,
+"end": 74.642
+},
+{
+"text": "que",
+"start": 74.642,
+"end": 74.803
+},
+{
+"text": "só",
+"start": 74.803,
+"end": 75.042
+},
+{
+"text": "faz",
+"start": 75.042,
+"end": 75.362
+},
+{
+"text": "isso.",
+"start": 75.362,
+"end": 75.922
+},
+{
+"text": "Esse",
+"start": 75.922,
+"end": 76.242
+},
+{
+"text": "é",
+"start": 76.242,
+"end": 76.402
+},
+{
+"text": "o",
+"start": 76.402,
+"end": 76.562
+},
+{
+"text": "Gateway",
+"start": 76.562,
+"end": 77.202
+},
+{
+"text": "de",
+"start": 77.202,
+"end": 77.362
+},
+{
+"text": "Pagamento.",
+"start": 77.362,
+"end": 78.083
+},
+{
+"text": "Mas",
+"start": 78.083,
+"end": 78.323
+},
+{
+"text": "o",
+"start": 78.323,
+"end": 78.482
+},
+{
+"text": "pagamento",
+"start": 78.482,
+"end": 79.042
+},
+{
+"text": "acontece",
+"start": 79.042,
+"end": 79.602
+},
+{
+"text": "lá",
+"start": 79.602,
+"end": 79.842
+},
+{
+"text": "fora.",
+"start": 79.842,
+"end": 80.402
+},
+{
+"text": "Como",
+"start": 80.402,
+"end": 80.642
+},
+{
+"text": "o",
+"start": 80.642,
+"end": 80.722
+},
+{
+"text": "seu",
+"start": 80.722,
+"end": 80.962
+},
+{
+"text": "app",
+"start": 80.962,
+"end": 81.362
+},
+{
+"text": "sabe",
+"start": 81.362,
+"end": 81.602
+},
+{
+"text": "que",
+"start": 81.602,
+"end": 81.762
+},
+{
+"text": "o",
+"start": 81.762,
+"end": 81.842
+},
+{
+"text": "cliente",
+"start": 81.842,
+"end": 82.162
+},
+{
+"text": "pagou?",
+"start": 82.162,
+"end": 82.802
+},
+{
+"text": "O",
+"start": 82.802,
+"end": 82.962
+},
+{
+"text": "Gateway",
+"start": 82.962,
+"end": 83.602
+},
+{
+"text": "manda",
+"start": 83.602,
+"end": 83.922
+},
+{
+"text": "um",
+"start": 83.922,
+"end": 84.002
+},
+{
+"text": "aviso",
+"start": 84.002,
+"end": 84.402
+},
+{
+"text": "pro",
+"start": 84.402,
+"end": 84.562
+},
+{
+"text": "seu",
+"start": 84.562,
+"end": 84.802
+},
+{
+"text": "servidor.",
+"start": 84.802,
+"end": 85.602
+},
+{
+"text": "Esse",
+"start": 85.602,
+"end": 85.922
+},
+{
+"text": "é",
+"start": 85.922,
+"end": 86.082
+},
+{
+"text": "o",
+"start": 86.082,
+"end": 86.242
+},
+{
+"text": "Webhook.",
+"start": 86.242,
+"end": 87.283
+},
+{
+"text": "Mas",
+"start": 87.283,
+"end": 87.522
+},
+{
+"text": "cobrar",
+"start": 87.522,
+"end": 88.002
+},
+{
+"text": "todo",
+"start": 88.002,
+"end": 88.322
+},
+{
+"text": "mês",
+"start": 88.322,
+"end": 88.883
+},
+{
+"text": "na",
+"start": 88.883,
+"end": 89.123
+},
+{
+"text": "mão",
+"start": 89.123,
+"end": 89.602
+},
+{
+"text": "não",
+"start": 89.602,
+"end": 89.762
+},
+{
+"text": "dá.",
+"start": 89.762,
+"end": 90.402
+},
+{
+"text": "Então",
+"start": 90.402,
+"end": 90.642
+},
+{
+"text": "você",
+"start": 90.642,
+"end": 90.883
+},
+{
+"text": "pede",
+"start": 90.883,
+"end": 91.203
+},
+{
+"text": "pro",
+"start": 91.203,
+"end": 91.362
+},
+{
+"text": "Clo",
+"start": 91.362,
+"end": 91.682
+},
+{
+"text": "de",
+"start": 91.682,
+"end": 91.842
+},
+{
+"text": "cobrar",
+"start": 91.842,
+"end": 92.162
+},
+{
+"text": "sozinho.",
+"start": 92.162,
+"end": 92.835
+},
+{
+"text": "Todo",
+"start": 92.835,
+"end": 93.155
+},
+{
+"text": "mês",
+"start": 93.155,
+"end": 93.555
+},
+{
+"text": "no",
+"start": 93.555,
+"end": 93.795
+},
+{
+"text": "mesmo",
+"start": 93.795,
+"end": 94.115
+},
+{
+"text": "dia.",
+"start": 94.115,
+"end": 94.755
+},
+{
+"text": "Essa",
+"start": 94.755,
+"end": 95.075
+},
+{
+"text": "é",
+"start": 95.075,
+"end": 95.235
+},
+{
+"text": "a",
+"start": 95.235,
+"end": 95.395
+},
+{
+"text": "assinatura.",
+"start": 95.395,
+"end": 96.275
+},
+{
+"text": "Mas",
+"start": 96.275,
+"end": 96.515
+},
+{
+"text": "o",
+"start": 96.515,
+"end": 96.675
+},
+{
+"text": "cliente",
+"start": 96.675,
+"end": 97.075
+},
+{
+"text": "esqueceu",
+"start": 97.075,
+"end": 97.555
+},
+{
+"text": "a",
+"start": 97.555,
+"end": 97.715
+},
+{
+"text": "senha",
+"start": 97.715,
+"end": 98.275
+},
+{
+"text": "e",
+"start": 98.275,
+"end": 98.435
+},
+{
+"text": "o",
+"start": 98.435,
+"end": 98.515
+},
+{
+"text": "cartão",
+"start": 98.515,
+"end": 98.835
+},
+{
+"text": "dele",
+"start": 98.835,
+"end": 99.075
+},
+{
+"text": "venceu.",
+"start": 99.075,
+"end": 99.875
+},
+{
+"text": "Ninguém",
+"start": 99.875,
+"end": 100.355
+},
+{
+"text": "avisa",
+"start": 100.355,
+"end": 100.835
+},
+{
+"text": "ninguém.",
+"start": 100.835,
+"end": 101.395
+},
+{
+"text": "Então",
+"start": 101.395,
+"end": 101.715
+},
+{
+"text": "o",
+"start": 101.715,
+"end": 101.875
+},
+{
+"text": "seu",
+"start": 101.875,
+"end": 102.115
+},
+{
+"text": "app",
+"start": 102.115,
+"end": 102.435
+},
+{
+"text": "manda",
+"start": 102.435,
+"end": 102.755
+},
+{
+"text": "e-mail",
+"start": 102.755,
+"end": 103.155
+},
+{
+"text": "sozinho.",
+"start": 103.155,
+"end": 103.875
+},
+{
+"text": "Esse",
+"start": 103.875,
+"end": 104.195
+},
+{
+"text": "é",
+"start": 104.195,
+"end": 104.355
+},
+{
+"text": "o",
+"start": 104.355,
+"end": 104.515
+},
+{
+"text": "e-mail",
+"start": 104.515,
+"end": 104.995
+},
+{
+"text": "transacional.",
+"start": 104.995,
+"end": 105.955
+},
+{
+"text": "Mas",
+"start": 105.955,
+"end": 106.195
+},
+{
+"text": "a",
+"start": 106.195,
+"end": 106.355
+},
+{
+"text": "chave",
+"start": 106.355,
+"end": 106.675
+},
+{
+"text": "do",
+"start": 106.675,
+"end": 106.835
+},
+{
+"text": "pagamento",
+"start": 106.835,
+"end": 107.395
+},
+{
+"text": "está",
+"start": 107.395,
+"end": 107.635
+},
+{
+"text": "escrita",
+"start": 107.635,
+"end": 108.035
+},
+{
+"text": "no",
+"start": 108.035,
+"end": 108.195
+},
+{
+"text": "código.",
+"start": 108.195,
+"end": 108.755
+},
+{
+"text": "Subiu",
+"start": 108.755,
+"end": 109.155
+},
+{
+"text": "pro",
+"start": 109.155,
+"end": 109.315
+},
+{
+"text": "GitHub",
+"start": 109.315,
+"end": 110.035
+},
+{
+"text": "e",
+"start": 110.035,
+"end": 110.195
+},
+{
+"text": "um",
+"start": 110.195,
+"end": 110.275
+},
+{
+"text": "robô",
+"start": 110.275,
+"end": 110.675
+},
+{
+"text": "achou",
+"start": 110.675,
+"end": 111.075
+},
+{
+"text": "em",
+"start": 111.075,
+"end": 111.235
+},
+{
+"text": "minutos.",
+"start": 111.235,
+"end": 111.955
+},
+{
+"text": "Então",
+"start": 111.955,
+"end": 112.275
+},
+{
+"text": "você",
+"start": 112.275,
+"end": 112.515
+},
+{
+"text": "guarda",
+"start": 112.515,
+"end": 112.995
+},
+{
+"text": "as",
+"start": 112.995,
+"end": 113.075
+},
+{
+"text": "chaves",
+"start": 113.075,
+"end": 113.555
+},
+{
+"text": "fora",
+"start": 113.555,
+"end": 113.795
+},
+{
+"text": "do",
+"start": 113.795,
+"end": 113.955
+},
+{
+"text": "código,",
+"start": 113.955,
+"end": 114.435
+},
+{
+"text": "num",
+"start": 114.435,
+"end": 114.675
+},
+{
+"text": "cofre",
+"start": 114.675,
+"end": 115.155
+},
+{
+"text": "do",
+"start": 115.155,
+"end": 115.315
+},
+{
+"text": "servidor.",
+"start": 115.315,
+"end": 115.963
+},
+{
+"text": "Essas",
+"start": 115.963,
+"end": 116.523
+},
+{
+"text": "são",
+"start": 116.523,
+"end": 116.682
+},
+{
+"text": "as",
+"start": 116.682,
+"end": 116.842
+},
+{
+"text": "variáveis",
+"start": 116.842,
+"end": 117.482
+},
+{
+"text": "de",
+"start": 117.482,
+"end": 117.642
+},
+{
+"text": "ambiente.",
+"start": 117.642,
+"end": 118.443
+},
+{
+"text": "Mas",
+"start": 118.443,
+"end": 118.683
+},
+{
+"text": "o",
+"start": 118.683,
+"end": 118.842
+},
+{
+"text": "servidor",
+"start": 118.842,
+"end": 119.402
+},
+{
+"text": "caiu",
+"start": 119.402,
+"end": 119.802
+},
+{
+"text": "às",
+"start": 119.802,
+"end": 120.042
+},
+{
+"text": "três",
+"start": 120.042,
+"end": 120.363
+},
+{
+"text": "da",
+"start": 120.363,
+"end": 120.522
+},
+{
+"text": "manhã",
+"start": 120.522,
+"end": 121.002
+},
+{
+"text": "e",
+"start": 121.002,
+"end": 121.162
+},
+{
+"text": "você",
+"start": 121.162,
+"end": 121.403
+},
+{
+"text": "só",
+"start": 121.403,
+"end": 121.642
+},
+{
+"text": "descobriu",
+"start": 121.642,
+"end": 122.202
+},
+{
+"text": "quando",
+"start": 122.202,
+"end": 122.362
+},
+{
+"text": "o",
+"start": 122.362,
+"end": 122.443
+},
+{
+"text": "cliente",
+"start": 122.443,
+"end": 122.762
+},
+{
+"text": "reclamou.",
+"start": 122.762,
+"end": 123.562
+},
+{
+"text": "Então",
+"start": 123.562,
+"end": 123.882
+},
+{
+"text": "você",
+"start": 123.882,
+"end": 124.042
+},
+{
+"text": "coloca",
+"start": 124.042,
+"end": 124.442
+},
+{
+"text": "um",
+"start": 124.442,
+"end": 124.602
+},
+{
+"text": "alarme",
+"start": 124.602,
+"end": 125.002
+},
+{
+"text": "que",
+"start": 125.002,
+"end": 125.082
+},
+{
+"text": "te",
+"start": 125.082,
+"end": 125.242
+},
+{
+"text": "avisa",
+"start": 125.242,
+"end": 125.642
+},
+{
+"text": "no",
+"start": 125.642,
+"end": 125.803
+},
+{
+"text": "celular.",
+"start": 125.803,
+"end": 126.522
+},
+{
+"text": "Esse",
+"start": 126.522,
+"end": 126.923
+},
+{
+"text": "é",
+"start": 126.923,
+"end": 127.082
+},
+{
+"text": "o",
+"start": 127.082,
+"end": 127.242
+},
+{
+"text": "monitoramento.",
+"start": 127.242,
+"end": 128.442
+},
+{
+"text": "Mas",
+"start": 128.442,
+"end": 128.762
+},
+{
+"text": "um",
+"start": 128.762,
+"end": 129.082
+},
+{
+"text": "dia,",
+"start": 129.082,
+"end": 129.562
+},
+{
+"text": "sem",
+"start": 129.562,
+"end": 129.883
+},
+{
+"text": "querer,",
+"start": 129.883,
+"end": 130.602
+},
+{
+"text": "você",
+"start": 130.602,
+"end": 130.923
+},
+{
+"text": "apaga",
+"start": 130.923,
+"end": 131.402
+},
+{
+"text": "o",
+"start": 131.402,
+"end": 131.482
+},
+{
+"text": "banco",
+"start": 131.482,
+"end": 131.963
+},
+{
+"text": "inteiro.",
+"start": 131.963,
+"end": 132.842
+},
+{
+"text": "Então,",
+"start": 132.842,
+"end": 133.483
+},
+{
+"text": "toda",
+"start": 133.483,
+"end": 133.803
+},
+{
+"text": "noite",
+"start": 133.803,
+"end": 134.202
+},
+{
+"text": "uma",
+"start": 134.202,
+"end": 134.442
+},
+{
+"text": "cópia",
+"start": 134.442,
+"end": 134.842
+},
+{
+"text": "vai",
+"start": 134.842,
+"end": 135.082
+},
+{
+"text": "pra",
+"start": 135.082,
+"end": 135.322
+},
+{
+"text": "outro",
+"start": 135.322,
+"end": 135.563
+},
+{
+"text": "lugar.",
+"start": 135.563,
+"end": 136.122
+},
+{
+"text": "Esse",
+"start": 136.122,
+"end": 136.442
+},
+{
+"text": "é",
+"start": 136.442,
+"end": 136.602
+},
+{
+"text": "o",
+"start": 136.602,
+"end": 136.762
+},
+{
+"text": "backup.",
+"start": 136.762,
+"end": 137.723
+},
+{
+"text": "Parabéns!",
+"start": 137.723,
+"end": 138.892
+},
+{
+"text": "Destruir",
+"start": 139.35,
+"end": 139.83
+},
+{
+"text": "um",
+"start": 139.83,
+"end": 139.99
+},
+{
+"text": "SaS!",
+"start": 139.99,
+"end": 140.71
+},
+{
+"text": "Agora",
+"start": 140.71,
+"end": 141.03
+},
+{
+"text": "comenta",
+"start": 141.03,
+"end": 141.59
+},
+{
+"text": "qual",
+"start": 141.59,
+"end": 141.83
+},
+{
+"text": "dessas",
+"start": 141.83,
+"end": 142.23
+},
+{
+"text": "peças",
+"start": 142.23,
+"end": 142.63
+},
+{
+"text": "você",
+"start": 142.63,
+"end": 142.79
+},
+{
+"text": "quer",
+"start": 142.79,
+"end": 143.03
+},
+{
+"text": "ver",
+"start": 143.03,
+"end": 143.27
+},
+{
+"text": "desmontada.",
+"start": 143.27,
+"end": 144.68
+}
+]
