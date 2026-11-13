@@ -1,0 +1,912 @@
+[
+{
+"text": "O",
+"start": 0.0,
+"end": 0.16
+},
+{
+"text": "Cloud",
+"start": 0.16,
+"end": 0.56
+},
+{
+"text": "acabou",
+"start": 0.56,
+"end": 0.88
+},
+{
+"text": "de",
+"start": 0.88,
+"end": 0.96
+},
+{
+"text": "matar",
+"start": 0.96,
+"end": 1.28
+},
+{
+"text": "o",
+"start": 1.28,
+"end": 1.44
+},
+{
+"text": "Instagram.",
+"start": 1.44,
+"end": 2.08
+},
+{
+"text": "Porque",
+"start": 2.08,
+"end": 2.32
+},
+{
+"text": "agora",
+"start": 2.32,
+"end": 2.64
+},
+{
+"text": "você",
+"start": 2.64,
+"end": 2.88
+},
+{
+"text": "pode",
+"start": 2.88,
+"end": 3.12
+},
+{
+"text": "conectar",
+"start": 3.12,
+"end": 3.68
+},
+{
+"text": "o",
+"start": 3.68,
+"end": 3.76
+},
+{
+"text": "Cloud",
+"start": 3.76,
+"end": 4.32
+},
+{
+"text": "ao",
+"start": 4.32,
+"end": 4.56
+},
+{
+"text": "Instagram",
+"start": 4.56,
+"end": 5.12
+},
+{
+"text": "e",
+"start": 5.12,
+"end": 5.28
+},
+{
+"text": "fazer",
+"start": 5.28,
+"end": 5.52
+},
+{
+"text": "com",
+"start": 5.52,
+"end": 5.68
+},
+{
+"text": "que",
+"start": 5.68,
+"end": 5.84
+},
+{
+"text": "ele",
+"start": 5.84,
+"end": 6.0
+},
+{
+"text": "gerem",
+"start": 6.0,
+"end": 6.56
+},
+{
+"text": "sua",
+"start": 6.56,
+"end": 6.8
+},
+{
+"text": "conta",
+"start": 6.8,
+"end": 7.12
+},
+{
+"text": "por",
+"start": 7.12,
+"end": 7.28
+},
+{
+"text": "você.",
+"start": 7.28,
+"end": 7.68
+},
+{
+"text": "E",
+"start": 7.68,
+"end": 7.84
+},
+{
+"text": "isso",
+"start": 7.84,
+"end": 8.08
+},
+{
+"text": "graças",
+"start": 8.08,
+"end": 8.4
+},
+{
+"text": "a",
+"start": 8.4,
+"end": 8.48
+},
+{
+"text": "um",
+"start": 8.48,
+"end": 8.64
+},
+{
+"text": "repositório",
+"start": 8.64,
+"end": 9.28
+},
+{
+"text": "totalmente",
+"start": 9.28,
+"end": 9.76
+},
+{
+"text": "gratuito",
+"start": 9.76,
+"end": 10.32
+},
+{
+"text": "chamado",
+"start": 10.32,
+"end": 10.8
+},
+{
+"text": "Instagram",
+"start": 10.8,
+"end": 11.36
+},
+{
+"text": "MagentSkill.",
+"start": 11.36,
+"end": 12.24
+},
+{
+"text": "E",
+"start": 12.24,
+"end": 12.4
+},
+{
+"text": "não",
+"start": 12.4,
+"end": 12.48
+},
+{
+"text": "vai",
+"start": 12.48,
+"end": 12.64
+},
+{
+"text": "achando",
+"start": 12.64,
+"end": 12.88
+},
+{
+"text": "que",
+"start": 12.88,
+"end": 12.96
+},
+{
+"text": "é",
+"start": 12.96,
+"end": 13.04
+},
+{
+"text": "só",
+"start": 13.04,
+"end": 13.2
+},
+{
+"text": "uma",
+"start": 13.2,
+"end": 13.36
+},
+{
+"text": "skill,",
+"start": 13.36,
+"end": 13.68
+},
+{
+"text": "não,",
+"start": 13.68,
+"end": 13.92
+},
+{
+"text": "porque",
+"start": 13.92,
+"end": 14.16
+},
+{
+"text": "são",
+"start": 14.16,
+"end": 14.32
+},
+{
+"text": "11",
+"start": 14.32,
+"end": 14.64
+},
+{
+"text": "no",
+"start": 14.64,
+"end": 14.8
+},
+{
+"text": "total,",
+"start": 14.8,
+"end": 15.2
+},
+{
+"text": "cada",
+"start": 15.2,
+"end": 15.44
+},
+{
+"text": "uma",
+"start": 15.44,
+"end": 15.68
+},
+{
+"text": "fazendo",
+"start": 15.68,
+"end": 16.0
+},
+{
+"text": "uma",
+"start": 16.0,
+"end": 16.16
+},
+{
+"text": "coisa.",
+"start": 16.16,
+"end": 16.48
+},
+{
+"text": "Uma",
+"start": 16.48,
+"end": 16.8
+},
+{
+"text": "escreve",
+"start": 16.8,
+"end": 17.2
+},
+{
+"text": "seus",
+"start": 17.2,
+"end": 17.44
+},
+{
+"text": "posts",
+"start": 17.44,
+"end": 17.84
+},
+{
+"text": "usando",
+"start": 17.84,
+"end": 18.24
+},
+{
+"text": "21",
+"start": 18.24,
+"end": 18.64
+},
+{
+"text": "ganchos",
+"start": 18.64,
+"end": 19.2
+},
+{
+"text": "virais",
+"start": 19.2,
+"end": 19.76
+},
+{
+"text": "comprovados.",
+"start": 19.76,
+"end": 20.64
+},
+{
+"text": "Outra",
+"start": 20.64,
+"end": 20.96
+},
+{
+"text": "consegue",
+"start": 20.96,
+"end": 21.36
+},
+{
+"text": "comentar",
+"start": 21.36,
+"end": 21.76
+},
+{
+"text": "no",
+"start": 21.76,
+"end": 21.92
+},
+{
+"text": "post",
+"start": 21.92,
+"end": 22.32
+},
+{
+"text": "de",
+"start": 22.32,
+"end": 22.48
+},
+{
+"text": "outras",
+"start": 22.48,
+"end": 22.88
+},
+{
+"text": "pessoas",
+"start": 22.88,
+"end": 23.2
+},
+{
+"text": "por",
+"start": 23.2,
+"end": 23.44
+},
+{
+"text": "você.",
+"start": 23.44,
+"end": 23.887
+},
+{
+"text": "A",
+"start": 23.887,
+"end": 24.047
+},
+{
+"text": "outra",
+"start": 24.047,
+"end": 24.287
+},
+{
+"text": "cuida",
+"start": 24.287,
+"end": 24.607
+},
+{
+"text": "das",
+"start": 24.607,
+"end": 24.767
+},
+{
+"text": "suas",
+"start": 24.767,
+"end": 24.927
+},
+{
+"text": "respostas,",
+"start": 24.927,
+"end": 25.487
+},
+{
+"text": "otimiza",
+"start": 25.487,
+"end": 26.047
+},
+{
+"text": "o",
+"start": 26.047,
+"end": 26.128
+},
+{
+"text": "seu",
+"start": 26.128,
+"end": 26.287
+},
+{
+"text": "perfil",
+"start": 26.287,
+"end": 26.608
+},
+{
+"text": "e",
+"start": 26.608,
+"end": 26.767
+},
+{
+"text": "cria",
+"start": 26.767,
+"end": 27.087
+},
+{
+"text": "um",
+"start": 27.087,
+"end": 27.167
+},
+{
+"text": "planejamento",
+"start": 27.167,
+"end": 27.727
+},
+{
+"text": "semanal",
+"start": 27.727,
+"end": 28.288
+},
+{
+"text": "de",
+"start": 28.288,
+"end": 28.368
+},
+{
+"text": "conteúdo",
+"start": 28.368,
+"end": 28.848
+},
+{
+"text": "para",
+"start": 28.848,
+"end": 29.007
+},
+{
+"text": "você",
+"start": 29.007,
+"end": 29.247
+},
+{
+"text": "postar.",
+"start": 29.247,
+"end": 29.808
+},
+{
+"text": "Mas",
+"start": 29.808,
+"end": 30.047
+},
+{
+"text": "sem",
+"start": 30.047,
+"end": 30.207
+},
+{
+"text": "dúvidas,",
+"start": 30.207,
+"end": 30.687
+},
+{
+"text": "a",
+"start": 30.687,
+"end": 30.767
+},
+{
+"text": "skill",
+"start": 30.767,
+"end": 31.167
+},
+{
+"text": "mais",
+"start": 31.167,
+"end": 31.328
+},
+{
+"text": "insana",
+"start": 31.328,
+"end": 31.807
+},
+{
+"text": "de",
+"start": 31.807,
+"end": 31.967
+},
+{
+"text": "todas",
+"start": 31.967,
+"end": 32.207
+},
+{
+"text": "é",
+"start": 32.207,
+"end": 32.447
+},
+{
+"text": "essa",
+"start": 32.447,
+"end": 32.688
+},
+{
+"text": "daqui,",
+"start": 32.688,
+"end": 33.087
+},
+{
+"text": "a",
+"start": 33.087,
+"end": 33.327
+},
+{
+"text": "Virality",
+"start": 33.327,
+"end": 34.047
+},
+{
+"text": "Skill.",
+"start": 34.047,
+"end": 34.527
+},
+{
+"text": "Ela",
+"start": 34.527,
+"end": 34.768
+},
+{
+"text": "encontra",
+"start": 34.768,
+"end": 35.167
+},
+{
+"text": "os",
+"start": 35.167,
+"end": 35.247
+},
+{
+"text": "vídeos",
+"start": 35.247,
+"end": 35.647
+},
+{
+"text": "mais",
+"start": 35.647,
+"end": 35.808
+},
+{
+"text": "virais",
+"start": 35.808,
+"end": 36.207
+},
+{
+"text": "do",
+"start": 36.207,
+"end": 36.367
+},
+{
+"text": "seu",
+"start": 36.367,
+"end": 36.527
+},
+{
+"text": "nicho,",
+"start": 36.527,
+"end": 37.087
+},
+{
+"text": "analisa",
+"start": 37.087,
+"end": 37.567
+},
+{
+"text": "por",
+"start": 37.567,
+"end": 37.728
+},
+{
+"text": "que",
+"start": 37.728,
+"end": 37.888
+},
+{
+"text": "esses",
+"start": 37.888,
+"end": 38.047
+},
+{
+"text": "itens",
+"start": 38.047,
+"end": 38.527
+},
+{
+"text": "performaram",
+"start": 38.527,
+"end": 39.087
+},
+{
+"text": "tão",
+"start": 39.087,
+"end": 39.247
+},
+{
+"text": "bem",
+"start": 39.247,
+"end": 39.487
+},
+{
+"text": "e,",
+"start": 39.487,
+"end": 39.727
+},
+{
+"text": "com",
+"start": 39.727,
+"end": 39.888
+},
+{
+"text": "base",
+"start": 39.888,
+"end": 40.207
+},
+{
+"text": "nisso,",
+"start": 40.207,
+"end": 40.527
+},
+{
+"text": "cria",
+"start": 40.527,
+"end": 40.767
+},
+{
+"text": "um",
+"start": 40.767,
+"end": 40.847
+},
+{
+"text": "roteiro",
+"start": 40.847,
+"end": 41.247
+},
+{
+"text": "viral",
+"start": 41.247,
+"end": 41.648
+},
+{
+"text": "pra",
+"start": 41.648,
+"end": 41.808
+},
+{
+"text": "você.",
+"start": 41.808,
+"end": 42.207
+},
+{
+"text": "Assim",
+"start": 42.207,
+"end": 42.607
+},
+{
+"text": "você",
+"start": 42.607,
+"end": 42.767
+},
+{
+"text": "não",
+"start": 42.767,
+"end": 43.007
+},
+{
+"text": "trava",
+"start": 43.007,
+"end": 43.457
+},
+{
+"text": "na",
+"start": 43.488,
+"end": 43.648
+},
+{
+"text": "hora",
+"start": 43.648,
+"end": 43.808
+},
+{
+"text": "de",
+"start": 43.808,
+"end": 43.967
+},
+{
+"text": "criar",
+"start": 43.967,
+"end": 44.287
+},
+{
+"text": "conteúdo.",
+"start": 44.287,
+"end": 44.927
+},
+{
+"text": "E",
+"start": 44.927,
+"end": 45.087
+},
+{
+"text": "pra",
+"start": 45.087,
+"end": 45.247
+},
+{
+"text": "instalar,",
+"start": 45.247,
+"end": 45.728
+},
+{
+"text": "basta",
+"start": 45.728,
+"end": 46.047
+},
+{
+"text": "copiar",
+"start": 46.047,
+"end": 46.527
+},
+{
+"text": "esse",
+"start": 46.527,
+"end": 46.687
+},
+{
+"text": "link",
+"start": 46.687,
+"end": 46.927
+},
+{
+"text": "aqui",
+"start": 46.927,
+"end": 47.087
+},
+{
+"text": "e",
+"start": 47.087,
+"end": 47.247
+},
+{
+"text": "jogar",
+"start": 47.247,
+"end": 47.488
+},
+{
+"text": "no",
+"start": 47.488,
+"end": 47.648
+},
+{
+"text": "seu",
+"start": 47.648,
+"end": 47.728
+},
+{
+"text": "cloud.",
+"start": 47.728,
+"end": 48.505
+},
+{
+"text": "Pronto.",
+"start": 48.505,
+"end": 48.905
+},
+{
+"text": "E",
+"start": 48.905,
+"end": 49.065
+},
+{
+"text": "se",
+"start": 49.065,
+"end": 49.145
+},
+{
+"text": "você",
+"start": 49.145,
+"end": 49.305
+},
+{
+"text": "quer",
+"start": 49.305,
+"end": 49.545
+},
+{
+"text": "receber",
+"start": 49.545,
+"end": 49.865
+},
+{
+"text": "o",
+"start": 49.865,
+"end": 49.945
+},
+{
+"text": "link",
+"start": 49.945,
+"end": 50.185
+},
+{
+"text": "dessa",
+"start": 50.185,
+"end": 50.425
+},
+{
+"text": "skill,",
+"start": 50.425,
+"end": 50.825
+},
+{
+"text": "é",
+"start": 50.825,
+"end": 50.905
+},
+{
+"text": "só",
+"start": 50.905,
+"end": 51.065
+},
+{
+"text": "comentar",
+"start": 51.065,
+"end": 51.465
+},
+{
+"text": "a",
+"start": 51.465,
+"end": 51.545
+},
+{
+"text": "palavra",
+"start": 51.545,
+"end": 51.945
+},
+{
+"text": "Instagram",
+"start": 51.945,
+"end": 52.425
+},
+{
+"text": "que",
+"start": 52.425,
+"end": 52.505
+},
+{
+"text": "eu",
+"start": 52.505,
+"end": 52.665
+},
+{
+"text": "te",
+"start": 52.665,
+"end": 52.745
+},
+{
+"text": "envio",
+"start": 52.745,
+"end": 53.065
+},
+{
+"text": "na",
+"start": 53.065,
+"end": 53.305
+},
+{
+"text": "DM.",
+"start": 53.305,
+"end": 53.709
+}
+]
