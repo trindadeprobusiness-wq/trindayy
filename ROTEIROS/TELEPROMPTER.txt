@@ -1,0 +1,81 @@
+ROTEIRO 1 — O CEO DA NVIDIA
+
+O cara mais importante da inteligência artificial no mundo admitiu que traiu a própria esposa.
+
+E a amante pode ser uma espiã chinesa.
+
+Essa história já fez 225 bilhões de dólares sumirem em poucas horas. E ela é muito maior do que uma traição.
+
+Nesse domingo, a NVIDIA anunciou que vai investigar o próprio CEO, Jensen Huang.
+
+E quem confirmou a traição foi ele mesmo, num e-mail para os funcionários.
+
+Imagina: você trabalha na NVIDIA, abre a caixa de entrada e o dono da empresa te conta que traiu a esposa.
+
+A mulher em questão se chama Alice Huang, e ela é um dos principais nomes por trás da Megaspeed.
+
+Uma empresa de data center de Singapura que era cliente da NVIDIA e comprava os chips mais avançados dela.
+
+E é aqui que a história vira outra coisa.
+
+Os Estados Unidos limitam a venda dos chips mais avançados da NVIDIA para a China.
+
+Porque são esses chips que treinam os melhores modelos de IA do mundo. Quem tem esses chips fica na frente da corrida da IA.
+
+Só que a Megaspeed já estava na mira dos americanos fazia muito tempo.
+
+Segundo o New York Times, a suspeita é que ela fez cerca de 2 bilhões de dólares em chips proibidos chegarem na China, passando por empresas na Malásia e na Indonésia.
+
+E é aí que a Alice entra na jogada.
+
+A inteligência americana acredita que ela tenha sido recrutada pelo serviço secreto chinês para se aproximar do Jensen e passar informações da NVIDIA para Pequim.
+
+Ou seja: se tudo isso for verdade, a China nem precisaria mais roubar tecnologia. Ela ia direto no cara que manda na NVIDIA.
+
+E tem mais um detalhe: o Jensen era justamente um dos que mais pressionavam o governo americano para liberar a venda desses chips para a China.
+
+A China, claro, nega tudo e diz que a acusação não tem nenhum fundamento.
+
+E a NVIDIA diz que não achou nenhum sinal de vazamento de informações.
+
+Só que o mercado não esperou a investigação acabar.
+
+Nessa segunda, as ações caíram perto de 5% antes da abertura do mercado. Algo em torno de 225 bilhões de dólares evaporados em pouquíssimas horas.
+
+O conselho disse que confia no Jensen, e ele segue no cargo. Por enquanto.
+
+Agora me fala: foi espionagem ou só coincidência? Comenta aí.
+
+E me segue, porque essa história ainda vai render muito.
+
+
+
+ROTEIRO 2 — O CLAUDE MATOU O INSTAGRAM
+
+O Claude acabou de matar o Instagram.
+
+Agora você conecta o Claude no seu Instagram e ele gerencia a sua conta por você.
+
+De graça. E a skill mais insana de todas eu deixei pro final.
+
+Isso graças a um repositório totalmente gratuito chamado Instagram Agent Skill.
+
+E não pensa que é uma skill só, não. São 11 no total, cada uma fazendo uma coisa.
+
+Uma escreve os seus posts usando 21 ganchos virais comprovados.
+
+Outra comenta nos posts de outras pessoas por você.
+
+Outra cuida das suas respostas, otimiza o seu perfil e monta um planejamento semanal de conteúdo pra você só postar.
+
+Mas a mais insana, a que eu prometi, é essa aqui: a Virality Skill.
+
+Ela encontra os vídeos mais virais do seu nicho, analisa por que eles performaram tão bem e, com base nisso, cria um roteiro viral pra você.
+
+Assim você nunca mais trava na hora de criar conteúdo.
+
+E pra instalar? Copia esse link, joga no seu Claude e pronto.
+
+Quer o link? Comenta a palavra INSTAGRAM que eu te mando na DM.
+
+E me segue pra não perder as próximas.
