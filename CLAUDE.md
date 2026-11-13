@@ -21,3 +21,12 @@
   - Em resumo: fundo azul-marinho escuro, 1 cor de destaque por vídeo, legenda karaokê em caixa normal (palavra atual branca, próximas apagadas, palavras-chave coloridas), listas numeradas com bolinhas de progresso, números com contador, prova real (card do GitHub, terminal, prints) e CTA "COMENTA A PALAVRA" com a caixa do Instagram digitando.
   - Gere com o motor do lote 1 (`lib/build.mjs` sem `kit2`, `lib/common.mjs`), como em `_tooling/v1_cloudflare.mjs`.
 - Combine com o `ESQUELETO_UNIVERSAL_DE_EDICAO.md`. Só fuja desse estilo se o usuário pedir.
+
+## Roteiros: empilhamento de 3 ganchos (obrigatório)
+
+- **Todo roteiro feito a partir de um vídeo que o usuário mandar abre com 3 ganchos empilhados.** Guia completo em `ESTILOS_DE_EDICAO/EMPILHAMENTO_DE_GANCHOS.md`; exemplos aprovados em `ROTEIROS/TELEPROMPTER.txt`.
+  - **G1 · choque:** frase que para o dedo, já no 1º quadro.
+  - **G2 · escalada:** piora a situação ou aumenta o que está em jogo.
+  - **G3 · laço aberto:** promete algo que só é entregue no final. O laço tem que fechar no corpo.
+- Nunca mude dados (números, nomes, fontes) nem tire conteúdo da referência: reescreva as palavras e o ritmo. Coloque um CTA no final quando fizer sentido.
+- Quando o usuário for gravar, entregue **somente as falas** (título + uma fala por parágrafo) para o teleprompter, no chat e em `ROTEIROS/*.txt`.
